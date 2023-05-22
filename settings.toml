@@ -1,0 +1,9 @@
+[[inputs]]
+name = "calyx inputs"
+paths = [
+  "calyx-examples/*.futil"
+]
+config.dry_run = false
+config.quiet = false
+config.csv = false
+config.stage_dynamic_config = [['synth-verilog.tcl', 'synth.tcl'], ['synth-verilog.constraints', 'device10.xdc'], ['futil.flags', ' -d group2invoke']]
