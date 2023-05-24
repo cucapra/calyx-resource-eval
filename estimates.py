@@ -28,20 +28,22 @@ def get_json(output):
     return json.loads(output.convert_to(SourceType.String).data)
 
 
-# runs test given `test`, configuration `cfg`, and `results_dic` and `results_file`
-def run_resource_estimate(input_info, cfg, results_dic, results_file):
-    # name of the input (e.g., eventually we hope to have
-    # "calyx native inputs", "Dahlia inputs", "CIRCT inputs", etc. )
-    input_name = input_info["name"]
+# runs test given:
+# `input_info` (the data we read from the toml file)
+# configuration `cfg` (an object used by fud)
+# results_file is the file to write the results into
+# results_dic is the dic that is written to results_file
+def run_resource_estimate(toml_info, cfg, results_dic, results_file):
+    # overall type of input, e.g., "polybench", "calyx native examples", etc
+    input_name = toml_info["name"]
     input_results = results_dic.get(input_name, {})
-    # given_config = run config specified to us in the .toml file
-    # we still need to fill out some of the  rest of the fud run configuration
-    given_config = input_info["config"]
+    # the .toml file gives us some of the configuration, but we
+    # still need to fill out the rest of the fud run configuration
+    given_config = toml_info["config"]
     # dest should be "resource-estimate" (unless we want some sort of quicker
     # dest for debugging and stuff)
     given_config["dest"] = dest
-    # get a flat map of all the files in input_info["paths"]
-    input_files = flat_map(glob.glob, input_info["paths"])
+    input_files = flat_map(glob.glob, toml_info["paths"])
     for input_file in input_files:
         # discover implied source
         if not ("source" in given_config):
@@ -49,6 +51,7 @@ def run_resource_estimate(input_info, cfg, results_dic, results_file):
             log.debug(f"Inferred source state: {source}")
             given_config["source"] = source
         given_config["input_file"] = input_file
+        # run fud and get json
         json_results = get_json(get_fud_output(RunConf.from_dict(given_config), cfg))
         # updating input_results and results_dic
         input_results[input_file] = json_results

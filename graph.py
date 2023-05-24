@@ -29,22 +29,24 @@ def assert_sorted(my_dict):
     return sorted_dict
 
 
-# given resource_name and file_name, and a resource_usage dic in the form
-# {file name: resource_usage_json}, get the usage for resource_name
-# in file_name
-def get_resource_usage(resource_name, file_name, resource_usage_dic):
-    for path_name in resource_usage_dic:
-        if Path(path_name).name == file_name:
-            return resource_usage_dic[path_name][resource_name]
-    raise Exception(f"""there is no usage of {resource_name} in {file_name}""")
+# given resource_name and file_name, and a resource_info in the form
+# {test name (e.g., polybench): {design name (e.g., lin-alg.fuse): resource_usage_json}},
+# get the usage for resource_name in design_name
+def get_resource_usage(resource_name, design_name, resource_info):
+    for design_mappings in resource_info.values():
+        for design_path in design_mappings:
+            if Path(design_path).name == design_name:
+                return design_mappings[design_path][resource_name]
+    raise Exception(f"""there is no usage of {resource_name} in {design_name}""")
 
 
 if __name__ == "__main__":
     assert (
         len(sys.argv) == 3
-    ), "please provide a resource and file name, e.g., graph.py lut vectorized_add.futil"
+    ), "please provide a resource and design name, e.g., graph.py lut \
+    vectorized-add.futil"
     resource_name = sys.argv[1]
-    file_name = sys.argv[2]
+    design_name = sys.argv[2]
 
     # dictionary for the graph that we are building
     graph_data = {}
@@ -56,15 +58,11 @@ if __name__ == "__main__":
         # checking if it is a file
         if os.path.isfile(pathname):
             with open(pathname, "r") as f:
-                # resource_info maps input type names -> (input file names -> resource jsons)
-                resource_info = json.load(f)
-                for resource_dictionary in resource_info.values():
-                    # since filenames are "moments" (e.g., 2023-05-22@08-44-54.json)
-                    # we are setting
-                    # graph_data[moment] = resource usage at that moment
-                    graph_data[filename] = get_resource_usage(
-                        resource_name, file_name, resource_dictionary
-                    )
+                # e.g., changing 2023-05-24@13:27:34.json to "2023-05-24@13:27:34"
+                moment = os.path.splitext(filename)[0]
+                graph_data[moment] = get_resource_usage(
+                    resource_name, design_name, json.load(f)
+                )
 
     # assert that graph_data is sorted.
     graph_data = assert_sorted(graph_data)
@@ -80,8 +78,8 @@ if __name__ == "__main__":
     fig = plt.figure(figsize=(10, 5))
 
     # creating the bar plot
-    sns.lineplot(x="Year", y="Profit", data=data_plot)
+    sns.lineplot(x="Time", y="Usage", data=data_plot)
     plt.xlabel("Time of Resource Estimation")
     plt.ylabel("Resource Usage")
-    plt.title(f"""{resource_name} usage in {file_name} over time""")
+    plt.title(f"""{resource_name} usage in {design_name} over time""")
     plt.show()
