@@ -1,5 +1,5 @@
 """
-Command line argument: python3 path/to/graph.py resource_name file_name
+Command line argument: python3 path/to/graph.py resource_name design_name
 """
 
 import os
@@ -32,11 +32,14 @@ def assert_sorted(my_dict):
 # given resource_name and file_name, and a resource_info in the form
 # {test name (e.g., polybench): {design name (e.g., lin-alg.fuse): resource_usage_json}},
 # get the usage for resource_name in design_name
-def get_resource_usage(resource_name, design_name, resource_info):
-    for design_mappings in resource_info.values():
-        for design_path in design_mappings:
-            if Path(design_path).name == design_name:
-                return design_mappings[design_path][resource_name]
+def get_resource_usage(resource_name, design_name, moment_dir):
+    for bench_name in os.listdir(moment_dir):
+        bench_pathname = os.path.join(directory, bench_name)
+        with open(bench_pathname) as f:
+            bench_resource_numbers = json.load(bench_pathname)
+            for design_path in bench_resource_numbers:
+                if Path(design_path).name == design_name:
+                    return bench_resource_numbers[design_path][resource_name]
     raise Exception(f"""there is no usage of {resource_name} in {design_name}""")
 
 
@@ -55,22 +58,14 @@ if __name__ == "__main__":
     # https://www.geeksforgeeks.org/how-to-iterate-over-files-in-directory-using-python/
     for filename in os.listdir(directory):
         pathname = os.path.join(directory, filename)
-        # checking if it is a file
-        if os.path.isfile(pathname):
-            with open(pathname, "r") as f:
-                # e.g., changing 2023-05-24@13:27:34.json to "2023-05-24@13:27:34"
-                moment = os.path.splitext(filename)[0]
-                graph_data[moment] = get_resource_usage(
-                    resource_name, design_name, json.load(f)
-                )
+        # e.g., changing 2023-05-24@13:27:34.json to "2023-05-24@13:27:34"
+        moment = os.path.splitext(filename)[0]
+        graph_data[moment] = get_resource_usage(resource_name, design_name, pathname)
 
     # assert that graph_data is sorted.
     graph_data = assert_sorted(graph_data)
 
     # build bar graph
-    # "time"/moments on the x axis
-    # resource usage on the y axis
-
     data_plot = pd.DataFrame(
         {"Time": list(graph_data.keys()), "Usage": list(graph_data.values())}
     )
