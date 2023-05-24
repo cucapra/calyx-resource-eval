@@ -34,9 +34,9 @@ def assert_sorted(my_dict):
 # get the usage for resource_name in design_name
 def get_resource_usage(resource_name, design_name, moment_dir):
     for bench_name in os.listdir(moment_dir):
-        bench_pathname = os.path.join(directory, bench_name)
+        bench_pathname = os.path.join(moment_dir, bench_name)
         with open(bench_pathname) as f:
-            bench_resource_numbers = json.load(bench_pathname)
+            bench_resource_numbers = json.load(f)
             for design_path in bench_resource_numbers:
                 if Path(design_path).name == design_name:
                     return bench_resource_numbers[design_path][resource_name]
@@ -74,7 +74,7 @@ if __name__ == "__main__":
 
     # creating the bar plot
     sns.lineplot(x="Time", y="Usage", data=data_plot)
-    plt.xlabel("Time of Resource Estimation")
+    plt.xlabel("Time")
     plt.ylabel("Resource Usage")
     plt.title(f"""{resource_name} usage in {design_name} over time""")
     plt.show()
