@@ -72,13 +72,15 @@ if __name__ == "__main__":
     # build bar graph
     # "time"/moments on the x axis
     # resource usage on the y axis
-    moment = list(graph_data.keys())
-    usage = list(graph_data.values())
+
+    data_plot = pd.DataFrame(
+        {"Time": list(graph_data.keys()), "Usage": list(graph_data.values())}
+    )
 
     fig = plt.figure(figsize=(10, 5))
 
     # creating the bar plot
-    plt.bar(moment, usage, width=0.4)
+    sns.lineplot(x="Year", y="Profit", data=data_plot)
     plt.xlabel("Time of Resource Estimation")
     plt.ylabel("Resource Usage")
     plt.title(f"""{resource_name} usage in {file_name} over time""")

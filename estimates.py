@@ -50,7 +50,7 @@ def run_resource_estimate(input_info, cfg, results_dic, results_file):
             given_config["source"] = source
         given_config["input_file"] = input_file
         json_results = get_json(get_fud_output(RunConf.from_dict(given_config), cfg))
-        # updating test_results and results_dic
+        # updating input_results and results_dic
         input_results[input_file] = json_results
         results_dic[input_name] = input_results
         # writing results_dic into file. Do this at each test file in case of
