@@ -1,14 +1,15 @@
 [[inputs]]
-name = "polybench-partial"
+name = "polybench"
 paths = [
-  "benchmarks/polybench-partial/*.fuse"
+  "benchmarks/polybench/*.fuse"
 ]
-config.stage_dynamic_config = [['synth-verilog.tcl', 'synth.tcl'], ['synth-verilog.constraints', 'device10.xdc'], ['futil.flags', '']]
+stage_dynamic_config = [['synth-verilog.tcl', 'synth.tcl'], ['synth-verilog.constraints', 'device10.xdc'], ['calyx.flags', '-d tdcc']]
 
 [[inputs]]
 name = "calyx examples"
 paths = [
   "benchmarks/calyx-examples/*.futil"
 ]
-config.stage_dynamic_config = [['synth-verilog.tcl', 'synth.tcl'], ['synth-verilog.constraints', 'device10.xdc'], ['futil.flags', '']]
+config.source = "calyx"
+stage_dynamic_config = [['synth-verilog.tcl', 'synth.tcl'], ['synth-verilog.constraints', 'device10.xdc'], ['calyx.flags', '']]
 

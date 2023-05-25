@@ -15,7 +15,7 @@ import shutil
 import time
 from datetime import datetime
 
-dest = "resource-estimate"
+dest = "verilog"
 
 
 # https://dev.to/turbaszek/flat-map-in-python-3g98
@@ -33,6 +33,10 @@ def get_json(output):
     return json.loads(output.convert_to(SourceType.String).data)
 
 
+def get_string(output):
+    return output.convert_to(SourceType.String).data
+
+
 # runs test given:
 # `input_info` (the data we read from the toml file)
 # configuration `cfg` (an object used by fud)
@@ -40,9 +44,12 @@ def get_json(output):
 # results_dic is the dic that is written to results_file
 def run_resource_estimate(toml_info, cfg, results_file):
     results_dic = {}
+    if "stage_dynamic_config" in toml_info:
+        for key, value in toml_info["stage_dynamic_config"]:
+            cfg[["stages"] + key.split(".")] = value
     # the .toml file gives us some of the configuration, but we
     # still need to fill out the rest of the fud run configuration
-    given_config = toml_info["config"]
+    given_config = toml_info["config"] if "config" in toml_info else {}
     # dest should be "resource-estimate" (unless we want some sort of quicker
     # dest for debugging and stuff)
     given_config["dest"] = dest
@@ -55,7 +62,10 @@ def run_resource_estimate(toml_info, cfg, results_file):
             given_config["source"] = source
         given_config["input_file"] = input_file
         # run fud, get json, and update reesults_dic
-        results_dic[input_file] = get_json(
+        # results_dic[input_file] = get_json(
+        #     get_fud_output(RunConf.from_dict(given_config), cfg)
+        # )
+        results_dic[input_file] = get_string(
             get_fud_output(RunConf.from_dict(given_config), cfg)
         )
         # writing results_dic into file. Do this at each test file in case of
