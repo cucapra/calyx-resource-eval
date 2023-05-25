@@ -35,11 +35,12 @@ def assert_sorted(my_dict):
 def get_resource_usage(resource_name, design_name, moment_dir):
     for bench_name in os.listdir(moment_dir):
         bench_pathname = os.path.join(moment_dir, bench_name)
-        with open(bench_pathname) as f:
-            bench_resource_numbers = json.load(f)
-            for design_path in bench_resource_numbers:
-                if Path(design_path).name == design_name:
-                    return bench_resource_numbers[design_path][resource_name]
+        if bench_pathname.endswith(".json"):
+            with open(bench_pathname) as f:
+                bench_resource_numbers = json.load(f)
+                for design_path in bench_resource_numbers:
+                    if Path(design_path).name == design_name:
+                        return bench_resource_numbers[design_path][resource_name]
     raise Exception(f"""there is no usage of {resource_name} in {design_name}""")
 
 
