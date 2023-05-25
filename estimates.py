@@ -15,7 +15,7 @@ import shutil
 import time
 from datetime import datetime
 
-dest = "verilog"
+dest = "resource-estimate"
 
 
 # https://dev.to/turbaszek/flat-map-in-python-3g98
@@ -42,7 +42,9 @@ def get_string(output):
 # configuration `cfg` (an object used by fud)
 # results_file is the file to write the results into
 # results_dic is the dic that is written to results_file
-def run_resource_estimate(toml_info, cfg, results_file):
+# debug_mode means that we don't save results
+def run_resource_estimate(toml_info, cfg, results_file, debug_mode):
+    start_time = time.time()
     results_dic = {}
     if "stage_dynamic_config" in toml_info:
         for key, value in toml_info["stage_dynamic_config"]:
@@ -62,24 +64,32 @@ def run_resource_estimate(toml_info, cfg, results_file):
             given_config["source"] = source
         given_config["input_file"] = input_file
         # run fud, get json, and update reesults_dic
-        # results_dic[input_file] = get_json(
-        #     get_fud_output(RunConf.from_dict(given_config), cfg)
-        # )
-        results_dic[input_file] = get_string(
+        results_dic[input_file] = get_json(
             get_fud_output(RunConf.from_dict(given_config), cfg)
         )
+        # results_dic[input_file] = get_string(
+        #     get_fud_output(RunConf.from_dict(given_config), cfg)
+        # )
         # writing results_dic into file. Do this at each test file in case of
         # crash halfway thru execution
-        with open(results_file, "w") as rf:
-            json.dump(results_dic, rf)
+        if not debug_mode:
+            with open(results_file, "w") as rf:
+                json.dump(results_dic, rf)
+    end_time = time.time()
+    if not debug_mode:
+        with open(f"""{os.path.splitext(results_file)[0]}.txt""", "w") as file:
+            file.writelines(str((end_time - start_time) / 60) + " minutes")
 
 
 # takes in arg -s/--sequential
 # if true, then it runs sequential instead of in parallel
+# also take arg -d/--debug
+# if true, then does not actually save any files, just runs
 def main():
-    start_time = time.time()
     parser = argparse.ArgumentParser(description="Process some integers.")
     parser.add_argument("-s", "--sequential", action="store_true")
+    parser.add_argument("-d", "--debug", action="store_true")
+    parser.add_argument("-q", "--quick", action="store_true")
     args = parser.parse_args()
     # set up the Configuration
     cfg = Configuration()
@@ -89,24 +99,23 @@ def main():
     # results dictionary: test name -> { file name -> data json}
     # name of the results file debug(or nightly)-results/moment.json
     results_folder = "debug-results/" + get_moment() + ""
-    if os.path.exists(results_folder):
-        shutil.rmtree(results_folder)
-    os.makedirs(results_folder)
+    if not args.debug:
+        if os.path.exists(results_folder):
+            shutil.rmtree(results_folder)
+        os.makedirs(results_folder)
     threads = []
 
+    toml_file = "settings.toml" if not args.quick else "settings-quick.toml"
+
     if not args.sequential:
-        with open("settings.toml") as f:
+        with open(toml_file) as f:
             toml_dict = toml.load(f)
             inputs = toml_dict["inputs"]
             for input in inputs:
                 results_file = os.path.join(results_folder, input["name"] + ".json")
                 thread = threading.Thread(
                     target=run_resource_estimate,
-                    args=(
-                        input,
-                        cfg,
-                        results_file,
-                    ),
+                    args=(input, cfg, results_file, args.debug),
                 )
                 threads.append(thread)
                 thread.start()
@@ -118,12 +127,7 @@ def main():
             inputs = toml_dict["inputs"]
             for input in inputs:
                 results_file = os.path.join(results_folder, input["name"] + ".json")
-                run_resource_estimate(input, cfg, results_file)
-
-    end_time = time.time()
-
-    with open(f"""{results_folder}/time_consumed.txt""", "w") as file:
-        file.writelines(str(end_time - start_time))
+                run_resource_estimate(input, cfg, results_file, args.debug)
 
 
 if __name__ == "__main__":
