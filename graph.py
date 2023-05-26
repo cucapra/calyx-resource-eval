@@ -29,6 +29,11 @@ def assert_sorted(my_dict):
     return sorted_dict
 
 
+def format_date(date_str):
+    list_str = date_str.split()
+    return f"""{list_str[0]}@{list_str[1]}"""
+
+
 # given resource_name and file_name, and a resource_info in the form
 # {test name (e.g., polybench): {design name (e.g., lin-alg.fuse): resource_usage_json}},
 # get the usage for resource_name in design_name
@@ -38,10 +43,12 @@ def get_resource_usage(resource_name, design_name, moment_dir):
     for fname in os.listdir(moment_dir):
         pname = os.path.join(moment_dir, fname)
         if pname.endswith(".json"):
-            if Path(pname).name == "version_info":
+            if Path(pname).name == "version_info.json":
                 with open(pname) as f:
                     version_info = json.load(f)
-                    version_data = str(version_info)
+                    calyx_date = format_date(version_info["calyx"].split("||")[1])
+                    dahlia_date = format_date(version_info["dahlia"].split("||")[1])
+                    version_data = f"""calyx: {calyx_date} \n dahlia: {dahlia_date}"""
             else:
                 with open(pname) as f:
                     bench_resource_numbers = json.load(f)
@@ -50,8 +57,10 @@ def get_resource_usage(resource_name, design_name, moment_dir):
                             resource_data = bench_resource_numbers[design_path][
                                 resource_name
                             ]
+
     if resource_data is None:
-        raise Exception(f"""there is no usage of {resource_name} in {design_name}""")
+        # this could happen if we add benchmarks later
+        return (None, None)
     elif version_data is None:
         raise Exception(f""" no version info""")
     else:
@@ -78,7 +87,8 @@ if __name__ == "__main__":
         (version_data, resource_data) = get_resource_usage(
             resource_name, design_name, pathname
         )
-        graph_data[version_data] = resource_data
+        if version_data is not None and resource_data is not None:
+            graph_data[version_data] = resource_data
 
     # assert that graph_data is sorted.
     # graph_data = assert_sorted(graph_data)

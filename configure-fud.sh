@@ -41,12 +41,12 @@ fi
 cd calyx-for-fud/fud && flit install -s && cd ../..
 
 # Checkout correct Calyx commit, write commit info into temp/calyx-version.txt
-cd calyx-for-eval && git checkout $calyx_commit && git show --no-patch --no-notes --pretty='%h || %cd || %s'  > ../version-info/calyx-version.txt 
+cd calyx-for-eval && git checkout $calyx_commit && git show --no-patch --no-notes --pretty='%h || %ci || %s'  > ../version-info/calyx-version.txt 
 # build Calyx 
 cargo build && cd ..
 
 # Checkout correct Dahlia commit, write commit info into temp/dahlia-version.txt
-cd dahlia && git checkout $dahlia_commit && git show --no-patch --no-notes --pretty='%h || %cd || %s'  > ../version-info/dahlia-version.txt 
+cd dahlia && git checkout $dahlia_commit && git show --no-patch --no-notes --pretty='%h || %ci || %s'  > ../version-info/dahlia-version.txt 
 
 sbt compile && sbt assembly && chmod +x ./fuse && cd .. 
 
