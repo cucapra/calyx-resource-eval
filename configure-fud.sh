@@ -28,23 +28,27 @@ then
     git clone git@github.com:cucapra/dahlia.git
 fi
 
-# Install fud
+
 ## Check if flit is installed
 if ! command -v flit &> /dev/null
 then
     >&2 echo "Flit is not installed. Installing..."
     python3 -m pip install flit
 fi
-## Check if fud is installed
-if ! command -v fud &> /dev/null
-then
-    >&2 echo "Fud is not installed. Installing..."
-    cd calyx-for-fud/fud && flit install -s && cd ../..
-fi
 
-# Build the tools
-cd calyx-for-eval && git checkout $calyx_commit && cargo build && cd ..
-cd dahlia && git checkout $dahlia_commit && sbt compile && sbt assembly && chmod +x ./fuse & cd .. 
+# Install fud, since this is the installation we want to use (not my other fud installation on another Calyx repo)
+>&2 echo "Installing fud..."
+cd calyx-for-fud/fud && flit install -s && cd ../..
+
+# Checkout correct Calyx commit, write commit info into temp/calyx-version.txt
+cd calyx-for-eval && git checkout $calyx_commit && git show --no-patch --no-notes --pretty='%h || %cd || %s'  > ../version-info/calyx-version.txt 
+# build Calyx 
+cargo build && cd ..
+
+# Checkout correct Dahlia commit, write commit info into temp/dahlia-version.txt
+cd dahlia && git checkout $dahlia_commit && git show --no-patch --no-notes --pretty='%h || %cd || %s'  > ../version-info/dahlia-version.txt 
+
+sbt compile && sbt assembly && chmod +x ./fuse && cd .. 
 
 # Configure fud
 fud config --create global.futil_directory "$(pwd)/calyx-for-fud"

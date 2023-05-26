@@ -6,8 +6,8 @@ from fud.main import register_stages, register_external_stages
 from fud.stages import SourceType
 import glob
 import json
+import subprocess
 import argparse
-import toml
 import logging as log
 import os
 import threading
@@ -38,24 +38,24 @@ def get_string(output):
 
 
 # runs test given:
-# `input_info` (the data we read from the toml file)
+# `json_info` (the data we read from the json file)
 # configuration `cfg` (an object used by fud)
 # results_file is the file to write the results into
 # results_dic is the dic that is written to results_file
 # debug_mode means that we don't save results
-def run_resource_estimate(toml_info, cfg, results_file, debug_mode):
+def run_resource_estimate(json_info, cfg, results_file, debug_mode):
     start_time = time.time()
     results_dic = {}
-    if "stage_dynamic_config" in toml_info:
-        for key, value in toml_info["stage_dynamic_config"]:
+    if "stage_dynamic_config" in json_info:
+        for key, value in json_info["stage_dynamic_config"]:
             cfg[["stages"] + key.split(".")] = value
     # the .toml file gives us some of the configuration, but we
     # still need to fill out the rest of the fud run configuration
-    given_config = toml_info["config"] if "config" in toml_info else {}
+    given_config = json_info["config"] if "config" in json_info else {}
     # dest should be "resource-estimate" (unless we want some sort of quicker
     # dest for debugging and stuff)
     given_config["dest"] = dest
-    input_files = flat_map(glob.glob, toml_info["paths"])
+    input_files = flat_map(glob.glob, json_info["paths"])
     for input_file in input_files:
         # discover implied source
         if not ("source" in given_config):
@@ -86,7 +86,7 @@ def run_resource_estimate(toml_info, cfg, results_file, debug_mode):
 # also take arg -d/--debug
 # if true, then does not actually save any files, just runs
 def main():
-    parser = argparse.ArgumentParser(description="Process some integers.")
+    parser = argparse.ArgumentParser(description="Process args for resource estimates")
     parser.add_argument("-s", "--sequential", action="store_true")
     parser.add_argument("-d", "--debug", action="store_true")
     parser.add_argument("-q", "--quick", action="store_true")
@@ -105,29 +105,33 @@ def main():
         os.makedirs(results_folder)
     threads = []
 
-    toml_file = "settings.toml" if not args.quick else "settings-quick.toml"
+    json_file = "settings.json" if not args.quick else "settings-quick.json"
 
-    if not args.sequential:
-        with open(toml_file) as f:
-            toml_dict = toml.load(f)
-            inputs = toml_dict["inputs"]
-            for input in inputs:
-                results_file = os.path.join(results_folder, input["name"] + ".json")
+    with open(json_file) as f:
+        json_dict = json.load(f)
+        for input in json_dict["inputs"]:
+            results_file = os.path.join(results_folder, input["name"] + ".json")
+            if not args.sequential:
                 thread = threading.Thread(
                     target=run_resource_estimate,
                     args=(input, cfg, results_file, args.debug),
                 )
                 threads.append(thread)
                 thread.start()
+            else:
+                run_resource_estimate(input, cfg, results_file, args.debug)
+    if not args.sequential:
         for thread in threads:
             thread.join()
-    else:
-        with open("settings.toml") as f:
-            toml_dict = toml.load(f)
-            inputs = toml_dict["inputs"]
-            for input in inputs:
-                results_file = os.path.join(results_folder, input["name"] + ".json")
-                run_resource_estimate(input, cfg, results_file, args.debug)
+
+    if not args.debug:
+        version_dict = {}
+        with open("version-info/calyx-version.txt", "r") as f:
+            version_dict["calyx"] = f.read()
+        with open("version-info/dahlia-version.txt", "r") as f:
+            version_dict["dahlia"] = f.read()
+        with open(f"""{results_folder}/version_info.json""", "w") as f:
+            json.dump(version_dict, f)
 
 
 if __name__ == "__main__":

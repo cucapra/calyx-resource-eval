@@ -33,15 +33,29 @@ def assert_sorted(my_dict):
 # {test name (e.g., polybench): {design name (e.g., lin-alg.fuse): resource_usage_json}},
 # get the usage for resource_name in design_name
 def get_resource_usage(resource_name, design_name, moment_dir):
-    for bench_name in os.listdir(moment_dir):
-        bench_pathname = os.path.join(moment_dir, bench_name)
-        if bench_pathname.endswith(".json"):
-            with open(bench_pathname) as f:
-                bench_resource_numbers = json.load(f)
-                for design_path in bench_resource_numbers:
-                    if Path(design_path).name == design_name:
-                        return bench_resource_numbers[design_path][resource_name]
-    raise Exception(f"""there is no usage of {resource_name} in {design_name}""")
+    version_data = None
+    resource_data = None
+    for fname in os.listdir(moment_dir):
+        pname = os.path.join(moment_dir, fname)
+        if pname.endswith(".json"):
+            if Path(pname).name == "version_info":
+                with open(pname) as f:
+                    version_info = json.load(f)
+                    version_data = str(version_info)
+            else:
+                with open(pname) as f:
+                    bench_resource_numbers = json.load(f)
+                    for design_path in bench_resource_numbers:
+                        if Path(design_path).name == design_name:
+                            resource_data = bench_resource_numbers[design_path][
+                                resource_name
+                            ]
+    if resource_data is None:
+        raise Exception(f"""there is no usage of {resource_name} in {design_name}""")
+    elif version_data is None:
+        raise Exception(f""" no version info""")
+    else:
+        return (version_data, resource_data)
 
 
 if __name__ == "__main__":
@@ -61,21 +75,24 @@ if __name__ == "__main__":
         pathname = os.path.join(directory, filename)
         # e.g., changing 2023-05-24@13:27:34.json to "2023-05-24@13:27:34"
         moment = os.path.splitext(filename)[0]
-        graph_data[moment] = get_resource_usage(resource_name, design_name, pathname)
+        (version_data, resource_data) = get_resource_usage(
+            resource_name, design_name, pathname
+        )
+        graph_data[version_data] = resource_data
 
     # assert that graph_data is sorted.
-    graph_data = assert_sorted(graph_data)
+    # graph_data = assert_sorted(graph_data)
 
     # build bar graph
     data_plot = pd.DataFrame(
-        {"Time": list(graph_data.keys()), "Usage": list(graph_data.values())}
+        {"Version": list(graph_data.keys()), "Usage": list(graph_data.values())}
     )
 
     fig = plt.figure(figsize=(10, 5))
 
     # creating the bar plot
-    sns.lineplot(x="Time", y="Usage", data=data_plot)
+    sns.barplot(x="Version", y="Usage", data=data_plot)
     plt.xlabel("Time")
     plt.ylabel("Resource Usage")
-    plt.title(f"""{resource_name} usage in {design_name} over time""")
+    plt.title(f"""{resource_name} usage in {design_name} over different versions""")
     plt.show()
