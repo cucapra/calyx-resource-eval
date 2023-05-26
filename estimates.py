@@ -43,7 +43,7 @@ def get_string(output):
 # results_file is the file to write the results into
 # results_dic is the dic that is written to results_file
 # debug_mode means that we don't save results
-def run_resource_estimate(json_info, cfg, results_file, debug_mode):
+def run_resource_estimate(json_info, cfg, results_file, debug_mode, use_futil):
     start_time = time.time()
     results_dic = {}
     if "stage_dynamic_config" in json_info:
@@ -62,6 +62,11 @@ def run_resource_estimate(json_info, cfg, results_file, debug_mode):
             source = cfg.discover_implied_states(input_file)
             log.debug(f"Inferred source state: {source}")
             given_config["source"] = source
+        elif given_config["source"] == "calyx-or-futil":
+            if use_futil:
+                given_config["source"] = "futil"
+            else:
+                given_config["source"] = "calyx"
         given_config["input_file"] = input_file
         # run fud, get json, and update reesults_dic
         results_dic[input_file] = get_json(
@@ -90,6 +95,7 @@ def main():
     parser.add_argument("-s", "--sequential", action="store_true")
     parser.add_argument("-d", "--debug", action="store_true")
     parser.add_argument("-q", "--quick", action="store_true")
+    parser.add_argument("-f", "--futil", action="store_true")
     args = parser.parse_args()
     # set up the Configuration
     cfg = Configuration()
@@ -114,12 +120,12 @@ def main():
             if not args.sequential:
                 thread = threading.Thread(
                     target=run_resource_estimate,
-                    args=(input, cfg, results_file, args.debug),
+                    args=(input, cfg, results_file, args.debug, args.futil),
                 )
                 threads.append(thread)
                 thread.start()
             else:
-                run_resource_estimate(input, cfg, results_file, args.debug)
+                run_resource_estimate(input, cfg, results_file, args.debug, args.futil)
     if not args.sequential:
         for thread in threads:
             thread.join()

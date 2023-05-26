@@ -40,7 +40,7 @@
         ]
       ],
       "config": {
-        "source": "calyx"
+        "source": "calyx-or-futil"
       }
     },
     {
@@ -63,7 +63,7 @@
         ]
       ],
       "config": {
-        "source": "calyx"
+        "source": "calyx-or-futil"
       }
     },
     {
@@ -86,7 +86,7 @@
         ]
       ],
       "config": {
-        "source": "calyx"
+        "source": "calyx-or-futil"
       }
     },
     {
@@ -109,7 +109,7 @@
         ]
       ],
       "config": {
-        "source": "calyx"
+        "source": "calyx-or-futil"
       }
     }
   ]

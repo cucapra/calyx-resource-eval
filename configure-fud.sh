@@ -4,8 +4,10 @@ set -euf -o pipefail
 
 # first argument is Calyx commit (defaults to most recent master commit) 
 # second argument is Dahlia version (defaults to most recent master commit)
+# third argument is extension for fud to use for Calyx (either futil or calyx)
 calyx_commit=${1:-'master'}
 dahlia_commit=${2:-'master'}
+fud_calyx_extension=${3:-'calyx'}
 
 # install calyx for fud 
 if [ ! -d "calyx-for-fud" ] 
@@ -47,12 +49,12 @@ cargo build && cd ..
 
 # Checkout correct Dahlia commit, write commit info into temp/dahlia-version.txt
 cd dahlia && git checkout $dahlia_commit && git show --no-patch --no-notes --pretty='%h || %ci || %s'  > ../version-info/dahlia-version.txt 
-
+#build Dahlia
 sbt compile && sbt assembly && chmod +x ./fuse && cd .. 
 
 # Configure fud
 fud config --create global.futil_directory "$(pwd)/calyx-for-fud"
 
 # Configure fud
-fud config stages.calyx.exec "$(pwd)/calyx-for-eval/target/debug/calyx"
+fud config stages.$fud_calyx_extension.exec "$(pwd)/calyx-for-eval/target/debug/$fud_calyx_extension"
 fud config stages.dahlia.exec "$(pwd)/dahlia/fuse"

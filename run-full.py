@@ -6,9 +6,17 @@ import argparse
 def main():
     with open("version-settings.json") as f:
         json_dict = json.load(f)
+        # calyx/dahlia commit to use
         calyx_version = json_dict.get("calyx_version", "master")
         dahlia_version = json_dict.get("dahlia_version", "master")
-        subprocess.run(["./configure-fud.sh", calyx_version, dahlia_version])
+        # based on verison, fud should use either futil or calyx
+        fud_calyx_extension = json_dict.get("calyx_extension", "calyx")
+
+        subprocess.run(
+            ["./configure-fud.sh", calyx_version, dahlia_version, fud_calyx_extension]
+        )
+        # probably a better way to do this, but want run-full.py to take some of
+        # the same cmdline arguments that estimates.py uses
         parser = argparse.ArgumentParser(
             description="Process args for resource estimates"
         )
@@ -16,12 +24,14 @@ def main():
         parser.add_argument("-d", "--debug", action="store_true")
         parser.add_argument("-q", "--quick", action="store_true")
         args = parser.parse_args()
-        # probably a better way to do this
         cmdline_args = ["python3", "estimates.py"]
-        print(vars(args))
         for k, v in vars(args).items():
             if v is True:
                 cmdline_args.append("--" + k)
+        # based on verison, fud should use either futil or calyx
+        if fud_calyx_extension == "futil":
+            cmdline_args.append("-f")
+
         subprocess.run(cmdline_args)
 
 
