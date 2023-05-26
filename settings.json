@@ -13,10 +13,6 @@
         [
           "synth-verilog.constraints",
           "device10.xdc"
-        ],
-        [
-          "calyx.flags",
-          ""
         ]
       ]
     },
@@ -33,14 +29,10 @@
         [
           "synth-verilog.constraints",
           "device10.xdc"
-        ],
-        [
-          "calyx.flags",
-          ""
         ]
       ],
       "config": {
-        "source": "calyx-or-futil"
+        "source": "calyx"
       }
     },
     {
@@ -56,14 +48,10 @@
         [
           "synth-verilog.constraints",
           "device10.xdc"
-        ],
-        [
-          "calyx.flags",
-          ""
         ]
       ],
       "config": {
-        "source": "calyx-or-futil"
+        "source": "calyx"
       }
     },
     {
@@ -79,14 +67,10 @@
         [
           "synth-verilog.constraints",
           "device10.xdc"
-        ],
-        [
-          "calyx.flags",
-          ""
         ]
       ],
       "config": {
-        "source": "calyx-or-futil"
+        "source": "calyx"
       }
     },
     {
@@ -102,14 +86,10 @@
         [
           "synth-verilog.constraints",
           "device10.xdc"
-        ],
-        [
-          "calyx.flags",
-          ""
         ]
       ],
       "config": {
-        "source": "calyx-or-futil"
+        "source": "calyx"
       }
     }
   ]

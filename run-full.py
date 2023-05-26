@@ -24,14 +24,11 @@ def main():
         parser.add_argument("-d", "--debug", action="store_true")
         parser.add_argument("-q", "--quick", action="store_true")
         args = parser.parse_args()
-        cmdline_args = ["python3", "estimates.py"]
+        cmdline_args = ["python3.9", "estimates.py"]
         for k, v in vars(args).items():
             if v is True:
                 cmdline_args.append("--" + k)
-        # based on verison, fud should use either futil or calyx
-        if fud_calyx_extension == "futil":
-            cmdline_args.append("-f")
-
+        # run estimates.py
         subprocess.run(cmdline_args)
 
 

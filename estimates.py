@@ -33,6 +33,7 @@ def get_json(output):
     return json.loads(output.convert_to(SourceType.String).data)
 
 
+# turns a fud output (of type `SourceType``) into a string
 def get_string(output):
     return output.convert_to(SourceType.String).data
 
@@ -41,15 +42,17 @@ def get_string(output):
 # `json_info` (the data we read from the json file)
 # configuration `cfg` (an object used by fud)
 # results_file is the file to write the results into
-# results_dic is the dic that is written to results_file
 # debug_mode means that we don't save results
-def run_resource_estimate(json_info, cfg, results_file, debug_mode, use_futil):
+# use_futil means "calyx-or-futil" resolves to "futil" instead of "calyx" (this is
+# because different versions of calyx fud use calyx vs. futil as name of stage)
+def run_resource_estimate(json_info, cfg, results_file, debug_mode):
     start_time = time.time()
     results_dic = {}
+    # resove stage_dynamic_config settings given in json
     if "stage_dynamic_config" in json_info:
         for key, value in json_info["stage_dynamic_config"]:
             cfg[["stages"] + key.split(".")] = value
-    # the .toml file gives us some of the configuration, but we
+    # the .json file may give us some of the configuration, but we
     # still need to fill out the rest of the fud run configuration
     given_config = json_info["config"] if "config" in json_info else {}
     # dest should be "resource-estimate" (unless we want some sort of quicker
@@ -62,25 +65,18 @@ def run_resource_estimate(json_info, cfg, results_file, debug_mode, use_futil):
             source = cfg.discover_implied_states(input_file)
             log.debug(f"Inferred source state: {source}")
             given_config["source"] = source
-        elif given_config["source"] == "calyx-or-futil":
-            if use_futil:
-                given_config["source"] = "futil"
-            else:
-                given_config["source"] = "calyx"
         given_config["input_file"] = input_file
         # run fud, get json, and update reesults_dic
         results_dic[input_file] = get_json(
             get_fud_output(RunConf.from_dict(given_config), cfg)
         )
-        # results_dic[input_file] = get_string(
-        #     get_fud_output(RunConf.from_dict(given_config), cfg)
-        # )
         # writing results_dic into file. Do this at each test file in case of
-        # crash halfway thru execution
+        # crash halfway thru execution (and we still want some results)
         if not debug_mode:
             with open(results_file, "w") as rf:
                 json.dump(results_dic, rf)
     end_time = time.time()
+    # if not in debug mode, record how long it took to get results
     if not debug_mode:
         with open(f"""{os.path.splitext(results_file)[0]}.txt""", "w") as file:
             file.writelines(str((end_time - start_time) / 60) + " minutes")
@@ -89,21 +85,22 @@ def run_resource_estimate(json_info, cfg, results_file, debug_mode, use_futil):
 # takes in arg -s/--sequential
 # if true, then it runs sequential instead of in parallel
 # also take arg -d/--debug
-# if true, then does not actually save any files, just runs
+# if true, then does not actually write to any files, just runs through
+# -q/--quick means we run fewer benchmarks (helpful for debugging/testing the script)
+# -f/--futil means we should use the futil extension for fud (instead of calyx)
 def main():
+    # set up arg parser
     parser = argparse.ArgumentParser(description="Process args for resource estimates")
     parser.add_argument("-s", "--sequential", action="store_true")
     parser.add_argument("-d", "--debug", action="store_true")
     parser.add_argument("-q", "--quick", action="store_true")
-    parser.add_argument("-f", "--futil", action="store_true")
     args = parser.parse_args()
     # set up the Configuration
     cfg = Configuration()
     cfg.registry = Registry(cfg)
     register_stages(cfg.registry)
     register_external_stages(cfg, cfg.registry)
-    # results dictionary: test name -> { file name -> data json}
-    # name of the results file debug(or nightly)-results/moment.json
+    # make results_folder, remove it and make new one if it already exists
     results_folder = "debug-results/" + get_moment() + ""
     if not args.debug:
         if os.path.exists(results_folder):
@@ -111,25 +108,36 @@ def main():
         os.makedirs(results_folder)
     threads = []
 
+    # read from:
+    # settings.json to run all benchmarks
+    # settings-quick.json runs very few benchmarks
     json_file = "settings.json" if not args.quick else "settings-quick.json"
 
     with open(json_file) as f:
         json_dict = json.load(f)
         for input in json_dict["inputs"]:
+            # for each type of input (e.g., polybench, ntt, etc.) we write results into
+            # a different file
             results_file = os.path.join(results_folder, input["name"] + ".json")
             if not args.sequential:
+                # default is to not run sequentially, and create a thread to run
+                # each input
                 thread = threading.Thread(
                     target=run_resource_estimate,
-                    args=(input, cfg, results_file, args.debug, args.futil),
+                    args=(input, cfg, results_file, args.debug),
                 )
                 threads.append(thread)
                 thread.start()
             else:
-                run_resource_estimate(input, cfg, results_file, args.debug, args.futil)
+                # otherwise, run sequentially
+                run_resource_estimate(input, cfg, results_file, args.debug)
     if not args.sequential:
+        # wait for threads to finish
         for thread in threads:
             thread.join()
 
+    # if not in debug mode, we want to record commit versions of Calyx and Dahlia
+    # that we got our results on
     if not args.debug:
         version_dict = {}
         with open("version-info/calyx-version.txt", "r") as f:

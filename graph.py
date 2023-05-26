@@ -29,27 +29,34 @@ def assert_sorted(my_dict):
     return sorted_dict
 
 
+# formats a date string to be nicer
 def format_date(date_str):
     list_str = date_str.split()
     return f"""{list_str[0]}@{list_str[1]}"""
 
 
-# given resource_name and file_name, and a resource_info in the form
-# {test name (e.g., polybench): {design name (e.g., lin-alg.fuse): resource_usage_json}},
-# get the usage for resource_name in design_name
+# given resource_name and design_name, and moment_dir (which is the path to
+# the directory that contains all the results files,
+# get a tuple of (version_info, usage)
+# where version_info = date of calyx/dahlia commit used
+# and usage = usage of resource_name for design_name
 def get_resource_usage(resource_name, design_name, moment_dir):
     version_data = None
     resource_data = None
     for fname in os.listdir(moment_dir):
         pname = os.path.join(moment_dir, fname)
+        # ignore the non-json files which contain information we're not interested in
         if pname.endswith(".json"):
             if Path(pname).name == "version_info.json":
+                # if we have version_info, then set version_data
                 with open(pname) as f:
                     version_info = json.load(f)
                     calyx_date = format_date(version_info["calyx"].split("||")[1])
                     dahlia_date = format_date(version_info["dahlia"].split("||")[1])
                     version_data = f"""calyx: {calyx_date} \n dahlia: {dahlia_date}"""
             else:
+                # if we have benchark resource usage, then check if design_name
+                # is in that benchark. if so, get resource usage for resource_name.
                 with open(pname) as f:
                     bench_resource_numbers = json.load(f)
                     for design_path in bench_resource_numbers:
@@ -59,10 +66,13 @@ def get_resource_usage(resource_name, design_name, moment_dir):
                             ]
 
     if resource_data is None:
-        # this could happen if we add benchmarks later
+        # this could happen if we add benchmarks later. Then the design_name
+        # might not be available for this specific directory
         return (None, None)
     elif version_data is None:
-        raise Exception(f""" no version info""")
+        # every directory should have some version data, even if the design_name
+        # isn't present
+        raise Exception(f""" no version data""")
     else:
         return (version_data, resource_data)
 
@@ -89,9 +99,6 @@ if __name__ == "__main__":
         )
         if version_data is not None and resource_data is not None:
             graph_data[version_data] = resource_data
-
-    # assert that graph_data is sorted.
-    # graph_data = assert_sorted(graph_data)
 
     # build bar graph
     data_plot = pd.DataFrame(

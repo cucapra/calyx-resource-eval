@@ -35,7 +35,7 @@ fi
 if ! command -v flit &> /dev/null
 then
     >&2 echo "Flit is not installed. Installing..."
-    python3 -m pip install flit
+    python3.9 -m pip install flit
 fi
 
 # Install fud, since this is the installation we want to use (not my other fud installation on another Calyx repo)
@@ -53,8 +53,8 @@ cd dahlia && git checkout $dahlia_commit && git show --no-patch --no-notes --pre
 sbt compile && sbt assembly && chmod +x ./fuse && cd .. 
 
 # Configure fud
-fud config --create global.futil_directory "$(pwd)/calyx-for-fud"
+fud config global.root "$(pwd)/calyx-for-eval"
 
 # Configure fud
-fud config stages.$fud_calyx_extension.exec "$(pwd)/calyx-for-eval/target/debug/$fud_calyx_extension"
+fud config stages.calyx.exec "$(pwd)/calyx-for-eval/target/debug/$fud_calyx_extension"
 fud config stages.dahlia.exec "$(pwd)/dahlia/fuse"
