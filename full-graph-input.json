@@ -26,6 +26,7 @@
     "ntt-32.futil",
     "ntt-64.futil",
     "tcam-32.futil",
-    "tcam-64.futil"
+    "tcam-64.futil",
+    "lenet.futil"
   ]
 }

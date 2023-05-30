@@ -1,0 +1,26 @@
+{
+  "benchmarks/big/lenet.futil": {
+    "lut": 9002,
+    "dsp": 100,
+    "registers": 1011,
+    "muxes": 1099,
+    "clb_registers": 6340,
+    "carry8": 283,
+    "f7_muxes": 6,
+    "f8_muxes": 0,
+    "f9_muxes": 0,
+    "clb": 15631,
+    "meet_timing": 1,
+    "worst_slack": 4.783,
+    "period": 10.0,
+    "frequency": 100.0,
+    "uram": -1,
+    "cell_lut1": 117,
+    "cell_lut2": 2420,
+    "cell_lut3": 1862,
+    "cell_lut4": 1153,
+    "cell_lut5": 1686,
+    "cell_lut6": 4147,
+    "cell_fdre": 6340
+  }
+}

@@ -77,7 +77,7 @@ def run_resource_estimate(json_info, cfg, results_file, debug_mode):
                 with open(results_file, "w") as rf:
                     json.dump(results_dic, rf)
         except:
-            print(input_file)
+            print(f"""error in {input_file}""")
     end_time = time.time()
     # if not in debug mode, record how long it took to get results
     if not debug_mode:
@@ -87,14 +87,13 @@ def run_resource_estimate(json_info, cfg, results_file, debug_mode):
 
 # arg -s/--sequentia makes script run sequentially instead of in parallel
 # arg -d/--debug makes script not actually write to any files, just runs through
-# arg -q/--quick means we run fewer benchmarks (helpful for debugging/testing the script)
+# arg -j/--json means we read from a json to see what we debug
 def main():
     # set up arg parser
     parser = argparse.ArgumentParser(description="Process args for resource estimates")
     parser.add_argument("-s", "--sequential", action="store_true")
     parser.add_argument("-d", "--debug", action="store_true")
-    parser.add_argument("-q", "--quick", action="store_true")
-    parser.add_argument("-p", "--polybench", action="store_true")
+    parser.add_argument("-j", "--json")
     args = parser.parse_args()
     # set up the Configuration
     cfg = Configuration()
@@ -109,16 +108,10 @@ def main():
         os.makedirs(results_folder)
     threads = []
 
-    # read from:
-    # settings.json to run all benchmarks
-    # settings-quick.json runs very few benchmarks
-    # settings-polybench.json to only run polybench benchmarks
-    if args.polybench:
-        json_file = "settings-polybench.json"
-    elif args.quick:
-        json_file = "settings-quick.json"
-    else:
-        json_file = "settings.json"
+    # default json file to read from is settings.json
+    json_file = "settings.json"
+    if args.json is not None:
+        json_file = args.json
 
     with open(json_file) as f:
         json_dict = json.load(f)
