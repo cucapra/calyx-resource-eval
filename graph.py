@@ -138,17 +138,3 @@ if __name__ == "__main__":
                 bbox_inches="tight",
             )
         plt.show()
-
-    # # build bar graph
-    # data_plot = pd.DataFrame(
-    #     {"Version": list(graph_data.keys()), "Usage": list(graph_data.values())}
-    # )
-
-    # fig = plt.figure(figsize=(10, 5))
-
-    # # creating the bar plot
-    # sns.barplot(x="Version", y="Usage", data=data_plot)
-    # plt.xlabel("Time")
-    # plt.ylabel("Resource Usage")
-    # plt.title(f"""{resource_name} usage in {design_name} over different versions""")
-    # plt.show()
