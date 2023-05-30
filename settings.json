@@ -17,25 +17,6 @@
       ]
     },
     {
-      "name": "big",
-      "paths": [
-        "benchmarks/big/*.futil"
-      ],
-      "stage_dynamic_config": [
-        [
-          "synth-verilog.tcl",
-          "synth.tcl"
-        ],
-        [
-          "synth-verilog.constraints",
-          "device10.xdc"
-        ]
-      ],
-      "config": {
-        "source": "calyx"
-      }
-    },
-    {
       "name": "tcam",
       "paths": [
         "benchmarks/tcam/*.futil"

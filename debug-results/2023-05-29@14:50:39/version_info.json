@@ -1,0 +1,4 @@
+{
+  "calyx": "7e8e1814 || 2023-05-28 13:10:27 -0700 || Fix Xilinx `kernel.xml` generation after a dependency broke it (#1529)\n",
+  "dahlia": "806c53c || 2023-02-11 08:34:39 -0500 || Merge pull request #399 from cucapra/rename-seq-ports\n"
+}

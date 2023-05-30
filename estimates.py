@@ -67,14 +67,17 @@ def run_resource_estimate(json_info, cfg, results_file, debug_mode):
             given_config["source"] = source
         given_config["input_file"] = input_file
         # run fud, get json, and update reesults_dic
-        results_dic[input_file] = get_json(
-            get_fud_output(RunConf.from_dict(given_config), cfg)
-        )
-        # writing results_dic into file. Do this at each test file in case of
-        # crash halfway thru execution (and we still want some results)
-        if not debug_mode:
-            with open(results_file, "w") as rf:
-                json.dump(results_dic, rf)
+        try:
+            results_dic[input_file] = get_json(
+                get_fud_output(RunConf.from_dict(given_config), cfg)
+            )
+            # writing results_dic into file. Do this at each test file in case of
+            # crash halfway thru execution (and we still want some results)
+            if not debug_mode:
+                with open(results_file, "w") as rf:
+                    json.dump(results_dic, rf)
+        except:
+            print(input_file)
     end_time = time.time()
     # if not in debug mode, record how long it took to get results
     if not debug_mode:
@@ -82,12 +85,9 @@ def run_resource_estimate(json_info, cfg, results_file, debug_mode):
             file.writelines(str((end_time - start_time) / 60) + " minutes")
 
 
-# takes in arg -s/--sequential
-# if true, then it runs sequential instead of in parallel
-# also take arg -d/--debug
-# if true, then does not actually write to any files, just runs through
-# -q/--quick means we run fewer benchmarks (helpful for debugging/testing the script)
-# -f/--futil means we should use the futil extension for fud (instead of calyx)
+# arg -s/--sequentia makes script run sequentially instead of in parallel
+# arg -d/--debug makes script not actually write to any files, just runs through
+# arg -q/--quick means we run fewer benchmarks (helpful for debugging/testing the script)
 def main():
     # set up arg parser
     parser = argparse.ArgumentParser(description="Process args for resource estimates")

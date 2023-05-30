@@ -35,8 +35,8 @@ fi
 if ! command -v flit &> /dev/null
 then
     >&2 echo "Flit is not installed. Installing..."
-    python3.9 -m pip install flit
-fi
+    python3 -m pip install flit
+fi 
 
 # Install fud, since this is the installation we want to use (not my other fud installation on another Calyx repo)
 >&2 echo "Installing fud..."
