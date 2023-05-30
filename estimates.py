@@ -94,6 +94,7 @@ def main():
     parser.add_argument("-s", "--sequential", action="store_true")
     parser.add_argument("-d", "--debug", action="store_true")
     parser.add_argument("-q", "--quick", action="store_true")
+    parser.add_argument("-p", "--polybench", action="store_true")
     args = parser.parse_args()
     # set up the Configuration
     cfg = Configuration()
@@ -111,7 +112,13 @@ def main():
     # read from:
     # settings.json to run all benchmarks
     # settings-quick.json runs very few benchmarks
-    json_file = "settings.json" if not args.quick else "settings-quick.json"
+    # settings-polybench.json to only run polybench benchmarks
+    if args.polybench:
+        json_file = "settings-polybench.json"
+    elif args.quick:
+        json_file = "settings-quick.json"
+    else:
+        json_file = "settings.json"
 
     with open(json_file) as f:
         json_dict = json.load(f)

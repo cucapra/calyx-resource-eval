@@ -23,6 +23,7 @@ def main():
         parser.add_argument("-s", "--sequential", action="store_true")
         parser.add_argument("-d", "--debug", action="store_true")
         parser.add_argument("-q", "--quick", action="store_true")
+        parser.add_argument("-p", "--polybench", action="store_true")
         args = parser.parse_args()
         cmdline_args = ["python3.9", "estimates.py"]
         for k, v in vars(args).items():
