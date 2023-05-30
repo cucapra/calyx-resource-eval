@@ -141,13 +141,13 @@ if __name__ == "__main__":
         ax = sns.barplot(
             x="design", y="usage", hue="calyx version", data=df, errorbar=None
         )
+        ax.set(title=f"""{resource}-usage""")
         plt.xticks(rotation=90)
         if args.save:
             # only save graph if specified in cmdline arguments
             if not os.path.exists("graphs"):
                 os.makedirs("graphs")
                 # can save figure if we want
-            ax.set(title=f"""{resource}-usage""")
             fig.savefig(
                 f"""graphs/{resource}-usage""",
                 bbox_inches="tight",
