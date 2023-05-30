@@ -8,10 +8,6 @@
       [
         "synth-verilog.constraints",
         "device10.xdc"
-      ],
-      [
-        "calyx.flags",
-        "-d tdcc"
       ]
     ]
   },
