@@ -37,6 +37,14 @@ def get_json(output):
     return json.loads(output.convert_to(SourceType.String).data)
 
 
+def dump_json(dict, json_path):
+    """
+    dumps dict into json_path
+    """
+    with open(f"""{json_path}""", "w") as f:
+        json.dump(dict, f)
+
+
 def write_to_file(file_dest, s):
     """
     writes string s to file_dest (also adds a new line)
@@ -57,8 +65,7 @@ def record_version_info(results_folder):
         version_dict["calyx"] = f.read()
     with open("version-info/dahlia-version.txt", "r") as f:
         version_dict["dahlia"] = f.read()
-    with open(f"""{results_folder}/version_info.json""", "w") as f:
-        json.dump(version_dict, f)
+    dump_json(version_dict, f"""{results_folder}/version_info.json""")
 
 
 def configure_cfg(json_info, universal_configs, cfg):
@@ -144,8 +151,7 @@ def run_resource_estimate(
         # writing results_dic into file. Do this at each test file in case of
         # crash halfway thru execution, since we still want some results
         if not debug_mode:
-            with open(results_file, "w") as rf:
-                json.dump(results_dic, rf)
+            dump_json(results_dic, results_file)
 
     end_time = time.time()
     # if not in debug mode, record how long it took to get results
@@ -188,6 +194,9 @@ def main():
 
     with open(json_file) as f:
         json_dict = json.load(f)
+        # save settings json so we know what we ran
+        if not args.debug:
+            dump_json(json_dict, f"""{results_folder}/settings-ran.json""")
         universal_configs = json_dict.get("universal_configs", {})
         for input in json_dict["inputs"]:
             # for each type of input (e.g., polybench, ntt, etc.) we write results into
