@@ -1,0 +1,22 @@
+{
+  "universal_configs": {
+    "stage_dynamic_configs": [
+      [
+        "synth-verilog.tcl",
+        "synth.tcl"
+      ],
+      [
+        "synth-verilog.constraints",
+        "device10.xdc"
+      ]
+    ]
+  },
+  "inputs": [
+    {
+      "name": "polybench",
+      "paths": [
+        "benchmarks/polybench/*.fuse"
+      ]
+    }
+  ]
+}

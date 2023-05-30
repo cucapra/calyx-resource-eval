@@ -15,50 +15,117 @@ import shutil
 import time
 from datetime import datetime
 
-dest = "resource-estimate"
 
-
-# https://dev.to/turbaszek/flat-map-in-python-3g98
 def flat_map(f, xs):
+    """
+    https://dev.to/turbaszek/flat-map-in-python-3g98
+    """
     return [y for ys in xs for y in f(ys)]
 
 
-# gets the current "moment" in time: "year-month-day@hour:minute:second"
 def get_moment():
+    """
+    gets the current "moment" in time: "year-month-day@hour:minute:second"
+    """
     return datetime.today().strftime("%Y-%m-%d@%H:%M:%S")
 
 
-# turns a fud output (of type `SourceType``) into a json
 def get_json(output):
+    """
+    turns a fud output (of type `SourceType`) into a json
+    """
     return json.loads(output.convert_to(SourceType.String).data)
 
 
-# turns a fud output (of type `SourceType``) into a string
-def get_string(output):
-    return output.convert_to(SourceType.String).data
+def write_to_file(file_dest, s):
+    """
+    writes string s to file_dest (also adds a new line)
+    """
+    with open(file_dest, "a") as fd:
+        fd.write(s)
+        fd.write("\n")
 
 
-# runs test given:
-# `json_info` (the data we read from the json file)
-# configuration `cfg` (an object used by fud)
-# results_file is the file to write the results into
-# debug_mode means that we don't save results
-# use_futil means "calyx-or-futil" resolves to "futil" instead of "calyx" (this is
-# because different versions of calyx fud use calyx vs. futil as name of stage)
-def run_resource_estimate(json_info, cfg, results_file, debug_mode):
-    start_time = time.time()
-    results_dic = {}
-    # resove stage_dynamic_config settings given in json
+def record_version_info(results_folder):
+    """
+    records commit versions of Calyx and Dahlia that we got our results on
+    this assumes that ./configure-fud.sh has written the version info
+    into version-info/calyx-version.txt and version-info/dahlia-version.txt
+    """
+    version_dict = {}
+    with open("version-info/calyx-version.txt", "r") as f:
+        version_dict["calyx"] = f.read()
+    with open("version-info/dahlia-version.txt", "r") as f:
+        version_dict["dahlia"] = f.read()
+    with open(f"""{results_folder}/version_info.json""", "w") as f:
+        json.dump(version_dict, f)
+
+
+def configure_cfg(json_info, universal_configs, cfg):
+    """
+    Configure the `cfg` object used by fud
+    Takes in both json_info (which contains configuration info for the specific file) and
+    universal_configs (the configuration info that should be applied to every file)
+    """
     if "stage_dynamic_config" in json_info:
         for key, value in json_info["stage_dynamic_config"]:
             cfg[["stages"] + key.split(".")] = value
-    # the .json file may give us some of the configuration, but we
+    if "stage_dynamic_config" in universal_configs:
+        for key, value in universal_configs["stage_dynamic_config"]:
+            cfg[["stages"] + key.split(".")] = value
+
+
+def run_fud(
+    given_config,
+    cfg,
+    errors_file,
+    input_file,
+    results_dic,
+):
+    """
+    Runs fud and gets json output, and then update results_dic
+    If there is an error/doesn't meet timing, then record it in errors_file, but keep going
+    """
+    try:
+        resource_usage_json = get_json(
+            get_fud_output(RunConf.from_dict(given_config), cfg)
+        )
+        # write to errors_file if it doesn't meet timing
+        if resource_usage_json["meet_timing"] != 1:
+            write_to_file(errors_file, f"""{input_file} does not meet timing""")
+        results_dic[input_file] = resource_usage_json
+    except:
+        # write to errors_file if we have some sort of error while getting resource
+        # usage
+        write_to_file(
+            errors_file,
+            f"""error when retrieving resource estimates for {input_file}""",
+        )
+
+
+def run_resource_estimate(
+    json_info, universal_configs, cfg, results_file, errors_file, debug_mode
+):
+    """
+    runs test given:
+    `json_info` (the data we read from the json file)
+    configuration `cfg` (an object used by fud)
+    results_file is the file to write the results into
+    errors_file is the file to write errors into
+    debug_mode means that we don't write results into a file
+    """
+    # keep track of how long it takes to get resource estimates
+    start_time = time.time()
+    # configure the cfg object
+    configure_cfg(json_info, universal_configs, cfg)
+    # the .json file/universal_configs may give us some of the configuration, but we
     # still need to fill out the rest of the fud run configuration
-    given_config = json_info["config"] if "config" in json_info else {}
-    # dest should be "resource-estimate" (unless we want some sort of quicker
-    # dest for debugging and stuff)
-    given_config["dest"] = dest
+    given_config = json_info.get("config", {})
+    given_config.update(universal_configs.get("config", {}))
+    given_config["dest"] = "resource-estimate"
     input_files = flat_map(glob.glob, json_info["paths"])
+    # results_dic holds the results
+    results_dic = {}
     for input_file in input_files:
         # discover implied source
         if not ("source" in given_config):
@@ -66,18 +133,20 @@ def run_resource_estimate(json_info, cfg, results_file, debug_mode):
             log.debug(f"Inferred source state: {source}")
             given_config["source"] = source
         given_config["input_file"] = input_file
-        # run fud, get json, and update reesults_dic
-        try:
-            results_dic[input_file] = get_json(
-                get_fud_output(RunConf.from_dict(given_config), cfg)
-            )
-            # writing results_dic into file. Do this at each test file in case of
-            # crash halfway thru execution (and we still want some results)
-            if not debug_mode:
-                with open(results_file, "w") as rf:
-                    json.dump(results_dic, rf)
-        except:
-            print(f"""error in {input_file}""")
+        # runs fud and updates results_dic and results_file
+        run_fud(
+            given_config,
+            cfg,
+            errors_file,
+            input_file,
+            results_dic,
+        )
+        # writing results_dic into file. Do this at each test file in case of
+        # crash halfway thru execution, since we still want some results
+        if not debug_mode:
+            with open(results_file, "w") as rf:
+                json.dump(results_dic, rf)
+
     end_time = time.time()
     # if not in debug mode, record how long it took to get results
     if not debug_mode:
@@ -85,10 +154,13 @@ def run_resource_estimate(json_info, cfg, results_file, debug_mode):
             file.writelines(str((end_time - start_time) / 60) + " minutes")
 
 
-# arg -s/--sequentia makes script run sequentially instead of in parallel
-# arg -d/--debug makes script not actually write to any files, just runs through
-# arg -j/--json means we read from a json to see what we debug
 def main():
+    """
+    arg -s/--sequentia makes script run sequentially instead of in parallel
+    arg -d/--debug makes script not actually write to any files, just runs through
+    arg -j/--json means we read from a json to see which input files we run (if not given,
+    there is a default settings.json that we use)
+    """
     # set up arg parser
     parser = argparse.ArgumentParser(description="Process args for resource estimates")
     parser.add_argument("-s", "--sequential", action="store_true")
@@ -108,44 +180,48 @@ def main():
         os.makedirs(results_folder)
     threads = []
 
-    # default json file to read from is settings.json
-    json_file = "settings.json"
+    # default json file to read from is settings.json, but if arg.json is passed,
+    # then set json file to arg.json
+    json_file = "settings/settings.json"
     if args.json is not None:
         json_file = args.json
 
     with open(json_file) as f:
         json_dict = json.load(f)
+        universal_configs = json_dict.get("universal_configs", {})
         for input in json_dict["inputs"]:
             # for each type of input (e.g., polybench, ntt, etc.) we write results into
-            # a different file
+            # a different file, and have an errors file to report errors
             results_file = os.path.join(results_folder, input["name"] + ".json")
+            errors_file = os.path.join(results_folder, input["name"] + "-errors.txt")
             if not args.sequential:
                 # default is to not run sequentially, and create a thread to run
-                # each input
+                # each input. This will help us get our inputs faster
                 thread = threading.Thread(
                     target=run_resource_estimate,
-                    args=(input, cfg, results_file, args.debug),
+                    args=(
+                        input,
+                        universal_configs,
+                        cfg,
+                        results_file,
+                        errors_file,
+                        args.debug,
+                    ),
                 )
                 threads.append(thread)
                 thread.start()
             else:
                 # otherwise, run sequentially
-                run_resource_estimate(input, cfg, results_file, args.debug)
+                run_resource_estimate(
+                    input, universal_configs, cfg, results_file, errors_file, args.debug
+                )
     if not args.sequential:
         # wait for threads to finish
         for thread in threads:
             thread.join()
-
-    # if not in debug mode, we want to record commit versions of Calyx and Dahlia
-    # that we got our results on
     if not args.debug:
-        version_dict = {}
-        with open("version-info/calyx-version.txt", "r") as f:
-            version_dict["calyx"] = f.read()
-        with open("version-info/dahlia-version.txt", "r") as f:
-            version_dict["dahlia"] = f.read()
-        with open(f"""{results_folder}/version_info.json""", "w") as f:
-            json.dump(version_dict, f)
+        # record calyx/dahlia version info into results_folder
+        record_version_info(results_folder)
 
 
 if __name__ == "__main__":
