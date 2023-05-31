@@ -47,7 +47,7 @@ def dump_json(dict, json_path):
 
 def write_to_file(file_dest, s):
     """
-    writes string s to file_dest (also adds a new line)
+    adds string s to file_dest (also adds a new line)
     """
     with open(file_dest, "a") as fd:
         fd.write(s)
@@ -57,7 +57,7 @@ def write_to_file(file_dest, s):
 def record_version_info(results_folder):
     """
     records commit versions of Calyx and Dahlia that we got our results on
-    this assumes that ./configure-fud.sh has written the version info
+    Note: this assumes that ./configure-fud.sh has written the version info
     into version-info/calyx-version.txt and version-info/dahlia-version.txt
     """
     version_dict = {}
@@ -71,7 +71,7 @@ def record_version_info(results_folder):
 def configure_cfg(universal_configs, cfg):
     """
     Configure the `cfg` object used by fud
-    Takes in universal_configs (the configuration info that should be applied to every file)
+    Takes in `universal_configs` (the configuration info that should be applied to every file)
     """
     if "stage_dynamic_config" in universal_configs:
         for key, value in universal_configs["stage_dynamic_config"]:
@@ -142,7 +142,7 @@ def run_resource_estimate(
             input_file,
             results_dic,
         )
-        # writing results_dic into file. Do this at each test file in case of
+        # writing results_dic into file. Do this after each test file in case of
         # crash halfway thru execution, since we still want some results
         if not debug_mode:
             dump_json(results_dic, results_file)
