@@ -68,15 +68,11 @@ def record_version_info(results_folder):
     dump_json(version_dict, f"""{results_folder}/version_info.json""")
 
 
-def configure_cfg(json_info, universal_configs, cfg):
+def configure_cfg(universal_configs, cfg):
     """
     Configure the `cfg` object used by fud
-    Takes in both json_info (which contains configuration info for the specific file) and
-    universal_configs (the configuration info that should be applied to every file)
+    Takes in universal_configs (the configuration info that should be applied to every file)
     """
-    if "stage_dynamic_config" in json_info:
-        for key, value in json_info["stage_dynamic_config"]:
-            cfg[["stages"] + key.split(".")] = value
     if "stage_dynamic_config" in universal_configs:
         for key, value in universal_configs["stage_dynamic_config"]:
             cfg[["stages"] + key.split(".")] = value
@@ -123,8 +119,6 @@ def run_resource_estimate(
     """
     # keep track of how long it takes to get resource estimates
     start_time = time.time()
-    # configure the cfg object
-    configure_cfg(json_info, universal_configs, cfg)
     # the .json file/universal_configs may give us some of the configuration, but we
     # still need to fill out the rest of the fud run configuration
     given_config = json_info.get("config", {})
@@ -196,8 +190,10 @@ def main():
         json_dict = json.load(f)
         # save settings json so we know what we ran
         if not args.debug:
-            dump_json(json_dict, f"""{results_folder}/settings-ran.json""")
+            dump_json(json_dict, f"""{results_folder}/settings_ran.json""")
         universal_configs = json_dict.get("universal_configs", {})
+        # configure the cfg object
+        configure_cfg(universal_configs, cfg)
         for input in json_dict["inputs"]:
             # for each type of input (e.g., polybench, ntt, etc.) we write results into
             # a different file, and have an errors file to report errors

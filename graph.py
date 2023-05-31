@@ -101,6 +101,7 @@ def get_resource_usage(resource_list, design_list, moment_dir, graph_data):
 def get_ordered_calyx_versions(df):
     """
     gets the calyx versions in df, sorts them and returns them
+    This is useful for setting hue_order of the barplot we're making
     """
     removed_duplicates = list(set(df["calyx version"]))
     removed_duplicates.sort()
