@@ -26,6 +26,8 @@ def main():
         # probably a better way to do this, but want run-full.py to take some of
         # the same cmdline arguments that estimates.py uses
         for k, v in vars(args).items():
+            if k == "version":
+                continue
             if v is True:
                 cmdline_args.append("--" + k)
             elif k == "json" and v is not None:
