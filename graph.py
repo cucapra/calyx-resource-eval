@@ -98,6 +98,15 @@ def get_resource_usage(resource_list, design_list, moment_dir, graph_data):
                             graph_data[resource] = resource_data
 
 
+def get_ordered_calyx_versions(df):
+    """
+    gets the calyx versions in df, sorts them and returns them
+    """
+    removed_duplicates = list(set(df["calyx version"]))
+    removed_duplicates.sort()
+    return removed_duplicates
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Process args for resource estimates")
     parser.add_argument("-r", "--resource", default="full-graph-input.json")
@@ -138,8 +147,14 @@ if __name__ == "__main__":
         df = pd.DataFrame(
             resource_usage_data, columns=["calyx version", "design", "usage"]
         )
+        ordered_calyx_versions = get_ordered_calyx_versions(df)
         ax = sns.barplot(
-            x="design", y="usage", hue="calyx version", data=df, errorbar=None
+            x="design",
+            y="usage",
+            hue="calyx version",
+            hue_order=ordered_calyx_versions,
+            data=df,
+            errorbar=None,
         )
         ax.set(title=f"""{resource}-usage""")
         plt.xticks(rotation=90)
