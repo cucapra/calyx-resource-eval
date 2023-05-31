@@ -61,9 +61,9 @@ def record_version_info(results_folder):
     into version-info/calyx-version.txt and version-info/dahlia-version.txt
     """
     version_dict = {}
-    with open("version-info/calyx-version.txt", "r") as f:
+    with open("tmp-version-info/calyx-version.txt", "r") as f:
         version_dict["calyx"] = f.read()
-    with open("version-info/dahlia-version.txt", "r") as f:
+    with open("tmp-version-info/dahlia-version.txt", "r") as f:
         version_dict["dahlia"] = f.read()
     dump_json(version_dict, f"""{results_folder}/version_info.json""")
 

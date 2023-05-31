@@ -109,8 +109,10 @@ def get_ordered_calyx_versions(df):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Process args for resource estimates")
-    parser.add_argument("-r", "--resource", default="full-graph-input.json")
-    parser.add_argument("-d", "--design", default="full-graph-input.json")
+    parser.add_argument(
+        "-r", "--resource", default="graph-inputs/full-graph-input.json"
+    )
+    parser.add_argument("-d", "--design", default="graph-inputs/full-graph-input.json")
     parser.add_argument("-s", "--save", action="store_true")  # on/off flag
     args = parser.parse_args()
 

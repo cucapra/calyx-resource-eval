@@ -3,11 +3,11 @@
     "stage_dynamic_config": [
       [
         "synth-verilog.tcl",
-        "synth.tcl"
+        "synth-files/synth.tcl"
       ],
       [
         "synth-verilog.constraints",
-        "device10.xdc"
+        "synth-files/device10.xdc"
       ]
     ]
   },
