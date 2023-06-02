@@ -11,7 +11,7 @@ import numpy as np
 import seaborn as sns
 import pandas as pd
 import argparse
-from version_log import get_version_info
+from version_log import get_version_info, calyx_flags_to_set
 
 from pathlib import Path
 
@@ -52,13 +52,27 @@ def format_design_name(design_str):
         return extension_removed
 
 
+def version_matches(version_list, calyx_hash, calyx_flags):
+    """
+    given a list of versions against calyx hash and flags
+    compare against calyx_hash and calyx_flags
+    """
+    matched = False
+    for item in version_list:
+        item_hash = item["calyx-hash"]
+        item_flags = calyx_flags_to_set(item.get("calyx-flags", None))
+        if item_hash == calyx_hash and item_flags == calyx_flags:
+            matched = True
+    return matched
+
+
 def get_calyx_version(moment_dir, version_list):
     """
     given a path to moment_dir
     gets the date/hash of the calyx version specified by version_info.json
     if version_list is None (means we want all verisions) returns calyx version
     if version_list is not None, then we should only return Calyx version if
-    if it is in version_list. If it isn't in version_list return None.
+    it is in version_list. If it isn't in version_list return None.
     if no version_info.json, raises Exception
     """
     version_info_object = get_version_info(moment_dir)
@@ -70,8 +84,10 @@ def get_calyx_version(moment_dir, version_list):
                 calyx_date = format_date(version_info["calyx"].split("||")[1])
                 calyx_hash = version_info["calyx"].split("||")[0].strip()
                 calyx_flags = version_info_object.calyx_flags
-                if version_list is None or calyx_hash in version_list:
-                    return f"""{calyx_date} {calyx_flags}"""
+                if version_list is None or version_matches(
+                    version_list, calyx_hash, calyx_flags
+                ):
+                    return f"""{calyx_date} (flags={calyx_flags})"""
                 else:
                     return None
     raise Exception(f"""{moment_dir} has no version_info.json folder""")

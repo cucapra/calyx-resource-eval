@@ -31,7 +31,11 @@
     "lenet.futil"
   ],
   "versions": [
-    "f17e41e0",
-    "7e8e1814"
+    {
+      "calyx-hash": "f17e41e0"
+    },
+    {
+      "calyx-hash": "7e8e1814"
+    }
   ]
 }
