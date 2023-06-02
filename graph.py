@@ -51,10 +51,13 @@ def format_design_name(design_str):
         return extension_removed
 
 
-def get_calyx_version(moment_dir):
+def get_calyx_version(moment_dir, version_list):
     """
     given a path to moment_dir
-    gets the date of the calyx version specified by version_info.json
+    gets the date/hash of the calyx version specified by version_info.json
+    if version_list is None (means we want all verisions) returns calyx version
+    if version_list is not None, then we should only return Calyx version if
+    if it is in version_list. If it isn't in version_list return None.
     if no version_info.json, raises Exception
     """
     for fname in os.listdir(moment_dir):
@@ -63,17 +66,27 @@ def get_calyx_version(moment_dir):
             with open(pname) as f:
                 version_info = json.load(f)
                 calyx_date = format_date(version_info["calyx"].split("||")[1])
-                return f"""{calyx_date} """
+                calyx_hash = version_info["calyx"].split("||")[0].strip()
+                if version_list is None or calyx_hash in version_list:
+                    return f"""{calyx_date} ({calyx_hash})"""
+                else:
+                    return None
     raise Exception(f"""{moment_dir} has no version_info.json folder""")
 
 
-def get_resource_usage(resource_list, design_list, moment_dir, graph_data):
+def get_resource_usage(
+    resource_list, design_list, version_list, moment_dir, graph_data
+):
     """
     given resource_list and design_list (the list of resources/designs we want to get data for)
     and moment_dir (path to the directory that contains all the results files),
     updates graph_data, which is a dictionary of {resource names -> [calyx_version, design_name, resource_usage]}
     """
-    calyx_version = get_calyx_version(moment_dir)
+    calyx_version = get_calyx_version(moment_dir, version_list)
+    # get_calyx_version returns None if the version isn't in version_list, in which
+    # case we should just skip
+    if calyx_version is None:
+        return
     for fname in os.listdir(moment_dir):
         pname = os.path.join(moment_dir, fname)
         # we only care about the .json files
@@ -114,6 +127,7 @@ if __name__ == "__main__":
         "-r", "--resource", default="graph-inputs/full-graph-input.json"
     )
     parser.add_argument("-d", "--design", default="graph-inputs/full-graph-input.json")
+    parser.add_argument("-v", "--version", default=None)
     parser.add_argument("-s", "--save", action="store_true")  # on/off flag
     args = parser.parse_args()
 
@@ -133,6 +147,13 @@ if __name__ == "__main__":
     else:
         design_list = [args.design]
 
+    if args.version is not None:
+        with open(args.version) as f:
+            version_json = json.load(f)
+            version_list = version_json["versions"]
+    else:
+        version_list = None
+
     # dictionary for the graph that we are building
     graph_data = {}
 
@@ -142,7 +163,9 @@ if __name__ == "__main__":
         pathname = os.path.join(directory, filename)
         # e.g., changing 2023-05-24@13:27:34.json to "2023-05-24@13:27:34"
         moment = os.path.splitext(filename)[0]
-        get_resource_usage(resource_list, design_list, pathname, graph_data)
+        get_resource_usage(
+            resource_list, design_list, version_list, pathname, graph_data
+        )
 
     for resource, resource_usage_data in graph_data.items():
         # create a separate graph for each resource used
