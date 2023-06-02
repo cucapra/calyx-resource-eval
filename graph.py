@@ -11,6 +11,7 @@ import numpy as np
 import seaborn as sns
 import pandas as pd
 import argparse
+from version_log import get_version_info
 
 from pathlib import Path
 
@@ -60,6 +61,7 @@ def get_calyx_version(moment_dir, version_list):
     if it is in version_list. If it isn't in version_list return None.
     if no version_info.json, raises Exception
     """
+    version_info_object = get_version_info(moment_dir)
     for fname in os.listdir(moment_dir):
         pname = os.path.join(moment_dir, fname)
         if Path(pname).name == "version_info.json":
@@ -67,8 +69,9 @@ def get_calyx_version(moment_dir, version_list):
                 version_info = json.load(f)
                 calyx_date = format_date(version_info["calyx"].split("||")[1])
                 calyx_hash = version_info["calyx"].split("||")[0].strip()
+                calyx_flags = version_info_object.calyx_flags
                 if version_list is None or calyx_hash in version_list:
-                    return f"""{calyx_date} ({calyx_hash})"""
+                    return f"""{calyx_date} {calyx_flags}"""
                 else:
                     return None
     raise Exception(f"""{moment_dir} has no version_info.json folder""")

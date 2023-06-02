@@ -47,6 +47,39 @@ def calyx_flags_to_set(calyx_flags):
     return flags_set
 
 
+def get_version_info(moment_dir):
+    """
+    Given a directory `moment_dir`, return an appropraite `VersionInfo` Object
+    """
+    info = VersionInfo(None, None, None)
+    for fname in os.listdir(moment_dir):
+        pname = os.path.join(moment_dir, fname)
+        # get calyx/dahlia info from version_info.json
+        if Path(pname).name == "version_info.json":
+            with open(pname) as f:
+                version_info = json.load(f)
+                calyx_hash = version_info["calyx"].split("||")[0]
+                dahlia_hash = version_info["dahlia"].split("||")[0]
+                info.calyx_hash = calyx_hash
+                info.dahlia_hash = dahlia_hash
+        # get calyx flags from settings_ran.json
+        if Path(pname).name == "settings_ran.json":
+            with open(pname) as f:
+                settings = json.load(f)
+                universal_configs = settings.get("universal_configs", {})
+                stage_dynamic_config = dict(
+                    universal_configs.get("stage_dynamic_config", [])
+                )
+                calyx_flags = stage_dynamic_config.get("calyx.flags", None)
+                info.calyx_flags = calyx_flags_to_set(calyx_flags)
+    # should have calyx_hash and dahlia_hash. Doesn't necesarily need to have
+    # calyx_flags (in that case we know it was just the default pass pipeline)
+    if info.calyx_hash is None or info.dahlia_hash is None:
+        raise Exception(f"""{moment_dir} does not have calyx/dahlia commit info""")
+    # currently just allow copies
+    return info
+
+
 def get_commit_log():
     # all_versions is a list of VersionInfo Objects. Currently duplicates are allowed
     # and stored
@@ -54,33 +87,7 @@ def get_commit_log():
     for filename in os.listdir(directory):
         # for each folder in directory (= "debug-results/" for now), build a VersionInfo object
         pathname = os.path.join(directory, filename)
-        info = VersionInfo(None, None, None)
-        for fname in os.listdir(pathname):
-            pname = os.path.join(pathname, fname)
-            # get calyx/dahlia info from version_info.json
-            if Path(pname).name == "version_info.json":
-                with open(pname) as f:
-                    version_info = json.load(f)
-                    calyx_hash = version_info["calyx"].split("||")[0]
-                    dahlia_hash = version_info["dahlia"].split("||")[0]
-                    info.calyx_hash = calyx_hash
-                    info.dahlia_hash = dahlia_hash
-            # get calyx flags from settings_ran.json
-            if Path(pname).name == "settings_ran.json":
-                with open(pname) as f:
-                    settings = json.load(f)
-                    universal_configs = settings.get("universal_configs", {})
-                    stage_dynamic_config = dict(
-                        universal_configs.get("stage_dynamic_config", [])
-                    )
-                    calyx_flags = stage_dynamic_config.get("calyx.flags", None)
-                    info.calyx_flags = calyx_flags_to_set(calyx_flags)
-        # shoudl have calyx_hash and dahlia_hash. Doesn't necesarily need to have
-        # calyx_flags (in that case we know it was just the default pass pipeline)
-        if info.calyx_hash is None or info.dahlia_hash is None:
-            raise Exception(f"""{pathname} does not have calyx/dahlia commit info""")
-        # currently just allow copies
-        all_versions.append(info)
+        all_versions.append(get_version_info(pathname))
     return all_versions
 
 
