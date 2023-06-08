@@ -20,9 +20,7 @@ Builds a graph for results in `debug-results/`.
 
 `-s --save`: whether to save the graphs in `graphs/` 
 
-`-r --resource`: the name of a resource (e.g., `lut`), or a json file that has a "resources" entry with a list of resources to graph.
-
-`-d --design`: the name of a design (e.g., `lenet.futil`), or a json file that has a "designs" entry with a list of designs to graph. 
+`-j --json`: the information about what to graph. Should have a "designs" and "resources" entry, and an optional "versions" entry (defaults to all versions we've ever recorded). The default input is `calyx-resource-eval/graph-inputs/full-graph-input.json`. 
 
 ## `version-log.py` (WIP)
 Right now, it just prints out the which commits/versions of Calyx and Dahlia we've gathered resource data for. 
