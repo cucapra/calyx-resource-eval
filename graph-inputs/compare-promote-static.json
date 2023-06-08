@@ -35,6 +35,10 @@
     },
     {
       "calyx-hash": "7e8e1814"
+    },
+    {
+      "calyx-hash": "cfd41b58"
     }
-  ]
+  ],
+  "benchmark-version": "cfd41b58"
 }
