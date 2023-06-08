@@ -142,36 +142,20 @@ def get_ordered_calyx_versions(df):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Process args for resource estimates")
-    parser.add_argument(
-        "-r", "--resource", default="graph-inputs/full-graph-input.json"
-    )
-    parser.add_argument("-d", "--design", default="graph-inputs/full-graph-input.json")
-    parser.add_argument("-v", "--version", default=None)
+    parser.add_argument("-j", "--json", default="graph-inputs/full-graph-input.json")
     parser.add_argument("-s", "--save", action="store_true")  # on/off flag
     args = parser.parse_args()
 
     # get design_list and resource_list given args:
     # if it ends w/ .json then read from the json, otherwise just use the arg
-    if args.resource.endswith(".json"):
-        with open(args.resource) as f:
-            resource_json = json.load(f)
-            resource_list = resource_json["resources"]
-    else:
-        resource_list = [args.resource]
-
-    if args.design.endswith(".json"):
-        with open(args.design) as f:
-            design_json = json.load(f)
-            design_list = design_json["designs"]
-    else:
-        design_list = [args.design]
-
-    if args.version is not None:
-        with open(args.version) as f:
-            version_json = json.load(f)
-            version_list = version_json["versions"]
-    else:
-        version_list = None
+    with open(args.json) as f:
+        json_info = json.load(f)
+        resource_list = json_info["resources"]
+        design_list = json_info["designs"]
+        if "versions" in json_info:
+            version_list = json_info["versions"]
+        else:
+            version_list = None
 
     # dictionary for the graph that we are building
     graph_data = {}
