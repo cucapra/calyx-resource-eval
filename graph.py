@@ -87,7 +87,7 @@ def get_calyx_version(moment_dir, version_list):
                 if version_list is None or version_matches(
                     version_list, calyx_hash, calyx_flags
                 ):
-                    return f"""{calyx_date} (flags={calyx_flags})"""
+                    return f"""{calyx_date} (flags={calyx_flags}) (hash={calyx_hash})"""
                 else:
                     return None
     raise Exception(f"""{moment_dir} has no version_info.json folder""")
@@ -140,6 +140,25 @@ def get_ordered_calyx_versions(df):
     return removed_duplicates
 
 
+def standardize_results(benchmark_version, data):
+    standardized_data = {}
+    for resource, resource_usage_data in data.items():
+        # maps design -> resource usage for the benchmark version
+        raw_benchmark_data = {}
+        resource_standardized_data = []
+        for data_item in resource_usage_data:
+            if benchmark_version in data_item[0]:
+                # setting design = resource usage
+                raw_benchmark_data[data_item[1]] = data_item[2]
+        for data_item in resource_usage_data:
+            benchmark_usage = raw_benchmark_data[data_item[1]]
+            resource_standardized_data.append(
+                [data_item[0], data_item[1], data_item[2] / benchmark_usage]
+            )
+        standardized_data[resource] = resource_standardized_data
+    return standardized_data
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Process args for resource estimates")
     parser.add_argument("-j", "--json", default="graph-inputs/full-graph-input.json")
@@ -156,6 +175,9 @@ if __name__ == "__main__":
             version_list = json_info["versions"]
         else:
             version_list = None
+        benchmark_version = (
+            json_info["benchmark-version"] if "benchmark-version" in json_info else None
+        )
 
     # dictionary for the graph that we are building
     graph_data = {}
@@ -167,8 +189,15 @@ if __name__ == "__main__":
         # e.g., changing 2023-05-24@13:27:34.json to "2023-05-24@13:27:34"
         moment = os.path.splitext(filename)[0]
         get_resource_usage(
-            resource_list, design_list, version_list, pathname, graph_data
+            resource_list,
+            design_list,
+            version_list,
+            pathname,
+            graph_data,
         )
+
+    if benchmark_version is not None:
+        graph_data = standardize_results(benchmark_version, graph_data)
 
     for resource, resource_usage_data in graph_data.items():
         # create a separate graph for each resource used
@@ -186,6 +215,7 @@ if __name__ == "__main__":
             errorbar=None,
         )
         ax.set(title=f"""{resource}-usage""")
+        sns.move_legend(ax, "upper right", bbox_to_anchor=(0.4, 1.15))
         plt.xticks(rotation=90)
         if args.save:
             # only save graph if specified in cmdline arguments
