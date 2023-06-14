@@ -1,0 +1,66 @@
+{
+  "universal_configs": {
+    "stage_dynamic_config": [
+      [
+        "synth-verilog.tcl",
+        "synth-files/synth.tcl"
+      ],
+      [
+        "synth-verilog.constraints",
+        "synth-files/device10.xdc"
+      ],
+      [
+        "synth-verilog.tmpdir",
+        "/scratch/cmk265/learning/my-tmp"
+      ],
+      [
+        "calyx.flags",
+        "-x inline:always -x inline:new-fsms"
+      ]
+    ]
+  },
+  "inputs": [
+    {
+      "name": "polybench",
+      "paths": [
+        "benchmarks/polybench/*.fuse"
+      ]
+    },
+    {
+      "name": "tcam",
+      "paths": [
+        "benchmarks/tcam/*.futil"
+      ],
+      "config": {
+        "source": "calyx"
+      }
+    },
+    {
+      "name": "ntt",
+      "paths": [
+        "benchmarks/ntt/*.futil"
+      ],
+      "config": {
+        "source": "calyx"
+      }
+    },
+    {
+      "name": "calyx examples",
+      "paths": [
+        "benchmarks/calyx-examples/*.futil"
+      ],
+      "config": {
+        "source": "calyx"
+      }
+    },
+    {
+      "name": "big",
+      "paths": [
+        "benchmarks/big/*.futil"
+      ],
+      "config": {
+        "source": "calyx"
+      }
+    }
+  ]
+}
