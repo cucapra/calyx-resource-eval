@@ -31,15 +31,11 @@
   ],
   "versions": [
     {
-      "calyx-hash": "07a18be"
+      "calyx-hash": "07a18bed"
     },
     {
-      "calyx-hash": "07a18be",
-      "calyx-flags": {
-        "-x": "inline:always",
-        "-x": "inline:new-fsms"
-      }
+      "calyx-hash": "07a18bed",
+      "calyx-flags": "-x inline:always -x inline:new-fsms"
     }
-  ],
-  "benchmark-version": "cfd41b58"
+  ]
 }
