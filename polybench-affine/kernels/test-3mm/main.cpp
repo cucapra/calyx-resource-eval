@@ -4,6 +4,7 @@
 #include <string.h>
 
 bool THRU_GCC = false;
+
 double E[800][900];
 double A[800][1000];
 double B[1000][900];
