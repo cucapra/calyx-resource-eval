@@ -11,3 +11,5 @@ clang++  3mm.llc.o  main.cpp
 ./a.out thru-gcc > results-3mm-gcc.txt
 
 cmp --silent results-3mm-mlir.txt results-3mm-gcc.txt && echo '### Success ###' || echo '### Failure ###'
+
+rm a.out 3mm.llc.o 3mm.llc 3mm-lowered.mlir results-3mm-mlir.txt results-3mm-gcc.txt

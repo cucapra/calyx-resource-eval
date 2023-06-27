@@ -11,3 +11,5 @@ clang++  2mm.llc.o  main.cpp
 ./a.out thru-gcc > results-2mm-gcc.txt
 
 cmp --silent results-2mm-mlir.txt results-2mm-gcc.txt && echo '### Success ###' || echo '### Failure ###'
+
+rm 2mm.llc 2mm.llc.o 2mm-lowered.mlir results-2mm-mlir.txt results-2mm-gcc.txt a.out 
