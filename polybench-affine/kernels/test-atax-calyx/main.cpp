@@ -1,3 +1,4 @@
+#include "atax-init.c"
 #include "atax.c"
 #include "atax.h"
 #include <stdint.h>
@@ -18,18 +19,6 @@ void kernel_atax_affine(DATA_TYPE *arg00, DATA_TYPE *arg01, int64_t a1,
                         DATA_TYPE *arg21, int64_t c1, int64_t c2, int64_t c3,
                         DATA_TYPE *arg30, DATA_TYPE *arg31, int64_t d1,
                         int64_t d2, int64_t d3);
-}
-
-static void init_array(int m, int n, DATA_TYPE A[M][N], DATA_TYPE x[N]) {
-  int i, j;
-  DATA_TYPE fn;
-  fn = (DATA_TYPE)n;
-
-  for (i = 0; i < n; i++)
-    x[i] = 1 + (i / fn);
-  for (i = 0; i < m; i++)
-    for (j = 0; j < n; j++)
-      A[i][j] = (DATA_TYPE)((i + j) % n) / (5 * m);
 }
 
 void print_double_array(DATA_TYPE my_array[N]) {
