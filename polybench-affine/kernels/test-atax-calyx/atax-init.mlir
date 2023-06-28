@@ -1,4 +1,4 @@
-func.func @main() -> i32 attributes {llvm.linkage = #llvm.linkage<external>} {
+func.func @main() attributes {llvm.linkage = #llvm.linkage<external>} {
   %c0_i32 = arith.constant 0 : i32
   %alloca = memref.alloca() : memref<38xi32>
   %alloca_0 = memref.alloca() : memref<42xi32>
@@ -26,6 +26,6 @@ func.func @main() -> i32 attributes {llvm.linkage = #llvm.linkage<external>} {
       affine.store %4, %alloca_0[%arg1] : memref<42xi32>
     }
   }
-  return %c0_i32 : i32
+  return
 }
 

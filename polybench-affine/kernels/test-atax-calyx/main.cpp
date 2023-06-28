@@ -32,14 +32,14 @@ static void init_array(int m, int n, DATA_TYPE A[M][N], DATA_TYPE x[N]) {
       A[i][j] = (DATA_TYPE)((i + j) % n) / (5 * m);
 }
 
-void print_double_array(double my_array[N]) {
+void print_double_array(DATA_TYPE my_array[N]) {
   int i;
   int j;
   for (i = 0; i < N; i++) {
     if ((i % 20) == 0) {
       printf("\n");
     }
-    printf("%f ", my_array[i]);
+    printf("%d ", my_array[i]);
   }
 }
 

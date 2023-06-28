@@ -1,6 +1,6 @@
 import "primitives/core.futil";
 import "primitives/binary_operators.futil";
-component main<"toplevel"=1>(@clk clk: 1, @reset reset: 1, @go go: 1) -> (out0: 32, @done done: 1) {
+component main<"toplevel"=1>(@clk clk: 1, @reset reset: 1, @go go: 1) -> (@done done: 1) {
   cells {
     std_slice_11 = std_slice(32, 6);
     std_slice_10 = std_slice(32, 6);
@@ -41,10 +41,8 @@ component main<"toplevel"=1>(@clk clk: 1, @reset reset: 1, @go go: 1) -> (out0: 
     while_2_arg0_reg = std_reg(32);
     while_1_arg0_reg = std_reg(32);
     while_0_arg0_reg = std_reg(32);
-    ret_arg0_reg = std_reg(32);
   }
   wires {
-    out0 = ret_arg0_reg.out;
     group assign_while_0_init_0 {
       while_0_arg0_reg.in = 32'd0;
       while_0_arg0_reg.write_en = 1'd1;
@@ -198,11 +196,6 @@ component main<"toplevel"=1>(@clk clk: 1, @reset reset: 1, @go go: 1) -> (out0: 
       std_add_1.right = 32'd1;
       assign_while_3_latch[done] = while_3_arg0_reg.done;
     }
-    group ret_assign_0 {
-      ret_arg0_reg.in = 32'd0;
-      ret_arg0_reg.write_en = 1'd1;
-      ret_assign_0[done] = ret_arg0_reg.done;
-    }
   }
   control {
     seq {
@@ -256,7 +249,6 @@ component main<"toplevel"=1>(@clk clk: 1, @reset reset: 1, @go go: 1) -> (out0: 
             assign_while_3_latch;
           }
         }
-        ret_assign_0;
       }
     }
   }
