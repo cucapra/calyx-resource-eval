@@ -215,6 +215,7 @@ component main<"toplevel"=1>(@clk clk: 1, @reset reset: 1, @go go: 1) -> (@done 
         while std_slt_1.out with bb0_3 {
           seq {
             seq {
+              bb0_5;
               par {
                 assign_while_1_init_0;
               }
@@ -229,6 +230,7 @@ component main<"toplevel"=1>(@clk clk: 1, @reset reset: 1, @go go: 1) -> (@done 
                   assign_while_1_latch;
                 }
               }
+              bb0_14;
               par {
                 assign_while_2_init_0;
               }
@@ -243,8 +245,6 @@ component main<"toplevel"=1>(@clk clk: 1, @reset reset: 1, @go go: 1) -> (@done 
                   assign_while_2_latch;
                 }
               }
-              bb0_5;
-              bb0_14;
             }
             assign_while_3_latch;
           }

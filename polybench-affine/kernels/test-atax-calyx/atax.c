@@ -17,8 +17,3 @@ void kernel_atax(DATA_TYPE A[M][N], DATA_TYPE x[N], DATA_TYPE y[N],
   }
 #pragma endscop
 }
-
-// int main(int argc, char **argv) {
-//   kernel_atax;
-//   return 0;
-// }
