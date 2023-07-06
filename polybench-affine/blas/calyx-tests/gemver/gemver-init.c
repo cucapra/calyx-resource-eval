@@ -14,14 +14,14 @@ static void init_array(int n, DATA_TYPE *alpha, DATA_TYPE *beta,
 
   for (i = 0; i < n; i++) {
     u1[i] = i;
-    u2[i] = ((i + 1) / fn) / 2.0;
-    v1[i] = ((i + 1) / fn) / 4.0;
-    v2[i] = ((i + 1) / fn) / 6.0;
-    y[i] = ((i + 1) / fn) / 8.0;
-    z[i] = ((i + 1) / fn) / 9.0;
-    x[i] = 0.0;
-    w[i] = 0.0;
+    u2[i] = ((i + 1)) / 2;
+    v1[i] = ((i + 1)) / 4;
+    v2[i] = ((i + 1)) / 6;
+    y[i] = ((i + 1)) / 8;
+    z[i] = ((i + 1)) / 9;
+    x[i] = 0;
+    w[i] = 0;
     for (j = 0; j < n; j++)
-      A[i][j] = (DATA_TYPE)(i * j % n) / n;
+      A[i][j] = (DATA_TYPE)(i * j) / n;
   }
 }

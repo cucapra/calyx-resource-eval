@@ -6,11 +6,11 @@ static void init_array(int n, DATA_TYPE x1[N], DATA_TYPE x2[N],
   int i, j;
 
   for (i = 0; i < n; i++) {
-    x1[i] = (DATA_TYPE)(i % n) / n;
-    x2[i] = (DATA_TYPE)((i + 1) % n) / n;
-    y_1[i] = (DATA_TYPE)((i + 3) % n) / n;
-    y_2[i] = (DATA_TYPE)((i + 4) % n) / n;
+    x1[i] = (DATA_TYPE)(i % n);
+    x2[i] = (DATA_TYPE)((i + 1) % n);
+    y_1[i] = (DATA_TYPE)((i + 3) % n);
+    y_2[i] = (DATA_TYPE)((i + 4) % n);
     for (j = 0; j < n; j++)
-      A[i][j] = (DATA_TYPE)(i * j % n) / n;
+      A[i][j] = (DATA_TYPE)(i * j % n);
   }
 }
