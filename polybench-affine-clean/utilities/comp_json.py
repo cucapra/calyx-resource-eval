@@ -3,6 +3,14 @@ import argparse
 import json
 
 
+def get_cycle_count(json_file):
+    """gets cycle count entry for json_file
+    Args:
+        json_file (str): path to json file
+    """
+    return json.load(open(json_file))["cycles"]
+
+
 def compare_jsons(json_file1, json_file2):
     """
     Compares the jsons in
