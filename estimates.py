@@ -156,7 +156,7 @@ def run_resource_estimate(
 
 def main():
     """
-    arg -s/--sequentia makes script run sequentially instead of in parallel
+    arg -s/--sequential makes script run sequentially instead of in parallel
     arg -d/--debug makes script not actually write to any files, just runs through
     arg -j/--json means we read from a json to see which input files we run (if not given,
     there is a default settings.json that we use)
