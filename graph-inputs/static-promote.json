@@ -1,0 +1,34 @@
+{
+  "resources": [
+    "lut",
+    "registers"
+  ],
+  "designs": [
+    "2mm.futil",
+    "3mm.futil",
+    "atax.futil",
+    "bicg.futil",
+    "doitgen.futil",
+    "durbin.futil",
+    "gemm.futil",
+    "gemver.futil",
+    "gesummv.futil",
+    "lu.futil",
+    "ludcmp.futil",
+    "mvt.futil",
+    "symm.futil",
+    "syr2k.futil",
+    "syrk.futil",
+    "trisolv.futil",
+    "trmm.futil"
+  ],
+  "versions": [
+    {
+      "calyx-hash": "ec1f63a0",
+      "calyx-flags": "-d static-promotion"
+    },
+    {
+      "calyx-hash": "ec1f63a0"
+    }
+  ]
+}
