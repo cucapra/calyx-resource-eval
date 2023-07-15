@@ -1,0 +1,31 @@
+{
+  "cycle_jsons": [
+    [
+      "w-promotion-cycle.json",
+      "promotion"
+    ],
+    [
+      "no-promotion-cycle.json",
+      "no_promotion"
+    ]
+  ],
+  "benchmarks": [
+    "2mm",
+    "3mm",
+    "atax",
+    "bicg",
+    "doitgen",
+    "durbin",
+    "gemm",
+    "gemver",
+    "gesummv",
+    "lu",
+    "ludcmp",
+    "mvt",
+    "symm",
+    "syr2k",
+    "syrk",
+    "trisolv",
+    "trmm"
+  ]
+}
