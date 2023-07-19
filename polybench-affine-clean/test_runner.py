@@ -74,8 +74,9 @@ def parse_args(args):
         res["c_results_file"] = spec.get("c_results_file", "c-results.json")
         res["init_file"] = spec.get("init_file", "init.json")
         res["mlir_file_suffix"] = spec.get("mlir_file_suffix", "-main")
-        res["check_results"] = spec.get("check_results", True)
         res["data_size"] = spec.get("data_size", "MINI_DATASET")
+        res["wall_time_file"] = spec.get("wall_time_file", None)
+        res["check_results_file"] = spec.get("check_results_file", None)
     return res
 
 
@@ -86,6 +87,7 @@ def run_benchmark(run_settings, benchmark_name, cycle_counts):
     # assert that a data & futil-files folder exists
     expect_exists(os.path.join(benchmark_path, "data"))
     expect_exists(os.path.join(benchmark_path, "futil-files"))
+    expect_exists(os.path.join(benchmark_path, "mlir-files"))
     futil_file_path = os.path.join(
         benchmark_path,
         "futil-files",
@@ -180,9 +182,11 @@ def run_benchmark(run_settings, benchmark_name, cycle_counts):
                 stdout=c_output_file,
             )
 
-    if run_settings["check_results"]:
+    if run_settings["check_results_file"] is not None:
         expect_exists(c_results_path)
-        with open("verify_results.txt", "a") as f:
+        with open(
+            os.path.join("check_results", run_settings["check_results_file"]), "a"
+        ) as f:
             f.write(compare_jsons(c_results_path, calyx_results_path))
         cycle_counts[benchmark_name] = get_cycle_count(calyx_results_path)
 
@@ -207,10 +211,13 @@ if __name__ == "__main__":
         start_time = time.time()
         run_benchmark(run_settings, benchmark, cycle_counts)
         end_time = time.time()
-        with open(os.path.join("wall-time", "wall-time.txt"), "a") as file:
-            file.writelines(
-                str(f"{benchmark}:" + (end_time - start_time) / 60) + " minutes\n"
-            )
+        if run_settings["wall_time_file"] is not None:
+            with open(
+                os.path.join("wall-time", run_settings["wall_time_file"]), "a"
+            ) as file:
+                file.writelines(
+                    str(f"{benchmark}:" + (end_time - start_time) / 60) + " minutes\n"
+                )
 
     if run_settings["cycle_count_results"] is not None:
         expect_exists("cycle-counts")
