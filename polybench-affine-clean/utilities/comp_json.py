@@ -22,15 +22,18 @@ def compare_jsons(json_file1, json_file2):
     memories1 = json.load(open(json_file1))["memories"]
     memories2 = json.load(open(json_file2))["memories"]
 
+    ans = ""
     same = True
     for m1_name in memories1:
         m1 = memories1[m1_name]
         m2 = memories2[m1_name]
         if not np.array_equal(np.array(m1), np.array(m2)):
             same = False
-            print(f"{m1_name} is not equivalent")
+            ans += f"{m1_name} is not equivalent\n"
     if same:
-        print(f"All Equivalent")
+        return "All Equivalent\n"
+    else:
+        return ans
 
 
 if __name__ == "__main__":

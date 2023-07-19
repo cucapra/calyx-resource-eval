@@ -1,6 +1,6 @@
 design_name=${1:-''}
 
-mlir-opt $design_name-main.mlir --lower-affine --scf-for-to-while > $design_name-scf.mlir 
+mlir-opt $design_name.mlir --lower-affine --scf-for-to-while > $design_name-scf.mlir 
 
 circt-opt $design_name-scf.mlir --lower-scf-to-calyx="top-level-function=main" > $design_name-calyx.mlir 
 

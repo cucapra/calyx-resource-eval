@@ -26,22 +26,22 @@ json build_json_pre() {
   json j;
   json A_entry;
   A_entry["data"] = A;
-  A_entry["format"] = build_format(false, "bitnum", 32);
+  A_entry["format"] = build_format(true, "bitnum", 32);
   j["mem_3"] = A_entry;
 
   json x_entry;
   x_entry["data"] = x;
-  x_entry["format"] = build_format(false, "bitnum", 32);
+  x_entry["format"] = build_format(true, "bitnum", 32);
   j["mem_2"] = x_entry;
 
   json y_entry;
   y_entry["data"] = y;
-  y_entry["format"] = build_format(false, "bitnum", 32);
+  y_entry["format"] = build_format(true, "bitnum", 32);
   j["mem_1"] = y_entry;
 
   json tmp_entry;
   tmp_entry["data"] = tmp;
-  tmp_entry["format"] = build_format(false, "bitnum", 32);
+  tmp_entry["format"] = build_format(true, "bitnum", 32);
   j["mem_0"] = tmp_entry;
   return j;
 }

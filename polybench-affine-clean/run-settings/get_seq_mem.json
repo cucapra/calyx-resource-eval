@@ -1,0 +1,29 @@
+{
+  "benchmarks": [
+    "2mm",
+    "3mm",
+    "atax",
+    "bicg",
+    "doitgen",
+    "durbin",
+    "gemm",
+    "gemver",
+    "gesummv",
+    "lu",
+    "ludcmp",
+    "mvt",
+    "symm",
+    "syr2k",
+    "syrk",
+    "trisolv",
+    "trmm"
+  ],
+  "gen_futil": true,
+  "gen_init": false,
+  "run_calyx": true,
+  "run_c_impl": false,
+  "calyx_flags": "",
+  "futil_file_suffix": "-seq-mem",
+  "calyx_results_file": "seq-mem-res.json",
+  "cycle_count_results": "seq-mem-cycle.json"
+}
