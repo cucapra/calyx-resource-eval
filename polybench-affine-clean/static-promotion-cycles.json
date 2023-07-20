@@ -1,14 +1,15 @@
 {
   "cycle_jsons": [
     [
-      "w-promotion-cycle.json",
+      "cycle-counts/med_w_promotion.json",
       "promotion"
     ],
     [
-      "no-promotion-cycle.json",
+      "cycle-counts/med_no_promotion.json",
       "no_promotion"
     ]
   ],
+  "standard": "no_promotion",
   "benchmarks": [
     "2mm",
     "3mm",
