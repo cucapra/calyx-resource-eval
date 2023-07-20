@@ -28,5 +28,7 @@
   "calyx_results_file": "med-calyx-results.json",
   "mlir_file_suffix": "-main-med",
   "check_results_file": "medium_w_promotion.txt",
-  "data_size": "MEDIUM_DATASET"
+  "data_size": "MEDIUM_DATASET",
+  "cycle_count_results": "med_w_promotion.json",
+  "wall_time_file": "med_w_promotion.txt"
 }

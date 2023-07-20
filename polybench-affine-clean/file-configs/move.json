@@ -1,0 +1,25 @@
+{
+  "benchmarks": [
+    "atax",
+    "bicg",
+    "doitgen",
+    "durbin",
+    "gemm",
+    "gemver",
+    "gesummv",
+    "lu",
+    "ludcmp",
+    "mvt",
+    "symm",
+    "syr2k",
+    "syrk",
+    "trisolv",
+    "trmm",
+    "2mm",
+    "3mm"
+  ],
+  "futil_files_suffix": [
+    "-med"
+  ],
+  "dst": "../benchmarks/polybench-med"
+}

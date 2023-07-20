@@ -216,7 +216,7 @@ if __name__ == "__main__":
                 os.path.join("wall-time", run_settings["wall_time_file"]), "a"
             ) as file:
                 file.writelines(
-                    str(f"{benchmark}:" + (end_time - start_time) / 60) + " minutes\n"
+                    f"{benchmark}:" + str((end_time - start_time) / 60) + " minutes\n"
                 )
 
     if run_settings["cycle_count_results"] is not None:

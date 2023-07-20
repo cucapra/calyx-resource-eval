@@ -25,9 +25,11 @@
   "futil_file_suffix": "-med",
   "init_file": "med-init.json",
   "c_results_file": "med-c-res.json",
-  "calyx_results_file": "med-calyx-results.json",
+  "calyx_results_file": "med-calyx-dyn-results.json",
   "mlir_file_suffix": "-main-med",
+  "calyx_flags": "-d static-promotion",
   "check_results_file": "medium_no_promotion.txt",
   "data_size": "MEDIUM_DATASET",
-  "cycle_count_results": "w-promotion-cycle.json"
+  "cycle_count_results": "med_no_promotion.json",
+  "wall_time_file": "med_no_promotion.txt"
 }
