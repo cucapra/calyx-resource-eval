@@ -24,11 +24,11 @@
   ],
   "versions": [
     {
-      "calyx-hash": "ec1f63a0",
+      "calyx-hash": "8b859224",
       "calyx-flags": "-d static-promotion"
     },
     {
-      "calyx-hash": "ec1f63a0"
+      "calyx-hash": "8b859224"
     }
   ]
 }

@@ -1,5 +1,6 @@
 import "primitives/core.futil";
 import "primitives/binary_operators.futil";
+import "primitives/memories.futil";
 component main<"toplevel"=1>(@clk clk: 1, @reset reset: 1, @go go: 1) -> (@done done: 1) {
   cells {
     std_slice_11 = std_slice(32, 8);
@@ -33,8 +34,8 @@ component main<"toplevel"=1>(@clk clk: 1, @reset reset: 1, @go go: 1) -> (@done 
     std_add_1 = std_add(32);
     std_add_0 = std_add(32);
     std_slt_0 = std_slt(32);
-    @external(1) mem_1 = std_mem_d2(32, 240, 200, 8, 8);
-    @external(1) mem_0 = std_mem_d2(32, 240, 240, 8, 8);
+    @external(1) mem_1 = seq_mem_d2(32, 240, 200, 8, 8);
+    @external(1) mem_0 = seq_mem_d2(32, 240, 240, 8, 8);
     while_3_arg0_reg = std_reg(32);
     while_2_arg0_reg = std_reg(32);
     while_1_arg0_reg = std_reg(32);
@@ -76,8 +77,9 @@ component main<"toplevel"=1>(@clk clk: 1, @reset reset: 1, @go go: 1) -> (@done 
       std_slice_10.in = while_0_arg0_reg.out;
       mem_0.addr0 = std_slice_11.out;
       mem_0.addr1 = std_slice_10.out;
+      mem_0.read_en = 1'd1;
       load_0_reg.in = mem_0.read_data;
-      load_0_reg.write_en = 1'd1;
+      load_0_reg.write_en = mem_0.read_done;
       bb0_5[done] = load_0_reg.done;
     }
     group bb0_6 {
@@ -87,7 +89,7 @@ component main<"toplevel"=1>(@clk clk: 1, @reset reset: 1, @go go: 1) -> (@done 
       mem_0.addr1 = std_slice_8.out;
       mem_0.write_data = load_0_reg.out;
       mem_0.write_en = 1'd1;
-      bb0_6[done] = mem_0.done;
+      bb0_6[done] = mem_0.write_done;
     }
     group assign_while_0_latch {
       while_0_arg0_reg.in = std_add_2.out;
@@ -105,8 +107,9 @@ component main<"toplevel"=1>(@clk clk: 1, @reset reset: 1, @go go: 1) -> (@done 
       std_slice_6.in = while_2_arg0_reg.out;
       mem_1.addr0 = std_slice_7.out;
       mem_1.addr1 = std_slice_6.out;
+      mem_1.read_en = 1'd1;
       load_1_reg.in = mem_1.read_data;
-      load_1_reg.write_en = 1'd1;
+      load_1_reg.write_en = mem_1.read_done;
       bb0_9[done] = load_1_reg.done;
     }
     group bb0_10 {
@@ -128,8 +131,9 @@ component main<"toplevel"=1>(@clk clk: 1, @reset reset: 1, @go go: 1) -> (@done 
       std_slice_4.in = while_2_arg0_reg.out;
       mem_1.addr0 = std_slice_5.out;
       mem_1.addr1 = std_slice_4.out;
+      mem_1.read_en = 1'd1;
       load_2_reg.in = mem_1.read_data;
-      load_2_reg.write_en = 1'd1;
+      load_2_reg.write_en = mem_1.read_done;
       bb0_14[done] = load_2_reg.done;
     }
     group bb0_15 {
@@ -145,8 +149,9 @@ component main<"toplevel"=1>(@clk clk: 1, @reset reset: 1, @go go: 1) -> (@done 
       std_slice_2.in = while_1_arg0_reg.out;
       mem_0.addr0 = std_slice_3.out;
       mem_0.addr1 = std_slice_2.out;
+      mem_0.read_en = 1'd1;
       load_3_reg.in = mem_0.read_data;
-      load_3_reg.write_en = 1'd1;
+      load_3_reg.write_en = mem_0.read_done;
       bb0_16[done] = load_3_reg.done;
     }
     group bb0_18 {
@@ -158,7 +163,7 @@ component main<"toplevel"=1>(@clk clk: 1, @reset reset: 1, @go go: 1) -> (@done 
       mem_0.write_en = 1'd1;
       std_add_6.left = load_3_reg.out;
       std_add_6.right = std_mult_pipe_1.out;
-      bb0_18[done] = mem_0.done;
+      bb0_18[done] = mem_0.write_done;
     }
     group assign_while_1_latch {
       while_1_arg0_reg.in = std_add_5.out;
@@ -184,49 +189,33 @@ component main<"toplevel"=1>(@clk clk: 1, @reset reset: 1, @go go: 1) -> (@done 
   }
   control {
     seq {
-      par {
-        assign_while_3_init_0;
-      }
+      assign_while_3_init_0;
       while std_slt_0.out with bb0_0 {
         seq {
-          seq {
-            par {
-              assign_while_0_init_0;
+          assign_while_0_init_0;
+          while std_slt_1.out with bb0_3 {
+            seq {
+              bb0_5;
+              bb0_6;
+              assign_while_0_latch;
             }
-            while std_slt_1.out with bb0_3 {
-              seq {
+          }
+          assign_while_2_init_0;
+          while std_slt_2.out with bb0_7 {
+            seq {
+              bb0_9;
+              bb0_10;
+              assign_while_1_init_0;
+              while std_slt_3.out with bb0_12 {
                 seq {
-                  bb0_5;
-                  bb0_6;
+                  bb0_14;
+                  bb0_15;
+                  bb0_16;
+                  bb0_18;
+                  assign_while_1_latch;
                 }
-                assign_while_0_latch;
               }
-            }
-            par {
-              assign_while_2_init_0;
-            }
-            while std_slt_2.out with bb0_7 {
-              seq {
-                seq {
-                  bb0_9;
-                  bb0_10;
-                  par {
-                    assign_while_1_init_0;
-                  }
-                  while std_slt_3.out with bb0_12 {
-                    seq {
-                      seq {
-                        bb0_14;
-                        bb0_15;
-                        bb0_16;
-                        bb0_18;
-                      }
-                      assign_while_1_latch;
-                    }
-                  }
-                }
-                assign_while_2_latch;
-              }
+              assign_while_2_latch;
             }
           }
           assign_while_3_latch;
