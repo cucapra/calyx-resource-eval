@@ -77,6 +77,7 @@ def parse_args(args):
         res["data_size"] = spec.get("data_size", "MINI_DATASET")
         res["wall_time_file"] = spec.get("wall_time_file", None)
         res["check_results_file"] = spec.get("check_results_file", None)
+        res["gen_calyx_script"] = spec.get("gen_calyx_script", "gen_calyx.sh")
     return res
 
 
@@ -104,11 +105,13 @@ def run_benchmark(run_settings, benchmark_name, cycle_counts):
 
     # generate the .futil file
     if run_settings["gen_futil"]:
+        gen_calyx_path = os.path.join("utilities", run_settings["gen_calyx_script"])
+        expect_exists(gen_calyx_path)
         with open(futil_file_path, "w") as futil_file:
             subprocess.call(
                 [
                     "sh",
-                    "utilities/gen-calyx.sh",
+                    gen_calyx_path,
                     os.path.join(
                         benchmark_path,
                         "mlir-files",

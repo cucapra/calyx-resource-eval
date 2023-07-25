@@ -1,5 +1,6 @@
 import "primitives/core.futil";
 import "primitives/binary_operators.futil";
+import "primitives/memories.futil";
 component main<"toplevel"=1>(@clk clk: 1, @reset reset: 1, @go go: 1) -> (@done done: 1) {
   cells {
     std_slice_20 = std_slice(32, 9);
@@ -24,6 +25,8 @@ component main<"toplevel"=1>(@clk clk: 1, @reset reset: 1, @go go: 1) -> (@done 
     std_slice_1 = std_slice(32, 9);
     std_slice_0 = std_slice(32, 9);
     std_add_11 = std_add(32);
+    std_add_10 = std_add(32);
+    std_add_9 = std_add(32);
     muli_5_reg = std_reg(32);
     std_mult_pipe_5 = std_mult_pipe(32);
     load_6_reg = std_reg(32);
@@ -31,405 +34,381 @@ component main<"toplevel"=1>(@clk clk: 1, @reset reset: 1, @go go: 1) -> (@done 
     std_mult_pipe_4 = std_mult_pipe(32);
     load_5_reg = std_reg(32);
     load_4_reg = std_reg(32);
-    std_add_10 = std_add(32);
-    std_slt_6 = std_slt(32);
-    std_add_9 = std_add(32);
-    std_slt_5 = std_slt(32);
     std_add_8 = std_add(32);
-    load_3_reg = std_reg(32);
     std_add_7 = std_add(32);
-    std_slt_4 = std_slt(32);
+    load_3_reg = std_reg(32);
     std_add_6 = std_add(32);
+    std_add_5 = std_add(32);
+    std_add_4 = std_add(32);
     muli_3_reg = std_reg(32);
     std_mult_pipe_3 = std_mult_pipe(32);
     muli_2_reg = std_reg(32);
     std_mult_pipe_2 = std_mult_pipe(32);
     load_2_reg = std_reg(32);
     load_1_reg = std_reg(32);
-    std_add_5 = std_add(32);
-    std_slt_3 = std_slt(32);
-    std_add_4 = std_add(32);
-    std_slt_2 = std_slt(32);
     std_add_3 = std_add(32);
+    std_add_2 = std_add(32);
+    std_add_1 = std_add(32);
     muli_1_reg = std_reg(32);
     std_mult_pipe_1 = std_mult_pipe(32);
-    std_add_2 = std_add(32);
+    std_add_0 = std_add(32);
     muli_0_reg = std_reg(32);
     std_mult_pipe_0 = std_mult_pipe(32);
     load_0_reg = std_reg(32);
-    std_add_1 = std_add(32);
-    std_slt_1 = std_slt(32);
-    std_add_0 = std_add(32);
-    std_slt_0 = std_slt(32);
-    @external(1) mem_8 = std_mem_d2(32, 400, 400, 9, 9);
-    @external(1) mem_7 = std_mem_d1(32, 400, 9);
-    @external(1) mem_6 = std_mem_d1(32, 400, 9);
-    @external(1) mem_5 = std_mem_d1(32, 400, 9);
-    @external(1) mem_4 = std_mem_d1(32, 400, 9);
-    @external(1) mem_3 = std_mem_d1(32, 400, 9);
-    @external(1) mem_2 = std_mem_d1(32, 400, 9);
-    @external(1) mem_1 = std_mem_d1(32, 400, 9);
-    @external(1) mem_0 = std_mem_d1(32, 400, 9);
-    while_6_arg0_reg = std_reg(32);
-    while_5_arg0_reg = std_reg(32);
-    while_4_arg0_reg = std_reg(32);
-    while_3_arg0_reg = std_reg(32);
-    while_2_arg0_reg = std_reg(32);
-    while_1_arg0_reg = std_reg(32);
-    while_0_arg0_reg = std_reg(32);
+    @external(1) mem_8 = seq_mem_d2(32, 400, 400, 9, 9);
+    @external(1) mem_7 = seq_mem_d1(32, 400, 9);
+    @external(1) mem_6 = seq_mem_d1(32, 400, 9);
+    @external(1) mem_5 = seq_mem_d1(32, 400, 9);
+    @external(1) mem_4 = seq_mem_d1(32, 400, 9);
+    @external(1) mem_3 = seq_mem_d1(32, 400, 9);
+    @external(1) mem_2 = seq_mem_d1(32, 400, 9);
+    @external(1) mem_1 = seq_mem_d1(32, 400, 9);
+    @external(1) mem_0 = seq_mem_d1(32, 400, 9);
+    for_6_induction_var_reg = std_reg(32);
+    for_5_induction_var_reg = std_reg(32);
+    for_4_induction_var_reg = std_reg(32);
+    for_3_induction_var_reg = std_reg(32);
+    for_2_induction_var_reg = std_reg(32);
+    for_1_induction_var_reg = std_reg(32);
+    for_0_induction_var_reg = std_reg(32);
   }
   wires {
-    group assign_while_0_init_0 {
-      while_0_arg0_reg.in = 32'd0;
-      while_0_arg0_reg.write_en = 1'd1;
-      assign_while_0_init_0[done] = while_0_arg0_reg.done;
+    group init_for_0_induction_var {
+      for_0_induction_var_reg.in = 32'd0;
+      for_0_induction_var_reg.write_en = 1'd1;
+      init_for_0_induction_var[done] = for_0_induction_var_reg.done;
     }
-    group assign_while_1_init_0 {
-      while_1_arg0_reg.in = 32'd0;
-      while_1_arg0_reg.write_en = 1'd1;
-      assign_while_1_init_0[done] = while_1_arg0_reg.done;
+    group init_for_1_induction_var {
+      for_1_induction_var_reg.in = 32'd0;
+      for_1_induction_var_reg.write_en = 1'd1;
+      init_for_1_induction_var[done] = for_1_induction_var_reg.done;
     }
-    group assign_while_2_init_0 {
-      while_2_arg0_reg.in = 32'd0;
-      while_2_arg0_reg.write_en = 1'd1;
-      assign_while_2_init_0[done] = while_2_arg0_reg.done;
+    group init_for_2_induction_var {
+      for_2_induction_var_reg.in = 32'd0;
+      for_2_induction_var_reg.write_en = 1'd1;
+      init_for_2_induction_var[done] = for_2_induction_var_reg.done;
     }
-    group assign_while_3_init_0 {
-      while_3_arg0_reg.in = 32'd0;
-      while_3_arg0_reg.write_en = 1'd1;
-      assign_while_3_init_0[done] = while_3_arg0_reg.done;
+    group init_for_3_induction_var {
+      for_3_induction_var_reg.in = 32'd0;
+      for_3_induction_var_reg.write_en = 1'd1;
+      init_for_3_induction_var[done] = for_3_induction_var_reg.done;
     }
-    group assign_while_4_init_0 {
-      while_4_arg0_reg.in = 32'd0;
-      while_4_arg0_reg.write_en = 1'd1;
-      assign_while_4_init_0[done] = while_4_arg0_reg.done;
+    group init_for_4_induction_var {
+      for_4_induction_var_reg.in = 32'd0;
+      for_4_induction_var_reg.write_en = 1'd1;
+      init_for_4_induction_var[done] = for_4_induction_var_reg.done;
     }
-    group assign_while_5_init_0 {
-      while_5_arg0_reg.in = 32'd0;
-      while_5_arg0_reg.write_en = 1'd1;
-      assign_while_5_init_0[done] = while_5_arg0_reg.done;
+    group init_for_5_induction_var {
+      for_5_induction_var_reg.in = 32'd0;
+      for_5_induction_var_reg.write_en = 1'd1;
+      init_for_5_induction_var[done] = for_5_induction_var_reg.done;
     }
-    group assign_while_6_init_0 {
-      while_6_arg0_reg.in = 32'd0;
-      while_6_arg0_reg.write_en = 1'd1;
-      assign_while_6_init_0[done] = while_6_arg0_reg.done;
+    group init_for_6_induction_var {
+      for_6_induction_var_reg.in = 32'd0;
+      for_6_induction_var_reg.write_en = 1'd1;
+      init_for_6_induction_var[done] = for_6_induction_var_reg.done;
     }
-    comb group bb0_0 {
-      std_slt_0.left = while_1_arg0_reg.out;
-      std_slt_0.right = 32'd400;
+    group bb0_0 {
+      std_slice_20.in = for_1_induction_var_reg.out;
+      mem_7.addr0 = std_slice_20.out;
+      mem_7.read_en = 1'd1;
+      bb0_0[done] = mem_7.read_done;
     }
-    comb group bb0_4 {
-      std_slt_1.left = while_0_arg0_reg.out;
-      std_slt_1.right = 32'd400;
+    group bb0_1 {
+      std_slice_19.in = for_1_induction_var_reg.out;
+      mem_5.addr0 = std_slice_19.out;
+      mem_5.read_en = 1'd1;
+      bb0_1[done] = mem_5.read_done;
     }
-    group bb0_6 {
-      std_slice_20.in = while_1_arg0_reg.out;
-      std_slice_19.in = while_0_arg0_reg.out;
-      mem_8.addr0 = std_slice_20.out;
-      mem_8.addr1 = std_slice_19.out;
+    group bb0_2 {
+      std_slice_18.in = for_1_induction_var_reg.out;
+      std_slice_17.in = for_0_induction_var_reg.out;
+      mem_8.addr0 = std_slice_18.out;
+      mem_8.addr1 = std_slice_17.out;
+      mem_8.read_en = 1'd1;
       load_0_reg.in = mem_8.read_data;
-      load_0_reg.write_en = 1'd1;
-      bb0_6[done] = load_0_reg.done;
+      load_0_reg.write_en = mem_8.read_done;
+      bb0_2[done] = load_0_reg.done;
     }
-    group bb0_8 {
-      std_slice_18.in = while_1_arg0_reg.out;
-      std_slice_17.in = while_0_arg0_reg.out;
+    group bb0_3 {
+      std_slice_16.in = for_0_induction_var_reg.out;
+      mem_6.addr0 = std_slice_16.out;
+      mem_6.read_en = 1'd1;
+      bb0_3[done] = mem_6.read_done;
+    }
+    group bb0_4 {
       std_mult_pipe_0.left = mem_7.read_data;
       std_mult_pipe_0.right = mem_6.read_data;
       muli_0_reg.in = std_mult_pipe_0.out;
       muli_0_reg.write_en = std_mult_pipe_0.done;
       std_mult_pipe_0.go = !std_mult_pipe_0.done ? 1'd1;
-      mem_7.addr0 = std_slice_18.out;
-      mem_6.addr0 = std_slice_17.out;
-      bb0_8[done] = muli_0_reg.done;
+      bb0_4[done] = muli_0_reg.done;
     }
-    group bb0_11 {
-      std_slice_16.in = while_1_arg0_reg.out;
-      std_slice_15.in = while_0_arg0_reg.out;
+    group bb0_6 {
+      std_slice_15.in = for_0_induction_var_reg.out;
+      mem_4.addr0 = std_slice_15.out;
+      mem_4.read_en = 1'd1;
+      bb0_6[done] = mem_4.read_done;
+    }
+    group bb0_7 {
       std_mult_pipe_1.left = mem_5.read_data;
       std_mult_pipe_1.right = mem_4.read_data;
       muli_1_reg.in = std_mult_pipe_1.out;
       muli_1_reg.write_en = std_mult_pipe_1.done;
       std_mult_pipe_1.go = !std_mult_pipe_1.done ? 1'd1;
-      mem_5.addr0 = std_slice_16.out;
-      mem_4.addr0 = std_slice_15.out;
-      bb0_11[done] = muli_1_reg.done;
+      bb0_7[done] = muli_1_reg.done;
     }
-    group bb0_13 {
-      std_slice_14.in = while_1_arg0_reg.out;
-      std_slice_13.in = while_0_arg0_reg.out;
+    group bb0_9 {
+      std_slice_14.in = for_1_induction_var_reg.out;
+      std_slice_13.in = for_0_induction_var_reg.out;
       mem_8.addr0 = std_slice_14.out;
       mem_8.addr1 = std_slice_13.out;
-      mem_8.write_data = std_add_3.out;
+      mem_8.write_data = std_add_1.out;
       mem_8.write_en = 1'd1;
-      std_add_3.left = std_add_2.out;
-      std_add_2.left = load_0_reg.out;
-      std_add_2.right = std_mult_pipe_0.out;
-      std_add_3.right = std_mult_pipe_1.out;
-      bb0_13[done] = mem_8.done;
+      std_add_1.left = std_add_0.out;
+      std_add_0.left = load_0_reg.out;
+      std_add_0.right = std_mult_pipe_0.out;
+      std_add_1.right = std_mult_pipe_1.out;
+      bb0_9[done] = mem_8.write_done;
     }
-    group assign_while_0_latch {
-      while_0_arg0_reg.in = std_add_1.out;
-      while_0_arg0_reg.write_en = 1'd1;
-      std_add_1.left = while_0_arg0_reg.out;
-      std_add_1.right = 32'd1;
-      assign_while_0_latch[done] = while_0_arg0_reg.done;
+    group incr_for_0_induction_var {
+      std_add_2.left = for_0_induction_var_reg.out;
+      std_add_2.right = 32'd1;
+      for_0_induction_var_reg.in = std_add_2.out;
+      for_0_induction_var_reg.write_en = 1'd1;
+      incr_for_0_induction_var[done] = for_0_induction_var_reg.done;
     }
-    group assign_while_1_latch {
-      while_1_arg0_reg.in = std_add_0.out;
-      while_1_arg0_reg.write_en = 1'd1;
-      std_add_0.left = while_1_arg0_reg.out;
-      std_add_0.right = 32'd1;
-      assign_while_1_latch[done] = while_1_arg0_reg.done;
+    group incr_for_1_induction_var {
+      std_add_3.left = for_1_induction_var_reg.out;
+      std_add_3.right = 32'd1;
+      for_1_induction_var_reg.in = std_add_3.out;
+      for_1_induction_var_reg.write_en = 1'd1;
+      incr_for_1_induction_var[done] = for_1_induction_var_reg.done;
     }
-    comb group bb0_14 {
-      std_slt_2.left = while_3_arg0_reg.out;
-      std_slt_2.right = 32'd400;
-    }
-    comb group bb0_16 {
-      std_slt_3.left = while_2_arg0_reg.out;
-      std_slt_3.right = 32'd400;
-    }
-    group bb0_18 {
-      std_slice_12.in = while_3_arg0_reg.out;
+    group bb0_10 {
+      std_slice_12.in = for_3_induction_var_reg.out;
       mem_2.addr0 = std_slice_12.out;
+      mem_2.read_en = 1'd1;
       load_1_reg.in = mem_2.read_data;
-      load_1_reg.write_en = 1'd1;
-      bb0_18[done] = load_1_reg.done;
+      load_1_reg.write_en = mem_2.read_done;
+      bb0_10[done] = load_1_reg.done;
     }
-    group bb0_19 {
-      std_slice_11.in = while_2_arg0_reg.out;
-      std_slice_10.in = while_3_arg0_reg.out;
+    group bb0_11 {
+      std_slice_11.in = for_2_induction_var_reg.out;
+      std_slice_10.in = for_3_induction_var_reg.out;
       mem_8.addr0 = std_slice_11.out;
       mem_8.addr1 = std_slice_10.out;
+      mem_8.read_en = 1'd1;
       load_2_reg.in = mem_8.read_data;
-      load_2_reg.write_en = 1'd1;
-      bb0_19[done] = load_2_reg.done;
+      load_2_reg.write_en = mem_8.read_done;
+      bb0_11[done] = load_2_reg.done;
     }
-    group bb0_20 {
+    group bb0_12 {
       std_mult_pipe_2.left = load_2_reg.out;
       std_mult_pipe_2.right = 32'd2;
       muli_2_reg.in = std_mult_pipe_2.out;
       muli_2_reg.write_en = std_mult_pipe_2.done;
       std_mult_pipe_2.go = !std_mult_pipe_2.done ? 1'd1;
-      bb0_20[done] = muli_2_reg.done;
+      bb0_12[done] = muli_2_reg.done;
     }
-    group bb0_22 {
-      std_slice_9.in = while_2_arg0_reg.out;
+    group bb0_13 {
+      std_slice_9.in = for_2_induction_var_reg.out;
+      mem_1.addr0 = std_slice_9.out;
+      mem_1.read_en = 1'd1;
+      bb0_13[done] = mem_1.read_done;
+    }
+    group bb0_14 {
       std_mult_pipe_3.left = std_mult_pipe_2.out;
       std_mult_pipe_3.right = mem_1.read_data;
       muli_3_reg.in = std_mult_pipe_3.out;
       muli_3_reg.write_en = std_mult_pipe_3.done;
       std_mult_pipe_3.go = !std_mult_pipe_3.done ? 1'd1;
-      mem_1.addr0 = std_slice_9.out;
-      bb0_22[done] = muli_3_reg.done;
+      bb0_14[done] = muli_3_reg.done;
     }
-    group bb0_24 {
-      std_slice_8.in = while_3_arg0_reg.out;
+    group bb0_16 {
+      std_slice_8.in = for_3_induction_var_reg.out;
       mem_2.addr0 = std_slice_8.out;
-      mem_2.write_data = std_add_6.out;
+      mem_2.write_data = std_add_4.out;
       mem_2.write_en = 1'd1;
-      std_add_6.left = load_1_reg.out;
-      std_add_6.right = std_mult_pipe_3.out;
-      bb0_24[done] = mem_2.done;
+      std_add_4.left = load_1_reg.out;
+      std_add_4.right = std_mult_pipe_3.out;
+      bb0_16[done] = mem_2.write_done;
     }
-    group assign_while_2_latch {
-      while_2_arg0_reg.in = std_add_5.out;
-      while_2_arg0_reg.write_en = 1'd1;
-      std_add_5.left = while_2_arg0_reg.out;
+    group incr_for_2_induction_var {
+      std_add_5.left = for_2_induction_var_reg.out;
       std_add_5.right = 32'd1;
-      assign_while_2_latch[done] = while_2_arg0_reg.done;
+      for_2_induction_var_reg.in = std_add_5.out;
+      for_2_induction_var_reg.write_en = 1'd1;
+      incr_for_2_induction_var[done] = for_2_induction_var_reg.done;
     }
-    group assign_while_3_latch {
-      while_3_arg0_reg.in = std_add_4.out;
-      while_3_arg0_reg.write_en = 1'd1;
-      std_add_4.left = while_3_arg0_reg.out;
-      std_add_4.right = 32'd1;
-      assign_while_3_latch[done] = while_3_arg0_reg.done;
+    group incr_for_3_induction_var {
+      std_add_6.left = for_3_induction_var_reg.out;
+      std_add_6.right = 32'd1;
+      for_3_induction_var_reg.in = std_add_6.out;
+      for_3_induction_var_reg.write_en = 1'd1;
+      incr_for_3_induction_var[done] = for_3_induction_var_reg.done;
     }
-    comb group bb0_25 {
-      std_slt_4.left = while_4_arg0_reg.out;
-      std_slt_4.right = 32'd400;
-    }
-    group bb0_27 {
-      std_slice_7.in = while_4_arg0_reg.out;
+    group bb0_17 {
+      std_slice_7.in = for_4_induction_var_reg.out;
       mem_2.addr0 = std_slice_7.out;
+      mem_2.read_en = 1'd1;
       load_3_reg.in = mem_2.read_data;
-      load_3_reg.write_en = 1'd1;
-      bb0_27[done] = load_3_reg.done;
+      load_3_reg.write_en = mem_2.read_done;
+      bb0_17[done] = load_3_reg.done;
     }
-    group bb0_30 {
-      std_slice_6.in = while_4_arg0_reg.out;
-      std_slice_5.in = while_4_arg0_reg.out;
-      mem_2.addr0 = std_slice_6.out;
-      mem_2.write_data = std_add_8.out;
+    group bb0_18 {
+      std_slice_6.in = for_4_induction_var_reg.out;
+      mem_0.addr0 = std_slice_6.out;
+      mem_0.read_en = 1'd1;
+      bb0_18[done] = mem_0.read_done;
+    }
+    group bb0_20 {
+      std_slice_5.in = for_4_induction_var_reg.out;
+      mem_2.addr0 = std_slice_5.out;
+      mem_2.write_data = std_add_7.out;
       mem_2.write_en = 1'd1;
-      std_add_8.left = load_3_reg.out;
-      std_add_8.right = mem_0.read_data;
-      mem_0.addr0 = std_slice_5.out;
-      bb0_30[done] = mem_2.done;
+      std_add_7.left = load_3_reg.out;
+      std_add_7.right = mem_0.read_data;
+      bb0_20[done] = mem_2.write_done;
     }
-    group assign_while_4_latch {
-      while_4_arg0_reg.in = std_add_7.out;
-      while_4_arg0_reg.write_en = 1'd1;
-      std_add_7.left = while_4_arg0_reg.out;
-      std_add_7.right = 32'd1;
-      assign_while_4_latch[done] = while_4_arg0_reg.done;
+    group incr_for_4_induction_var {
+      std_add_8.left = for_4_induction_var_reg.out;
+      std_add_8.right = 32'd1;
+      for_4_induction_var_reg.in = std_add_8.out;
+      for_4_induction_var_reg.write_en = 1'd1;
+      incr_for_4_induction_var[done] = for_4_induction_var_reg.done;
     }
-    comb group bb0_31 {
-      std_slt_5.left = while_6_arg0_reg.out;
-      std_slt_5.right = 32'd400;
-    }
-    comb group bb0_33 {
-      std_slt_6.left = while_5_arg0_reg.out;
-      std_slt_6.right = 32'd400;
-    }
-    group bb0_35 {
-      std_slice_4.in = while_6_arg0_reg.out;
+    group bb0_21 {
+      std_slice_4.in = for_6_induction_var_reg.out;
       mem_3.addr0 = std_slice_4.out;
+      mem_3.read_en = 1'd1;
       load_4_reg.in = mem_3.read_data;
-      load_4_reg.write_en = 1'd1;
-      bb0_35[done] = load_4_reg.done;
+      load_4_reg.write_en = mem_3.read_done;
+      bb0_21[done] = load_4_reg.done;
     }
-    group bb0_36 {
-      std_slice_3.in = while_6_arg0_reg.out;
-      std_slice_2.in = while_5_arg0_reg.out;
+    group bb0_22 {
+      std_slice_3.in = for_6_induction_var_reg.out;
+      std_slice_2.in = for_5_induction_var_reg.out;
       mem_8.addr0 = std_slice_3.out;
       mem_8.addr1 = std_slice_2.out;
+      mem_8.read_en = 1'd1;
       load_5_reg.in = mem_8.read_data;
-      load_5_reg.write_en = 1'd1;
-      bb0_36[done] = load_5_reg.done;
+      load_5_reg.write_en = mem_8.read_done;
+      bb0_22[done] = load_5_reg.done;
     }
-    group bb0_37 {
+    group bb0_23 {
       std_mult_pipe_4.left = load_5_reg.out;
       std_mult_pipe_4.right = 32'd3;
       muli_4_reg.in = std_mult_pipe_4.out;
       muli_4_reg.write_en = std_mult_pipe_4.done;
       std_mult_pipe_4.go = !std_mult_pipe_4.done ? 1'd1;
-      bb0_37[done] = muli_4_reg.done;
+      bb0_23[done] = muli_4_reg.done;
     }
-    group bb0_38 {
-      std_slice_1.in = while_5_arg0_reg.out;
+    group bb0_24 {
+      std_slice_1.in = for_5_induction_var_reg.out;
       mem_2.addr0 = std_slice_1.out;
+      mem_2.read_en = 1'd1;
       load_6_reg.in = mem_2.read_data;
-      load_6_reg.write_en = 1'd1;
-      bb0_38[done] = load_6_reg.done;
+      load_6_reg.write_en = mem_2.read_done;
+      bb0_24[done] = load_6_reg.done;
     }
-    group bb0_39 {
+    group bb0_25 {
       std_mult_pipe_5.left = std_mult_pipe_4.out;
       std_mult_pipe_5.right = load_6_reg.out;
       muli_5_reg.in = std_mult_pipe_5.out;
       muli_5_reg.write_en = std_mult_pipe_5.done;
       std_mult_pipe_5.go = !std_mult_pipe_5.done ? 1'd1;
-      bb0_39[done] = muli_5_reg.done;
+      bb0_25[done] = muli_5_reg.done;
     }
-    group bb0_41 {
-      std_slice_0.in = while_6_arg0_reg.out;
+    group bb0_27 {
+      std_slice_0.in = for_6_induction_var_reg.out;
       mem_3.addr0 = std_slice_0.out;
-      mem_3.write_data = std_add_11.out;
+      mem_3.write_data = std_add_9.out;
       mem_3.write_en = 1'd1;
-      std_add_11.left = load_4_reg.out;
-      std_add_11.right = std_mult_pipe_5.out;
-      bb0_41[done] = mem_3.done;
+      std_add_9.left = load_4_reg.out;
+      std_add_9.right = std_mult_pipe_5.out;
+      bb0_27[done] = mem_3.write_done;
     }
-    group assign_while_5_latch {
-      while_5_arg0_reg.in = std_add_10.out;
-      while_5_arg0_reg.write_en = 1'd1;
-      std_add_10.left = while_5_arg0_reg.out;
+    group incr_for_5_induction_var {
+      std_add_10.left = for_5_induction_var_reg.out;
       std_add_10.right = 32'd1;
-      assign_while_5_latch[done] = while_5_arg0_reg.done;
+      for_5_induction_var_reg.in = std_add_10.out;
+      for_5_induction_var_reg.write_en = 1'd1;
+      incr_for_5_induction_var[done] = for_5_induction_var_reg.done;
     }
-    group assign_while_6_latch {
-      while_6_arg0_reg.in = std_add_9.out;
-      while_6_arg0_reg.write_en = 1'd1;
-      std_add_9.left = while_6_arg0_reg.out;
-      std_add_9.right = 32'd1;
-      assign_while_6_latch[done] = while_6_arg0_reg.done;
+    group incr_for_6_induction_var {
+      std_add_11.left = for_6_induction_var_reg.out;
+      std_add_11.right = 32'd1;
+      for_6_induction_var_reg.in = std_add_11.out;
+      for_6_induction_var_reg.write_en = 1'd1;
+      incr_for_6_induction_var[done] = for_6_induction_var_reg.done;
     }
   }
   control {
     seq {
-      seq {
-        par {
-          assign_while_1_init_0;
-        }
-        while std_slt_0.out with bb0_0 {
-          seq {
-            par {
-              assign_while_0_init_0;
-            }
-            while std_slt_1.out with bb0_4 {
-              seq {
-                seq {
-                  bb0_6;
-                  bb0_8;
-                  bb0_11;
-                  bb0_13;
-                }
-                assign_while_0_latch;
-              }
-            }
-            assign_while_1_latch;
-          }
-        }
-        par {
-          assign_while_3_init_0;
-        }
-        while std_slt_2.out with bb0_14 {
-          seq {
-            par {
-              assign_while_2_init_0;
-            }
-            while std_slt_3.out with bb0_16 {
-              seq {
-                seq {
-                  bb0_18;
-                  bb0_19;
-                  bb0_20;
-                  bb0_22;
-                  bb0_24;
-                }
-                assign_while_2_latch;
-              }
-            }
-            assign_while_3_latch;
-          }
-        }
-        par {
-          assign_while_4_init_0;
-        }
-        while std_slt_4.out with bb0_25 {
-          seq {
+      init_for_1_induction_var;
+      repeat 400 {
+        seq {
+          bb0_0;
+          bb0_1;
+          init_for_0_induction_var;
+          repeat 400 {
             seq {
+              bb0_2;
+              bb0_3;
+              bb0_4;
+              bb0_6;
+              bb0_7;
+              bb0_9;
+              incr_for_0_induction_var;
+            }
+          }
+          incr_for_1_induction_var;
+        }
+      }
+      init_for_3_induction_var;
+      repeat 400 {
+        seq {
+          init_for_2_induction_var;
+          repeat 400 {
+            seq {
+              bb0_10;
+              bb0_11;
+              bb0_12;
+              bb0_13;
+              bb0_14;
+              bb0_16;
+              incr_for_2_induction_var;
+            }
+          }
+          incr_for_3_induction_var;
+        }
+      }
+      init_for_4_induction_var;
+      repeat 400 {
+        seq {
+          bb0_17;
+          bb0_18;
+          bb0_20;
+          incr_for_4_induction_var;
+        }
+      }
+      init_for_6_induction_var;
+      repeat 400 {
+        seq {
+          init_for_5_induction_var;
+          repeat 400 {
+            seq {
+              bb0_21;
+              bb0_22;
+              bb0_23;
+              bb0_24;
+              bb0_25;
               bb0_27;
-              bb0_30;
+              incr_for_5_induction_var;
             }
-            assign_while_4_latch;
           }
-        }
-        par {
-          assign_while_6_init_0;
-        }
-        while std_slt_5.out with bb0_31 {
-          seq {
-            par {
-              assign_while_5_init_0;
-            }
-            while std_slt_6.out with bb0_33 {
-              seq {
-                seq {
-                  bb0_35;
-                  bb0_36;
-                  bb0_37;
-                  bb0_38;
-                  bb0_39;
-                  bb0_41;
-                }
-                assign_while_5_latch;
-              }
-            }
-            assign_while_6_latch;
-          }
+          incr_for_6_induction_var;
         }
       }
     }

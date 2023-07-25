@@ -1,5 +1,6 @@
 import "primitives/core.futil";
 import "primitives/binary_operators.futil";
+import "primitives/memories.futil";
 component main<"toplevel"=1>(@clk clk: 1, @reset reset: 1, @go go: 1) -> (@done done: 1) {
   cells {
     std_slice_29 = std_slice(32, 9);
@@ -105,11 +106,11 @@ component main<"toplevel"=1>(@clk clk: 1, @reset reset: 1, @go go: 1) -> (@done 
     std_slt_1 = std_slt(32);
     std_add_0 = std_add(32);
     std_slt_0 = std_slt(32);
-    @external(1) mem_4 = std_mem_d1(32, 1, 1);
-    @external(1) mem_3 = std_mem_d2(32, 400, 400, 9, 9);
-    @external(1) mem_2 = std_mem_d1(32, 400, 9);
-    @external(1) mem_1 = std_mem_d1(32, 400, 9);
-    @external(1) mem_0 = std_mem_d1(32, 400, 9);
+    @external(1) mem_4 = seq_mem_d1(32, 1, 1);
+    @external(1) mem_3 = seq_mem_d2(32, 400, 400, 9, 9);
+    @external(1) mem_2 = seq_mem_d1(32, 400, 9);
+    @external(1) mem_1 = seq_mem_d1(32, 400, 9);
+    @external(1) mem_0 = seq_mem_d1(32, 400, 9);
     while_8_arg0_reg = std_reg(32);
     while_7_arg0_reg = std_reg(32);
     while_6_arg0_reg = std_reg(32);
@@ -172,7 +173,7 @@ component main<"toplevel"=1>(@clk clk: 1, @reset reset: 1, @go go: 1) -> (@done 
       mem_4.addr0 = 1'd0;
       mem_4.write_data = 32'd0;
       mem_4.write_en = 1'd1;
-      bb0_0[done] = mem_4.done;
+      bb0_0[done] = mem_4.write_done;
     }
     comb group bb0_1 {
       std_slt_0.left = while_4_arg0_reg.out;
@@ -187,15 +188,16 @@ component main<"toplevel"=1>(@clk clk: 1, @reset reset: 1, @go go: 1) -> (@done 
       std_slice_28.in = while_1_arg0_reg.out;
       mem_3.addr0 = std_slice_29.out;
       mem_3.addr1 = std_slice_28.out;
+      mem_3.read_en = 1'd1;
       load_0_reg.in = mem_3.read_data;
-      load_0_reg.write_en = 1'd1;
+      load_0_reg.write_en = mem_3.read_done;
       bb0_5[done] = load_0_reg.done;
     }
     group bb0_6 {
       mem_4.addr0 = 1'd0;
       mem_4.write_data = load_0_reg.out;
       mem_4.write_en = 1'd1;
-      bb0_6[done] = mem_4.done;
+      bb0_6[done] = mem_4.write_done;
     }
     comb group bb0_7 {
       std_slt_2.left = while_0_arg0_reg.out;
@@ -206,8 +208,9 @@ component main<"toplevel"=1>(@clk clk: 1, @reset reset: 1, @go go: 1) -> (@done 
       std_slice_26.in = while_0_arg0_reg.out;
       mem_3.addr0 = std_slice_27.out;
       mem_3.addr1 = std_slice_26.out;
+      mem_3.read_en = 1'd1;
       load_1_reg.in = mem_3.read_data;
-      load_1_reg.write_en = 1'd1;
+      load_1_reg.write_en = mem_3.read_done;
       bb0_9[done] = load_1_reg.done;
     }
     group bb0_10 {
@@ -215,8 +218,9 @@ component main<"toplevel"=1>(@clk clk: 1, @reset reset: 1, @go go: 1) -> (@done 
       std_slice_24.in = while_1_arg0_reg.out;
       mem_3.addr0 = std_slice_25.out;
       mem_3.addr1 = std_slice_24.out;
+      mem_3.read_en = 1'd1;
       load_2_reg.in = mem_3.read_data;
-      load_2_reg.write_en = 1'd1;
+      load_2_reg.write_en = mem_3.read_done;
       bb0_10[done] = load_2_reg.done;
     }
     group bb0_11 {
@@ -229,8 +233,9 @@ component main<"toplevel"=1>(@clk clk: 1, @reset reset: 1, @go go: 1) -> (@done 
     }
     group bb0_12 {
       mem_4.addr0 = 1'd0;
+      mem_4.read_en = 1'd1;
       load_3_reg.in = mem_4.read_data;
-      load_3_reg.write_en = 1'd1;
+      load_3_reg.write_en = mem_4.read_done;
       bb0_12[done] = load_3_reg.done;
     }
     group bb0_14 {
@@ -239,7 +244,7 @@ component main<"toplevel"=1>(@clk clk: 1, @reset reset: 1, @go go: 1) -> (@done 
       mem_4.write_en = 1'd1;
       std_sub_0.left = load_3_reg.out;
       std_sub_0.right = std_mult_pipe_0.out;
-      bb0_14[done] = mem_4.done;
+      bb0_14[done] = mem_4.write_done;
     }
     group assign_while_0_latch {
       while_0_arg0_reg.in = std_add_2.out;
@@ -250,8 +255,9 @@ component main<"toplevel"=1>(@clk clk: 1, @reset reset: 1, @go go: 1) -> (@done 
     }
     group bb0_15 {
       mem_4.addr0 = 1'd0;
+      mem_4.read_en = 1'd1;
       load_4_reg.in = mem_4.read_data;
-      load_4_reg.write_en = 1'd1;
+      load_4_reg.write_en = mem_4.read_done;
       bb0_15[done] = load_4_reg.done;
     }
     group bb0_16 {
@@ -259,8 +265,9 @@ component main<"toplevel"=1>(@clk clk: 1, @reset reset: 1, @go go: 1) -> (@done 
       std_slice_22.in = while_1_arg0_reg.out;
       mem_3.addr0 = std_slice_23.out;
       mem_3.addr1 = std_slice_22.out;
+      mem_3.read_en = 1'd1;
       load_5_reg.in = mem_3.read_data;
-      load_5_reg.write_en = 1'd1;
+      load_5_reg.write_en = mem_3.read_done;
       bb0_16[done] = load_5_reg.done;
     }
     group bb0_17 {
@@ -278,7 +285,7 @@ component main<"toplevel"=1>(@clk clk: 1, @reset reset: 1, @go go: 1) -> (@done 
       mem_3.addr1 = std_slice_20.out;
       mem_3.write_data = std_divs_pipe_0.out_quotient;
       mem_3.write_en = 1'd1;
-      bb0_18[done] = mem_3.done;
+      bb0_18[done] = mem_3.write_done;
     }
     group assign_while_1_latch {
       while_1_arg0_reg.in = std_add_1.out;
@@ -296,15 +303,16 @@ component main<"toplevel"=1>(@clk clk: 1, @reset reset: 1, @go go: 1) -> (@done 
       std_slice_18.in = while_3_arg0_reg.out;
       mem_3.addr0 = std_slice_19.out;
       mem_3.addr1 = std_slice_18.out;
+      mem_3.read_en = 1'd1;
       load_6_reg.in = mem_3.read_data;
-      load_6_reg.write_en = 1'd1;
+      load_6_reg.write_en = mem_3.read_done;
       bb0_21[done] = load_6_reg.done;
     }
     group bb0_22 {
       mem_4.addr0 = 1'd0;
       mem_4.write_data = load_6_reg.out;
       mem_4.write_en = 1'd1;
-      bb0_22[done] = mem_4.done;
+      bb0_22[done] = mem_4.write_done;
     }
     comb group bb0_23 {
       std_slt_4.left = while_2_arg0_reg.out;
@@ -315,8 +323,9 @@ component main<"toplevel"=1>(@clk clk: 1, @reset reset: 1, @go go: 1) -> (@done 
       std_slice_16.in = while_2_arg0_reg.out;
       mem_3.addr0 = std_slice_17.out;
       mem_3.addr1 = std_slice_16.out;
+      mem_3.read_en = 1'd1;
       load_7_reg.in = mem_3.read_data;
-      load_7_reg.write_en = 1'd1;
+      load_7_reg.write_en = mem_3.read_done;
       bb0_25[done] = load_7_reg.done;
     }
     group bb0_26 {
@@ -324,8 +333,9 @@ component main<"toplevel"=1>(@clk clk: 1, @reset reset: 1, @go go: 1) -> (@done 
       std_slice_14.in = while_3_arg0_reg.out;
       mem_3.addr0 = std_slice_15.out;
       mem_3.addr1 = std_slice_14.out;
+      mem_3.read_en = 1'd1;
       load_8_reg.in = mem_3.read_data;
-      load_8_reg.write_en = 1'd1;
+      load_8_reg.write_en = mem_3.read_done;
       bb0_26[done] = load_8_reg.done;
     }
     group bb0_27 {
@@ -338,8 +348,9 @@ component main<"toplevel"=1>(@clk clk: 1, @reset reset: 1, @go go: 1) -> (@done 
     }
     group bb0_28 {
       mem_4.addr0 = 1'd0;
+      mem_4.read_en = 1'd1;
       load_9_reg.in = mem_4.read_data;
-      load_9_reg.write_en = 1'd1;
+      load_9_reg.write_en = mem_4.read_done;
       bb0_28[done] = load_9_reg.done;
     }
     group bb0_30 {
@@ -348,7 +359,7 @@ component main<"toplevel"=1>(@clk clk: 1, @reset reset: 1, @go go: 1) -> (@done 
       mem_4.write_en = 1'd1;
       std_sub_1.left = load_9_reg.out;
       std_sub_1.right = std_mult_pipe_1.out;
-      bb0_30[done] = mem_4.done;
+      bb0_30[done] = mem_4.write_done;
     }
     group assign_while_2_latch {
       while_2_arg0_reg.in = std_add_4.out;
@@ -359,8 +370,9 @@ component main<"toplevel"=1>(@clk clk: 1, @reset reset: 1, @go go: 1) -> (@done 
     }
     group bb0_31 {
       mem_4.addr0 = 1'd0;
+      mem_4.read_en = 1'd1;
       load_10_reg.in = mem_4.read_data;
-      load_10_reg.write_en = 1'd1;
+      load_10_reg.write_en = mem_4.read_done;
       bb0_31[done] = load_10_reg.done;
     }
     group bb0_32 {
@@ -370,7 +382,7 @@ component main<"toplevel"=1>(@clk clk: 1, @reset reset: 1, @go go: 1) -> (@done 
       mem_3.addr1 = std_slice_12.out;
       mem_3.write_data = load_10_reg.out;
       mem_3.write_en = 1'd1;
-      bb0_32[done] = mem_3.done;
+      bb0_32[done] = mem_3.write_done;
     }
     group assign_while_3_latch {
       while_3_arg0_reg.in = std_add_3.out;
@@ -390,13 +402,17 @@ component main<"toplevel"=1>(@clk clk: 1, @reset reset: 1, @go go: 1) -> (@done 
       std_slt_5.left = while_6_arg0_reg.out;
       std_slt_5.right = 32'd400;
     }
-    group bb0_36 {
+    group bb0_35 {
       std_slice_11.in = while_6_arg0_reg.out;
+      mem_2.addr0 = std_slice_11.out;
+      mem_2.read_en = 1'd1;
+      bb0_35[done] = mem_2.read_done;
+    }
+    group bb0_36 {
       mem_4.addr0 = 1'd0;
       mem_4.write_data = mem_2.read_data;
       mem_4.write_en = 1'd1;
-      mem_2.addr0 = std_slice_11.out;
-      bb0_36[done] = mem_4.done;
+      bb0_36[done] = mem_4.write_done;
     }
     comb group bb0_37 {
       std_slt_6.left = while_5_arg0_reg.out;
@@ -407,15 +423,17 @@ component main<"toplevel"=1>(@clk clk: 1, @reset reset: 1, @go go: 1) -> (@done 
       std_slice_9.in = while_5_arg0_reg.out;
       mem_3.addr0 = std_slice_10.out;
       mem_3.addr1 = std_slice_9.out;
+      mem_3.read_en = 1'd1;
       load_11_reg.in = mem_3.read_data;
-      load_11_reg.write_en = 1'd1;
+      load_11_reg.write_en = mem_3.read_done;
       bb0_39[done] = load_11_reg.done;
     }
     group bb0_40 {
       std_slice_8.in = while_5_arg0_reg.out;
       mem_0.addr0 = std_slice_8.out;
+      mem_0.read_en = 1'd1;
       load_12_reg.in = mem_0.read_data;
-      load_12_reg.write_en = 1'd1;
+      load_12_reg.write_en = mem_0.read_done;
       bb0_40[done] = load_12_reg.done;
     }
     group bb0_41 {
@@ -428,8 +446,9 @@ component main<"toplevel"=1>(@clk clk: 1, @reset reset: 1, @go go: 1) -> (@done 
     }
     group bb0_42 {
       mem_4.addr0 = 1'd0;
+      mem_4.read_en = 1'd1;
       load_13_reg.in = mem_4.read_data;
-      load_13_reg.write_en = 1'd1;
+      load_13_reg.write_en = mem_4.read_done;
       bb0_42[done] = load_13_reg.done;
     }
     group bb0_44 {
@@ -438,7 +457,7 @@ component main<"toplevel"=1>(@clk clk: 1, @reset reset: 1, @go go: 1) -> (@done 
       mem_4.write_en = 1'd1;
       std_sub_2.left = load_13_reg.out;
       std_sub_2.right = std_mult_pipe_2.out;
-      bb0_44[done] = mem_4.done;
+      bb0_44[done] = mem_4.write_done;
     }
     group assign_while_5_latch {
       while_5_arg0_reg.in = std_add_6.out;
@@ -449,8 +468,9 @@ component main<"toplevel"=1>(@clk clk: 1, @reset reset: 1, @go go: 1) -> (@done 
     }
     group bb0_45 {
       mem_4.addr0 = 1'd0;
+      mem_4.read_en = 1'd1;
       load_14_reg.in = mem_4.read_data;
-      load_14_reg.write_en = 1'd1;
+      load_14_reg.write_en = mem_4.read_done;
       bb0_45[done] = load_14_reg.done;
     }
     group bb0_46 {
@@ -458,7 +478,7 @@ component main<"toplevel"=1>(@clk clk: 1, @reset reset: 1, @go go: 1) -> (@done 
       mem_0.addr0 = std_slice_7.out;
       mem_0.write_data = load_14_reg.out;
       mem_0.write_en = 1'd1;
-      bb0_46[done] = mem_0.done;
+      bb0_46[done] = mem_0.write_done;
     }
     group assign_while_6_latch {
       while_6_arg0_reg.in = std_add_5.out;
@@ -482,8 +502,9 @@ component main<"toplevel"=1>(@clk clk: 1, @reset reset: 1, @go go: 1) -> (@done 
     group bb0_51 {
       std_slice_6.in = std_add_8.out;
       mem_0.addr0 = std_slice_6.out;
+      mem_0.read_en = 1'd1;
       load_15_reg.in = mem_0.read_data;
-      load_15_reg.write_en = 1'd1;
+      load_15_reg.write_en = mem_0.read_done;
       std_add_8.left = std_mult_pipe_3.out;
       std_add_8.right = 32'd399;
       bb0_51[done] = load_15_reg.done;
@@ -492,7 +513,7 @@ component main<"toplevel"=1>(@clk clk: 1, @reset reset: 1, @go go: 1) -> (@done 
       mem_4.addr0 = 1'd0;
       mem_4.write_data = load_15_reg.out;
       mem_4.write_en = 1'd1;
-      bb0_52[done] = mem_4.done;
+      bb0_52[done] = mem_4.write_done;
     }
     group bb0_53 {
       std_mult_pipe_4.left = while_8_arg0_reg.out;
@@ -519,8 +540,9 @@ component main<"toplevel"=1>(@clk clk: 1, @reset reset: 1, @go go: 1) -> (@done 
       std_slice_4.in = while_7_arg0_reg.out;
       mem_3.addr0 = std_slice_5.out;
       mem_3.addr1 = std_slice_4.out;
+      mem_3.read_en = 1'd1;
       load_16_reg.in = mem_3.read_data;
-      load_16_reg.write_en = 1'd1;
+      load_16_reg.write_en = mem_3.read_done;
       std_add_11.left = std_mult_pipe_5.out;
       std_add_11.right = 32'd399;
       bb0_59[done] = load_16_reg.done;
@@ -528,8 +550,9 @@ component main<"toplevel"=1>(@clk clk: 1, @reset reset: 1, @go go: 1) -> (@done 
     group bb0_60 {
       std_slice_3.in = while_7_arg0_reg.out;
       mem_1.addr0 = std_slice_3.out;
+      mem_1.read_en = 1'd1;
       load_17_reg.in = mem_1.read_data;
-      load_17_reg.write_en = 1'd1;
+      load_17_reg.write_en = mem_1.read_done;
       bb0_60[done] = load_17_reg.done;
     }
     group bb0_61 {
@@ -542,8 +565,9 @@ component main<"toplevel"=1>(@clk clk: 1, @reset reset: 1, @go go: 1) -> (@done 
     }
     group bb0_62 {
       mem_4.addr0 = 1'd0;
+      mem_4.read_en = 1'd1;
       load_18_reg.in = mem_4.read_data;
-      load_18_reg.write_en = 1'd1;
+      load_18_reg.write_en = mem_4.read_done;
       bb0_62[done] = load_18_reg.done;
     }
     group bb0_64 {
@@ -552,7 +576,7 @@ component main<"toplevel"=1>(@clk clk: 1, @reset reset: 1, @go go: 1) -> (@done 
       mem_4.write_en = 1'd1;
       std_sub_3.left = load_18_reg.out;
       std_sub_3.right = std_mult_pipe_6.out;
-      bb0_64[done] = mem_4.done;
+      bb0_64[done] = mem_4.write_done;
     }
     group assign_while_7_latch {
       while_7_arg0_reg.in = std_add_10.out;
@@ -563,8 +587,9 @@ component main<"toplevel"=1>(@clk clk: 1, @reset reset: 1, @go go: 1) -> (@done 
     }
     group bb0_65 {
       mem_4.addr0 = 1'd0;
+      mem_4.read_en = 1'd1;
       load_19_reg.in = mem_4.read_data;
-      load_19_reg.write_en = 1'd1;
+      load_19_reg.write_en = mem_4.read_done;
       bb0_65[done] = load_19_reg.done;
     }
     group bb0_66 {
@@ -588,8 +613,9 @@ component main<"toplevel"=1>(@clk clk: 1, @reset reset: 1, @go go: 1) -> (@done 
       std_slice_1.in = std_add_13.out;
       mem_3.addr0 = std_slice_2.out;
       mem_3.addr1 = std_slice_1.out;
+      mem_3.read_en = 1'd1;
       load_20_reg.in = mem_3.read_data;
-      load_20_reg.write_en = 1'd1;
+      load_20_reg.write_en = mem_3.read_done;
       std_add_12.left = std_mult_pipe_7.out;
       std_add_12.right = 32'd399;
       std_add_13.left = std_mult_pipe_8.out;
@@ -619,7 +645,7 @@ component main<"toplevel"=1>(@clk clk: 1, @reset reset: 1, @go go: 1) -> (@done 
       mem_1.write_en = 1'd1;
       std_add_14.left = std_mult_pipe_9.out;
       std_add_14.right = 32'd399;
-      bb0_74[done] = mem_1.done;
+      bb0_74[done] = mem_1.write_done;
     }
     group assign_while_8_latch {
       while_8_arg0_reg.in = std_add_7.out;
@@ -631,142 +657,105 @@ component main<"toplevel"=1>(@clk clk: 1, @reset reset: 1, @go go: 1) -> (@done 
   }
   control {
     seq {
-      seq {
-        bb0_0;
-        par {
-          assign_while_4_init_0;
-        }
-        while std_slt_0.out with bb0_1 {
-          seq {
+      bb0_0;
+      assign_while_4_init_0;
+      while std_slt_0.out with bb0_1 {
+        seq {
+          assign_while_1_init_0;
+          while std_slt_1.out with bb0_3 {
             seq {
-              par {
-                assign_while_1_init_0;
-              }
-              while std_slt_1.out with bb0_3 {
+              bb0_5;
+              bb0_6;
+              assign_while_0_init_0;
+              while std_slt_2.out with bb0_7 {
                 seq {
-                  seq {
-                    bb0_5;
-                    bb0_6;
-                    par {
-                      assign_while_0_init_0;
-                    }
-                    while std_slt_2.out with bb0_7 {
-                      seq {
-                        seq {
-                          bb0_9;
-                          bb0_10;
-                          bb0_11;
-                          bb0_12;
-                          bb0_14;
-                        }
-                        assign_while_0_latch;
-                      }
-                    }
-                    bb0_15;
-                    bb0_16;
-                    bb0_17;
-                    bb0_18;
-                  }
-                  assign_while_1_latch;
+                  bb0_9;
+                  bb0_10;
+                  bb0_11;
+                  bb0_12;
+                  bb0_14;
+                  assign_while_0_latch;
                 }
               }
-              par {
-                assign_while_3_init_0;
-              }
-              while std_slt_3.out with bb0_19 {
-                seq {
-                  seq {
-                    bb0_21;
-                    bb0_22;
-                    par {
-                      assign_while_2_init_0;
-                    }
-                    while std_slt_4.out with bb0_23 {
-                      seq {
-                        seq {
-                          bb0_25;
-                          bb0_26;
-                          bb0_27;
-                          bb0_28;
-                          bb0_30;
-                        }
-                        assign_while_2_latch;
-                      }
-                    }
-                    bb0_31;
-                    bb0_32;
-                  }
-                  assign_while_3_latch;
-                }
-              }
+              bb0_15;
+              bb0_16;
+              bb0_17;
+              bb0_18;
+              assign_while_1_latch;
             }
-            assign_while_4_latch;
           }
-        }
-        par {
-          assign_while_6_init_0;
-        }
-        while std_slt_5.out with bb0_33 {
-          seq {
+          assign_while_3_init_0;
+          while std_slt_3.out with bb0_19 {
             seq {
-              bb0_36;
-              par {
-                assign_while_5_init_0;
-              }
-              while std_slt_6.out with bb0_37 {
+              bb0_21;
+              bb0_22;
+              assign_while_2_init_0;
+              while std_slt_4.out with bb0_23 {
                 seq {
-                  seq {
-                    bb0_39;
-                    bb0_40;
-                    bb0_41;
-                    bb0_42;
-                    bb0_44;
-                  }
-                  assign_while_5_latch;
+                  bb0_25;
+                  bb0_26;
+                  bb0_27;
+                  bb0_28;
+                  bb0_30;
+                  assign_while_2_latch;
                 }
               }
-              bb0_45;
-              bb0_46;
+              bb0_31;
+              bb0_32;
+              assign_while_3_latch;
             }
-            assign_while_6_latch;
           }
+          assign_while_4_latch;
         }
-        par {
-          assign_while_8_init_0;
-        }
-        while std_slt_7.out with bb0_47 {
-          seq {
+      }
+      assign_while_6_init_0;
+      while std_slt_5.out with bb0_33 {
+        seq {
+          bb0_35;
+          bb0_36;
+          assign_while_5_init_0;
+          while std_slt_6.out with bb0_37 {
             seq {
-              bb0_49;
-              bb0_51;
-              bb0_52;
-              bb0_53;
-              par {
-                assign_while_7_init_0;
-              }
-              while std_slt_8.out with bb0_55 {
-                seq {
-                  seq {
-                    bb0_57;
-                    bb0_59;
-                    bb0_60;
-                    bb0_61;
-                    bb0_62;
-                    bb0_64;
-                  }
-                  assign_while_7_latch;
-                }
-              }
-              bb0_65;
-              bb0_66;
-              bb0_68;
-              bb0_70;
-              bb0_71;
-              bb0_72;
-              bb0_74;
+              bb0_39;
+              bb0_40;
+              bb0_41;
+              bb0_42;
+              bb0_44;
+              assign_while_5_latch;
             }
-            assign_while_8_latch;
           }
+          bb0_45;
+          bb0_46;
+          assign_while_6_latch;
+        }
+      }
+      assign_while_8_init_0;
+      while std_slt_7.out with bb0_47 {
+        seq {
+          bb0_49;
+          bb0_51;
+          bb0_52;
+          bb0_53;
+          assign_while_7_init_0;
+          while std_slt_8.out with bb0_55 {
+            seq {
+              bb0_57;
+              bb0_59;
+              bb0_60;
+              bb0_61;
+              bb0_62;
+              bb0_64;
+              assign_while_7_latch;
+            }
+          }
+          bb0_65;
+          bb0_66;
+          bb0_68;
+          bb0_70;
+          bb0_71;
+          bb0_72;
+          bb0_74;
+          assign_while_8_latch;
         }
       }
     }

@@ -19,8 +19,10 @@
     "3mm"
   ],
   "data_files": [
-    "no-promotion-res.json",
-    "seq-mem-res.json",
-    "w-promotion-res.json"
+    "calyx-results",
+    "med-calyx-dyn-results",
+    "med-calyx-results",
+    "mini-calyx-mix-results",
+    "repeat-calyx-results"
   ]
 }

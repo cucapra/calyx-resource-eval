@@ -1,0 +1,32 @@
+{
+  "benchmarks": [
+    "atax",
+    "bicg",
+    "doitgen",
+    "durbin",
+    "gemm",
+    "gemver",
+    "gesummv",
+    "lu",
+    "ludcmp",
+    "mvt",
+    "symm",
+    "syr2k",
+    "syrk",
+    "trisolv",
+    "trmm",
+    "2mm",
+    "3mm"
+  ],
+  "gen_futil": false,
+  "gen_init": false,
+  "run_calyx": true,
+  "run_c_impl": false,
+  "futil_file_suffix": "-med",
+  "init_file": "med-init.json",
+  "c_results_file": "med-c-res.json",
+  "calyx_results_file": "med-calyx-dyn-results.json",
+  "calyx_flags": "-d static-promotion",
+  "check_results_file": "med-dyn-results.txt",
+  "cycle_count_results": "med-dyn-cycles.json"
+}

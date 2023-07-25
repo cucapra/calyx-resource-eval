@@ -16,6 +16,7 @@ from pathlib import Path
 
 sns.set_theme()
 
+
 def standardize_results(benchmark_version, data):
     standardized_data = []
     # maps design -> resource usage for the benchmark version
@@ -32,10 +33,11 @@ def standardize_results(benchmark_version, data):
         )
     return standardized_data
 
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Process args for resource estimates")
-    parser.add_argument("-j","--json", default="graph-inputs/full-graph-input.json")
-    parser.add_argument("-s","--save", default=None)  # on/off flag
+    parser.add_argument("-j", "--json", default=None)
+    parser.add_argument("-s", "--save", default=None)  # on/off flag
     args = parser.parse_args()
 
     # get design_list and resource_list given args:
@@ -46,7 +48,7 @@ if __name__ == "__main__":
         cycle_count_jsons = json_info["cycle_jsons"]
         benchmark_list = json_info["benchmarks"]
         standard = json_info.get("standard")
-        
+
     # dictionary for the graph that we are building
     graph_data = []
 
@@ -54,26 +56,26 @@ if __name__ == "__main__":
     # https: //www.geeksforgeeks.org/how-to-iterate-over-files-in-directory-using-python/
     for [filename, filename_alias] in cycle_count_jsons:
         with open(filename, "r") as f:
-            cycle_counts = json.load(f) 
+            cycle_counts = json.load(f)
             for benchmark in benchmark_list:
                 if benchmark not in cycle_counts:
                     raise Exception(f"Expected {benchmark} in {filename}")
                 graph_data.append([filename_alias, benchmark, cycle_counts[benchmark]])
-        
+
     if standard is not None:
         graph_data = standardize_results(standard, graph_data)
-    
-    fig = plt.figure(figsize=(10,8))
-    df = pd.DataFrame(graph_data, columns=[ "settings","benchmark","cycle count"])
+
+    fig = plt.figure(figsize=(10, 8))
+    df = pd.DataFrame(graph_data, columns=["settings", "benchmark", "cycle count"])
     ax = sns.barplot(
-            x="benchmark",
-            y="cycle count",
-            hue="settings",
-            data=df,
-            errorbar=None,
-        )
+        x="benchmark",
+        y="cycle count",
+        hue="settings",
+        data=df,
+        errorbar=None,
+    )
     ax.set(title=f"""cycle counts""")
-    sns.move_legend(ax,"upper right", bbox_to_anchor=(0.4,1.15))
+    sns.move_legend(ax, "upper right", bbox_to_anchor=(0.4, 1.15))
     plt.xticks(rotation=90)
     if args.save is not None:
         # only save graph if specified in cmdline arguments

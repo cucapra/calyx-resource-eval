@@ -1,0 +1,21 @@
+{
+  "benchmarks": [
+    "atax",
+    "bicg",
+    "doitgen",
+    "gemm",
+    "gemver",
+    "gesummv",
+    "mvt",
+    "2mm",
+    "3mm"
+  ],
+  "gen_futil": true,
+  "gen_init": false,
+  "run_calyx": false,
+  "run_c_impl": false,
+  "futil_file_suffix": "-med",
+  "mlir_file_suffix": "-main-med",
+  "data_size": "MEDIUM_DATASET",
+  "gen_calyx_script": "gen-calyx-for.sh"
+}
