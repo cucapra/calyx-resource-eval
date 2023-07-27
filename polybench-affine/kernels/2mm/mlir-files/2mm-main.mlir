@@ -1,4 +1,4 @@
-func.func @main() attributes {llvm.linkage = #llvm.linkage<external>} {
+func.func @main() {
   %c0_i32 = arith.constant 0 : i32
   %c4_i32 = arith.constant 4 : i32
   %c5_i32 = arith.constant 5 : i32
