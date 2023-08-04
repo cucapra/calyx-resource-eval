@@ -1,0 +1,21 @@
+{
+  "resources": [
+    "lut",
+    "registers"
+  ],
+  "designs": [
+    "systolic-flexible/2.futil",
+    "systolic-stiff/2.futil",
+    "systolic-flexible/4.futil",
+    "systolic-stiff/4.futil",
+    "systolic-flexible/8.futil",
+    "systolic-stiff/8.futil",
+    "systolic-flexible/16.futil",
+    "systolic-stiff/16.futil"
+  ],
+  "versions": [
+    {
+      "calyx-hash": "f9b28811"
+    }
+  ]
+}

@@ -115,7 +115,9 @@ def get_resource_usage(
             with open(pname) as f:
                 bench_resource_numbers = json.load(f)
                 for design_path in bench_resource_numbers:
-                    design_name = Path(design_path).name
+                    # design_name = Path(design_path).name
+                    design_name = "/".join(design_path.split("/")[-2:])
+                    print(design_name)
                     if design_name in design_list:
                         for resource in resource_list:
                             # update graph_data for each resource/design that we can
