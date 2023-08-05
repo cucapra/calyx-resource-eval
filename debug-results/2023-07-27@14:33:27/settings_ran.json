@@ -1,1 +1,38 @@
-{"universal_configs": {"stage_dynamic_config": [["synth-verilog.tcl", "synth-files/synth.tcl"], ["synth-verilog.constraints", "synth-files/device10.xdc"], ["synth-verilog.tmpdir", "/scratch/cmk265/learning/my-tmp"]]}, "inputs": [{"name": "systolic_stiff", "paths": ["benchmarks/systolic/systolic-stiff/*.futil"], "config": {"source": "calyx"}}, {"name": "systolic_flexible", "paths": ["benchmarks/systolic/systolic-flexible/*.futil"], "config": {"source": "calyx"}}]}
+{
+  "universal_configs": {
+    "stage_dynamic_config": [
+      [
+        "synth-verilog.tcl",
+        "synth-files/synth.tcl"
+      ],
+      [
+        "synth-verilog.constraints",
+        "synth-files/device10.xdc"
+      ],
+      [
+        "synth-verilog.tmpdir",
+        "/scratch/cmk265/learning/my-tmp"
+      ]
+    ]
+  },
+  "inputs": [
+    {
+      "name": "systolic_stiff",
+      "paths": [
+        "benchmarks/systolic/systolic-stiff/*.futil"
+      ],
+      "config": {
+        "source": "calyx"
+      }
+    },
+    {
+      "name": "systolic_flexible",
+      "paths": [
+        "benchmarks/systolic/systolic-flexible/*.futil"
+      ],
+      "config": {
+        "source": "calyx"
+      }
+    }
+  ]
+}

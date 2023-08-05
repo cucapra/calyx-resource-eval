@@ -1,0 +1,274 @@
+import "primitives/core.futil";
+import "primitives/memories.futil";
+component main<"toplevel"=1>(@clk clk: 1, @reset reset: 1, @go go: 1) -> (@done done: 1) {
+  cells {
+    std_slice_14 = std_slice(32, 5);
+    std_slice_13 = std_slice(32, 5);
+    std_slice_12 = std_slice(32, 5);
+    std_slice_11 = std_slice(32, 5);
+    std_slice_10 = std_slice(32, 5);
+    std_slice_9 = std_slice(32, 5);
+    std_slice_8 = std_slice(32, 5);
+    std_slice_7 = std_slice(32, 5);
+    std_slice_6 = std_slice(32, 5);
+    std_slice_5 = std_slice(32, 5);
+    std_slice_4 = std_slice(32, 5);
+    std_slice_3 = std_slice(32, 5);
+    std_slice_2 = std_slice(32, 5);
+    std_slice_1 = std_slice(32, 5);
+    std_slice_0 = std_slice(32, 5);
+    std_add_7 = std_add(32);
+    std_add_6 = std_add(32);
+    std_add_5 = std_add(32);
+    load_2_reg = std_reg(32);
+    std_add_4 = std_add(32);
+    std_add_3 = std_add(32);
+    load_1_reg = std_reg(32);
+    std_add_2 = std_add(32);
+    std_add_1 = std_add(32);
+    load_0_reg = std_reg(32);
+    std_add_0 = std_add(32);
+    @external(1) mem_3 = seq_mem_d2(32, 20, 30, 5, 5);
+    @external(1) mem_2 = seq_mem_d2(32, 20, 30, 5, 5);
+    @external(1) mem_1 = seq_mem_d2(32, 20, 30, 5, 5);
+    @external(1) mem_0 = seq_mem_d1(32, 20, 5);
+    for_7_induction_var_reg = std_reg(32);
+    for_6_induction_var_reg = std_reg(32);
+    for_5_induction_var_reg = std_reg(32);
+    for_4_induction_var_reg = std_reg(32);
+    for_3_induction_var_reg = std_reg(32);
+    for_2_induction_var_reg = std_reg(32);
+    for_1_induction_var_reg = std_reg(32);
+    for_0_induction_var_reg = std_reg(32);
+  }
+  wires {
+    group init_for_0_induction_var {
+      for_0_induction_var_reg.in = 32'd0;
+      for_0_induction_var_reg.write_en = 1'd1;
+      init_for_0_induction_var[done] = for_0_induction_var_reg.done;
+    }
+    group init_for_1_induction_var {
+      for_1_induction_var_reg.in = 32'd0;
+      for_1_induction_var_reg.write_en = 1'd1;
+      init_for_1_induction_var[done] = for_1_induction_var_reg.done;
+    }
+    group init_for_2_induction_var {
+      for_2_induction_var_reg.in = 32'd1;
+      for_2_induction_var_reg.write_en = 1'd1;
+      init_for_2_induction_var[done] = for_2_induction_var_reg.done;
+    }
+    group init_for_3_induction_var {
+      for_3_induction_var_reg.in = 32'd1;
+      for_3_induction_var_reg.write_en = 1'd1;
+      init_for_3_induction_var[done] = for_3_induction_var_reg.done;
+    }
+    group init_for_4_induction_var {
+      for_4_induction_var_reg.in = 32'd0;
+      for_4_induction_var_reg.write_en = 1'd1;
+      init_for_4_induction_var[done] = for_4_induction_var_reg.done;
+    }
+    group init_for_5_induction_var {
+      for_5_induction_var_reg.in = 32'd0;
+      for_5_induction_var_reg.write_en = 1'd1;
+      init_for_5_induction_var[done] = for_5_induction_var_reg.done;
+    }
+    group init_for_6_induction_var {
+      for_6_induction_var_reg.in = 32'd0;
+      for_6_induction_var_reg.write_en = 1'd1;
+      init_for_6_induction_var[done] = for_6_induction_var_reg.done;
+    }
+    group init_for_7_induction_var {
+      for_7_induction_var_reg.in = 32'd0;
+      for_7_induction_var_reg.write_en = 1'd1;
+      init_for_7_induction_var[done] = for_7_induction_var_reg.done;
+    }
+    group bb0_0 {
+      std_slice_14.in = for_7_induction_var_reg.out;
+      mem_0.addr0 = std_slice_14.out;
+      mem_0.read_en = 1'd1;
+      bb0_0[done] = mem_0.read_done;
+    }
+    group bb0_1 {
+      std_slice_13.in = 32'd0;
+      std_slice_12.in = for_0_induction_var_reg.out;
+      mem_2.addr0 = std_slice_13.out;
+      mem_2.addr1 = std_slice_12.out;
+      mem_2.write_data = mem_0.read_data;
+      mem_2.write_en = 1'd1;
+      bb0_1[done] = mem_2.write_done;
+    }
+    group incr_for_0_induction_var {
+      std_add_0.left = for_0_induction_var_reg.out;
+      std_add_0.right = 32'd1;
+      for_0_induction_var_reg.in = std_add_0.out;
+      for_0_induction_var_reg.write_en = 1'd1;
+      incr_for_0_induction_var[done] = for_0_induction_var_reg.done;
+    }
+    group bb0_2 {
+      std_slice_11.in = for_2_induction_var_reg.out;
+      std_slice_10.in = for_1_induction_var_reg.out;
+      mem_2.addr0 = std_slice_11.out;
+      mem_2.addr1 = std_slice_10.out;
+      mem_2.read_en = 1'd1;
+      load_0_reg.in = mem_2.read_data;
+      load_0_reg.write_en = mem_2.read_done;
+      bb0_2[done] = load_0_reg.done;
+    }
+    group bb0_3 {
+      std_slice_9.in = for_2_induction_var_reg.out;
+      std_slice_8.in = for_1_induction_var_reg.out;
+      mem_2.addr0 = std_slice_9.out;
+      mem_2.addr1 = std_slice_8.out;
+      mem_2.write_data = load_0_reg.out;
+      mem_2.write_en = 1'd1;
+      bb0_3[done] = mem_2.write_done;
+    }
+    group incr_for_1_induction_var {
+      std_add_1.left = for_1_induction_var_reg.out;
+      std_add_1.right = 32'd1;
+      for_1_induction_var_reg.in = std_add_1.out;
+      for_1_induction_var_reg.write_en = 1'd1;
+      incr_for_1_induction_var[done] = for_1_induction_var_reg.done;
+    }
+    group incr_for_2_induction_var {
+      std_add_2.left = for_2_induction_var_reg.out;
+      std_add_2.right = 32'd1;
+      for_2_induction_var_reg.in = std_add_2.out;
+      for_2_induction_var_reg.write_en = 1'd1;
+      incr_for_2_induction_var[done] = for_2_induction_var_reg.done;
+    }
+    group bb0_4 {
+      std_slice_7.in = for_4_induction_var_reg.out;
+      std_slice_6.in = for_3_induction_var_reg.out;
+      mem_3.addr0 = std_slice_7.out;
+      mem_3.addr1 = std_slice_6.out;
+      mem_3.read_en = 1'd1;
+      load_1_reg.in = mem_3.read_data;
+      load_1_reg.write_en = mem_3.read_done;
+      bb0_4[done] = load_1_reg.done;
+    }
+    group bb0_5 {
+      std_slice_5.in = for_4_induction_var_reg.out;
+      std_slice_4.in = for_3_induction_var_reg.out;
+      mem_3.addr0 = std_slice_5.out;
+      mem_3.addr1 = std_slice_4.out;
+      mem_3.write_data = load_1_reg.out;
+      mem_3.write_en = 1'd1;
+      bb0_5[done] = mem_3.write_done;
+    }
+    group incr_for_3_induction_var {
+      std_add_3.left = for_3_induction_var_reg.out;
+      std_add_3.right = 32'd1;
+      for_3_induction_var_reg.in = std_add_3.out;
+      for_3_induction_var_reg.write_en = 1'd1;
+      incr_for_3_induction_var[done] = for_3_induction_var_reg.done;
+    }
+    group incr_for_4_induction_var {
+      std_add_4.left = for_4_induction_var_reg.out;
+      std_add_4.right = 32'd1;
+      for_4_induction_var_reg.in = std_add_4.out;
+      for_4_induction_var_reg.write_en = 1'd1;
+      incr_for_4_induction_var[done] = for_4_induction_var_reg.done;
+    }
+    group bb0_6 {
+      std_slice_3.in = for_6_induction_var_reg.out;
+      std_slice_2.in = for_5_induction_var_reg.out;
+      mem_1.addr0 = std_slice_3.out;
+      mem_1.addr1 = std_slice_2.out;
+      mem_1.read_en = 1'd1;
+      load_2_reg.in = mem_1.read_data;
+      load_2_reg.write_en = mem_1.read_done;
+      bb0_6[done] = load_2_reg.done;
+    }
+    group bb0_7 {
+      std_slice_1.in = for_6_induction_var_reg.out;
+      std_slice_0.in = for_5_induction_var_reg.out;
+      mem_1.addr0 = std_slice_1.out;
+      mem_1.addr1 = std_slice_0.out;
+      mem_1.write_data = load_2_reg.out;
+      mem_1.write_en = 1'd1;
+      bb0_7[done] = mem_1.write_done;
+    }
+    group incr_for_5_induction_var {
+      std_add_5.left = for_5_induction_var_reg.out;
+      std_add_5.right = 32'd1;
+      for_5_induction_var_reg.in = std_add_5.out;
+      for_5_induction_var_reg.write_en = 1'd1;
+      incr_for_5_induction_var[done] = for_5_induction_var_reg.done;
+    }
+    group incr_for_6_induction_var {
+      std_add_6.left = for_6_induction_var_reg.out;
+      std_add_6.right = 32'd1;
+      for_6_induction_var_reg.in = std_add_6.out;
+      for_6_induction_var_reg.write_en = 1'd1;
+      incr_for_6_induction_var[done] = for_6_induction_var_reg.done;
+    }
+    group incr_for_7_induction_var {
+      std_add_7.left = for_7_induction_var_reg.out;
+      std_add_7.right = 32'd1;
+      for_7_induction_var_reg.in = std_add_7.out;
+      for_7_induction_var_reg.write_en = 1'd1;
+      incr_for_7_induction_var[done] = for_7_induction_var_reg.done;
+    }
+  }
+  control {
+    seq {
+      init_for_7_induction_var;
+      repeat 20 {
+        seq {
+          bb0_0;
+          init_for_0_induction_var;
+          repeat 30 {
+            seq {
+              bb0_1;
+              incr_for_0_induction_var;
+            }
+          }
+          init_for_2_induction_var;
+          repeat 19 {
+            seq {
+              init_for_1_induction_var;
+              repeat 30 {
+                seq {
+                  bb0_2;
+                  bb0_3;
+                  incr_for_1_induction_var;
+                }
+              }
+              incr_for_2_induction_var;
+            }
+          }
+          init_for_4_induction_var;
+          repeat 20 {
+            seq {
+              init_for_3_induction_var;
+              repeat 29 {
+                seq {
+                  bb0_4;
+                  bb0_5;
+                  incr_for_3_induction_var;
+                }
+              }
+              incr_for_4_induction_var;
+            }
+          }
+          init_for_6_induction_var;
+          repeat 19 {
+            seq {
+              init_for_5_induction_var;
+              repeat 29 {
+                seq {
+                  bb0_6;
+                  bb0_7;
+                  incr_for_5_induction_var;
+                }
+              }
+              incr_for_6_induction_var;
+            }
+          }
+          incr_for_7_induction_var;
+        }
+      }
+    }
+  }
+}

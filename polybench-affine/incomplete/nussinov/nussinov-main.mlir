@@ -14,14 +14,14 @@ module {
           %0 = affine.load %alloca[-%arg0 + 59, %arg1] : memref<60x60xi32>
           %1 = affine.load %alloca[-%arg0 + 59, %arg1 - 1] : memref<60x60xi32>
           %2 = arith.cmpi sge, %0, %1 : i32
-          %3 = arith.select %2, %0, %1 : i32
+          %3 = arith.addi %0, %1 : i32
           affine.store %3, %alloca[-%arg0 + 59, %arg1] : memref<60x60xi32>
         }
         affine.if #set(%arg0) {
           %0 = affine.load %alloca[-%arg0 + 59, %arg1] : memref<60x60xi32>
           %1 = affine.load %alloca[-%arg0 + 60, %arg1] : memref<60x60xi32>
           %2 = arith.cmpi sge, %0, %1 : i32
-          %3 = arith.select %2, %0, %1 : i32
+          %3 = arith.addi %0, %1 : i32
           affine.store %3, %alloca[-%arg0 + 59, %arg1] : memref<60x60xi32>
         }
         affine.if #set1(%arg1, %arg0) {
@@ -35,13 +35,13 @@ module {
             %6 = arith.extui %5 : i1 to i32
             %7 = arith.addi %1, %6 : i32
             %8 = arith.cmpi sge, %0, %7 : i32
-            %9 = arith.select %8, %0, %7 : i32
+            %9 = arith.addi %0, %7 : i32
             affine.store %9, %alloca[-%arg0 + 59, %arg1] : memref<60x60xi32>
           } else {
             %0 = affine.load %alloca[-%arg0 + 59, %arg1] : memref<60x60xi32>
             %1 = affine.load %alloca[-%arg0 + 60, %arg1 - 1] : memref<60x60xi32>
             %2 = arith.cmpi sge, %0, %1 : i32
-            %3 = arith.select %2, %0, %1 : i32
+            %3 = arith.addi %0, %1 : i32
             affine.store %3, %alloca[-%arg0 + 59, %arg1] : memref<60x60xi32>
           }
         }
@@ -51,7 +51,7 @@ module {
           %2 = affine.load %alloca[%arg2 + 1, %arg1] : memref<60x60xi32>
           %3 = arith.addi %1, %2 : i32
           %4 = arith.cmpi sge, %0, %3 : i32
-          %5 = arith.select %4, %0, %3 : i32
+          %5 = arith.addi %0, %3 : i32
           affine.store %5, %alloca[-%arg0 + 59, %arg1] : memref<60x60xi32>
         }
       }

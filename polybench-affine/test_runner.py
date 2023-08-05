@@ -22,7 +22,11 @@ def find_benchmark_path(bench_name):
     for root, dirs, files in os.walk("."):
         for dir_name in dirs:
             pathname = os.path.join(root, dir_name)
-            if "polybench-c" in pathname or "incomplete" in pathname:
+            if (
+                "polybench-c" in pathname
+                or "unworkable" in pathname
+                or "incomplete" in pathname
+            ):
                 # We skip the files with the original Polybench C code
                 continue
             full_file_name = os.path.basename(pathname)
@@ -153,7 +157,7 @@ def run_benchmark(run_settings, benchmark_name, cycle_counts):
                 "--to",
                 "dat",
                 "--through",
-                "verilog",
+                "icarus-verilog",
                 "--from",
                 "calyx",
                 "-s",
