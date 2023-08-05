@@ -16,7 +16,9 @@
     "trisolv",
     "trmm",
     "2mm",
-    "3mm"
+    "3mm",
+    "covariance",
+    "seidel-2d"
   ],
   "gen_futil": false,
   "gen_init": false,

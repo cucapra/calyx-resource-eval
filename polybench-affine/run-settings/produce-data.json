@@ -20,9 +20,10 @@
     "covariance",
     "seidel-2d"
   ],
-  "futil_files_suffix": [],
-  "data": [
-    "med-calyx-mix-results.json",
-    "med-calyx-dyn-results.json"
-  ]
+  "gen_futil": false,
+  "gen_init": true,
+  "run_calyx": false,
+  "run_c_impl": false,
+  "init_file": "med-init.json",
+  "data_size": "MEDIUM_DATASET"
 }

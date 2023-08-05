@@ -1,13 +1,15 @@
 {
   "benchmarks": [
-    "durbin",
-    "lu",
-    "ludcmp",
+    "covariance",
     "symm",
     "syr2k",
     "syrk",
+    "trmm",
+    "durbin",
+    "lu",
+    "ludcmp",
     "trisolv",
-    "trmm"
+    "seidel-2d"
   ],
   "gen_futil": true,
   "gen_init": false,

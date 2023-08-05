@@ -1,14 +1,14 @@
 {
   "benchmarks": [
-    "atax",
-    "bicg",
-    "doitgen",
     "gemm",
     "gemver",
     "gesummv",
-    "mvt",
     "2mm",
-    "3mm"
+    "3mm",
+    "atax",
+    "bicg",
+    "doitgen",
+    "mvt"
   ],
   "gen_futil": true,
   "gen_init": false,
