@@ -6,8 +6,10 @@ set -euf -o pipefail
 # second argument is Dahlia version (defaults to most recent master commit)
 # third argument is extension for fud to use for Calyx (either futil or calyx)
 calyx_commit=${1:-'master'}
-dahlia_commit=${2:-'master'}
+dahlia_commit=${2:-'none'}
 fud_calyx_extension=${3:-'calyx'}
+none="none"
+
 
 # install calyx for fud 
 if [ ! -d "calyx-for-fud" ] 
@@ -23,12 +25,15 @@ then
     git clone git@github.com:cucapra/calyx.git calyx-for-eval 
 fi 
 
-# install dahlia 
-if [ ! -d "dahlia" ] 
-then
-    >&2 echo "Cloning dahlia"
-    git clone git@github.com:cucapra/dahlia.git
-fi
+if [ "$dahlia_commit" != "$none" ] 
+then 
+    # install dahlia 
+    if [ ! -d "dahlia" ] 
+    then
+        >&2 echo "Cloning dahlia"
+        git clone git@github.com:cucapra/dahlia.git
+    fi
+fi 
 
 
 ## Check if flit is installed
@@ -47,14 +52,20 @@ cd calyx-for-eval && git checkout $calyx_commit && git show --no-patch --no-note
 # build Calyx 
 cargo build && cd ..
 
-# Checkout correct Dahlia commit, write commit info into temp/dahlia-version.txt
-cd dahlia && git checkout $dahlia_commit && git show --no-patch --no-notes --pretty='%h || %ci || %s'  > ../tmp-version-info/dahlia-version.txt 
-#build Dahlia
-sbt compile && sbt assembly && chmod +x ./fuse && cd .. 
+if [ "$dahlia_commit" != "$none" ]
+then
+    # Checkout correct Dahlia commit, write commit info into temp/dahlia-version.txt
+    cd dahlia && git checkout $dahlia_commit && git show --no-patch --no-notes --pretty='%h || %ci || %s'  > ../tmp-version-info/dahlia-version.txt 
+    #build Dahlia
+    sbt compile && sbt assembly && chmod +x ./fuse && cd .. 
+fi 
 
 # Configure fud
 fud config global.root "$(pwd)/calyx-for-eval"
 
 # Configure fud
 fud config stages.calyx.exec "$(pwd)/calyx-for-eval/target/debug/$fud_calyx_extension"
-fud config stages.dahlia.exec "$(pwd)/dahlia/fuse"
+if [ "$dahlia_commit" != "$none" ]
+then
+    fud config stages.dahlia.exec "$(pwd)/dahlia/fuse"
+fi

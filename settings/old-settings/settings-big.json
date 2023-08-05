@@ -7,19 +7,15 @@
       ],
       [
         "synth-verilog.constraints",
-        "synth-files/device10.xdc"
-      ],
-      [
-        "calyx.flags",
-        "-d static-promotion"
+        "synth-files/device.xdc"
       ]
     ]
   },
   "inputs": [
     {
-      "name": "scf_polybench",
+      "name": "big",
       "paths": [
-        "benchmarks/polybench-scf-calyx/trmm.futil"
+        "benchmarks/big/*.futil"
       ],
       "config": {
         "source": "calyx"

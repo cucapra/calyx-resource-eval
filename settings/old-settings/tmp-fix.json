@@ -7,7 +7,15 @@
       ],
       [
         "synth-verilog.constraints",
-        "synth-files/device10.xdc"
+        "synth-files/device7.xdc"
+      ],
+      [
+        "synth-verilog.tmpdir",
+        "/scratch/cmk265/learning/my-tmp"
+      ],
+      [
+        "calyx.flags",
+        "-x inline:always -x inline:new-fsms"
       ]
     ]
   },
@@ -15,7 +23,7 @@
     {
       "name": "polybench",
       "paths": [
-        "benchmarks/polybench/*.fuse"
+        "benchmarks/polybench/linear-algebra-atax.fuse"
       ]
     }
   ]

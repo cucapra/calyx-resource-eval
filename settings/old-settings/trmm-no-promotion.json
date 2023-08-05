@@ -7,22 +7,22 @@
       ],
       [
         "synth-verilog.constraints",
-        "synth-files/device.xdc"
+        "synth-files/device7.xdc"
       ],
       [
-        "synth-verilog.tmpdir",
-        "/scratch/cmk265/learning/my-tmp"
+        "calyx.flags",
+        "-d static-promotion"
       ]
     ]
   },
   "inputs": [
     {
-      "name": "systolic",
+      "name": "scf_polybench",
       "paths": [
-        "benchmarks/systolic/*.json"
+        "benchmarks/polybench-scf-calyx/trmm.futil"
       ],
       "config": {
-        "source": "systolic"
+        "source": "calyx"
       }
     }
   ]

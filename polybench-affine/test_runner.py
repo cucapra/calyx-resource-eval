@@ -157,7 +157,7 @@ def run_benchmark(run_settings, benchmark_name, cycle_counts):
                 "--to",
                 "dat",
                 "--through",
-                "icarus-verilog",
+                "verilog",
                 "--from",
                 "calyx",
                 "-s",
@@ -194,7 +194,16 @@ def run_benchmark(run_settings, benchmark_name, cycle_counts):
         with open(
             os.path.join("check_results", run_settings["check_results_file"]), "a"
         ) as f:
-            f.write(compare_jsons(c_results_path, calyx_results_path))
+            # XXX(Caleb):ignore certain memories for annoying reason
+            # These are 1d memories that when you pass as arguments in c it
+            # they don't change value to the outside world
+            if benchmark_name == "durbin":
+                ignore = ["mem_3", "mem_4", "mem_5"]
+            elif benchmark_name == "ludcmp":
+                ignore = ["mem_4"]
+            else:
+                ignore = []
+            f.write(compare_jsons(c_results_path, calyx_results_path, ignore))
         cycle_counts[benchmark_name] = get_cycle_count(calyx_results_path)
 
 

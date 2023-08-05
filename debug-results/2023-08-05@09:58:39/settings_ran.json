@@ -7,26 +7,22 @@
       ],
       [
         "synth-verilog.constraints",
-        "synth-files/device10.xdc"
+        "synth-files/device.xdc"
       ],
       [
         "synth-verilog.tmpdir",
         "/scratch/cmk265/learning/my-tmp"
-      ],
-      [
-        "calyx.flags",
-        "-x inline:always -x inline:new-fsms"
       ]
     ]
   },
   "inputs": [
     {
-      "name": "tcam",
+      "name": "systolic",
       "paths": [
-        "benchmarks/tcam/*.futil"
+        "benchmarks/systolic/*.json"
       ],
       "config": {
-        "source": "calyx"
+        "source": "systolic"
       }
     }
   ]

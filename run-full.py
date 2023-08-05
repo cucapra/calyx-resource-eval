@@ -14,7 +14,7 @@ def main():
         json_dict = json.load(f)
         # calyx/dahlia commit to use
         calyx_version = json_dict.get("calyx_version", "master")
-        dahlia_version = json_dict.get("dahlia_version", "master")
+        dahlia_version = json_dict.get("dahlia_version", "none")
         # based on verison, fud should use either futil or calyx
         fud_calyx_extension = json_dict.get("calyx_extension", "calyx")
 
@@ -22,7 +22,7 @@ def main():
             ["./configure-fud.sh", calyx_version, dahlia_version, fud_calyx_extension]
         )
 
-        cmdline_args = ["python3.9", "estimates.py"]
+        cmdline_args = ["python3", "estimates.py"]
         # probably a better way to do this, but want run-full.py to take some of
         # the same cmdline arguments that estimates.py uses
         for k, v in vars(args).items():
