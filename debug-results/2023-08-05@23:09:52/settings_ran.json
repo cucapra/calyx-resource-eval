@@ -8,12 +8,16 @@
       [
         "synth-verilog.constraints",
         "synth-files/device.xdc"
+      ],
+      [
+        "calyx.flags",
+        "-d static-promotion"
       ]
     ]
   },
   "inputs": [
     {
-      "name": "polybench_scf_promote",
+      "name": "polybench_scf_dynamic",
       "paths": [
         "benchmarks/polybench-scf/*.futil"
       ],
