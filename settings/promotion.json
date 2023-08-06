@@ -13,7 +13,7 @@
   },
   "inputs": [
     {
-      "name": "scf_polybench_med",
+      "name": "polybench_scf_promote",
       "paths": [
         "benchmarks/polybench-med/*.futil"
       ],

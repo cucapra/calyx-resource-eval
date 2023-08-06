@@ -17,9 +17,9 @@
   },
   "inputs": [
     {
-      "name": "scf_polybench_med",
+      "name": "polybench_scf_dynamic",
       "paths": [
-        "benchmarks/polybench-med/*.futil"
+        "benchmarks/polybench-scf/*.futil"
       ],
       "config": {
         "source": "calyx"

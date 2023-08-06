@@ -16,10 +16,12 @@
     "trisolv",
     "trmm",
     "2mm",
-    "3mm"
+    "3mm",
+    "covariance",
+    "seidel-2d"
   ],
   "futil_files_suffix": [
     "-med"
   ],
-  "dst": "../benchmarks/polybench-med"
+  "dst": "../benchmarks/polybench-scf"
 }

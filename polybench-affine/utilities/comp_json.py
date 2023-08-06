@@ -28,7 +28,9 @@ def compare_jsons(json_file1, json_file2, ignore_mems):
     for m1_name in memories1:
         m1 = memories1[m1_name]
         m2 = memories2[m1_name]
-        if m1 not in ignore_mems and not np.array_equal(np.array(m1), np.array(m2)):
+        if m1_name not in ignore_mems and not np.array_equal(
+            np.array(m1), np.array(m2)
+        ):
             same = False
             ans += f"{m1_name} is not equivalent\n"
     if same:
