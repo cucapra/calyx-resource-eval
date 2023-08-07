@@ -1,0 +1,34 @@
+{
+  "cycle_jsons": [
+    [
+      "systolic-simulation/classic-calyx-sim",
+      "Calyx"
+    ],
+    [
+      "systolic-simulation/mixed_calyx_sim",
+      "Piezo flexible"
+    ],
+    [
+      "systolic-simulation/mixed_calyx_sim",
+      "Piezo fixed"
+    ]
+  ],
+  "benchmarks": [
+    [
+      "2.json",
+      "2x2"
+    ],
+    [
+      "4.json",
+      "4x4"
+    ],
+    [
+      "8.json",
+      "8x8"
+    ],
+    [
+      "16.json",
+      "16x16"
+    ]
+  ]
+}
