@@ -1,7 +1,8 @@
 {
   "commit_hash": "0dd065b",
   "stage_name": "futil",
-  "output_dir": "classic_calyx_estimates",
+  "calyx_flags": "-d minimize-regs",
+  "output_dir": "classic_calyx_synth_verilog",
   "sizes": [
     2,
     4,

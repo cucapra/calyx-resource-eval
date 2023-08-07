@@ -1,6 +1,7 @@
 {
     "commit_hash": "0dd065b",
     "stage_name": "futil",
+    "calyx_flags": "-d minimize-regs",
     "through-verilog-flag": false,
     "banked": false,
     "output_dir": "classic_calyx_sim",

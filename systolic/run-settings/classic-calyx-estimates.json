@@ -1,0 +1,11 @@
+{
+  "calyx_stage_name": "futil",
+  "calyx_flags": "-d minimize-regs",
+  "commit_hash": "0dd065b",
+  "verilog_file_path": "synth-verilog/classic-calyx-synth-verilog",
+  "output_dir": "classic-calyx-resources",
+  "sizes": [
+    8,
+    16
+  ]
+}

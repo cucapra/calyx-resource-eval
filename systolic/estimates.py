@@ -12,18 +12,27 @@ if __name__ == "__main__":
     with open(args.json) as f:
         json_dict = json.load(f)
 
-    output_dir = json_dict["output_dir"]
-    output_path = f"systolic-results/{output_dir}"
-    if not os.path.exists(output_path):
-        os.makedirs(output_path)
+    calyx_stage_name = json_dict["calyx_stage_name"]
+    calyx_flags = json_dict["calyx_flags"]
+    commit_hash = json_dict["commit_hash"]
+    verilog_files_path = json_dict.get("verilog_file_path", None)
 
-    # subprocess.run(
-    #     ["sh", "configure-fud.sh", json_dict["stage_name"], json_dict["commit_hash"]]
-    # )
+    if verilog_files_path is None:
+        subprocess.run(
+            ["sh", "configure-fud.sh", calyx_stage_name, json_dict["commit_hash"]]
+        )
+
+    output_dir = json_dict["output_dir"]
+    output_dir_path = f"resource-estimates/{output_dir}"
+    if not os.path.exists(output_dir_path):
+        os.makedirs(output_dir_path)
 
     for size in json_dict["sizes"]:
-        input_path = f"systolic-inputs/{size}.systolic"
-        output_path = f"systolic-results/{output_dir}/{size}.json"
+        if verilog_files_path is not None:
+            input_path = f"{verilog_files_path}/{size}.sv"
+        else:
+            input_path = f"systolic-inputs/{size}.systolic"
+        output_path = f"{output_dir_path}/{size}.json"
         fud_command = [
             "fud",
             "e",
@@ -34,4 +43,13 @@ if __name__ == "__main__":
             "-o",
             output_path,
         ]
+        if verilog_files_path is not None:
+            fud_command += ["--from", "synth-verilog"]
+        else:
+            fud_command += [
+                "-s",
+                f"calyx.flags",
+                calyx_flags,
+            ]
+
         subprocess.run(fud_command)

@@ -1,0 +1,14 @@
+{
+  "commit_hash": "66c6220",
+  "stage_name": "calyx",
+  "through-verilog-flag": true,
+  "banked": true,
+  "output_dir": "mixed_calyx_sim",
+  "futil_file_path": "/scratch/cmk265/learning/calyx-resource-eval/systolic/futil-files/mix-calyx",
+  "sizes": [
+    2,
+    4,
+    8,
+    16
+  ]
+}

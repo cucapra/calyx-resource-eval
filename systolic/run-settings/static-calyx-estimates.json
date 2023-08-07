@@ -1,0 +1,10 @@
+{
+  "verilog_file_path": "synth-verilog/mix-calyx-synth-verilog",
+  "output_dir": "static-calyx-resources",
+  "sizes": [
+    2,
+    4,
+    8,
+    16
+  ]
+}
