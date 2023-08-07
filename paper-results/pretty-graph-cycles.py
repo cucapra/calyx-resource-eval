@@ -68,11 +68,11 @@ if __name__ == "__main__":
         graph_data = standardize_results(standard, graph_data)
 
     fig = plt.figure(figsize=(10, 8))
-    df = pd.DataFrame(graph_data, columns=["Setting", "Benchmark", "Cycle Count"])
+    df = pd.DataFrame(graph_data, columns=["Design Type", "Matrix Size", "Cycle Count"])
     ax = sns.barplot(
-        x="Benchmark",
+        x="Matrix Size",
         y="Cycle Count",
-        hue="Setting",
+        hue="Design Type",
         data=df,
         errorbar=None,
     )
