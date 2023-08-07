@@ -13,7 +13,7 @@ if __name__ == "__main__":
         json_dict = json.load(f)
 
     calyx_stage_name = json_dict["calyx_stage_name"]
-    calyx_flags = json_dict["calyx_flags"]
+    calyx_flags = json_dict.get("calyx_flags", None)
     commit_hash = json_dict["commit_hash"]
     verilog_files_path = json_dict.get("verilog_file_path", None)
 
@@ -40,6 +40,9 @@ if __name__ == "__main__":
             input_path,
             "--to",
             "resource-estimate",
+            "-s",
+            "synth-verilog.tcl",
+            "synth.tcl",
             "-o",
             output_path,
         ]

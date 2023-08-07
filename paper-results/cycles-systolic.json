@@ -9,7 +9,7 @@
       "Piezo flexible"
     ],
     [
-      "systolic-simulation/mixed_calyx_sim",
+      "systolic-simulation/static_calyx_sim",
       "Piezo fixed"
     ]
   ],

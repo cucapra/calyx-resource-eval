@@ -5,6 +5,8 @@
   "verilog_file_path": "synth-verilog/classic-calyx-synth-verilog",
   "output_dir": "classic-calyx-resources",
   "sizes": [
+    2,
+    4,
     8,
     16
   ]

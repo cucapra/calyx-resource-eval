@@ -1,6 +1,9 @@
 {
-  "verilog_file_path": "synth-verilog/mix-calyx-synth-verilog",
+  "commit_hash": "9877523",
+  "calyx_stage_name": "calyx",
+  "verilog_file_path": "synth-verilog/static-calyx-synth-verilog",
   "output_dir": "static-calyx-resources",
+  "synth.tcl": true,
   "sizes": [
     2,
     4,
