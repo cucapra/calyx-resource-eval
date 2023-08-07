@@ -1,15 +1,15 @@
 {
-  "cycle_jsons": [
+  "jsons": [
     [
-      "systolic-simulation/classic_calyx_sim/summary.json",
+      "systolic-resources/classic-calyx-resources/combined.json",
       "Calyx"
     ],
     [
-      "systolic-simulation/mixed_calyx_sim/summary.json",
+      "systolic-resources/mix-calyx-resources/combined.json",
       "Piezo flexible"
     ],
     [
-      "systolic-simulation/static_calyx_sim",
+      "systolic-resources/static-calyx-resources/combined.json",
       "Piezo fixed"
     ]
   ],
@@ -29,6 +29,12 @@
     [
       "16",
       "16x16"
+    ]
+  ],
+  "resources": [
+    [
+      "lut",
+      "LUT"
     ]
   ]
 }
