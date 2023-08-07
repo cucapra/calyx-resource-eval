@@ -1,0 +1,11 @@
+{
+  "commit_hash": "0dd065b",
+  "stage_name": "futil",
+  "output_dir": "classic_calyx_estimates",
+  "sizes": [
+    2,
+    4,
+    8,
+    16
+  ]
+}
