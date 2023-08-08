@@ -13,6 +13,9 @@
       "Piezo (fixed dimensions)"
     ]
   ],
+  "x": "Matrix Size",
+  "y": "Cycle Count",
+  "legend": "Design Type",
   "benchmarks": [
     [
       "2",
@@ -30,5 +33,9 @@
       "16",
       "16x16"
     ]
+  ],
+  "legend_pos": [
+    0.35,
+    1.0
   ]
 }

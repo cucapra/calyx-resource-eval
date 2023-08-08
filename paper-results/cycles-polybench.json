@@ -10,6 +10,9 @@
     ]
   ],
   "standard": "Without Static Promotion",
+  "x": "Benchmark",
+  "y": "Relative Cycle Count",
+  "legend": "Compilation Flow",
   "benchmarks": [
     [
       "2mm",
@@ -87,5 +90,9 @@
       "seidel-2d",
       "Seidel-2d"
     ]
+  ],
+  "legend_pos": [
+    1.1,
+    1.1
   ]
 }

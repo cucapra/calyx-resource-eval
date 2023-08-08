@@ -13,6 +13,8 @@
       "Piezo (fixed dimensions)"
     ]
   ],
+  "x": "Matrix Size",
+  "legend": "Design Type",
   "benchmarks": [
     [
       "2.json",
@@ -41,5 +43,9 @@
       "Register"
     ]
   ],
-  "sort": true
+  "sort": true,
+  "legend_pos": [
+    0.35,
+    1.0
+  ]
 }

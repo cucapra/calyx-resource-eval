@@ -48,6 +48,10 @@ if __name__ == "__main__":
         cycle_count_jsons = json_info["cycle_jsons"]
         benchmarks = dict(json_info["benchmarks"])
         standard = json_info.get("standard")
+        x_label = json_info["x"]
+        y_label = json_info["y"]
+        legend_title = json_info["legend"]
+        legend_pos = json_info["legend_pos"]
 
     # dictionary for the graph that we are building
     graph_data = []
@@ -68,24 +72,24 @@ if __name__ == "__main__":
         graph_data = standardize_results(standard, graph_data)
 
     fig = plt.figure(figsize=(12, 7))
-    df = pd.DataFrame(graph_data, columns=["Design Type", "Matrix Size", "Cycle Count"])
+    df = pd.DataFrame(graph_data, columns=["legend", "x", "y"])
     ax = sns.barplot(
-        x="Matrix Size",
-        y="Cycle Count",
-        hue="Design Type",
+        x="x",
+        y="y",
+        hue="legend",
         data=df,
         errorbar=None,
     )
 
-    plt.legend(title="Design Type")
-    sns.move_legend(ax, "upper right", bbox_to_anchor=(0.35, 1.0))
+    plt.legend(title=legend_title)
+    sns.move_legend(ax, "upper right", bbox_to_anchor=(legend_pos[0], legend_pos[1]))
     # for legend text
     plt.setp(ax.get_legend().get_texts(), fontsize=16)
     # for legend title
     plt.setp(ax.get_legend().get_title(), fontsize=20)
 
-    plt.xlabel("Matrix Size", fontsize=18)
-    plt.ylabel("Relative Cycle Counts", fontsize=20)
+    plt.xlabel(x_label, fontsize=18)
+    plt.ylabel(y_label, fontsize=20)
     plt.title("", fontsize=20)
     plt.tick_params(axis="both", which="major", labelsize=14)
     plt.xticks(rotation=70, fontsize=14)

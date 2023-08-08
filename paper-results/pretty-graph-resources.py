@@ -43,6 +43,10 @@ def parse_json(input):
     dic["resources"] = dict(input["resources"])
     dic["standard_version"] = input.get("standardize", None)
     dic["sort"] = input.get("sort", False)
+    dic["x"] = json_info["x"]
+    dic["y_pref"] = json_info.get("y_pref", "")
+    dic["legend"] = json_info["legend"]
+    dic["legend_pos"] = json_info["legend_pos"]
     return dic
 
 
@@ -115,24 +119,30 @@ if __name__ == "__main__":
             resource_usage_data.sort(key=hard_coded_sort)
         fig = plt.figure(figsize=(12, 7))
         df = pd.DataFrame(
-            resource_usage_data, columns=["Setting", "Benchmark Name", "Usage"]
+            resource_usage_data,
+            columns=["legend", "x", "y"],
         )
         ax = sns.barplot(
-            x="Benchmark Name",
-            y="Usage",
-            hue="Setting",
+            x="x",
+            y="y",
+            hue="legend",
             data=df,
             errorbar=None,
         )
-        plt.legend(title="Design Type")
-        sns.move_legend(ax, "upper right", bbox_to_anchor=(0.35, 1.0))
+        plt.legend(title=json_info["legend"])
+        sns.move_legend(
+            ax,
+            "upper right",
+            bbox_to_anchor=(json_info["legend_pos"][0], json_info["legend_pos"][1]),
+        )
         # for legend text
         plt.setp(ax.get_legend().get_texts(), fontsize=16)
         # for legend title
         plt.setp(ax.get_legend().get_title(), fontsize=20)
 
-        plt.xlabel("Benchmark", fontsize=18)
-        plt.ylabel(f"{resource} Usage", fontsize=20)
+        plt.xlabel(json_info["x"], fontsize=18)
+        pref = graph_info["y_pref"]
+        plt.ylabel(f"{pref}{resource} Usage", fontsize=20)
         plt.title("", fontsize=20)
         plt.tick_params(axis="both", which="major", labelsize=14)
         plt.xticks(rotation=70, fontsize=14)
