@@ -37,7 +37,7 @@ def standardize_results(benchmark_version, data):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Process args for resource estimates")
     parser.add_argument("-j", "--json", default=None)
-    parser.add_argument("-s", "--save", default=None)  # on/off flag
+    parser.add_argument("-s", "--save", default=None)
     args = parser.parse_args()
 
     # get design_list and resource_list given args:
@@ -67,7 +67,7 @@ if __name__ == "__main__":
     if standard is not None:
         graph_data = standardize_results(standard, graph_data)
 
-    fig = plt.figure(figsize=(10, 8))
+    fig = plt.figure(figsize=(12, 7))
     df = pd.DataFrame(graph_data, columns=["Design Type", "Matrix Size", "Cycle Count"])
     ax = sns.barplot(
         x="Matrix Size",
@@ -76,9 +76,20 @@ if __name__ == "__main__":
         data=df,
         errorbar=None,
     )
-    ax.set(title=f"""Cycle Counts""")
-    sns.move_legend(ax, "upper right", bbox_to_anchor=(1.1, 1.1))
-    plt.xticks(rotation=90)
+
+    plt.legend(title="Design Type")
+    sns.move_legend(ax, "upper right", bbox_to_anchor=(0.35, 1.0))
+    # for legend text
+    plt.setp(ax.get_legend().get_texts(), fontsize=16)
+    # for legend title
+    plt.setp(ax.get_legend().get_title(), fontsize=20)
+
+    plt.xlabel("Matrix Size", fontsize=18)
+    plt.ylabel("Relative Cycle Counts", fontsize=20)
+    plt.title("", fontsize=20)
+    plt.tick_params(axis="both", which="major", labelsize=14)
+    plt.xticks(rotation=70, fontsize=14)
+    plt.yticks(fontsize=14)
     if args.save is not None:
         # only save graph if specified in cmdline arguments
         if not os.path.exists("graphs"):
