@@ -137,7 +137,8 @@ if __name__ == "__main__":
         )
         if graph_info["standard_version"] is not None:
             plt.axhline(y=1, color="gray", linestyle="dashed")
-            plt.ylim([0, 1.1])
+            plt.ylim([0, 1.3])
+
         plt.legend(title=json_info["legend"])
         sns.move_legend(
             ax,
@@ -156,6 +157,9 @@ if __name__ == "__main__":
         plt.tick_params(axis="both", which="major", labelsize=14)
         plt.xticks(rotation=json_info["x_ticks"][0], fontsize=json_info["x_ticks"][1])
         plt.yticks(fontsize=20)
+        if graph_info["standard_version"] is not None:
+            # hacky
+            plt.legend([], [], frameon=False)
         if args.save:
             # only save graph if specified in cmdline arguments
             if not os.path.exists("graphs"):

@@ -87,8 +87,9 @@ if __name__ == "__main__":
 
     if standard is not None:
         plt.axhline(y=1, color="gray", linestyle="dashed")
+        # very hacky
         # ax.set_yscale("log", base=0.5)
-        # plt.ylim([0, 1.1])
+        plt.ylim([0, 1.3])
 
     plt.legend(title=legend_title)
     sns.move_legend(ax, "upper right", bbox_to_anchor=(legend_pos[0], legend_pos[1]))
@@ -102,6 +103,9 @@ if __name__ == "__main__":
     plt.tick_params(axis="both", which="major", labelsize=14)
     plt.xticks(rotation=x_ticks[0], fontsize=x_ticks[1])
     plt.yticks(fontsize=20)
+    if standard is not None:
+        # hacky
+        plt.legend([], [], frameon=False)
     if args.save is not None:
         # only save graph if specified in cmdline arguments
         if not os.path.exists("graphs"):
