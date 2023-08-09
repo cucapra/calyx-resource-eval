@@ -20,15 +20,19 @@ sns.set_theme()
 def standardize_results(benchmark_version, data):
     standardized_data = []
     # maps design -> resource usage for the benchmark version
-    raw_benchmark_data = {}
+    comparison_data = []
+    standard_dic = {}
+    standardized_data = []
     for data_item in data:
-        if benchmark_version in data_item[0]:
-            # setting design = resource usage
-            raw_benchmark_data[data_item[1]] = data_item[2]
-    for data_item in data:
-        benchmark_usage = raw_benchmark_data[data_item[1]]
+        if benchmark_version == data_item[0]:
+            # for each benchmark, map to standardized cycles counts
+            standard_dic[data_item[1]] = data_item[2]
+        else:
+            comparison_data.append(data_item)
+    for data_item in comparison_data:
+        standard_usage = standard_dic[data_item[1]]
         standardized_data.append(
-            [data_item[0], data_item[1], data_item[2] / benchmark_usage]
+            [data_item[0], data_item[1], data_item[2] / standard_usage]
         )
     return standardized_data
 
@@ -80,6 +84,11 @@ if __name__ == "__main__":
         data=df,
         errorbar=None,
     )
+
+    if standard is not None:
+        plt.axhline(y=1, color="gray", linestyle="dashed")
+        # ax.set_yscale("log", base=0.5)
+        # plt.ylim([0, 1.1])
 
     plt.legend(title=legend_title)
     sns.move_legend(ax, "upper right", bbox_to_anchor=(legend_pos[0], legend_pos[1]))

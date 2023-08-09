@@ -72,21 +72,22 @@ def get_graph_data(usage_data, benchmark_data, resource_data, graph_data):
 
 
 def standardize_results(benchmark_version, data):
-    standardized_data = {}
-    for resource, resource_usage_data in data.items():
-        # maps design -> resource usage for the benchmark version
-        raw_benchmark_data = {}
-        resource_standardized_data = []
-        for data_item in resource_usage_data:
-            if benchmark_version in data_item[0]:
-                # setting design = resource usage
-                raw_benchmark_data[data_item[1]] = data_item[2]
-        for data_item in resource_usage_data:
-            benchmark_usage = raw_benchmark_data[data_item[1]]
-            resource_standardized_data.append(
-                [data_item[0], data_item[1], data_item[2] / benchmark_usage]
-            )
-        standardized_data[resource] = resource_standardized_data
+    standardized_data = []
+    # maps design -> resource usage for the benchmark version
+    comparison_data = []
+    standard_dic = {}
+    standardized_data = []
+    for data_item in data:
+        if benchmark_version == data_item[0]:
+            # for each benchmark, map to standardized cycles counts
+            standard_dic[data_item[1]] = data_item[2]
+        else:
+            comparison_data.append(data_item)
+    for data_item in comparison_data:
+        standard_usage = standard_dic[data_item[1]]
+        standardized_data.append(
+            [data_item[0], data_item[1], data_item[2] / standard_usage]
+        )
     return standardized_data
 
 
@@ -111,7 +112,12 @@ if __name__ == "__main__":
     )
 
     if graph_info["standard_version"] is not None:
-        graph_data = standardize_results(graph_info["standard_version"], graph_data)
+        standardized_data = {}
+        for resource, resource_usage_data in graph_data.items():
+            standardized_data[resource] = standardize_results(
+                graph_info["standard_version"], resource_usage_data
+            )
+        graph_data = standardized_data
 
     for resource, resource_usage_data in graph_data.items():
         # create a separate graph for each resource used
@@ -129,6 +135,9 @@ if __name__ == "__main__":
             data=df,
             errorbar=None,
         )
+        if graph_info["standard_version"] is not None:
+            plt.axhline(y=1, color="gray", linestyle="dashed")
+            plt.ylim([0, 1.1])
         plt.legend(title=json_info["legend"])
         sns.move_legend(
             ax,
