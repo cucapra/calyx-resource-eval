@@ -117,7 +117,7 @@ if __name__ == "__main__":
         # create a separate graph for each resource used
         if graph_info["sort"]:
             resource_usage_data.sort(key=hard_coded_sort)
-        fig = plt.figure(figsize=(12, 7))
+        fig = plt.figure(figsize=(10, 7))
         df = pd.DataFrame(
             resource_usage_data,
             columns=["legend", "x", "y"],
@@ -136,17 +136,17 @@ if __name__ == "__main__":
             bbox_to_anchor=(json_info["legend_pos"][0], json_info["legend_pos"][1]),
         )
         # for legend text
-        plt.setp(ax.get_legend().get_texts(), fontsize=16)
+        plt.setp(ax.get_legend().get_texts(), fontsize=22)
         # for legend title
-        plt.setp(ax.get_legend().get_title(), fontsize=20)
+        plt.setp(ax.get_legend().get_title(), fontsize=30)
 
-        plt.xlabel(json_info["x"], fontsize=18)
+        plt.xlabel(json_info["x"], fontsize=30)
         pref = graph_info["y_pref"]
-        plt.ylabel(f"{pref}{resource} Usage", fontsize=20)
+        plt.ylabel(f"{pref}{resource} Usage", fontsize=30)
         plt.title("", fontsize=20)
         plt.tick_params(axis="both", which="major", labelsize=14)
-        plt.xticks(rotation=70, fontsize=14)
-        plt.yticks(fontsize=14)
+        plt.xticks(rotation=json_info["x_ticks"][0], fontsize=json_info["x_ticks"][1])
+        plt.yticks(fontsize=20)
         if args.save:
             # only save graph if specified in cmdline arguments
             if not os.path.exists("graphs"):

@@ -21,7 +21,6 @@ def standardize_results(benchmark_version, data):
     standardized_data = []
     # maps design -> resource usage for the benchmark version
     raw_benchmark_data = {}
-    resource_standardized_data = []
     for data_item in data:
         if benchmark_version in data_item[0]:
             # setting design = resource usage
@@ -49,6 +48,7 @@ if __name__ == "__main__":
         benchmarks = dict(json_info["benchmarks"])
         standard = json_info.get("standard")
         x_label = json_info["x"]
+        x_ticks = json_info["x_ticks"]
         y_label = json_info["y"]
         legend_title = json_info["legend"]
         legend_pos = json_info["legend_pos"]
@@ -71,7 +71,7 @@ if __name__ == "__main__":
     if standard is not None:
         graph_data = standardize_results(standard, graph_data)
 
-    fig = plt.figure(figsize=(12, 7))
+    fig = plt.figure(figsize=(10, 7))
     df = pd.DataFrame(graph_data, columns=["legend", "x", "y"])
     ax = sns.barplot(
         x="x",
@@ -84,16 +84,15 @@ if __name__ == "__main__":
     plt.legend(title=legend_title)
     sns.move_legend(ax, "upper right", bbox_to_anchor=(legend_pos[0], legend_pos[1]))
     # for legend text
-    plt.setp(ax.get_legend().get_texts(), fontsize=16)
+    plt.setp(ax.get_legend().get_texts(), fontsize=22)
     # for legend title
-    plt.setp(ax.get_legend().get_title(), fontsize=20)
-
-    plt.xlabel(x_label, fontsize=18)
-    plt.ylabel(y_label, fontsize=20)
+    plt.setp(ax.get_legend().get_title(), fontsize=30)
+    plt.xlabel(x_label, fontsize=30)
+    plt.ylabel(y_label, fontsize=30)
     plt.title("", fontsize=20)
     plt.tick_params(axis="both", which="major", labelsize=14)
-    plt.xticks(rotation=70, fontsize=14)
-    plt.yticks(fontsize=14)
+    plt.xticks(rotation=x_ticks[0], fontsize=x_ticks[1])
+    plt.yticks(fontsize=20)
     if args.save is not None:
         # only save graph if specified in cmdline arguments
         if not os.path.exists("graphs"):

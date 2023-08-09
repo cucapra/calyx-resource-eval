@@ -10,6 +10,10 @@
     ]
   ],
   "x": "Benchmark",
+  "x_ticks": [
+    70,
+    16
+  ],
   "y_pref": "Relative ",
   "legend": "Compilation Flow",
   "benchmarks": [

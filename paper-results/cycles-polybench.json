@@ -11,6 +11,10 @@
   ],
   "standard": "Without Static Promotion",
   "x": "Benchmark",
+  "x_ticks": [
+    70,
+    16
+  ],
   "y": "Relative Cycle Count",
   "legend": "Compilation Flow",
   "benchmarks": [
