@@ -48,11 +48,11 @@ if __name__ == "__main__":
         ]
         if verilog_files_path is not None:
             fud_command += ["--from", "synth-verilog"]
-        else:
+        elif calyx_flags is not None:
             fud_command += [
                 "-s",
                 f"calyx.flags",
                 calyx_flags,
             ]
-
+        print(" ".join(fud_command))
         subprocess.run(fud_command)

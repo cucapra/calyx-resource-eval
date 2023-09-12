@@ -10,7 +10,7 @@
   "f9_muxes": 0,
   "clb": 57848,
   "meet_timing": 1,
-  "worst_slack": 1.057,
+  "worst_slack": 1.32,
   "period": 7.0,
   "frequency": 142.857,
   "uram": -1,
