@@ -9,6 +9,13 @@
       "With static promotion"
     ]
   ],
+  "x": "Benchmark",
+  "x_ticks": [
+    70,
+    16
+  ],
+  "y_pref": "Relative ",
+  "legend": "Compilation Flow",
   "benchmarks": [
     [
       "benchmarks/polybench-scf/atax-med.futil",
@@ -97,5 +104,9 @@
       "Register"
     ]
   ],
-  "standardize": "Without static promotion"
+  "standardize": "Without static promotion",
+  "legend_pos": [
+    1.1,
+    1.1
+  ]
 }

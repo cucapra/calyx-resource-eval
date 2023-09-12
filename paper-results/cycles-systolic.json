@@ -6,13 +6,20 @@
     ],
     [
       "systolic-simulation/mixed_calyx_sim/summary.json",
-      "Piezo flexible"
+      "Piezo (flexible dimensions)"
     ],
     [
       "systolic-simulation/static_calyx_sim/summary.json",
-      "Piezo fixed"
+      "Piezo (fixed dimensions)"
     ]
   ],
+  "x": "Matrix Size",
+  "x_ticks": [
+    0,
+    22
+  ],
+  "y": "Cycle Count",
+  "legend": "Design Type",
   "benchmarks": [
     [
       "2",
@@ -30,5 +37,9 @@
       "16",
       "16x16"
     ]
+  ],
+  "legend_pos": [
+    0.55,
+    1.0
   ]
 }

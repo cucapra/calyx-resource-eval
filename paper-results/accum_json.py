@@ -28,9 +28,10 @@ if __name__ == "__main__":
         dirpath = os.path.join(args.path, directory)
         cur_dic = {}
         for file in os.listdir(dirpath):
-            filepath = os.path.join(dirpath, file)
-            with open(os.path.join(dirpath, file)) as f:
-                dict = json.load(f)
-                cur_dic[filepath] = dict
+            if file != "combined.json":
+                filepath = os.path.join(dirpath, file)
+                with open(os.path.join(dirpath, file)) as f:
+                    dict = json.load(f)
+                    cur_dic[file] = dict
         with open(os.path.join(dirpath, "combined.json"), "w") as outfile:
             json.dump(cur_dic, outfile)

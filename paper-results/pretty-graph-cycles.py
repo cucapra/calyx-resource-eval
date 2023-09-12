@@ -20,16 +20,19 @@ sns.set_theme()
 def standardize_results(benchmark_version, data):
     standardized_data = []
     # maps design -> resource usage for the benchmark version
-    raw_benchmark_data = {}
-    resource_standardized_data = []
+    comparison_data = []
+    standard_dic = {}
+    standardized_data = []
     for data_item in data:
-        if benchmark_version in data_item[0]:
-            # setting design = resource usage
-            raw_benchmark_data[data_item[1]] = data_item[2]
-    for data_item in data:
-        benchmark_usage = raw_benchmark_data[data_item[1]]
+        if benchmark_version == data_item[0]:
+            # for each benchmark, map to standardized cycles counts
+            standard_dic[data_item[1]] = data_item[2]
+        else:
+            comparison_data.append(data_item)
+    for data_item in comparison_data:
+        standard_usage = standard_dic[data_item[1]]
         standardized_data.append(
-            [data_item[0], data_item[1], data_item[2] / benchmark_usage]
+            [data_item[0], data_item[1], data_item[2] / standard_usage]
         )
     return standardized_data
 
@@ -37,7 +40,7 @@ def standardize_results(benchmark_version, data):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Process args for resource estimates")
     parser.add_argument("-j", "--json", default=None)
-    parser.add_argument("-s", "--save", default=None)  # on/off flag
+    parser.add_argument("-s", "--save", default=None)
     args = parser.parse_args()
 
     # get design_list and resource_list given args:
@@ -48,6 +51,11 @@ if __name__ == "__main__":
         cycle_count_jsons = json_info["cycle_jsons"]
         benchmarks = dict(json_info["benchmarks"])
         standard = json_info.get("standard")
+        x_label = json_info["x"]
+        x_ticks = json_info["x_ticks"]
+        y_label = json_info["y"]
+        legend_title = json_info["legend"]
+        legend_pos = json_info["legend_pos"]
 
     # dictionary for the graph that we are building
     graph_data = []
@@ -67,18 +75,37 @@ if __name__ == "__main__":
     if standard is not None:
         graph_data = standardize_results(standard, graph_data)
 
-    fig = plt.figure(figsize=(10, 8))
-    df = pd.DataFrame(graph_data, columns=["Design Type", "Matrix Size", "Cycle Count"])
+    fig = plt.figure(figsize=(10, 7))
+    df = pd.DataFrame(graph_data, columns=["legend", "x", "y"])
     ax = sns.barplot(
-        x="Matrix Size",
-        y="Cycle Count",
-        hue="Design Type",
+        x="x",
+        y="y",
+        hue="legend",
         data=df,
         errorbar=None,
     )
-    ax.set(title=f"""Cycle Counts""")
-    sns.move_legend(ax, "upper right", bbox_to_anchor=(1.1, 1.1))
-    plt.xticks(rotation=90)
+
+    if standard is not None:
+        plt.axhline(y=1, color="gray", linestyle="dashed")
+        # very hacky
+        # ax.set_yscale("log", base=0.5)
+        plt.ylim([0, 1.3])
+
+    plt.legend(title=legend_title)
+    sns.move_legend(ax, "upper right", bbox_to_anchor=(legend_pos[0], legend_pos[1]))
+    # for legend text
+    plt.setp(ax.get_legend().get_texts(), fontsize=22)
+    # for legend title
+    plt.setp(ax.get_legend().get_title(), fontsize=30)
+    plt.xlabel(x_label, fontsize=30)
+    plt.ylabel(y_label, fontsize=30)
+    plt.title("", fontsize=20)
+    plt.tick_params(axis="both", which="major", labelsize=14)
+    plt.xticks(rotation=x_ticks[0], fontsize=x_ticks[1])
+    plt.yticks(fontsize=20)
+    if standard is not None:
+        # hacky
+        plt.legend([], [], frameon=False)
     if args.save is not None:
         # only save graph if specified in cmdline arguments
         if not os.path.exists("graphs"):

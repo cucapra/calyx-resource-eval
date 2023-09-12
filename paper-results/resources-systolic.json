@@ -6,28 +6,34 @@
     ],
     [
       "systolic-resources/mix-calyx-resources/combined.json",
-      "Piezo flexible"
+      "Piezo (flexible dimensions)"
     ],
     [
       "systolic-resources/static-calyx-resources/combined.json",
-      "Piezo fixed"
+      "Piezo (fixed dimensions)"
     ]
   ],
+  "x": "Matrix Size",
+  "x_ticks": [
+    0,
+    22
+  ],
+  "legend": "Design Type",
   "benchmarks": [
     [
-      "2",
+      "2.json",
       "2x2"
     ],
     [
-      "4",
+      "4.json",
       "4x4"
     ],
     [
-      "8",
+      "8.json",
       "8x8"
     ],
     [
-      "16",
+      "16.json",
       "16x16"
     ]
   ],
@@ -35,6 +41,15 @@
     [
       "lut",
       "LUT"
+    ],
+    [
+      "registers",
+      "Register"
     ]
+  ],
+  "sort": true,
+  "legend_pos": [
+    0.55,
+    1.0
   ]
 }

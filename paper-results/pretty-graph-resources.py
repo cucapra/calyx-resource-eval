@@ -17,6 +17,18 @@ from pathlib import Path
 sns.set_theme()
 
 
+def hard_coded_sort(input):
+    base = 0
+    if input[0] == "Calyx":
+        base = -100
+    if input[0] == "Piezo (flexible dimensions)":
+        base = 0
+    if input[0] == "Piezo (fixed dimensions)":
+        base = 100
+    handicap = int(input[1].split("x")[0])
+    return base + handicap
+
+
 def parse_json(input):
     """
     Parses json input and returns a dictionary
@@ -30,6 +42,11 @@ def parse_json(input):
     dic["benchmarks"] = dict(input["benchmarks"])
     dic["resources"] = dict(input["resources"])
     dic["standard_version"] = input.get("standardize", None)
+    dic["sort"] = input.get("sort", False)
+    dic["x"] = json_info["x"]
+    dic["y_pref"] = json_info.get("y_pref", "")
+    dic["legend"] = json_info["legend"]
+    dic["legend_pos"] = json_info["legend_pos"]
     return dic
 
 
@@ -55,28 +72,29 @@ def get_graph_data(usage_data, benchmark_data, resource_data, graph_data):
 
 
 def standardize_results(benchmark_version, data):
-    standardized_data = {}
-    for resource, resource_usage_data in data.items():
-        # maps design -> resource usage for the benchmark version
-        raw_benchmark_data = {}
-        resource_standardized_data = []
-        for data_item in resource_usage_data:
-            if benchmark_version in data_item[0]:
-                # setting design = resource usage
-                raw_benchmark_data[data_item[1]] = data_item[2]
-        for data_item in resource_usage_data:
-            benchmark_usage = raw_benchmark_data[data_item[1]]
-            resource_standardized_data.append(
-                [data_item[0], data_item[1], data_item[2] / benchmark_usage]
-            )
-        standardized_data[resource] = resource_standardized_data
+    standardized_data = []
+    # maps design -> resource usage for the benchmark version
+    comparison_data = []
+    standard_dic = {}
+    standardized_data = []
+    for data_item in data:
+        if benchmark_version == data_item[0]:
+            # for each benchmark, map to standardized cycles counts
+            standard_dic[data_item[1]] = data_item[2]
+        else:
+            comparison_data.append(data_item)
+    for data_item in comparison_data:
+        standard_usage = standard_dic[data_item[1]]
+        standardized_data.append(
+            [data_item[0], data_item[1], data_item[2] / standard_usage]
+        )
     return standardized_data
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Process args for resource estimates")
     parser.add_argument("-j", "--json", default="graph-inputs/full-graph-input.json")
-    parser.add_argument("-s", "--save", action="store_true")  # on/off flag
+    parser.add_argument("-s", "--save", default=None)
     args = parser.parse_args()
 
     # get design_list and resource_list given args:
@@ -94,31 +112,61 @@ if __name__ == "__main__":
     )
 
     if graph_info["standard_version"] is not None:
-        graph_data = standardize_results(graph_info["standard_version"], graph_data)
+        standardized_data = {}
+        for resource, resource_usage_data in graph_data.items():
+            standardized_data[resource] = standardize_results(
+                graph_info["standard_version"], resource_usage_data
+            )
+        graph_data = standardized_data
 
     for resource, resource_usage_data in graph_data.items():
         # create a separate graph for each resource used
-        fig = plt.figure(figsize=(10, 8))
+        if graph_info["sort"]:
+            resource_usage_data.sort(key=hard_coded_sort)
+        fig = plt.figure(figsize=(10, 7))
         df = pd.DataFrame(
-            resource_usage_data, columns=["Setting", "Benchmark Name", "Usage"]
+            resource_usage_data,
+            columns=["legend", "x", "y"],
         )
         ax = sns.barplot(
-            x="Benchmark Name",
-            y="Usage",
-            hue="Setting",
+            x="x",
+            y="y",
+            hue="legend",
             data=df,
             errorbar=None,
         )
-        ax.set(title=f"""{resource} Usage""")
-        sns.move_legend(ax, "upper right", bbox_to_anchor=(1.1, 1.1))
-        plt.xticks(rotation=90)
+        if graph_info["standard_version"] is not None:
+            plt.axhline(y=1, color="gray", linestyle="dashed")
+            plt.ylim([0, 1.3])
+
+        plt.legend(title=json_info["legend"])
+        sns.move_legend(
+            ax,
+            "upper right",
+            bbox_to_anchor=(json_info["legend_pos"][0], json_info["legend_pos"][1]),
+        )
+        # for legend text
+        plt.setp(ax.get_legend().get_texts(), fontsize=22)
+        # for legend title
+        plt.setp(ax.get_legend().get_title(), fontsize=30)
+
+        plt.xlabel(json_info["x"], fontsize=30)
+        pref = graph_info["y_pref"]
+        plt.ylabel(f"{pref}{resource} Usage", fontsize=30)
+        plt.title("", fontsize=20)
+        plt.tick_params(axis="both", which="major", labelsize=14)
+        plt.xticks(rotation=json_info["x_ticks"][0], fontsize=json_info["x_ticks"][1])
+        plt.yticks(fontsize=20)
+        if graph_info["standard_version"] is not None:
+            # hacky
+            plt.legend([], [], frameon=False)
         if args.save:
             # only save graph if specified in cmdline arguments
             if not os.path.exists("graphs"):
                 os.makedirs("graphs")
                 # can save figure if we want
             fig.savefig(
-                f"""graphs/{resource}-usage-{args.json}.png""",
+                f"""graphs/{args.save}-{resource}.png""",
                 bbox_inches="tight",
             )
         plt.show()
