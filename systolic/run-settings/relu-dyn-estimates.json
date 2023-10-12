@@ -9,8 +9,8 @@
     ]
   ],
   "banked": true,
-  "input_dir": "mmult-inputs/static",
-  "output_dir": "resources/mmult-static",
+  "input_dir": "relu-inputs/dynamic",
+  "output_dir": "resources/relu-dynamic",
   "sizes": [
     2,
     4,

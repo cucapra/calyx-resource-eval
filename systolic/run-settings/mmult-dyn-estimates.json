@@ -1,15 +1,16 @@
 {
   "calyx_flags": "-d well-formed",
-  "target": "resource-estimates",
+  "target": "resource-estimate",
   "fud_flags": [
     [
-      "--through",
-      "icarus-verilog"
+      "-s",
+      "synth-verilog.tmpdir",
+      "/scratch/cmk265/learning/my-tmp"
     ]
   ],
   "banked": true,
   "input_dir": "mmult-inputs/dynamic",
-  "output_dir": "simulation/mmult-dyn-sim",
+  "output_dir": "resources/mmult-dyn",
   "sizes": [
     2,
     4,
