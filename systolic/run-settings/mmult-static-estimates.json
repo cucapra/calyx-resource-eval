@@ -1,0 +1,13 @@
+{
+  "calyx_stage_name": "calyx",
+  "calyx_flags": "-d well-formed",
+  "output_dir": "mmult-static-estimates",
+  "input_path": "mmult-inputs/static",
+  "banked": true,
+  "sizes": [
+    2,
+    4,
+    8,
+    16
+  ]
+}

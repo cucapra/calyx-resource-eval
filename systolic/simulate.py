@@ -12,7 +12,6 @@ if __name__ == "__main__":
     with open(args.json) as f:
         json_dict = json.load(f)
 
-    data_suffix = "banked" if json_dict["banked"] else "unbanked"
     calyx_stage_name = json_dict["stage_name"]  # either calyx or futil
     calyx_flags = json_dict.get("calyx_flags", "")
     output_dir = json_dict["output_dir"]
@@ -20,17 +19,15 @@ if __name__ == "__main__":
     if not os.path.exists(output_path):
         os.makedirs(output_path)
 
-    subprocess.run(
-        ["sh", "configure-fud.sh", calyx_stage_name, json_dict["commit_hash"]]
-    )
-
+    # Cloning Calyx & setting up fud is too much work
+    # subprocess.run(
+    #     ["sh", "configure-fud.sh", calyx_stage_name, json_dict["commit_hash"]]
+    # )
     for size in json_dict["sizes"]:
+        target = json_dict["target"]
+        data_suffix = "banked" if json_dict["banked"] else "unbanked"
         data_path = f"systolic-data/{size}-{data_suffix}.json"
-        if "futil_file_path" in json_dict:
-            futil_file_path = json_dict["futil_file_path"]
-            input_path = f"{futil_file_path}/{size}.futil"
-        else:
-            input_path = f"systolic-inputs/{size}.systolic"
+        input_path = f"{json_dict['input_dir']}/{size}.systolic"
         output_path = f"systolic-results/{output_dir}/{size}.json"
         fud_command = [
             "fud",
@@ -38,7 +35,7 @@ if __name__ == "__main__":
             "-q",
             input_path,
             "--to",
-            "dat",
+            target,
             "-s",
             "verilog.data",
             data_path,
@@ -48,9 +45,7 @@ if __name__ == "__main__":
             "-o",
             output_path,
         ]
-        if json_dict["through-verilog-flag"]:
+        for fud_flag in json_dict["fud_flags"]:
             fud_command += ["--through", "verilog"]
-        if "futil_file_path" in json_dict:
-            fud_command += ["--from", "calyx"]
 
         subprocess.run(fud_command)

@@ -1,0 +1,19 @@
+{
+  "stage_name": "calyx",
+  "calyx_flags": "-d well-formed",
+  "target": "dat",
+  "fud_flags": [
+    [
+      "--through",
+      "icarus-verilog"
+    ]
+  ],
+  "banked": true,
+  "output_dir": "mmult-dyn-sim",
+  "sizes": [
+    2,
+    4,
+    8,
+    16
+  ]
+}

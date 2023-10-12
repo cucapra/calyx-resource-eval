@@ -1,0 +1,13 @@
+{
+  "calyx_stage_name": "calyx",
+  "calyx_flags": "-d well-formed",
+  "output_dir": "mmult-dyn-estimates",
+  "input_dir": "mmult-inputs/dynamic",
+  "banked": true,
+  "sizes": [
+    2,
+    4,
+    8,
+    16
+  ]
+}
