@@ -1,9 +1,15 @@
 {
-  "stage_name": "calyx",
   "calyx_flags": "-d well-formed",
-  "through-verilog-flag": true,
+  "target": "dat",
+  "fud_flags": [
+    [
+      "--through",
+      "icarus-verilog"
+    ]
+  ],
   "banked": true,
-  "output_dir": "static_calyx_sim",
+  "input_dir": "mmult-inputs/static",
+  "output_dir": "simulation/mmult-static-sim",
   "sizes": [
     2,
     4,

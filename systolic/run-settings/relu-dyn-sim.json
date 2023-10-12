@@ -1,6 +1,6 @@
 {
   "calyx_flags": "-d well-formed",
-  "target": "resource-estimates",
+  "target": "dat",
   "fud_flags": [
     [
       "--through",
@@ -8,8 +8,8 @@
     ]
   ],
   "banked": true,
-  "input_dir": "mmult-inputs/dynamic",
-  "output_dir": "simulation/mmult-dyn-sim",
+  "input_dir": "relu-inputs/dynamic",
+  "output_dir": "simulation/relu-dyn-sim",
   "sizes": [
     2,
     4,

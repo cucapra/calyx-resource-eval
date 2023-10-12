@@ -1,9 +1,15 @@
 {
-  "calyx_stage_name": "calyx",
   "calyx_flags": "-d well-formed",
-  "output_dir": "mmult-static-estimates",
-  "input_path": "mmult-inputs/static",
+  "target": "dat",
+  "fud_flags": [
+    [
+      "--through",
+      "icarus-verilog"
+    ]
+  ],
   "banked": true,
+  "input_dir": "mmult-inputs/dynamic",
+  "output_dir": "mmult-dyn-sim",
   "sizes": [
     2,
     4,

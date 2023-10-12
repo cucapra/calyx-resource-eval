@@ -1,5 +1,4 @@
 {
-  "stage_name": "calyx",
   "calyx_flags": "-d well-formed",
   "target": "dat",
   "fud_flags": [
@@ -9,7 +8,8 @@
     ]
   ],
   "banked": true,
-  "output_dir": "mmult-dyn-sim",
+  "input_dir": "mmult-inputs/dynamic",
+  "output_dir": "simulation/mmult-dyn-sim",
   "sizes": [
     2,
     4,
