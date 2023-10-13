@@ -3,7 +3,6 @@ Command line argument: python3 path/to/graph.py resource_name design_name
 """
 
 import os
-import sys
 import json
 
 import matplotlib.pyplot as plt
@@ -12,12 +11,13 @@ import seaborn as sns
 import pandas as pd
 import argparse
 
-from pathlib import Path
-
 sns.set_theme()
 
 
 def hard_coded_sort(input):
+    """
+    Very hacky sorting for the graph
+    """
     base = 0
     if input[0] == "Calyx":
         base = -100
@@ -72,6 +72,9 @@ def get_graph_data(usage_data, benchmark_data, resource_data, graph_data):
 
 
 def standardize_results(benchmark_version, data):
+    """
+    Standardizes the data
+    """
     standardized_data = []
     # maps design -> resource usage for the benchmark version
     comparison_data = []

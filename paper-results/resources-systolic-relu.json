@@ -1,0 +1,51 @@
+{
+  "jsons": [
+    [
+      "systolic-resources/relu-dynamic-combined.json",
+      "Piezo (dynamic post op)"
+    ],
+    [
+      "systolic-resources/relu-static-combined.json",
+      "Piezo (static post op)"
+    ]
+  ],
+  "x": "Matrix Size",
+  "x_ticks": [
+    0,
+    22
+  ],
+  "legend": "Design Type",
+  "benchmarks": [
+    [
+      "2.json",
+      "2x2"
+    ],
+    [
+      "4.json",
+      "4x4"
+    ],
+    [
+      "8.json",
+      "8x8"
+    ],
+    [
+      "16.json",
+      "16x16"
+    ]
+  ],
+  "resources": [
+    [
+      "lut",
+      "LUT"
+    ],
+    [
+      "registers",
+      "Register"
+    ]
+  ],
+  "sort": true,
+  "legend_pos": [
+    0.55,
+    1.0
+  ]
+}

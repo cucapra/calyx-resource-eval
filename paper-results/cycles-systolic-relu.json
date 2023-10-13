@@ -1,0 +1,41 @@
+{
+  "cycle_jsons": [
+    [
+      "systolic-simulation/correct-relu-dyn-sim-combined.json",
+      "Piezo (dynamic post op)"
+    ],
+    [
+      "systolic-simulation/correct-relu-static-sim-combined.json",
+      "Piezo (static post op)"
+    ]
+  ],
+  "x": "Matrix Size",
+  "x_ticks": [
+    0,
+    22
+  ],
+  "y": "Cycle Count",
+  "legend": "Design Type",
+  "benchmarks": [
+    [
+      "2.json",
+      "2x2"
+    ],
+    [
+      "4.json",
+      "4x4"
+    ],
+    [
+      "8.json",
+      "8x8"
+    ],
+    [
+      "16.json",
+      "16x16"
+    ]
+  ],
+  "legend_pos": [
+    0.55,
+    1.0
+  ]
+}

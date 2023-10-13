@@ -1,15 +1,11 @@
 {
   "cycle_jsons": [
     [
-      "systolic-simulation/classic_calyx_sim/summary.json",
-      "Calyx"
-    ],
-    [
-      "systolic-simulation/mixed_calyx_sim/summary.json",
+      "systolic-simulation/correct-mmult-dyn-sim-combined.json",
       "Piezo (flexible dimensions)"
     ],
     [
-      "systolic-simulation/static_calyx_sim/summary.json",
+      "systolic-simulation/correct-mmult-static-sim-combined.json",
       "Piezo (fixed dimensions)"
     ]
   ],
@@ -22,19 +18,19 @@
   "legend": "Design Type",
   "benchmarks": [
     [
-      "2",
+      "2.json",
       "2x2"
     ],
     [
-      "4",
+      "4.json",
       "4x4"
     ],
     [
-      "8",
+      "8.json",
       "8x8"
     ],
     [
-      "16",
+      "16.json",
       "16x16"
     ]
   ],

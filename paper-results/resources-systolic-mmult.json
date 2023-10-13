@@ -1,15 +1,11 @@
 {
   "jsons": [
     [
-      "systolic-resources/classic-calyx-resources/combined.json",
-      "Calyx"
-    ],
-    [
-      "systolic-resources/mix-calyx-resources/combined.json",
+      "systolic-resources/mmult-dyn-combined.json",
       "Piezo (flexible dimensions)"
     ],
     [
-      "systolic-resources/static-calyx-resources/combined.json",
+      "systolic-resources/mmult-static-combined.json",
       "Piezo (fixed dimensions)"
     ]
   ],
