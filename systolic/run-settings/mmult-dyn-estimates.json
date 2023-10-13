@@ -5,16 +5,19 @@
     [
       "-s",
       "synth-verilog.tmpdir",
-      "/scratch/cmk265/learning/my-tmp"
+      "/scratch/cmk265/learning/my-tmp",
+      "-s",
+      "synth-verilog.tcl",
+      "synth.tcl"
     ]
   ],
   "banked": true,
   "input_dir": "mmult-inputs/dynamic",
   "output_dir": "resources/mmult-dyn",
   "sizes": [
-    2,
-    4,
+    16,
     8,
-    16
+    4,
+    2
   ]
 }
