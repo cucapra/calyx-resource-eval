@@ -21,8 +21,8 @@
     "seidel-2d"
   ],
   "futil_files_suffix": [],
-  "data": [
-    "med-calyx-mix-results.json",
-    "med-calyx-dyn-results.json"
+  "data_files": [
+    "med-calyx-mix-results",
+    "med-calyx-dyn-results"
   ]
 }
