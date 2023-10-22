@@ -1,22 +1,30 @@
 {
   "cycle_jsons": [
     [
-      "scf-polybench-cycle-counts/med-dyn-cycles.json",
-      "Without Static Promotion"
+      "../polybench-affine/cycle-counts/med-threshold-0.json",
+      "Threshold = 0"
     ],
     [
-      "scf-polybench-cycle-counts/med-mix-cycles.json",
-      "With Static Promotion"
+      "../polybench-affine/cycle-counts/med-threshold-1.json",
+      "Threshold = 1"
+    ],
+    [
+      "../polybench-affine/cycle-counts/med-threshold-4.json",
+      "Threshold = 4"
+    ],
+    [
+      "../polybench-affine/cycle-counts/med-threshold-inf.json",
+      "Threshold = infinity (no static promotion)"
     ]
   ],
-  "standard": "Without Static Promotion",
+  "standard": "Threshold = infinity (no static promotion)",
   "x": "Benchmark",
   "x_ticks": [
     70,
     16
   ],
   "y": "Relative Cycle Count",
-  "legend": "Compilation Flow",
+  "legend": "Promotion Threshold",
   "benchmarks": [
     [
       "2mm",

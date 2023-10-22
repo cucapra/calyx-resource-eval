@@ -94,18 +94,18 @@ if __name__ == "__main__":
     plt.legend(title=legend_title)
     sns.move_legend(ax, "upper right", bbox_to_anchor=(legend_pos[0], legend_pos[1]))
     # for legend text
-    plt.setp(ax.get_legend().get_texts(), fontsize=22)
+    plt.setp(ax.get_legend().get_texts(), fontsize=20)
     # for legend title
-    plt.setp(ax.get_legend().get_title(), fontsize=30)
+    plt.setp(ax.get_legend().get_title(), fontsize=26)
     plt.xlabel(x_label, fontsize=30)
     plt.ylabel(y_label, fontsize=30)
     plt.title("", fontsize=20)
     plt.tick_params(axis="both", which="major", labelsize=14)
     plt.xticks(rotation=x_ticks[0], fontsize=x_ticks[1])
     plt.yticks(fontsize=20)
-    if standard is not None:
-        # hacky
-        plt.legend([], [], frameon=False)
+    # if standard is not None:
+    #     # hacky way to get rid of legend
+    #     plt.legend([], [], frameon=False)
     if args.save is not None:
         # only save graph if specified in cmdline arguments
         if not os.path.exists("graphs"):

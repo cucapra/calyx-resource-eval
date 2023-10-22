@@ -1,12 +1,20 @@
 {
   "jsons": [
     [
-      "2023-08-05@23:09:52/polybench_scf_dynamic.json",
-      "Without static promotion"
+      "threshold-0/polybench_scf_threshold_0.json",
+      "Threshold = 0"
     ],
     [
-      "2023-08-05@23:10:52/polybench_scf_promote.json",
-      "With static promotion"
+      "threshold-1/polybench_scf_threshold_1.json",
+      "Threshold = 1"
+    ],
+    [
+      "threshold-4/polybench_scf_threshold_4.json",
+      "Threshold = 4"
+    ],
+    [
+      "threshold-inf/polybench_scf_threshold_inf.json",
+      "Threshold = infinity (no static promotion)"
     ]
   ],
   "x": "Benchmark",
@@ -15,7 +23,7 @@
     16
   ],
   "y_pref": "Relative ",
-  "legend": "Compilation Flow",
+  "legend": "Promotion Threshold",
   "benchmarks": [
     [
       "benchmarks/polybench-scf/atax-med.futil",
@@ -104,7 +112,7 @@
       "Register"
     ]
   ],
-  "standardize": "Without static promotion",
+  "standardize": "Threshold = infinity (no static promotion)",
   "legend_pos": [
     1.1,
     1.1
