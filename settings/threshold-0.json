@@ -1,0 +1,30 @@
+{
+  "universal_configs": {
+    "stage_dynamic_config": [
+      [
+        "synth-verilog.tcl",
+        "synth-files/synth.tcl"
+      ],
+      [
+        "synth-verilog.constraints",
+        "synth-files/device.xdc"
+      ],
+      [
+        "calyx.flags",
+        "-x static-promotion:threshold=0"
+      ]
+    ]
+  },
+  "inputs": [
+    {
+      "name": "polybench_scf_threshold_0",
+      "paths": [
+        "benchmarks/polybench-scf/*.futil"
+      ],
+      "config": {
+        "source": "calyx"
+      }
+    }
+  ],
+  "results_folder": "paper-results/threshold-0"
+}

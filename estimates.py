@@ -172,12 +172,7 @@ def main():
     cfg.registry = Registry(cfg)
     register_stages(cfg.registry)
     register_external_stages(cfg, cfg.registry)
-    # make results_folder, remove it and make new one if it already exists
-    results_folder = "debug-results/" + get_moment() + ""
-    if not args.debug:
-        if os.path.exists(results_folder):
-            shutil.rmtree(results_folder)
-        os.makedirs(results_folder)
+
     threads = []
 
     # default json file to read from is settings.json, but if arg.json is passed,
@@ -189,6 +184,14 @@ def main():
     with open(json_file) as f:
         json_dict = json.load(f)
         # save settings json so we know what we ran
+        results_folder = "debug-results/" + get_moment() + ""
+        if json_dict.get("results_folder") is not None:
+            results_folder = json_dict["results_folder"]
+        if not args.debug:
+            # make results_folder, remove it and make new one if it already exists
+            if os.path.exists(results_folder):
+                shutil.rmtree(results_folder)
+            os.makedirs(results_folder)
         if not args.debug:
             dump_json(json_dict, f"""{results_folder}/settings_ran.json""")
         universal_configs = json_dict.get("universal_configs", {})
