@@ -11,13 +11,13 @@
       ],
       [
         "calyx.flags",
-        "-d static-promotion"
+        "-x static-promotion:stop_loop"
       ]
     ]
   },
   "inputs": [
     {
-      "name": "polybench_scf_dynamic",
+      "name": "polybench_scf_no_loop",
       "paths": [
         "benchmarks/polybench-scf/*.futil"
       ],
@@ -25,5 +25,6 @@
         "source": "calyx"
       }
     }
-  ]
+  ],
+  "results_folder": "paper-results/threshold-no-loop"
 }
