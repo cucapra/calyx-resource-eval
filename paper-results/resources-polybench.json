@@ -1,16 +1,20 @@
 {
   "jsons": [
     [
-      "threshold-0/polybench_scf_threshold_0.json",
-      "Threshold = 0"
-    ],
-    [
       "threshold-1/polybench_scf_threshold_1.json",
       "Threshold = 1"
     ],
     [
       "threshold-4/polybench_scf_threshold_4.json",
       "Threshold = 4"
+    ],
+    [
+      "threshold-no-loop/polybench_scf_no_loop.json",
+      "Threshold = 1, no loop promotion"
+    ],
+    [
+      "threshold-no-loop-4/polybench_scf_no_loop_thresh_4.json",
+      "Threshold = 4, no loop promotion"
     ],
     [
       "threshold-inf/polybench_scf_threshold_inf.json",
@@ -23,7 +27,7 @@
     16
   ],
   "y_pref": "Relative ",
-  "legend": "Promotion Threshold",
+  "legend": "Promotion Heuristic",
   "benchmarks": [
     [
       "benchmarks/polybench-scf/atax-med.futil",
@@ -114,7 +118,11 @@
   ],
   "standardize": "Threshold = infinity (no static promotion)",
   "legend_pos": [
-    1.1,
-    1.1
+    1.25,
+    1.15
+  ],
+  "legend_font_size": [
+    22,
+    16
   ]
 }

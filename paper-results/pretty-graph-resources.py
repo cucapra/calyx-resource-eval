@@ -149,9 +149,9 @@ if __name__ == "__main__":
             bbox_to_anchor=(json_info["legend_pos"][0], json_info["legend_pos"][1]),
         )
         # for legend text
-        plt.setp(ax.get_legend().get_texts(), fontsize=22)
+        plt.setp(ax.get_legend().get_texts(), fontsize=json_info["legend_font_size"][1])
         # for legend title
-        plt.setp(ax.get_legend().get_title(), fontsize=30)
+        plt.setp(ax.get_legend().get_title(), fontsize=json_info["legend_font_size"][0])
 
         plt.xlabel(json_info["x"], fontsize=30)
         pref = graph_info["y_pref"]
@@ -160,9 +160,9 @@ if __name__ == "__main__":
         plt.tick_params(axis="both", which="major", labelsize=14)
         plt.xticks(rotation=json_info["x_ticks"][0], fontsize=json_info["x_ticks"][1])
         plt.yticks(fontsize=20)
-        if graph_info["standard_version"] is not None:
-            # hacky
-            plt.legend([], [], frameon=False)
+        # if graph_info["standard_version"] is not None:
+        #     # hacky way to get rid of legend
+        #     plt.legend([], [], frameon=False)
         if args.save:
             # only save graph if specified in cmdline arguments
             if not os.path.exists("graphs"):

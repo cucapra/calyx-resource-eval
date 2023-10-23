@@ -47,5 +47,9 @@
   "legend_pos": [
     0.55,
     1.0
+  ],
+  "legend_font_size": [
+    30,
+    22
   ]
 }

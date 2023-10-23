@@ -1,16 +1,20 @@
 {
   "cycle_jsons": [
     [
-      "../polybench-affine/cycle-counts/med-threshold-0.json",
-      "Threshold = 0"
-    ],
-    [
       "../polybench-affine/cycle-counts/med-threshold-1.json",
       "Threshold = 1"
     ],
     [
       "../polybench-affine/cycle-counts/med-threshold-4.json",
       "Threshold = 4"
+    ],
+    [
+      "../polybench-affine/cycle-counts/med-threshold-no-loop.json",
+      "Threshold = 1, no loop promotion"
+    ],
+    [
+      "../polybench-affine/cycle-counts/med-threshold-no-loop-4.json",
+      "Threshold = 4, no loop promotion"
     ],
     [
       "../polybench-affine/cycle-counts/med-threshold-inf.json",

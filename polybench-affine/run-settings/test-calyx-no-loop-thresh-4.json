@@ -30,5 +30,5 @@
   "calyx_results_file": "med-calyx-no-loop-thresh-4results.json",
   "calyx_flags": "-x static-promotion:stop_loop -x static-promotion:threshold=4",
   "check_results_file": "med-threshold-no-loop-thresh-4-results.txt",
-  "cycle_count_results": "med-threshold-no-loop-thresh-4.json"
+  "cycle_count_results": "med-threshold-no-loop-4.json"
 }
