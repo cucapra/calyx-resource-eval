@@ -47,6 +47,7 @@ def parse_json(input):
     dic["y_pref"] = json_info.get("y_pref", "")
     dic["legend"] = json_info["legend"]
     dic["legend_pos"] = json_info["legend_pos"]
+    dic["hide_legend"] = json_info.get("hide_legend", False)
     return dic
 
 
@@ -160,9 +161,9 @@ if __name__ == "__main__":
         plt.tick_params(axis="both", which="major", labelsize=14)
         plt.xticks(rotation=json_info["x_ticks"][0], fontsize=json_info["x_ticks"][1])
         plt.yticks(fontsize=20)
-        # if graph_info["standard_version"] is not None:
-        #     # hacky way to get rid of legend
-        #     plt.legend([], [], frameon=False)
+        if graph_info["hide_legend"]:
+            # hacky way to get rid of legend
+            plt.legend([], [], frameon=False)
         if args.save:
             # only save graph if specified in cmdline arguments
             if not os.path.exists("graphs"):

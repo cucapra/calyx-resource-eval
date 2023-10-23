@@ -103,9 +103,9 @@ if __name__ == "__main__":
     plt.tick_params(axis="both", which="major", labelsize=14)
     plt.xticks(rotation=x_ticks[0], fontsize=x_ticks[1])
     plt.yticks(fontsize=20)
-    # if standard is not None:
-    #     # hacky way to get rid of legend
-    #     plt.legend([], [], frameon=False)
+    if json_info.get("hide_legend", False):
+        # hacky way to get rid of legend
+        plt.legend([], [], frameon=False)
     if args.save is not None:
         # only save graph if specified in cmdline arguments
         if not os.path.exists("graphs"):
