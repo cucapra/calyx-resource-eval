@@ -1,15 +1,15 @@
 {
   "cycle_jsons": [
     [
-      "../polybench-affine/cycle-counts/med-threshold-1.json",
-      "With Compaction"
+      "../polybench-affine/cycle-counts/med-threshold-no-share.json",
+      "Compaction Enabled (cell sharing disabled)"
     ],
     [
       "../polybench-affine/cycle-counts/med-threshold-no-compaction.json",
-      "Without Compaction"
+      "Compaction Disabled (cell sharing enabled)"
     ]
   ],
-  "standard": "Without Compaction",
+  "standard": "Compaction Disabled (cell sharing enabled)",
   "x": "Benchmark",
   "x_ticks": [
     70,

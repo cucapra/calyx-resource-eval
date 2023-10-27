@@ -1,7 +1,7 @@
 {
   "jsons": [
     [
-      "threshold-1/polybench_scf_threshold_1.json",
+      "no_share/polybench_scf_no_share.json",
       "Compaction"
     ],
     [
