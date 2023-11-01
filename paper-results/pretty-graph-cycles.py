@@ -89,7 +89,7 @@ if __name__ == "__main__":
         plt.axhline(y=1, color="gray", linestyle="dashed")
         # very hacky
         # ax.set_yscale("log", base=0.5)
-        plt.ylim([0, 2.3])
+        # plt.ylim([0, 2.3])
 
     plt.legend(title=legend_title)
     sns.move_legend(ax, "upper right", bbox_to_anchor=(legend_pos[0], legend_pos[1]))
