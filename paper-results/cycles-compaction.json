@@ -9,6 +9,10 @@
       "Piezo, Cell Sharing (compaction disabled)"
     ],
     [
+      "../polybench-affine/cycle-counts/med-threshold-1.json",
+      "Piezo, Both Optimizations"
+    ],
+    [
       "../polybench-affine/cycle-counts/med-threshold-inf.json",
       "Calyx (no promotion)"
     ]

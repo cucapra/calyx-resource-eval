@@ -2,11 +2,15 @@
   "jsons": [
     [
       "no_share/polybench_scf_no_share.json",
-      "Compaction (cell sharing disabled)"
+      "Piezo, Compaction (cell sharing disabled)"
     ],
     [
       "no_compaction/polybench_scf_no_compaction.json",
-      "Cell Sharing (compaction disabled)"
+      "Piezo, Cell Sharing (compaction disabled)"
+    ],
+    [
+      "threshold-1/polybench_scf_threshold_1.json",
+      "Piezo, Both Optimizations Enabled"
     ],
     [
       "threshold-inf/polybench_scf_threshold_inf.json",
