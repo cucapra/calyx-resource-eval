@@ -2,21 +2,25 @@
   "cycle_jsons": [
     [
       "../polybench-affine/cycle-counts/med-threshold-no-share.json",
-      "Compaction Enabled (cell sharing disabled)"
+      "Piezo, Compaction (cell sharing disabled)"
     ],
     [
       "../polybench-affine/cycle-counts/med-threshold-no-compaction.json",
-      "Compaction Disabled (cell sharing enabled)"
+      "Piezo, Cell Sharing (compaction disabled)"
+    ],
+    [
+      "../polybench-affine/cycle-counts/med-threshold-inf.json",
+      "Calyx (no promotion)"
     ]
   ],
-  "standard": "Compaction Disabled (cell sharing enabled)",
+  "standard": "Calyx (no promotion)",
   "x": "Benchmark",
   "x_ticks": [
     70,
     16
   ],
   "y": "Relative Cycle Count",
-  "legend": "Promotion Threshold",
+  "legend": "Compilation Flow",
   "benchmarks": [
     [
       "2mm",
@@ -99,5 +103,5 @@
     1.1,
     1.1
   ],
-  "hide_legend": true
+  "hide_legend": false
 }

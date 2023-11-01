@@ -141,7 +141,7 @@ if __name__ == "__main__":
         )
         if graph_info["standard_version"] is not None:
             plt.axhline(y=1, color="gray", linestyle="dashed")
-            # plt.ylim([0, 2])
+            plt.ylim([0, 2.3])
 
         plt.legend(title=json_info["legend"])
         sns.move_legend(
