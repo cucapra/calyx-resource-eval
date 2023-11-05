@@ -1,0 +1,30 @@
+{
+  "universal_configs": {
+    "stage_dynamic_config": [
+      [
+        "synth-verilog.tcl",
+        "synth-files/synth.tcl"
+      ],
+      [
+        "synth-verilog.constraints",
+        "synth-files/device.xdc"
+      ],
+      [
+        "calyx.flags",
+        "-d cell-share -d schedule-compaction"
+      ]
+    ]
+  },
+  "inputs": [
+    {
+      "name": "polybench_scf_only_promote",
+      "paths": [
+        "benchmarks/polybench-scf/*.futil"
+      ],
+      "config": {
+        "source": "calyx"
+      }
+    }
+  ],
+  "results_folder": "paper-results/only_promote"
+}
