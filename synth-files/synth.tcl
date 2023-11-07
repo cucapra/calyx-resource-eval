@@ -10,29 +10,16 @@
 #
 #   out/FutilBuild.runs/impl_1/main_timing_summary_routed.rpt
 
-# Settings: the output directory and the part number
+# Settings: the output directory
 set outdir ./out
-set partname xcu250-figd2104-2-e
-set IP "./IP"
-file mkdir $IP
 
-# Generate integer multiplier
-create_project -in_memory -part $partname
-set moduleName mul_uint32
-set bitWidth 32
-set outHighBit 31
-set pipeStages 4
-create_ip -name mult_gen -vendor xilinx.com -library ip -version 12.0 -module_name $moduleName -dir $IP
-set_property -dict [list CONFIG.PortAType {Unsigned} CONFIG.PortAWidth "$bitWidth" CONFIG.PortBType {Unsigned} CONFIG.PortBWidth "$bitWidth" CONFIG.Multiplier_Construction {Use_Mults}  CONFIG.Use_Custom_Output_Width {true} CONFIG.OutputWidthHigh "$outHighBit" CONFIG.PipeStages "$pipeStages" CONFIG.ClockEnable {false}] [get_ips $moduleName]
-generate_target {all} [get_ips]
-synth_ip [get_ips]
-
+# Larger device
+set partname "xcu250-figd2104-2-e"
 
 # Create the project (forcibly overwriting) and add sources SystemVerilog
 # (*.sv) and Xilinx constraint files (*.xdc), which contain directives for
 # connecting design signals to physical FPGA pins.
 create_project -force -part $partname FutilBuild $outdir
-read_ip [glob "$IP/*/*.xci"]
 add_files [glob ./*.sv]
 add_files -fileset constrs_1 [glob ./*.xdc]
 set_property top main [current_fileset]
