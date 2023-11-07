@@ -1,5 +1,5 @@
 {
-  "calyx_flags": "-d well-formed",
+  "calyx_flags": "-d well-formed -d cell-share",
   "target": "resource-estimate",
   "fud_flags": [
     [
@@ -8,16 +8,16 @@
       "/scratch/cmk265/learning/my-tmp",
       "-s",
       "synth-verilog.tcl",
-      "synth.tcl"
+      "../synth-files/synth.tcl"
     ]
   ],
   "banked": true,
   "input_dir": "mmult-inputs/dynamic",
   "output_dir": "resources/mmult-dyn",
   "sizes": [
-    16,
-    8,
+    2,
     4,
-    2
+    8,
+    16
   ]
 }

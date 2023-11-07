@@ -8,7 +8,7 @@
       "/scratch/cmk265/learning/my-tmp",
       "-s",
       "synth-verilog.tcl",
-      "synth.tcl"
+      "../synth-files/synth.tcl"
     ]
   ],
   "banked": true,

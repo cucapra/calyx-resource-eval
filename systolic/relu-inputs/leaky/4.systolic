@@ -1,0 +1,7 @@
+{
+  "top_length": 4,
+  "top_depth": 4,
+  "left_length": 4,
+  "left_depth": 4,
+  "post_op": "leaky-relu"
+}

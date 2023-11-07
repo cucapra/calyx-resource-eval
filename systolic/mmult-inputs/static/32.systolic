@@ -1,0 +1,7 @@
+{
+  "top_length": 32,
+  "top_depth": 32,
+  "left_length": 32,
+  "left_depth": 32,
+  "static": true
+}

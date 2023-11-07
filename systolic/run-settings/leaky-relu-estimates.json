@@ -1,0 +1,23 @@
+{
+  "calyx_flags": "-d well-formed",
+  "target": "resource-estimate",
+  "fud_flags": [
+    [
+      "-s",
+      "synth-verilog.tmpdir",
+      "/scratch/cmk265/learning/my-tmp",
+      "-s",
+      "synth-verilog.tcl",
+      "../synth-files/synth.tcl"
+    ]
+  ],
+  "banked": true,
+  "input_dir": "relu-inputs/leaky",
+  "output_dir": "resources/leaky-relu",
+  "sizes": [
+    16,
+    8,
+    4,
+    2
+  ]
+}

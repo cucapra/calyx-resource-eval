@@ -1,10 +1,10 @@
 {
-  "calyx_flags": "-d well-formed",
+  "calyx_flags": "-d well-formed -d cell-share",
   "target": "dat",
   "fud_flags": [
     [
       "--through",
-      "icarus-verilog"
+      "verilog"
     ]
   ],
   "banked": true,

@@ -1,0 +1,24 @@
+{
+  "input_paths": [
+    [
+      "/scratch/cmk265/learning/calyx-resource-eval/systolic/alt-formats/synth-verilog/classic-calyx-synth-verilog/16.sv",
+      16
+    ]
+  ],
+  "fud_flags": [
+    [
+      "-s",
+      "synth-verilog.tmpdir",
+      "/scratch/cmk265/learning/my-tmp",
+      "-s",
+      "synth-verilog.tcl",
+      "../synth-files/synth.tcl",
+      "-s",
+      "synth-verilog.constraints",
+      "../synth-files/device5.xdc"
+    ]
+  ],
+  "output_dir": "resources/clock-mmult-classic-calyx",
+  "target": "resource-estimate",
+  "banked": false
+}

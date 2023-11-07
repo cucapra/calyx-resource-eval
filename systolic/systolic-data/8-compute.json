@@ -1,0 +1,274 @@
+{
+  "l0": {
+    "data": [
+      24,
+      11,
+      62,
+      77,
+      27,
+      83,
+      1,
+      35
+    ],
+    "format": {
+      "is_signed": false,
+      "numeric_type": "bitnum",
+      "width": 32
+    }
+  },
+  "l1": {
+    "data": [
+      90,
+      86,
+      35,
+      24,
+      33,
+      95,
+      0,
+      95
+    ],
+    "format": {
+      "is_signed": false,
+      "numeric_type": "bitnum",
+      "width": 32
+    }
+  },
+  "l2": {
+    "data": [
+      82,
+      69,
+      57,
+      43,
+      5,
+      70,
+      94,
+      34
+    ],
+    "format": {
+      "is_signed": false,
+      "numeric_type": "bitnum",
+      "width": 32
+    }
+  },
+  "l3": {
+    "data": [
+      3,
+      14,
+      47,
+      65,
+      27,
+      63,
+      20,
+      0
+    ],
+    "format": {
+      "is_signed": false,
+      "numeric_type": "bitnum",
+      "width": 32
+    }
+  },
+  "l4": {
+    "data": [
+      16,
+      6,
+      29,
+      44,
+      91,
+      21,
+      6,
+      94
+    ],
+    "format": {
+      "is_signed": false,
+      "numeric_type": "bitnum",
+      "width": 32
+    }
+  },
+  "l5": {
+    "data": [
+      91,
+      14,
+      60,
+      82,
+      47,
+      66,
+      97,
+      56
+    ],
+    "format": {
+      "is_signed": false,
+      "numeric_type": "bitnum",
+      "width": 32
+    }
+  },
+  "l6": {
+    "data": [
+      36,
+      39,
+      3,
+      32,
+      99,
+      55,
+      13,
+      65
+    ],
+    "format": {
+      "is_signed": false,
+      "numeric_type": "bitnum",
+      "width": 32
+    }
+  },
+  "l7": {
+    "data": [
+      64,
+      44,
+      42,
+      99,
+      95,
+      7,
+      35,
+      83
+    ],
+    "format": {
+      "is_signed": false,
+      "numeric_type": "bitnum",
+      "width": 32
+    }
+  },
+  "t0": {
+    "data": [
+      79,
+      5,
+      1,
+      97,
+      79,
+      61,
+      62,
+      3
+    ],
+    "format": {
+      "is_signed": false,
+      "numeric_type": "bitnum",
+      "width": 32
+    }
+  },
+  "t1": {
+    "data": [
+      98,
+      99,
+      74,
+      20,
+      1,
+      71,
+      60,
+      53
+    ],
+    "format": {
+      "is_signed": false,
+      "numeric_type": "bitnum",
+      "width": 32
+    }
+  },
+  "t2": {
+    "data": [
+      18,
+      46,
+      19,
+      23,
+      7,
+      55,
+      1,
+      29
+    ],
+    "format": {
+      "is_signed": false,
+      "numeric_type": "bitnum",
+      "width": 32
+    }
+  },
+  "t3": {
+    "data": [
+      40,
+      44,
+      72,
+      88,
+      51,
+      90,
+      19,
+      63
+    ],
+    "format": {
+      "is_signed": false,
+      "numeric_type": "bitnum",
+      "width": 32
+    }
+  },
+  "t4": {
+    "data": [
+      70,
+      77,
+      71,
+      30,
+      97,
+      7,
+      10,
+      16
+    ],
+    "format": {
+      "is_signed": false,
+      "numeric_type": "bitnum",
+      "width": 32
+    }
+  },
+  "t5": {
+    "data": [
+      96,
+      60,
+      95,
+      65,
+      64,
+      18,
+      59,
+      21
+    ],
+    "format": {
+      "is_signed": false,
+      "numeric_type": "bitnum",
+      "width": 32
+    }
+  },
+  "t6": {
+    "data": [
+      4,
+      52,
+      89,
+      40,
+      67,
+      94,
+      63,
+      89
+    ],
+    "format": {
+      "is_signed": false,
+      "numeric_type": "bitnum",
+      "width": 32
+    }
+  },
+  "t7": {
+    "data": [
+      2,
+      55,
+      84,
+      11,
+      65,
+      8,
+      36,
+      20
+    ],
+    "format": {
+      "is_signed": false,
+      "numeric_type": "bitnum",
+      "width": 32
+    }
+  }
+}
