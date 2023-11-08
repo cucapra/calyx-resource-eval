@@ -2,11 +2,11 @@
   "cycle_jsons": [
     [
       "systolic-simulation/correct-mmult-dyn-sim-combined.json",
-      "Piezo (flexible dimensions)"
+      "Flexible Contraction Dimension"
     ],
     [
       "systolic-simulation/correct-mmult-static-sim-combined.json",
-      "Piezo (fixed dimensions)"
+      "Fixed Contraction Dimension"
     ]
   ],
   "x": "Matrix Size",
@@ -35,7 +35,7 @@
     ]
   ],
   "legend_pos": [
-    0.55,
+    0.60,
     1.0
   ]
 }

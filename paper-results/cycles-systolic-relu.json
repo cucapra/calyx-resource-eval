@@ -1,12 +1,16 @@
 {
   "cycle_jsons": [
     [
-      "systolic-simulation/correct-relu-dyn-sim-combined.json",
-      "Piezo (dynamic post op)"
+      "systolic-simulation/correct-relu-static-sim-combined.json",
+      "ReLU (static implementation)"
     ],
     [
-      "systolic-simulation/correct-relu-static-sim-combined.json",
-      "Piezo (static post op)"
+      "systolic-simulation/correct-relu-dyn-sim-combined.json",
+      "ReLU (dynamic implementation)"
+    ],
+    [
+      "systolic-simulation/leaky-relu-sim-combined.json",
+      "Leaky ReLU (only dynamic)"
     ]
   ],
   "x": "Matrix Size",
@@ -35,7 +39,7 @@
     ]
   ],
   "legend_pos": [
-    0.55,
+    0.60,
     1.0
   ]
 }

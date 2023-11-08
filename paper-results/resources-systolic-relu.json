@@ -1,12 +1,16 @@
 {
   "jsons": [
     [
-      "systolic-resources/relu-dynamic-combined.json",
-      "Piezo (dynamic post op)"
+      "systolic-resources/relu-static-combined.json",
+      "ReLU (static implementation)"
     ],
     [
-      "systolic-resources/relu-static-combined.json",
-      "Piezo (static post op)"
+      "systolic-resources/relu-dynamic-combined.json",
+      "ReLU (dynamic implementation)"
+    ],
+    [
+      "systolic-resources/leaky-relu-combined.json",
+      "Leaky ReLU (only dynamic)"
     ]
   ],
   "x": "Matrix Size",
@@ -45,7 +49,7 @@
   ],
   "sort": true,
   "legend_pos": [
-    0.55,
+    0.65,
     1.0
   ],
   "legend_font_size": [
