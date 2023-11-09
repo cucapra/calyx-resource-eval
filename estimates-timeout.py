@@ -13,6 +13,14 @@ import threading
 import shutil
 import time
 from datetime import datetime
+import signal
+
+
+# Timeout code from: https://stackoverflow.com/questions/492519/timeout-on-a-function-call
+# Register an handler for the timeout
+def handler(signum, frame):
+    print("Forever is over!")
+    raise Exception("end of time")
 
 
 def flat_map(f, xs):
@@ -88,6 +96,8 @@ def run_fud(
     Runs fud and gets json output, and then update results_dic
     If there is an error/doesn't meet timing, then record it in errors_file, but keep going
     """
+    # Define a timeout for your function
+    signal.alarm(1200)
     try:
         resource_usage_json = get_json(
             get_fud_output(RunConf.from_dict(given_config), cfg)
@@ -103,6 +113,8 @@ def run_fud(
             errors_file,
             f"""error when retrieving resource estimates for {input_file}""",
         )
+    # Cancel the timer
+    signal.alarm(0)
 
 
 def run_resource_estimate(
@@ -160,6 +172,8 @@ def main():
     arg -j/--json means we read from a json to see which input files we run (if not given,
     there is a default settings.json that we use)
     """
+    # Register the signal function handler
+    signal.signal(signal.SIGALRM, handler)
     # set up arg parser
     parser = argparse.ArgumentParser(description="Process args for resource estimates")
     parser.add_argument("-s", "--sequential", action="store_true")

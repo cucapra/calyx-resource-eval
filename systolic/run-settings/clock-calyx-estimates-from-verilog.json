@@ -1,7 +1,7 @@
 {
   "input_paths": [
     [
-      "/scratch/cmk265/learning/calyx-resource-eval/systolic/alt-formats/synth-verilog/classic-calyx-synth-verilog/16.sv",
+      "/scratch/cmk265/learning/calyx-resource-eval/systolic/classic-calyx-inputs/16-synth-verilog.sv",
       16
     ]
   ],
@@ -15,7 +15,7 @@
       "../synth-files/synth.tcl",
       "-s",
       "synth-verilog.constraints",
-      "../synth-files/device5.xdc"
+      "../synth-files/device4.xdc"
     ]
   ],
   "output_dir": "resources/clock-mmult-classic-calyx",

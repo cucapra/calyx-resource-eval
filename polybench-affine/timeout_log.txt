@@ -1,0 +1,4 @@
+./kernels/2mm/futil-files/2mm-med.futil Failed to Simulate
+./kernels/2mm/futil-files/2mm-med.futil Failed To Get Cycle Counts
+./kernels/3mm/futil-files/3mm-med.futil Failed to Simulate
+./kernels/3mm/futil-files/3mm-med.futil Failed To Get Cycle Counts

@@ -11,7 +11,7 @@
       "../synth-files/synth.tcl",
       "-s",
       "synth-verilog.constraints",
-      "../synth-files/device5.xdc"
+      "../synth-files/device3.7.xdc"
     ]
   ],
   "banked": true,

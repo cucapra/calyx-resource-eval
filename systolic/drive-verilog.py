@@ -41,8 +41,7 @@ if __name__ == "__main__":
             "-s",
             "verilog.data",
             data_path,
-            "-s",
-            "calyx.flags",
+            "-o",
             output_path,
         ]
         for fud_flag in json_dict["fud_flags"]:

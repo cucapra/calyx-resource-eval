@@ -6,6 +6,10 @@
         "synth-files/synth.tcl"
       ],
       [
+        "synth-verilog.tmpdir",
+        "/scratch/cmk265/learning/my-tmp"
+      ],
+      [
         "synth-verilog.constraints",
         "synth-files/device.xdc"
       ],
