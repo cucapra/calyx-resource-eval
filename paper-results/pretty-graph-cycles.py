@@ -11,6 +11,8 @@ import numpy as np
 import seaborn as sns
 import pandas as pd
 import argparse
+import warnings
+
 
 from pathlib import Path
 
@@ -67,10 +69,12 @@ if __name__ == "__main__":
             cycle_counts = json.load(f)
             for benchmark, benchmark_alias in benchmarks.items():
                 if benchmark not in cycle_counts:
-                    raise Exception(f"Expected {benchmark} in {filename}")
-                graph_data.append(
-                    [filename_alias, benchmark_alias, cycle_counts[benchmark]]
-                )
+                    graph_data.append([filename_alias, benchmark_alias, 0])
+                    warnings.warn(f"Expected {benchmark} in {filename}")
+                else:
+                    graph_data.append(
+                        [filename_alias, benchmark_alias, cycle_counts[benchmark]]
+                    )
 
     if standard is not None:
         graph_data = standardize_results(standard, graph_data)
