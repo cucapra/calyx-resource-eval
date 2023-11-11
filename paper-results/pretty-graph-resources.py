@@ -10,6 +10,7 @@ import numpy as np
 import seaborn as sns
 import pandas as pd
 import argparse
+from pretty_graph_utils import standardize_results, get_geo_means
 
 sns.set_theme()
 
@@ -72,29 +73,6 @@ def get_graph_data(usage_data, benchmark_data, resource_data, graph_data):
                 graph_data[resource_name_formatted] = graph_resource_data
 
 
-def standardize_results(benchmark_version, data):
-    """
-    Standardizes the data
-    """
-    standardized_data = []
-    # maps design -> resource usage for the benchmark version
-    comparison_data = []
-    standard_dic = {}
-    standardized_data = []
-    for data_item in data:
-        if benchmark_version == data_item[0]:
-            # for each benchmark, map to standardized cycles counts
-            standard_dic[data_item[1]] = data_item[2]
-        else:
-            comparison_data.append(data_item)
-    for data_item in comparison_data:
-        standard_usage = standard_dic[data_item[1]]
-        standardized_data.append(
-            [data_item[0], data_item[1], data_item[2] / standard_usage]
-        )
-    return standardized_data
-
-
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Process args for resource estimates")
     parser.add_argument("-j", "--json", default="graph-inputs/full-graph-input.json")
@@ -118,6 +96,7 @@ if __name__ == "__main__":
     if graph_info["standard_version"] is not None:
         standardized_data = {}
         for resource, resource_usage_data in graph_data.items():
+            print(get_geo_means(graph_info["standard_version"], resource_usage_data))
             standardized_data[resource] = standardize_results(
                 graph_info["standard_version"], resource_usage_data
             )
@@ -132,16 +111,14 @@ if __name__ == "__main__":
             resource_usage_data,
             columns=["legend", "x", "y"],
         )
-        ax = sns.barplot(
-            x="x",
-            y="y",
-            hue="legend",
-            data=df,
-            errorbar=None,
-        )
+
         if graph_info["standard_version"] is not None:
-            plt.axhline(y=1, color="gray", linestyle="dashed")
-            # plt.ylim([0, 2.3])
+            bottom = 1
+        else:
+            bottom = 0
+        ax = sns.barplot(
+            x="x", y="y", hue="legend", data=df, errorbar=None, bottom=bottom
+        )
 
         plt.legend(title=json_info["legend"])
         sns.move_legend(

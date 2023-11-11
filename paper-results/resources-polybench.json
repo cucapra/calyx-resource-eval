@@ -30,6 +30,14 @@
   "legend": "Promotion Heuristic",
   "benchmarks": [
     [
+      "benchmarks/polybench-scf/2mm-med.futil",
+      "2MM"
+    ],
+    [
+      "benchmarks/polybench-scf/3mm-med.futil",
+      "3MM"
+    ],
+    [
       "benchmarks/polybench-scf/atax-med.futil",
       "ATAX"
     ],
@@ -88,14 +96,6 @@
     [
       "benchmarks/polybench-scf/trmm-med.futil",
       "TRMM"
-    ],
-    [
-      "benchmarks/polybench-scf/2mm-med.futil",
-      "2MM"
-    ],
-    [
-      "benchmarks/polybench-scf/3mm-med.futil",
-      "3MM"
     ],
     [
       "benchmarks/polybench-scf/covariance-med.futil",

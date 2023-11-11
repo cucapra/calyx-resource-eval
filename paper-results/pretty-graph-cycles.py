@@ -12,31 +12,9 @@ import seaborn as sns
 import pandas as pd
 import argparse
 import warnings
-
-
-from pathlib import Path
+from pretty_graph_utils import standardize_results, get_geo_means
 
 sns.set_theme()
-
-
-def standardize_results(benchmark_version, data):
-    standardized_data = []
-    # maps design -> resource usage for the benchmark version
-    comparison_data = []
-    standard_dic = {}
-    standardized_data = []
-    for data_item in data:
-        if benchmark_version == data_item[0]:
-            # for each benchmark, map to standardized cycles counts
-            standard_dic[data_item[1]] = data_item[2]
-        else:
-            comparison_data.append(data_item)
-    for data_item in comparison_data:
-        standard_usage = standard_dic[data_item[1]]
-        standardized_data.append(
-            [data_item[0], data_item[1], data_item[2] / standard_usage]
-        )
-    return standardized_data
 
 
 if __name__ == "__main__":
@@ -69,31 +47,28 @@ if __name__ == "__main__":
             cycle_counts = json.load(f)
             for benchmark, benchmark_alias in benchmarks.items():
                 if benchmark not in cycle_counts:
-                    graph_data.append([filename_alias, benchmark_alias, 0])
-                    warnings.warn(f"Expected {benchmark} in {filename}")
+                    graph_data.append([filename_alias, benchmark_alias, None])
+                    warnings.warn(f"Expected {benchmark} in {filename}.")
                 else:
                     graph_data.append(
                         [filename_alias, benchmark_alias, cycle_counts[benchmark]]
                     )
 
     if standard is not None:
+        print(get_geo_means(standard, graph_data))
         graph_data = standardize_results(standard, graph_data)
 
     fig = plt.figure(figsize=(10, 7))
     df = pd.DataFrame(graph_data, columns=["legend", "x", "y"])
-    ax = sns.barplot(
-        x="x",
-        y="y",
-        hue="legend",
-        data=df,
-        errorbar=None,
-    )
 
     if standard is not None:
-        plt.axhline(y=1, color="gray", linestyle="dashed")
-        # very hacky
-        # ax.set_yscale("log", base=0.5)
-        # plt.ylim([0, 2.3])
+        bottom = 1
+        print
+    else:
+        bottom = 0
+    ax = sns.barplot(x="x", y="y", hue="legend", data=df, errorbar=None, bottom=bottom)
+    if standard is not None:
+        ax.set_ylim([0.1, 2.0])
 
     plt.legend(title=legend_title)
     sns.move_legend(ax, "upper right", bbox_to_anchor=(legend_pos[0], legend_pos[1]))
