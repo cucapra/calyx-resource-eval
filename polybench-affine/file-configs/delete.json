@@ -22,7 +22,6 @@
   ],
   "futil_files_suffix": [],
   "data_files": [
-    "med-calyx-mix-results",
-    "med-calyx-dyn-results"
+    "med-calyx-compact-share"
   ]
 }
