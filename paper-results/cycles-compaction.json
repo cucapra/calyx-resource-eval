@@ -1,20 +1,24 @@
 {
   "cycle_jsons": [
     [
-      "../polybench-affine/cycle-counts/med-threshold-no-share.json",
-      "Piezo, Compaction (cell sharing disabled)"
+      "../polybench-affine/cycle-counts/med-threshold-inf.json",
+      "Calyx (no promotion)"
     ],
     [
       "../polybench-affine/cycle-counts/med-threshold-no-compaction.json",
-      "Piezo, Cell Sharing (compaction disabled)"
+      "SH (only sharing)"
+    ],
+    [
+      "../polybench-affine/cycle-counts/med-threshold-no-share.json",
+      "SC (only compaction)"
     ],
     [
       "../polybench-affine/cycle-counts/med-threshold-1.json",
-      "Piezo, Both Optimizations"
+      "SH->SC (sharing -> compaction)"
     ],
     [
-      "../polybench-affine/cycle-counts/med-threshold-inf.json",
-      "Calyx (no promotion)"
+      "../polybench-affine/cycle-counts/med-threshold-compact-share.json",
+      "SC->SH (compaction -> sharing)"
     ]
   ],
   "standard": "Calyx (no promotion)",
