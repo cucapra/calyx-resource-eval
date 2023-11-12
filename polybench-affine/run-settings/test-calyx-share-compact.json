@@ -27,8 +27,8 @@
   "futil_file_suffix": "-med",
   "init_file": "med-init.json",
   "c_results_file": "med-c-res.json",
-  "calyx_results_file": "med-calyx-no-share-results.json",
-  "calyx_flags": "-d cell-share",
-  "check_results_file": "med-no-share.txt",
-  "cycle_count_results": "med-no-share.json"
+  "calyx_results_file": "med-calyx-share-compact-results.json",
+  "calyx_flags": "-x cell-share:bounds=1,-1,-1",
+  "check_results_file": "med-share-compact.txt",
+  "cycle_count_results": "med-share-compact.json"
 }

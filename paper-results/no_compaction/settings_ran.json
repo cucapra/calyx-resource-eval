@@ -1,1 +1,0 @@
-{"universal_configs": {"stage_dynamic_config": [["synth-verilog.tcl", "synth-files/synth.tcl"], ["synth-verilog.constraints", "synth-files/device.xdc"], ["calyx.flags", "-d schedule-compaction"]]}, "inputs": [{"name": "polybench_scf_no_compaction", "paths": ["benchmarks/polybench-scf/*.futil"], "config": {"source": "calyx"}}], "results_folder": "paper-results/no_compaction"}

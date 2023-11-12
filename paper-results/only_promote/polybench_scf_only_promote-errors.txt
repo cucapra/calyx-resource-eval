@@ -1,2 +1,0 @@
-error when retrieving resource estimates for benchmarks/polybench-scf/gemm-med.futil
-error when retrieving resource estimates for benchmarks/polybench-scf/seidel-2d-med.futil
