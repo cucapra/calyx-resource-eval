@@ -1,0 +1,2 @@
+{'SH (only sharing)': 0.832596045283976, 'SC (only compaction)': 0.8956921888612427, 'SH->SC (sharing -> compaction)': 0.8209710530493105, 'SC->SH (compaction -> sharing)': 0.8514611422564489}
+{'SH (only sharing)': 0.91559398407013, 'SC (only compaction)': 1.3801142438234903, 'SH->SC (sharing -> compaction)': 0.91559398407013, 'SC->SH (compaction -> sharing)': 1.0207892775290448}

@@ -1,7 +1,7 @@
 {
   "jsons": [
     [
-      "no_compaction/polybench_scf_no_compaction.json",
+      "no_compact/polybench_scf_no_compact.json",
       "SH (only sharing)"
     ],
     [
@@ -9,15 +9,15 @@
       "SC (only compaction)"
     ],
     [
-      "threshold-1/polybench_scf_threshold_1.json",
+      "share_compact/polybench_scf_share_compact.json",
       "SH->SC (sharing -> compaction)"
     ],
     [
-      "compaction_share/polybench_scf_compaction_share.json",
+      "compact_share/polybench_scf_compact_share.json",
       "SC->SH (compaction -> sharing)"
     ],
     [
-      "threshold-inf/polybench_scf_threshold_inf.json",
+      "no_promote/polybench_scf_no_promote.json",
       "Pure Calyx"
     ]
   ],
@@ -118,8 +118,8 @@
     ]
   ],
   "legend_pos": [
-    1.25,
-    1.15
+    1.15,
+    1.10
   ],
   "legend_font_size": [
     22,

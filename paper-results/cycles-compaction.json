@@ -1,23 +1,23 @@
 {
   "cycle_jsons": [
     [
-      "../polybench-affine/cycle-counts/med-threshold-inf.json",
+      "../polybench-affine/cycle-counts/med-no-promote.json",
       "Calyx (no promotion)"
     ],
     [
-      "../polybench-affine/cycle-counts/med-threshold-no-compaction.json",
+      "../polybench-affine/cycle-counts/med-no-compact.json",
       "SH (only sharing)"
     ],
     [
-      "../polybench-affine/cycle-counts/med-threshold-no-share.json",
+      "../polybench-affine/cycle-counts/med-no-share.json",
       "SC (only compaction)"
     ],
     [
-      "../polybench-affine/cycle-counts/med-threshold-1.json",
+      "../polybench-affine/cycle-counts/med-share-compact.json",
       "SH->SC (sharing -> compaction)"
     ],
     [
-      "../polybench-affine/cycle-counts/med-threshold-compact-share.json",
+      "../polybench-affine/cycle-counts/med-compact-share.json",
       "SC->SH (compaction -> sharing)"
     ]
   ],
