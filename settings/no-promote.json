@@ -11,7 +11,7 @@
       ],
       [
         "calyx.flags",
-        "-d static-promotion"
+        "-d static-promotion -x cell-share:bounds=1,-1,-1"
       ]
     ]
   },
