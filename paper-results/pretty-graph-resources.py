@@ -48,7 +48,9 @@ def parse_json(input):
     dic["y_pref"] = json_info.get("y_pref", "")
     dic["legend"] = json_info["legend"]
     dic["legend_pos"] = json_info["legend_pos"]
+    dic["bar_color"] = json_info.get("bar_color", None)
     dic["hide_legend"] = json_info.get("hide_legend", False)
+    dic["palette"] = json_info.get("palette", None)
     return dic
 
 
@@ -117,7 +119,13 @@ if __name__ == "__main__":
         else:
             bottom = 0
         ax = sns.barplot(
-            x="x", y="y", hue="legend", data=df, errorbar=None, bottom=bottom
+            x="x",
+            y="y",
+            hue="legend",
+            data=df,
+            errorbar=None,
+            bottom=bottom,
+            palette=graph_info["palette"],
         )
 
         plt.legend(title=json_info["legend"])

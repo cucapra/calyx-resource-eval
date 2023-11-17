@@ -29,7 +29,6 @@ def get_geo_means(benchmark_version, data):
     """
     Prints the geometric means
     """
-    # maps design -> resource usage for the benchmark version
     comparison_data = []
     standard_dic = {}
     standardized_data = {}

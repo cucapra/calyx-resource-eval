@@ -2,22 +2,27 @@
   "jsons": [
     [
       "no_compact/polybench_scf_no_compact.json",
+      "../polybench-affine/cycle-counts/med-no-compact.json",
       "SH (only sharing)"
     ],
     [
       "no_share/polybench_scf_no_share.json",
+      "../polybench-affine/cycle-counts/med-no-share.json",
       "SC (only compaction)"
     ],
     [
       "share_compact/polybench_scf_share_compact.json",
+      "../polybench-affine/cycle-counts/med-share-compact.json",
       "SH->SC (sharing -> compaction)"
     ],
     [
       "compact_share/polybench_scf_compact_share.json",
+      "../polybench-affine/cycle-counts/med-compact-share.json",
       "SC->SH (compaction -> sharing)"
     ],
     [
       "no_promote/polybench_scf_no_promote.json",
+      "../polybench-affine/cycle-counts/med-no-promote.json",
       "Pure Calyx"
     ]
   ],
@@ -27,9 +32,9 @@
     70,
     16
   ],
-  "y_pref": "Relative ",
+  "y": "Performance",
   "legend": "Compilation Flow",
-  "benchmarks": [
+  "benchmarks_resources": [
     [
       "benchmarks/polybench-scf/2mm-med.futil",
       "2MM"
@@ -104,6 +109,84 @@
     ],
     [
       "benchmarks/polybench-scf/seidel-2d-med.futil",
+      "Seidel-2d"
+    ]
+  ],
+  "benchmarks_cycles": [
+    [
+      "2mm",
+      "2MM"
+    ],
+    [
+      "3mm",
+      "3MM"
+    ],
+    [
+      "atax",
+      "ATAX"
+    ],
+    [
+      "bicg",
+      "BICG"
+    ],
+    [
+      "doitgen",
+      "DOITGEN"
+    ],
+    [
+      "durbin",
+      "DURBIN"
+    ],
+    [
+      "gemm",
+      "GEMM"
+    ],
+    [
+      "gemver",
+      "GEMVER"
+    ],
+    [
+      "gesummv",
+      "GESUMMV"
+    ],
+    [
+      "lu",
+      "LU"
+    ],
+    [
+      "ludcmp",
+      "LUDCMP"
+    ],
+    [
+      "mvt",
+      "MVT"
+    ],
+    [
+      "symm",
+      "SYMM"
+    ],
+    [
+      "syr2k",
+      "SYR2K"
+    ],
+    [
+      "syrk",
+      "SYRK"
+    ],
+    [
+      "trisolv",
+      "TRISOLV"
+    ],
+    [
+      "trmm",
+      "TRMM"
+    ],
+    [
+      "covariance",
+      "Covariance"
+    ],
+    [
+      "seidel-2d",
       "Seidel-2d"
     ]
   ],
