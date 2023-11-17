@@ -1,0 +1,106 @@
+{
+  "cycle_jsons": [
+    [
+      "../polybench-affine/cycle-counts/med-no-promote.json",
+      "Calyx (no promotion)"
+    ],
+    [
+      "../polybench-affine/cycle-counts/med-compact-share.json",
+      "SC->SH (compaction -> sharing)"
+    ]
+  ],
+  "standard": "Calyx (no promotion)",
+  "x": "Benchmark",
+  "x_ticks": [
+    70,
+    16
+  ],
+  "y": "Relative Cycle Count",
+  "legend": "Compilation Flow",
+  "benchmarks": [
+    [
+      "2mm",
+      "2MM"
+    ],
+    [
+      "3mm",
+      "3MM"
+    ],
+    [
+      "atax",
+      "ATAX"
+    ],
+    [
+      "bicg",
+      "BICG"
+    ],
+    [
+      "doitgen",
+      "DOITGEN"
+    ],
+    [
+      "durbin",
+      "DURBIN"
+    ],
+    [
+      "gemm",
+      "GEMM"
+    ],
+    [
+      "gemver",
+      "GEMVER"
+    ],
+    [
+      "gesummv",
+      "GESUMMV"
+    ],
+    [
+      "lu",
+      "LU"
+    ],
+    [
+      "ludcmp",
+      "LUDCMP"
+    ],
+    [
+      "mvt",
+      "MVT"
+    ],
+    [
+      "symm",
+      "SYMM"
+    ],
+    [
+      "syr2k",
+      "SYR2K"
+    ],
+    [
+      "syrk",
+      "SYRK"
+    ],
+    [
+      "trisolv",
+      "TRISOLV"
+    ],
+    [
+      "trmm",
+      "TRMM"
+    ],
+    [
+      "covariance",
+      "Covariance"
+    ],
+    [
+      "seidel-2d",
+      "Seidel-2d"
+    ]
+  ],
+  "legend_pos": [
+    1.1,
+    1.1
+  ],
+  "hide_legend": true,
+  "palette": [
+    "r"
+  ]
+}

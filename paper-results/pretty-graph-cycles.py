@@ -36,6 +36,7 @@ if __name__ == "__main__":
         y_label = json_info["y"]
         legend_title = json_info["legend"]
         legend_pos = json_info["legend_pos"]
+        palette = json_info.get("palette", None)
 
     # dictionary for the graph that we are building
     graph_data = []
@@ -63,10 +64,17 @@ if __name__ == "__main__":
 
     if standard is not None:
         bottom = 1
-        print
     else:
         bottom = 0
-    ax = sns.barplot(x="x", y="y", hue="legend", data=df, errorbar=None, bottom=bottom)
+    ax = sns.barplot(
+        x="x",
+        y="y",
+        hue="legend",
+        data=df,
+        errorbar=None,
+        bottom=bottom,
+        palette=palette,
+    )
     if standard is not None:
         ax.set_ylim([0.1, 2.0])
 
