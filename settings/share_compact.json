@@ -11,7 +11,7 @@
       ],
       [
         "calyx.flags",
-        "-x cell-share:bounds=1,-1,-1"
+        "-x cell-share:bounds=1,-1,-1 -x static-promotion:cycle-limit=4096"
       ]
     ]
   },

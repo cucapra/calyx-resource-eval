@@ -15,7 +15,7 @@
       ],
       [
         "calyx.flags",
-        "-d schedule-compaction -x cell-share:bounds=1,-1,-1"
+        "-d schedule-compaction -x cell-share:bounds=1,-1,-1 -x static-promotion:cycle-limit=4096"
       ]
     ]
   },

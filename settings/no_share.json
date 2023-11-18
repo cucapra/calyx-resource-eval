@@ -15,7 +15,7 @@
       ],
       [
         "calyx.flags",
-        "-d cell-share"
+        "-d cell-share -x static-promotion:cycle-limit=4096"
       ]
     ]
   },
