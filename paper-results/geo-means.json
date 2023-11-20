@@ -27,12 +27,12 @@
     ]
   ],
   "standardize": "Pure Calyx",
-  "x": "Benchmark",
+  "x": "",
   "x_ticks": [
     70,
     16
   ],
-  "y": "Performance",
+  "y": "",
   "legend": "Compilation Flow",
   "benchmarks_resources": [
     [
