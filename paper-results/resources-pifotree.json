@@ -9,7 +9,7 @@
       "PIFO Trees (static implementation)"
     ]
   ],
-  "x": "Benchmark",
+  "x": "",
   "x_ticks": [
     70,
     16
@@ -19,11 +19,11 @@
   "benchmarks": [
     [
       "benchmarks/pifotree/pifotree_calyx.futil",
-      "PIFO Trees (dynamic implementation)"
+      "Calyx"
     ],
     [
       "benchmarks/pifotree/pifotree_piezo.futil",
-      "PIFO Trees (static implementation)"
+      "Piezo"
     ]
   ],
   "resources": [
