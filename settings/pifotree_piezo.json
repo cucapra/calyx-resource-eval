@@ -1,0 +1,30 @@
+{
+  "universal_configs": {
+    "stage_dynamic_config": [
+      [
+        "synth-verilog.tcl",
+        "synth-files/synth.tcl"
+      ],
+      [
+        "synth-verilog.tmpdir",
+        "/scratch/anshuman/my-tmp"
+      ],
+      [
+        "synth-verilog.constraints",
+        "synth-files/device.xdc"
+      ]
+    ]
+  },
+  "inputs": [
+    {
+      "name": "pifotree_piezo",
+      "paths": [
+        "benchmarks/pifotree/pifotree_piezo.futil"
+      ],
+      "config": {
+        "source": "calyx"
+      }
+    }
+  ],
+  "results_folder": "paper-results/pifo_tree_estimates_piezo"
+}
