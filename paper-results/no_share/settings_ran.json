@@ -1,1 +1,34 @@
-{"universal_configs": {"stage_dynamic_config": [["synth-verilog.tcl", "synth-files/synth.tcl"], ["synth-verilog.tmpdir", "/scratch/cmk265/learning/my-tmp"], ["synth-verilog.constraints", "synth-files/device.xdc"], ["calyx.flags", "-d cell-share -x static-promotion:cycle-limit=4096"]]}, "inputs": [{"name": "polybench_scf_no_share", "paths": ["benchmarks/polybench-scf/*.futil"], "config": {"source": "calyx"}}], "results_folder": "paper-results/no_share"}
+{
+  "universal_configs": {
+    "stage_dynamic_config": [
+      [
+        "synth-verilog.tcl",
+        "synth-files/synth.tcl"
+      ],
+      [
+        "synth-verilog.tmpdir",
+        "/scratch/cmk265/learning/my-tmp"
+      ],
+      [
+        "synth-verilog.constraints",
+        "synth-files/device.xdc"
+      ],
+      [
+        "calyx.flags",
+        "-d cell-share -x static-promotion:cycle-limit=4096"
+      ]
+    ]
+  },
+  "inputs": [
+    {
+      "name": "polybench_scf_no_share",
+      "paths": [
+        "benchmarks/polybench-scf/*.futil"
+      ],
+      "config": {
+        "source": "calyx"
+      }
+    }
+  ],
+  "results_folder": "paper-results/no_share"
+}

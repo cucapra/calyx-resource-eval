@@ -28,7 +28,7 @@
   "init_file": "med-init.json",
   "c_results_file": "med-c-res.json",
   "calyx_results_file": "med-calyx-share-compact-results.json",
-  "calyx_flags": "-x cell-share:bounds=1,-1,-1 -x static-promotion:cycle-limit=128",
+  "calyx_flags": "-x cell-share:bounds=1,-1,-1 -x static-promotion:cycle-limit=4096",
   "check_results_file": "med-share-compact.txt",
   "cycle_count_results": "med-share-compact.json"
 }
