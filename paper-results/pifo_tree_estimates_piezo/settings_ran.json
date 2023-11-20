@@ -15,20 +15,20 @@
       ],
       [
         "calyx.flags",
-        "-d static-promotion"
+        "-d well-formed"
       ]
     ]
   },
   "inputs": [
     {
-      "name": "pifotree_calyx",
+      "name": "pifotree_piezo",
       "paths": [
-        "benchmarks/pifotree/pifotree_calyx.futil"
+        "benchmarks/pifotree/pifotree_piezo.futil"
       ],
       "config": {
         "source": "calyx"
       }
     }
   ],
-  "results_folder": "paper-results/pifo_tree_estimates"
+  "results_folder": "paper-results/pifo_tree_estimates_piezo"
 }
