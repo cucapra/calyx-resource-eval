@@ -23,7 +23,7 @@
     {
       "name": "pifotree_calyx",
       "paths": [
-        "benchmarks/pifotree/*.futil"
+        "benchmarks/pifotree/pifotree_calyx.futil"
       ],
       "config": {
         "source": "calyx"
