@@ -1,0 +1,26 @@
+{
+  "benchmarks/pifotree/pifotree_calyx.futil": {
+    "lut": 1667,
+    "dsp": 0,
+    "registers": 443,
+    "muxes": 167,
+    "clb_registers": 745,
+    "carry8": 84,
+    "f7_muxes": 0,
+    "f8_muxes": 0,
+    "f9_muxes": 0,
+    "clb": 2496,
+    "meet_timing": 1,
+    "worst_slack": 2.358,
+    "period": 7.0,
+    "frequency": 142.857,
+    "uram": 3,
+    "cell_lut1": 159,
+    "cell_lut2": 164,
+    "cell_lut3": 402,
+    "cell_lut4": 354,
+    "cell_lut5": 246,
+    "cell_lut6": 704,
+    "cell_fdre": 745
+  }
+}
