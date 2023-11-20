@@ -1,8 +1,8 @@
 {
   "jsons": [
     [
-      "compact_share/polybench_scf_compact_share.json",
-      "SC->SH (compaction -> sharing)"
+      "share_compact/polybench_scf_share_compact.json",
+      "SH->SC (sharing -> compaction)"
     ],
     [
       "no_promote/polybench_scf_no_promote.json",
@@ -10,12 +10,12 @@
     ]
   ],
   "standardize": "Pure Calyx",
-  "x": "Metric",
+  "x": "",
   "x_ticks": [
     70,
     16
   ],
-  "y_pref": "Performance",
+  "y_pref": "",
   "legend": "Compilation Flow",
   "benchmarks": [
     [
@@ -115,6 +115,6 @@
   ],
   "hide_legend": true,
   "palette": [
-    "r"
+    "seagreen"
   ]
 }

@@ -5,8 +5,8 @@
       "Calyx (no promotion)"
     ],
     [
-      "../polybench-affine/cycle-counts/med-compact-share.json",
-      "SC->SH (compaction -> sharing)"
+      "../polybench-affine/cycle-counts/med-share-compact.json",
+      "SH->SC (sharing -> compaction)"
     ]
   ],
   "standard": "Calyx (no promotion)",
@@ -101,6 +101,6 @@
   ],
   "hide_legend": true,
   "palette": [
-    "r"
+    "seagreen"
   ]
 }

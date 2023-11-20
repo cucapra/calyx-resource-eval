@@ -76,7 +76,7 @@ if __name__ == "__main__":
         palette=palette,
     )
     if standard is not None:
-        ax.set_ylim([0.1, 2.0])
+        ax.set_ylim([0.3, 1.2])
 
     plt.legend(title=legend_title)
     sns.move_legend(ax, "upper right", bbox_to_anchor=(legend_pos[0], legend_pos[1]))

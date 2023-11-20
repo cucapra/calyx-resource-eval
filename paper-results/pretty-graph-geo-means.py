@@ -98,8 +98,6 @@ if __name__ == "__main__":
         resource_graph_data,
     )
     cycle_graph_data = []
-    # print(graph_info["cycle_inputs"])
-    # print(graph_info["benchmarks_cycles"])
     get_graph_cycles(
         graph_info["cycle_inputs"],
         graph_info["benchmarks_cycles"],
@@ -107,6 +105,7 @@ if __name__ == "__main__":
     )
 
     geo_mean_data = []
+    geo_mean_print_data = []
 
     for setting, geo_mean in get_geo_means(
         graph_info["standard_version"], cycle_graph_data
@@ -119,11 +118,12 @@ if __name__ == "__main__":
         ).items():
             # geo_mean - 1 bc graph will start at 1
             geo_mean_data.append([resource, setting, geo_mean - 1])
+            geo_mean_print_data.append([resource, setting, geo_mean])
         # geo_mean_data[resource] = standardize_results(
         #     graph_info["standard_version"], resource_usage_data
         # )
 
-    print(geo_mean_data)
+    print(geo_mean_print_data)
 
     fig = plt.figure(figsize=(10, 7))
     df = pd.DataFrame(geo_mean_data, columns=["x", "legend", "y"])
