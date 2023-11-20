@@ -123,7 +123,7 @@ if __name__ == "__main__":
             y="y",
             hue="legend",
             data=df,
-            errorbar=None,
+            # errorbar=None, # Rectangles don't have error bars
             bottom=bottom,
             palette=graph_info["palette"],
         )
