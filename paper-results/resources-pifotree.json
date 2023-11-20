@@ -1,0 +1,48 @@
+{
+  "jsons": [
+    [
+      "pifo_tree_estimates/pifotree_calyx.json",
+      "PIFO Trees (dynamic implementation)"
+    ],
+    [
+      "pifo_tree_estimates_piezo/pifotree_piezo.json",
+      "PIFO Trees (static implementation)"
+    ]
+  ],
+  "x": "Benchmark",
+  "x_ticks": [
+    70,
+    16
+  ],
+  "y_pref": "Relative ",
+  "legend": "Compilation Flow",
+  "benchmarks": [
+    [
+      "benchmarks/pifotree/pifotree_calyx.futil",
+      "PIFO Trees (dynamic implementation)"
+    ],
+    [
+      "benchmarks/pifotree/pifotree_piezo.futil",
+      "PIFO Trees (static implementation)"
+    ]
+  ],
+  "resources": [
+    [
+      "lut",
+      "LUT"
+    ],
+    [
+      "registers",
+      "Register"
+    ]
+  ],
+  "legend_pos": [
+    1.15,
+    1.10
+  ],
+  "legend_font_size": [
+    22,
+    16
+  ],
+  "hide_legend": false
+}
