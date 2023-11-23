@@ -1,0 +1,30 @@
+{
+  "cycle_jsons": [
+    [
+      "sim/pifo_tree_calyx_sim.json",
+      "Calyx"
+    ],
+    [
+      "sim/pifo_tree_piezo_sim.json",
+      "Piezo"
+    ]
+  ],
+  "x": "",
+  "x_ticks": [
+    70,
+    16
+  ],
+  "y": "Cycle Count",
+  "legend": "Type",
+  "benchmarks": [
+    [
+      "pifotree",
+      "Pifo Tree"
+    ]
+  ],
+  "legend_pos": [
+    1.1,
+    1.1
+  ],
+  "hide_legend": false
+}
