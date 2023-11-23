@@ -112,6 +112,8 @@ if __name__ == "__main__":
     ).items():
         # geo_mean - 1 bc graph will start at 1
         geo_mean_data.append(["Cycles", setting, geo_mean - 1])
+        geo_mean_print_data.append(["Cycles", setting, geo_mean])
+
     for resource, resource_usage_data in resource_graph_data.items():
         for setting, geo_mean in get_geo_means(
             graph_info["standard_version"], resource_usage_data
