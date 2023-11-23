@@ -66,7 +66,7 @@ def run_fud(given_config, cfg, input_alias, results_dic, results_file, debug_mod
     """
     # try:
     simulation_json = get_json(get_fud_output(RunConf.from_dict(given_config), cfg))
-    results_dic[input_alias] = simulation_json
+    results_dic[input_alias] = simulation_json["cycles"]
     # write to errors_file if it doesn't meet timing
     if not debug_mode:
         dump_json(results_dic, results_file)
