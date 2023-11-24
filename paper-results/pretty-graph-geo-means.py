@@ -137,6 +137,7 @@ if __name__ == "__main__":
         data=df,
         errorbar=None,
         bottom=1,
+        palette=graph_info.get("pallette", None),
     )
 
     sns.move_legend(
