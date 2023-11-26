@@ -3,7 +3,7 @@
     "stage_dynamic_config": [
       [
         "calyx.flags",
-        "-d well-formed"
+        "-d static-promotion"
       ]
     ]
   },
