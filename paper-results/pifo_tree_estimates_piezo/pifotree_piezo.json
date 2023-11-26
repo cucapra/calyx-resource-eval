@@ -1,26 +1,26 @@
 {
   "benchmarks/pifotree/pifotree_piezo.futil": {
-    "lut": 1695,
+    "lut": 1719,
     "dsp": 0,
-    "registers": 435,
-    "muxes": 178,
-    "clb_registers": 743,
+    "registers": 437,
+    "muxes": 177,
+    "clb_registers": 744,
     "carry8": 84,
     "f7_muxes": 0,
     "f8_muxes": 0,
     "f9_muxes": 0,
-    "clb": 2522,
+    "clb": 2547,
     "meet_timing": 1,
-    "worst_slack": 1.713,
+    "worst_slack": 2.068,
     "period": 7.0,
     "frequency": 142.857,
     "uram": 3,
     "cell_lut1": 161,
-    "cell_lut2": 224,
-    "cell_lut3": 434,
-    "cell_lut4": 299,
-    "cell_lut5": 320,
-    "cell_lut6": 626,
-    "cell_fdre": 743
+    "cell_lut2": 191,
+    "cell_lut3": 433,
+    "cell_lut4": 307,
+    "cell_lut5": 317,
+    "cell_lut6": 665,
+    "cell_fdre": 744
   }
 }
