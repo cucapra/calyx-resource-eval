@@ -13,10 +13,10 @@
       "Leaky ReLU (only dynamic)"
     ]
   ],
-  "x": "Matrix Size",
+  "x": "",
   "x_ticks": [
     0,
-    28
+    36
   ],
   "y": "Cycle Count",
   "legend": "Design Type",
