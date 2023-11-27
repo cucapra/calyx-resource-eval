@@ -62,6 +62,8 @@ def get_graph_data(usage_data, benchmark_data, resource_data, graph_data):
     """
     for setting_name, resource_map in usage_data.items():
         for benchmark_name, resource_usage in resource_map.items():
+            if benchmark_name not in benchmark_data.keys():
+                continue
             for resource_name, resource_name_formatted in resource_data.items():
                 # update graph_data for each resource/design that we can
                 graph_resource_data = graph_data.get(resource_name_formatted, [])
@@ -155,7 +157,7 @@ if __name__ == "__main__":
                 os.makedirs("graphs")
                 # can save figure if we want
             fig.savefig(
-                f"""graphs/{args.save}-{resource}.png""",
+                f"""graphs/{args.save}-{resource}.pdf""",
                 bbox_inches="tight",
             )
         plt.show()

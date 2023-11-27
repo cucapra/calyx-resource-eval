@@ -10,7 +10,7 @@
     ]
   ],
   "standard": "Calyx (no promotion)",
-  "x": "Benchmark",
+  "x": "",
   "x_ticks": [
     70,
     16
@@ -18,14 +18,6 @@
   "y": "Relative Cycle Count",
   "legend": "Compilation Flow",
   "benchmarks": [
-    [
-      "2mm",
-      "2MM"
-    ],
-    [
-      "3mm",
-      "3MM"
-    ],
     [
       "atax",
       "ATAX"
@@ -85,6 +77,14 @@
     [
       "trmm",
       "TRMM"
+    ],
+    [
+      "2mm",
+      "2MM"
+    ],
+    [
+      "3mm",
+      "3MM"
     ],
     [
       "covariance",

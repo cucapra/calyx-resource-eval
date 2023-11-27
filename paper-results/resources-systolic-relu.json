@@ -21,10 +21,6 @@
   "legend": "Design Type",
   "benchmarks": [
     [
-      "2.json",
-      "2x2"
-    ],
-    [
       "4.json",
       "4x4"
     ],

@@ -165,7 +165,7 @@ if __name__ == "__main__":
             os.makedirs("graphs")
             # can save figure if we want
         fig.savefig(
-            f"""graphs/{args.save}""",
+            f"""graphs/{args.save}.pdf""",
             bbox_inches="tight",
         )
     plt.show()
