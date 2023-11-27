@@ -49,7 +49,9 @@
     1.0
   ],
   "legend_font_size": [
-    30,
-    22
-  ]
+    38,
+    28
+  ],
+  "hide_legend": true,
+  "k_y_axis": true
 }

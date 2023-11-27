@@ -6,6 +6,7 @@ import os
 import json
 
 import matplotlib.pyplot as plt
+from matplotlib import ticker
 import numpy as np
 import seaborn as sns
 import pandas as pd
@@ -51,6 +52,7 @@ def parse_json(input):
     dic["bar_color"] = json_info.get("bar_color", None)
     dic["hide_legend"] = json_info.get("hide_legend", False)
     dic["palette"] = json_info.get("palette", None)
+    dic["k_y_axis"] = json_info.get("k_y_axis", False)
     return dic
 
 
@@ -141,13 +143,17 @@ if __name__ == "__main__":
         # for legend title
         plt.setp(ax.get_legend().get_title(), fontsize=json_info["legend_font_size"][0])
 
-        plt.xlabel(json_info["x"], fontsize=30)
+        plt.xlabel(json_info["x"], fontsize=45)
         pref = graph_info["y_pref"]
-        plt.ylabel(f"{pref}{resource} Usage", fontsize=30)
-        plt.title("", fontsize=20)
+        plt.ylabel(f"{pref}{resource} Usage", fontsize=45)
+        plt.title("", fontsize=25)
+        if json_info["k_y_axis"]:
+            ax.yaxis.set_major_formatter(
+                ticker.FuncFormatter(lambda x, pos: "{:,.0f}".format(x / 1000) + "K")
+            )
         plt.tick_params(axis="both", which="major", labelsize=14)
         plt.xticks(rotation=json_info["x_ticks"][0], fontsize=json_info["x_ticks"][1])
-        plt.yticks(fontsize=20)
+        plt.yticks(fontsize=25)
         if graph_info["hide_legend"]:
             # hacky way to get rid of legend
             plt.legend([], [], frameon=False)
