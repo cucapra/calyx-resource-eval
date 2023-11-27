@@ -152,8 +152,8 @@ if __name__ == "__main__":
                 ticker.FuncFormatter(lambda x, pos: "{:,.0f}".format(x / 1000) + "K")
             )
         plt.tick_params(axis="both", which="major", labelsize=14)
-        plt.xticks(rotation=json_info["x_ticks"][0], fontsize=json_info["x_ticks"][1])
-        plt.yticks(fontsize=25)
+        plt.xticks(rotation=json_info["x_ticks"][0], fontsize=28)
+        plt.yticks(fontsize=28)
         if graph_info["hide_legend"]:
             # hacky way to get rid of legend
             plt.legend([], [], frameon=False)

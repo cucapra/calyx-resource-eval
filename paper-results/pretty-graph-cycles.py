@@ -89,7 +89,7 @@ if __name__ == "__main__":
     plt.title("", fontsize=20)
     plt.tick_params(axis="both", which="major", labelsize=14)
     plt.xticks(rotation=x_ticks[0], fontsize=x_ticks[1])
-    plt.yticks(fontsize=20)
+    plt.yticks(fontsize=28)
     if json_info.get("hide_legend", False):
         # hacky way to get rid of legend
         plt.legend([], [], frameon=False)

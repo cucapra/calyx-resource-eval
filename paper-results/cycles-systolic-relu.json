@@ -16,7 +16,7 @@
   "x": "Matrix Size",
   "x_ticks": [
     0,
-    22
+    28
   ],
   "y": "Cycle Count",
   "legend": "Design Type",
