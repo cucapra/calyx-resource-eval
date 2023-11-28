@@ -21,14 +21,14 @@
   },
   "inputs": [
     {
-      "name": "pifotree_piezo",
+      "name": "pifotree_promoted",
       "paths": [
-        "benchmarks/pifotree/pifotree_piezo.futil"
+        "benchmarks/pifotree/pifotree_promoted.futil"
       ],
       "config": {
         "source": "calyx"
       }
     }
   ],
-  "results_folder": "paper-results/pifo_tree_estimates_piezo"
+  "results_folder": "paper-results/pifo_tree_estimates_promoted"
 }
