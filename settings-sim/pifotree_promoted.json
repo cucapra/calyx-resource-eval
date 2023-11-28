@@ -9,10 +9,10 @@
   },
   "inputs": [
     {
-      "name": "pifotree_piezo",
+      "name": "pifotree_promoted",
       "inputs": [
         [
-          "benchmarks/pifotree/pifotree_piezo.futil",
+          "benchmarks/pifotree/pifotree_promoted.futil",
           "pifotree",
           "benchmarks/pifotree/data.json"
         ]
@@ -20,7 +20,7 @@
       "config": {
         "source": "calyx"
       },
-      "results_file": "paper-results/sim/pifo_tree_piezo_sim.json"
+      "results_file": "paper-results/sim/pifo_tree_promoted_sim.json"
     }
   ]
 }
