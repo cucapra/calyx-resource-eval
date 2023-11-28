@@ -1054,8 +1054,7 @@ component pifo_root(cmd: 2, value: 32, @go go: 1, @clk clk: 1, @reset reset: 1) 
                 len_incr_group0;
                 static<1> invoke stats(
                   flow = flow.out
-                )()
-                );
+                )();
               }
             }
           }
