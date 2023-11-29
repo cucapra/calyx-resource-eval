@@ -1,10 +1,12 @@
 {
-  "jsons": [
+  "cycle_jsons": [
     [
+      "systolic-simulation/correct-relu-static-sim-combined.json",
       "systolic-resources/relu-static-combined.json",
       "ReLU (static implementation)"
     ],
     [
+      "systolic-simulation/correct-relu-dyn-sim-combined.json",
       "systolic-resources/relu-dynamic-combined.json",
       "ReLU (dynamic implementation)"
     ]
@@ -14,6 +16,7 @@
     0,
     36
   ],
+  "y": "Cycle Count",
   "legend": "Design Type",
   "benchmarks": [
     [
@@ -29,25 +32,8 @@
       "16x16"
     ]
   ],
-  "resources": [
-    [
-      "lut",
-      "LUT"
-    ],
-    [
-      "registers",
-      "Register"
-    ]
-  ],
-  "sort": true,
   "legend_pos": [
-    0.65,
+    0.75,
     1.0
-  ],
-  "legend_font_size": [
-    38,
-    28
-  ],
-  "hide_legend": true,
-  "k_y_axis": true
+  ]
 }

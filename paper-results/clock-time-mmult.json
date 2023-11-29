@@ -1,0 +1,39 @@
+{
+  "cycle_jsons": [
+    [
+      "systolic-simulation/correct-mmult-dyn-sim-combined.json",
+      "systolic-resources/mmult-dyn-combined.json",
+      "Flexible Contraction Dimension"
+    ],
+    [
+      "systolic-simulation/correct-mmult-static-sim-combined.json",
+      "systolic-resources/mmult-static-combined.json",
+      "Fixed Contraction Dimension"
+    ]
+  ],
+  "x": "",
+  "x_ticks": [
+    0,
+    36
+  ],
+  "y": "Cycle Count",
+  "legend": "Design Type",
+  "benchmarks": [
+    [
+      "4.json",
+      "4x4"
+    ],
+    [
+      "8.json",
+      "8x8"
+    ],
+    [
+      "16.json",
+      "16x16"
+    ]
+  ],
+  "legend_pos": [
+    0.75,
+    1.0
+  ]
+}

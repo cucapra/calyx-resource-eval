@@ -7,10 +7,6 @@
     [
       "systolic-simulation/correct-relu-dyn-sim-combined.json",
       "ReLU (dynamic implementation)"
-    ],
-    [
-      "systolic-simulation/leaky-relu-sim-combined.json",
-      "Leaky ReLU (only dynamic)"
     ]
   ],
   "x": "",
@@ -35,7 +31,7 @@
     ]
   ],
   "legend_pos": [
-    0.75,
+    0.70,
     1.0
   ]
 }

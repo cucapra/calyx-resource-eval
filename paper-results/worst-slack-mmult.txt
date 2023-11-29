@@ -1,0 +1,1 @@
+[['Flexible Contraction Dimension', '4x4', 2.539], ['Flexible Contraction Dimension', '8x8', 2.311], ['Flexible Contraction Dimension', '16x16', 0.821], ['Fixed Contraction Dimension', '4x4', 3.169], ['Fixed Contraction Dimension', '8x8', 2.184], ['Fixed Contraction Dimension', '16x16', 1.305]]

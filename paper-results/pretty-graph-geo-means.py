@@ -40,6 +40,7 @@ def parse_json(input):
     dic["y"] = json_info.get("y", "")
     dic["legend"] = json_info["legend"]
     dic["legend_pos"] = json_info["legend_pos"]
+    dic["legend_font_size"] = json_info["legend_font_size"]
     dic["hide_legend"] = json_info.get("hide_legend", False)
     return dic
 
@@ -78,6 +79,37 @@ def get_graph_cycles(cycle_count_jsons, benchmark_info, graph_data):
             )
 
 
+def get_worst_slack(usage_data, benchmark_data, graph_data):
+    for setting_name, resource_map in usage_data.items():
+        for benchmark_name, resource_usage in resource_map.items():
+            graph_data.append(
+                [
+                    setting_name,
+                    benchmark_data[benchmark_name],
+                    resource_usage["worst_slack"],
+                ]
+            )
+
+
+# def get_clock_time(usage_data, cycle_count_jsons, benchmark_info, graph_data):
+#     for setting_name, cycle_count_dic in cycle_count_jsons.items():
+#         for benchmark_name, cycle_count in cycle_count_dic.items():
+#             period = usage_data[setting_name][
+#                 f"benchmarks/polybench-scf/{benchmark_name}-med.futil"
+#             ]["period"]
+#             worst_slack = usage_data[setting_name][
+#                 f"benchmarks/polybench-scf/{benchmark_name}-med.futil"
+#             ]["worst_slack"]
+#             # update graph_data for each resource/design that we can
+#             graph_data.append(
+#                 [
+#                     setting_name,
+#                     benchmark_info[benchmark_name],
+#                     1 / (period - worst_slack),
+#                 ]
+#             )
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Process args for resource estimates")
     parser.add_argument("-j", "--json", default="graph-inputs/full-graph-input.json")
@@ -104,6 +136,14 @@ if __name__ == "__main__":
         cycle_graph_data,
     )
 
+    # Get worst slack data just to print it out
+    worst_slack_data = []
+    get_worst_slack(
+        graph_info["resource_inputs"],
+        graph_info["benchmarks_resources"],
+        worst_slack_data,
+    )
+
     geo_mean_data = []
     geo_mean_print_data = []
 
@@ -121,9 +161,13 @@ if __name__ == "__main__":
             # geo_mean - 1 bc graph will start at 1
             geo_mean_data.append([resource, setting, geo_mean - 1])
             geo_mean_print_data.append([resource, setting, geo_mean])
-        # geo_mean_data[resource] = standardize_results(
-        #     graph_info["standard_version"], resource_usage_data
-        # )
+
+    # Just get the worst slack data to be printed.
+    for setting, geo_mean in get_geo_means(
+        graph_info["standard_version"], worst_slack_data
+    ).items():
+        # geo_mean - 1 bc graph will start at 1
+        geo_mean_print_data.append(["worst_slack", setting, geo_mean])
 
     print(geo_mean_print_data)
 
@@ -140,22 +184,23 @@ if __name__ == "__main__":
         palette=graph_info.get("pallette", None),
     )
 
+    plt.legend(title="Compilation Settings")
     sns.move_legend(
         ax,
         "upper right",
         bbox_to_anchor=(graph_info["legend_pos"][0], graph_info["legend_pos"][1]),
     )
+
     # for legend text
-    plt.setp(ax.get_legend().get_texts(), fontsize=20)
+    plt.setp(ax.get_legend().get_texts(), fontsize=graph_info["legend_font_size"][1])
     # for legend title
-    plt.setp(ax.get_legend().get_title(), fontsize=26)
+    plt.setp(ax.get_legend().get_title(), fontsize=graph_info["legend_font_size"][0])
     plt.xlabel(graph_info["x"], fontsize=30)
     plt.ylabel(graph_info["y"], fontsize=30)
     plt.title("", fontsize=20)
     plt.tick_params(axis="both", which="major", labelsize=14)
     plt.xticks(fontsize=20)
     plt.yticks(fontsize=20)
-    plt.legend(title="Compilation Settings")
     if graph_info.get("hide_legend", False):
         # hacky way to get rid of legend
         plt.legend([], [], frameon=False)

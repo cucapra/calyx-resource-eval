@@ -1,0 +1,1 @@
+[['ReLU (static implementation)', '4x4', 2.25], ['ReLU (static implementation)', '8x8', 1.596], ['ReLU (static implementation)', '16x16', 1.042], ['ReLU (dynamic implementation)', '4x4', 2.656], ['ReLU (dynamic implementation)', '8x8', 1.574], ['ReLU (dynamic implementation)', '16x16', 0.882]]

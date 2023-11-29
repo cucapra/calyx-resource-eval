@@ -43,21 +43,31 @@ if __name__ == "__main__":
 
     # iterate over files in directory
     # https: //www.geeksforgeeks.org/how-to-iterate-over-files-in-directory-using-python/
-    for [filename, filename_alias] in cycle_count_jsons:
-        with open(filename, "r") as f:
-            cycle_counts = json.load(f)
-            for benchmark, benchmark_alias in benchmarks.items():
-                if benchmark not in cycle_counts:
-                    graph_data.append([filename_alias, benchmark_alias, None])
-                    warnings.warn(f"Expected {benchmark} in {filename}.")
-                else:
-                    graph_data.append(
-                        [filename_alias, benchmark_alias, cycle_counts[benchmark]]
-                    )
+    for [filename, resources_filename, filename_alias] in cycle_count_jsons:
+        with open(resources_filename, "r") as rf:
+            resource_info = json.load(rf)
+            with open(filename, "r") as f:
+                cycle_counts = json.load(f)
+                for benchmark, benchmark_alias in benchmarks.items():
+                    period = resource_info[benchmark]["period"]
+                    worst_slack = resource_info[benchmark]["worst_slack"]
+                    if benchmark not in cycle_counts:
+                        graph_data.append([filename_alias, benchmark_alias, None])
+                        warnings.warn(f"Expected {benchmark} in {filename}.")
+                    else:
+                        graph_data.append(
+                            [
+                                filename_alias,
+                                benchmark_alias,
+                                worst_slack,
+                            ]
+                        )
 
     if standard is not None:
         print(get_geo_means(standard, graph_data))
         graph_data = standardize_results(standard, graph_data)
+
+    print(graph_data)
 
     fig = plt.figure(figsize=(10, 7))
     df = pd.DataFrame(graph_data, columns=["legend", "x", "y"])
@@ -81,9 +91,9 @@ if __name__ == "__main__":
     plt.legend(title=legend_title)
     sns.move_legend(ax, "upper right", bbox_to_anchor=(legend_pos[0], legend_pos[1]))
     # for legend text
-    plt.setp(ax.get_legend().get_texts(), fontsize=24)
+    plt.setp(ax.get_legend().get_texts(), fontsize=26)
     # for legend title
-    plt.setp(ax.get_legend().get_title(), fontsize=34)
+    plt.setp(ax.get_legend().get_title(), fontsize=36)
     plt.xlabel(x_label, fontsize=45)
     plt.ylabel(y_label, fontsize=45)
     plt.title("", fontsize=20)
