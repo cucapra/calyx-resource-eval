@@ -3,5 +3,5 @@
   "top_depth": 128,
   "left_length": 128,
   "left_depth": 128,
-  "static": true
+  "fixed-dim": true
 }
