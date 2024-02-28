@@ -1,7 +1,7 @@
 design_name=$1
 bounded=$2
 
-cgeist "$design_name-main.c" -S > "$design_name.mlir"
+cgeist "$design_name-main.c" -D MINI_DATASET -S > "$design_name.mlir"
 
 sed -i 's/attributes {[^{}]*}//g' "$design_name.mlir"
 

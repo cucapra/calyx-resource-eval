@@ -2,10 +2,10 @@ import argparse
 import json
 import os
 import subprocess
-import time
-from datetime import datetime
 
 from utilities.comp_json import compare_jsons, get_cycle_count
+
+ALL_SAME = True
 
 
 def expect_exists(pathname):
@@ -15,19 +15,6 @@ def expect_exists(pathname):
     """
     if not os.path.exists(pathname):
         raise FileNotFoundError(f"The path '{pathname}' does not exist.")
-
-
-def find_c_benchmark_path(bench_name):
-    """
-    Searches for a folder with name bench_name in the current directory
-    Ignores directories with "polybench-c" in their name
-    Args:
-        bench_name (string): the name of the benchmark
-    Raises:
-        Exception: if there is not exactly 1 folder (excluding directories w/
-        "polybench-c" in their name) that has bench_name in the folder name
-    """
-    benchmark_path = None
 
 
 def parse_args(args):
@@ -59,14 +46,15 @@ def run_benchmark(run_settings, benchmark_path, benchmark_name, cycle_counts):
     calyx_results_path = os.path.join("data_calyx", f"{benchmark_name}.json")
     c_results_path = os.path.join("data_expected", f"{benchmark_name}.json")
     json_generator = os.path.join(benchmark_path, "generate-json.cpp")
+    calyx_file_path = os.path.join(
+        "../benchmarks", "polybench-scf", f"{benchmark_name}.futil"
+    )
 
     # Generate the .futil file
     if run_settings["gen_calyx_files"]:
+        print(f"Generating Calyx file for {benchmark_name}")
         calyx_generator = os.path.join("utilities", "gen-calyx.sh")
         expect_exists(calyx_generator)
-        calyx_file_path = os.path.join(
-            "../benchmarks", "polybench-scf", f"{benchmark_name}.futil"
-        )
         # Open the JSON file
         with open(
             os.path.join("utilities", "benchmark_metadata.json"), "r"
@@ -86,26 +74,28 @@ def run_benchmark(run_settings, benchmark_path, benchmark_name, cycle_counts):
 
     # generate the initial json
     if run_settings["gen_data_init"]:
-        with open(init_data_path, "w") as init_file:
+        print(f"Generating initial data for {benchmark_name}")
+        with open(init_data_path, "w+") as init_file:
             # need to do print_json_c_file[2:] to get rid of the ./ in the pathname
             # probably a better way to do this
             subprocess.call(
                 [
-                    "./print-json.sh",
+                    "./generate-json.sh",
                     "-r",
                     "0",
                     "-p",
-                    f"{print_json_c_file[2:]}",
+                    json_generator,
                     "-s",
-                    run_settings["data_size"],
+                    "MINI_DATASET",
                 ],
                 stdout=init_file,
             )
 
     # run the .futil file
     if run_settings["gen_data_calyx"]:
+        print(f"Running Calyx for {benchmark_name}")
         expect_exists(init_data_path)
-        expect_exists(futil_file_path)
+        expect_exists(calyx_file_path)
         calyx_flags = run_settings["calyx_flags"]
         subprocess.run(
             [
@@ -128,43 +118,48 @@ def run_benchmark(run_settings, benchmark_path, benchmark_name, cycle_counts):
                 f"{calyx_flags}",
                 "-o",
                 f"{calyx_results_path}",
-                f"{futil_file_path}",
+                f"{calyx_file_path}",
             ]
         )
 
     # run the cpp implementation
     if run_settings["gen_data_c"]:
-        expect_exists(print_json_c_file)
-        with open(c_results_path, "w") as c_output_file:
+        print(
+            f"Generating expected data (i.e., running C implementation) for {benchmark_name}"
+        )
+        with open(c_results_path, "w+") as c_output_file:
             subprocess.call(
                 [
-                    "./print-json.sh",
+                    "./generate-json.sh",
                     "-r",
                     "1",
                     "-p",
-                    f"{print_json_c_file[2:]}",
+                    json_generator,
                     "-s",
-                    run_settings["data_size"],
+                    "MINI_DATASET",
                 ],
                 stdout=c_output_file,
             )
 
     # compare the calyx run and the cpp run
     if run_settings["check_results"]:
+        global ALL_SAME
         expect_exists(c_results_path)
-        with open(
-            os.path.join("check_results", run_settings["check_results_file"]), "a"
-        ) as f:
-            # XXX(Caleb):ignore certain memories for annoying reason
-            # These are 1d memories that when you pass as arguments in c it
-            # they don't change value to the outside world
-            if benchmark_name == "durbin":
-                ignore = ["mem_3", "mem_4", "mem_5"]
-            elif benchmark_name == "ludcmp":
-                ignore = ["mem_4"]
-            else:
-                ignore = []
-            f.write(compare_jsons(c_results_path, calyx_results_path, ignore))
+        expect_exists(calyx_results_path)
+        # XXX(Caleb): ignore certain memories for annoying reason
+        # These are 1d memories that when you pass as arguments in c it
+        # they don't change value to the outside world
+        if benchmark_name == "durbin":
+            ignore = ["mem_3", "mem_4", "mem_5"]
+        elif benchmark_name == "ludcmp":
+            ignore = ["mem_4"]
+        else:
+            ignore = []
+        str_result, bool_result = compare_jsons(
+            c_results_path, calyx_results_path, ignore
+        )
+        print(str_result)
+        ALL_SAME = ALL_SAME & bool_result
         cycle_counts[benchmark_name] = get_cycle_count(calyx_results_path)
 
 
@@ -188,18 +183,11 @@ if __name__ == "__main__":
         # Construct the full path
         benchmark_path = os.path.join("benchmarks", benchmark)
         run_benchmark(run_settings, benchmark_path, benchmark, cycle_counts)
-        # end_time = time.time()
-        # if run_settings["wall_time_file"] is not None:
-        #     with open(
-        #         os.path.join("wall-time", run_settings["wall_time_file"]), "a"
-        #     ) as file:
-        #         file.writelines(
-        #             f"{benchmark}:" + str((end_time - start_time) / 60) + " minutes\n"
-        #         )
 
-    # if run_settings["cycle_count_results"] is not None:
-    #     expect_exists("cycle-counts")
-    #     with open(
-    #         os.path.join("cycle-counts", run_settings["cycle_count_results"]), "w"
-    #     ) as f:
-    #         f.write(json.dumps(cycle_counts))
+    if run_settings["check_results"]:
+        print(f"ALL_SAME: {ALL_SAME}")
+        expect_exists("cycle-counts")
+        filename = "calyx-results" + run_settings["calyx_flags"] + ".json"
+        filename.replace(" ", "")
+        with open(os.path.join("cycle-counts", filename), "w+") as f:
+            f.write(json.dumps(cycle_counts))

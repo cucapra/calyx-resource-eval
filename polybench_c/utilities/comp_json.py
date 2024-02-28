@@ -34,9 +34,9 @@ def compare_jsons(json_file1, json_file2, ignore_mems):
             same = False
             ans += f"{m1_name} is not equivalent\n"
     if same:
-        return "All Equivalent\n"
+        return ("All Equivalent\n", True)
     else:
-        return ans
+        return (ans, False)
 
 
 if __name__ == "__main__":
