@@ -73,24 +73,16 @@ def run_benchmark(run_settings, benchmark_path, benchmark_name, cycle_counts):
         ) as json_file:
             # Load JSON data into a dictionary
             bounded = "1" if benchmark_name in json.load(json_file)["bounded"] else "0"
-        print(
-            [
-                "sh",
-                calyx_generator,
-                os.path.join("benchmarks", benchmark_name),
-                bounded,
-            ],
-        )
-        # with open(calyx_file_path, "w+") as futil_file:
-        #     # subprocess.call(
-        #     #     [
-        #     #         "sh",
-        #     #         calyx_generator,
-        #     #         os.path.join("benchmarks", benchmark_name),
-        #     #         bounded,
-        #     #     ],
-        #     #     stdout=futil_file,
-        #     # )
+        with open(calyx_file_path, "w+") as futil_file:
+            subprocess.call(
+                [
+                    "sh",
+                    calyx_generator,
+                    os.path.join(benchmark_path, benchmark_name),
+                    bounded,
+                ],
+                stdout=futil_file,
+            )
 
     # generate the initial json
     if run_settings["gen_data_init"]:
