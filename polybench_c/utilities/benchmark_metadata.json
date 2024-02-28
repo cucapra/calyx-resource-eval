@@ -1,0 +1,25 @@
+{
+  "not_bounded": [
+    "covariance",
+    "symm",
+    "syr2k",
+    "syrk",
+    "trmm",
+    "durbin",
+    "lu",
+    "ludcmp",
+    "trisolv",
+    "seidel-2d"
+  ],
+  "bounded": [
+    "gemm",
+    "gemver",
+    "gesummv",
+    "2mm",
+    "3mm",
+    "atax",
+    "bicg",
+    "doitgen",
+    "mvt"
+  ]
+}
