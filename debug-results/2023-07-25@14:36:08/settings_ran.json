@@ -1,1 +1,0 @@
-{"universal_configs": {"stage_dynamic_config": [["synth-verilog.tcl", "synth-files/synth.tcl"], ["synth-verilog.constraints", "synth-files/device10.xdc"], ["calyx.flags", "-d static-promotion"]]}, "inputs": [{"name": "scf_polybench_med", "paths": ["benchmarks/polybench-med/*.futil"], "config": {"source": "calyx"}}]}

@@ -1,3 +1,0 @@
-error when retrieving resource estimates for benchmarks/polybench-scf-calyx/trmm.futil
-(corrected with the 7-15 run. I manually inserted the results from that run to the 
-incorrect file)
