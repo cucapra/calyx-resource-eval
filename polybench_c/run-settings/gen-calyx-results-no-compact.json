@@ -1,4 +1,0 @@
-{
-  "gen_data_calyx": true,
-  "calyx_flags": "-x static-promotion:no-compact"
-}

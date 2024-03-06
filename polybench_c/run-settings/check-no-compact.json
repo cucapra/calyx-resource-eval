@@ -1,0 +1,5 @@
+{
+  "calyx_flags": "-x static-promotion:no-compact",
+  "gen_data_calyx": true,
+  "check_results": true
+}

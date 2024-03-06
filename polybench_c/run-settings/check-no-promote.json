@@ -1,0 +1,5 @@
+{
+  "calyx_flags": "-d static-promotion -d cell-share",
+  "gen_data_calyx": true,
+  "check_results": true
+}
