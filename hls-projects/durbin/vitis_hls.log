@@ -1,0 +1,45 @@
+
+****** Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2020.2 (64-bit)
+  **** SW Build 3064766 on Wed Nov 18 09:12:47 MST 2020
+  **** IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+    ** Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+
+source /scratch/opt/Xilinx/Vitis_HLS/2020.2/scripts/vitis_hls/hls.tcl -notrace
+INFO: Applying HLS Y2K22 patch v1.2 for IP revision
+INFO: [HLS 200-10] Running '/scratch/opt/Xilinx/Vitis_HLS/2020.2/bin/unwrapped/lnx64.o/vitis_hls'
+INFO: [HLS 200-10] For user 'cmk265' on host 'havarti.cs.cornell.edu' (Linux_x86_64 version 5.4.0-137-generic) on Wed Feb 21 14:14:06 EST 2024
+INFO: [HLS 200-10] On os Ubuntu 20.04.6 LTS
+INFO: [HLS 200-10] In directory '/scratch/cmk265/learning/calyx-resource-eval/hls-projects/durbin'
+Sourcing Tcl script '../hls.tcl'
+INFO: [HLS 200-1510] Running: open_project benchmark.prj -reset 
+INFO: [HLS 200-10] Opening and resetting project '/scratch/cmk265/learning/calyx-resource-eval/hls-projects/durbin/benchmark.prj'.
+WARNING: [HLS 200-40] No /scratch/cmk265/learning/calyx-resource-eval/hls-projects/durbin/benchmark.prj/solution1/solution1.aps file found.
+INFO: [HLS 200-1510] Running: set_top kernel_durbin 
+INFO: [HLS 200-1510] Running: add_files ./durbin.cpp -cflags -std=c++11 -DVHLS 
+INFO: [HLS 200-10] Adding design file './durbin.cpp' to the project
+INFO: [HLS 200-1510] Running: open_solution solution1 
+INFO: [HLS 200-10] Creating and opening solution '/scratch/cmk265/learning/calyx-resource-eval/hls-projects/durbin/benchmark.prj/solution1'.
+INFO: [HLS 200-1505] Using default flow_target 'vivado'
+Resolution: For help on HLS 200-1505 see www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2;t=hls+guidance;d=200-1505.html
+INFO: [HLS 200-1510] Running: set_part xcu250-figd2104-2-e 
+INFO: [HLS 200-10] Setting target device to 'xcu250-figd2104-2-e'
+INFO: [HLS 200-1510] Running: create_clock -period 7 
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 7ns.
+INFO: [HLS 200-1510] Running: csynth_design 
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.01 seconds; current allocated memory: 189.915 MB.
+INFO: [HLS 200-10] Analyzing design file './durbin.cpp' ... 
+WARNING: [HLS 207-1017] unknown pragma ignored: ./durbin.cpp:17:9
+WARNING: [HLS 207-1017] unknown pragma ignored: ./durbin.cpp:36:9
+WARNING: [HLS 207-5301] unused parameter 'n': ./durbin.cpp:12:79
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 0.64 seconds. CPU system time: 0.35 seconds. Elapsed time: 0.49 seconds; current allocated memory: 191.487 MB.
+ERROR: [HLS 214-157] Top function not found: there is no function named 'kernel_durbin'
+INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 3.46 seconds. CPU system time: 0.72 seconds. Elapsed time: 3.36 seconds; current allocated memory: 191.534 MB.
+Error in opt
+    while executing
+"source ../hls.tcl"
+    ("uplevel" body line 1)
+    invoked from within
+"uplevel \#0 [list source $arg] "
+
+INFO: [HLS 200-112] Total CPU user time: 5.24 seconds. Total CPU system time: 1.35 seconds. Total elapsed time: 4.84 seconds; peak allocated memory: 191.487 MB.
+INFO: [Common 17-206] Exiting vitis_hls at Wed Feb 21 14:14:11 2024...

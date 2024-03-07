@@ -1,0 +1,102 @@
+
+****** Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2020.2 (64-bit)
+  **** SW Build 3064766 on Wed Nov 18 09:12:47 MST 2020
+  **** IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+    ** Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+
+source /scratch/opt/Xilinx/Vitis_HLS/2020.2/scripts/vitis_hls/hls.tcl -notrace
+INFO: Applying HLS Y2K22 patch v1.2 for IP revision
+INFO: [HLS 200-10] Running '/scratch/opt/Xilinx/Vitis_HLS/2020.2/bin/unwrapped/lnx64.o/vitis_hls'
+INFO: [HLS 200-10] For user 'cmk265' on host 'havarti.cs.cornell.edu' (Linux_x86_64 version 5.4.0-137-generic) on Thu Feb 22 08:23:33 EST 2024
+INFO: [HLS 200-10] On os Ubuntu 20.04.6 LTS
+INFO: [HLS 200-10] In directory '/scratch/cmk265/learning/calyx-resource-eval/hls-projects/zz'
+Sourcing Tcl script '../hls.tcl'
+INFO: [HLS 200-1510] Running: open_project benchmark.prj -reset 
+INFO: [HLS 200-10] Opening and resetting project '/scratch/cmk265/learning/calyx-resource-eval/hls-projects/zz/benchmark.prj'.
+WARNING: [HLS 200-40] No /scratch/cmk265/learning/calyx-resource-eval/hls-projects/zz/benchmark.prj/solution1/solution1.aps file found.
+INFO: [HLS 200-1510] Running: set_top kernel 
+INFO: [HLS 200-1510] Running: add_files ./cholesky.cpp -cflags -std=c++11 -DVHLS 
+INFO: [HLS 200-10] Adding design file './cholesky.cpp' to the project
+INFO: [HLS 200-1510] Running: open_solution solution1 
+INFO: [HLS 200-10] Creating and opening solution '/scratch/cmk265/learning/calyx-resource-eval/hls-projects/zz/benchmark.prj/solution1'.
+INFO: [HLS 200-1505] Using default flow_target 'vivado'
+Resolution: For help on HLS 200-1505 see www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2;t=hls+guidance;d=200-1505.html
+INFO: [HLS 200-1510] Running: set_part xcu250-figd2104-2-e 
+INFO: [HLS 200-10] Setting target device to 'xcu250-figd2104-2-e'
+INFO: [HLS 200-1510] Running: create_clock -period 7 
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 7ns.
+INFO: [HLS 200-1510] Running: csynth_design 
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0.01 seconds. CPU system time: 0 seconds. Elapsed time: 0 seconds; current allocated memory: 189.868 MB.
+INFO: [HLS 200-10] Analyzing design file './cholesky.cpp' ... 
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 3.53 seconds. CPU system time: 0.47 seconds. Elapsed time: 3.17 seconds; current allocated memory: 191.502 MB.
+INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
+WARNING: [HLS 214-205] The INTERFACE pragma must have a max_widen_bitwidth setting that is both a power of 2 and in the range [0, 1024]. The current value of '0' will be ignored, in 'kernel' (./cholesky.cpp:3:0)
+WARNING: [HLS 214-205] The INTERFACE pragma must have a max_widen_bitwidth setting that is both a power of 2 and in the range [0, 1024]. The current value of '0' will be ignored, in 'kernel' (./cholesky.cpp:3:0)
+WARNING: [HLS 214-205] The INTERFACE pragma must have a max_widen_bitwidth setting that is both a power of 2 and in the range [0, 1024]. The current value of '0' will be ignored, in 'kernel' (./cholesky.cpp:3:0)
+WARNING: [HLS 214-205] The INTERFACE pragma must have a max_widen_bitwidth setting that is both a power of 2 and in the range [0, 1024]. The current value of '0' will be ignored, in 'kernel' (./cholesky.cpp:3:0)
+WARNING: [HLS 214-205] The INTERFACE pragma must have a max_widen_bitwidth setting that is both a power of 2 and in the range [0, 1024]. The current value of '0' will be ignored, in 'kernel' (./cholesky.cpp:3:0)
+INFO: [HLS 214-131] Inlining function '_llvm.fpga.pack.none.i32.s_struct.ap_uints' into 'kernel' (./cholesky.cpp:29:23)
+INFO: [HLS 214-131] Inlining function '_llvm.fpga.pack.none.i32.s_struct.ap_uints' into 'kernel' (./cholesky.cpp:37:21)
+INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 3.01 seconds. CPU system time: 0.41 seconds. Elapsed time: 3.44 seconds; current allocated memory: 192.713 MB.
+INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0 seconds; current allocated memory: 192.715 MB.
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 0.04 seconds. CPU system time: 0 seconds. Elapsed time: 0.04 seconds; current allocated memory: 200.060 MB.
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 0.1 seconds. CPU system time: 0 seconds. Elapsed time: 0.09 seconds; current allocated memory: 209.187 MB.
+INFO: [XFORM 203-510] Pipelining loop 'VITIS_LOOP_24_3' (./cholesky.cpp:23) in function 'kernel' automatically.
+INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 0.16 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.18 seconds; current allocated memory: 240.398 MB.
+INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 0.14 seconds. CPU system time: 0 seconds. Elapsed time: 0.15 seconds; current allocated memory: 238.237 MB.
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'kernel' ...
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'kernel' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_24_3'.
+WARNING: [HLS 200-880] The II Violation in module 'kernel' (loop 'VITIS_LOOP_24_3'): Unable to enforce a carried dependence constraint (II = 1, distance = 1, offset = 1) between bus response on port 'gmem' (./cholesky.cpp:29) and bus request on port 'gmem' (./cholesky.cpp:27).
+Resolution: For help on HLS 200-880 see www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2;t=hls+guidance;d=200-880.html
+WARNING: [HLS 200-880] The II Violation in module 'kernel' (loop 'VITIS_LOOP_24_3'): Unable to enforce a carried dependence constraint (II = 2, distance = 1, offset = 1) between bus response on port 'gmem' (./cholesky.cpp:29) and bus request on port 'gmem' (./cholesky.cpp:27).
+Resolution: For help on HLS 200-880 see www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2;t=hls+guidance;d=200-880.html
+WARNING: [HLS 200-880] The II Violation in module 'kernel' (loop 'VITIS_LOOP_24_3'): Unable to enforce a carried dependence constraint (II = 3, distance = 1, offset = 1) between bus response on port 'gmem' (./cholesky.cpp:29) and bus request on port 'gmem' (./cholesky.cpp:27).
+Resolution: For help on HLS 200-880 see www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2;t=hls+guidance;d=200-880.html
+WARNING: [HLS 200-880] The II Violation in module 'kernel' (loop 'VITIS_LOOP_24_3'): Unable to enforce a carried dependence constraint (II = 4, distance = 1, offset = 1) between bus response on port 'gmem' (./cholesky.cpp:29) and bus request on port 'gmem' (./cholesky.cpp:27).
+Resolution: For help on HLS 200-880 see www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2;t=hls+guidance;d=200-880.html
+WARNING: [HLS 200-880] The II Violation in module 'kernel' (loop 'VITIS_LOOP_24_3'): Unable to enforce a carried dependence constraint (II = 11, distance = 1, offset = 1) between bus response on port 'gmem' (./cholesky.cpp:29) and bus request on port 'gmem' (./cholesky.cpp:27).
+Resolution: For help on HLS 200-880 see www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2;t=hls+guidance;d=200-880.html
+WARNING: [HLS 200-880] The II Violation in module 'kernel' (loop 'VITIS_LOOP_24_3'): Unable to enforce a carried dependence constraint (II = 15, distance = 1, offset = 1) between bus response on port 'gmem' (./cholesky.cpp:29) and bus request on port 'gmem' (./cholesky.cpp:27).
+Resolution: For help on HLS 200-880 see www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2;t=hls+guidance;d=200-880.html
+WARNING: [HLS 200-880] The II Violation in module 'kernel' (loop 'VITIS_LOOP_24_3'): Unable to enforce a carried dependence constraint (II = 16, distance = 1, offset = 1) between bus response on port 'gmem' (./cholesky.cpp:29) and bus request on port 'gmem' (./cholesky.cpp:27).
+Resolution: For help on HLS 200-880 see www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2;t=hls+guidance;d=200-880.html
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 17, Depth = 30, loop 'VITIS_LOOP_24_3'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.19 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.2 seconds; current allocated memory: 239.044 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.29 seconds. CPU system time: 0 seconds. Elapsed time: 0.29 seconds; current allocated memory: 239.922 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'kernel' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+WARNING: [RTGEN 206-101] Design contains AXI ports. Reset is fixed to synchronous and active low.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel/gmem' to 'm_axi'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel/alpha_int' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel/beta_int' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel/C_int' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel/A_int' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel/B_int' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on function 'kernel' to 's_axilite & ap_ctrl_hs'.
+INFO: [RTGEN 206-100] Bundling port 'alpha_int', 'beta_int', 'C_int', 'A_int', 'B_int' and 'return' to AXI-Lite port control.
+INFO: [RTGEN 206-100] Generating core module 'mul_32s_32s_32_1_1': 6 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'kernel'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.17 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.17 seconds; current allocated memory: 241.797 MB.
+INFO: [RTMG 210-282] Generating pipelined core: 'kernel_mul_32s_32s_32_1_1_Multiplier_0'
+INFO: [HLS 200-111] Finished Generating all RTL models: CPU user time: 1.22 seconds. CPU system time: 0.02 seconds. Elapsed time: 1.24 seconds; current allocated memory: 252.264 MB.
+INFO: [VHDL 208-304] Generating VHDL RTL for kernel.
+INFO: [VLOG 209-307] Generating Verilog RTL for kernel.
+INFO: [HLS 200-790] **** Loop Constraint Status: All loop constraints were NOT satisfied.
+INFO: [HLS 200-789] **** Estimated Fmax: 195.69 MHz
+INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 8.99 seconds. CPU system time: 0.93 seconds. Elapsed time: 9.09 seconds; current allocated memory: 252.788 MB.
+INFO: [HLS 200-112] Total CPU user time: 10.79 seconds. Total CPU system time: 1.56 seconds. Total elapsed time: 10.6 seconds; peak allocated memory: 252.264 MB.
+INFO: [Common 17-206] Exiting vitis_hls at Thu Feb 22 08:23:43 2024...
