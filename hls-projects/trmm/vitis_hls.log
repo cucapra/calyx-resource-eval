@@ -7,7 +7,7 @@
 source /scratch/opt/Xilinx/Vitis_HLS/2020.2/scripts/vitis_hls/hls.tcl -notrace
 INFO: Applying HLS Y2K22 patch v1.2 for IP revision
 INFO: [HLS 200-10] Running '/scratch/opt/Xilinx/Vitis_HLS/2020.2/bin/unwrapped/lnx64.o/vitis_hls'
-INFO: [HLS 200-10] For user 'cmk265' on host 'havarti.cs.cornell.edu' (Linux_x86_64 version 5.4.0-137-generic) on Wed Feb 21 15:00:16 EST 2024
+INFO: [HLS 200-10] For user 'cmk265' on host 'havarti.cs.cornell.edu' (Linux_x86_64 version 5.4.0-137-generic) on Fri Mar 08 08:36:28 EST 2024
 INFO: [HLS 200-10] On os Ubuntu 20.04.6 LTS
 INFO: [HLS 200-10] In directory '/scratch/cmk265/learning/calyx-resource-eval/hls-projects/trmm'
 Sourcing Tcl script '../hls.tcl'
@@ -26,24 +26,24 @@ INFO: [HLS 200-10] Setting target device to 'xcu250-figd2104-2-e'
 INFO: [HLS 200-1510] Running: create_clock -period 7 
 INFO: [SYN 201-201] Setting up clock 'default' with a period of 7ns.
 INFO: [HLS 200-1510] Running: csynth_design 
-INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0 seconds; current allocated memory: 189.821 MB.
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.01 seconds; current allocated memory: 189.855 MB.
 INFO: [HLS 200-10] Analyzing design file './trmm.cpp' ... 
 WARNING: [HLS 207-1017] unknown pragma ignored: ./trmm.cpp:20:9
 WARNING: [HLS 207-1017] unknown pragma ignored: ./trmm.cpp:27:9
-INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 0.63 seconds. CPU system time: 0.29 seconds. Elapsed time: 0.46 seconds; current allocated memory: 191.372 MB.
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 0.75 seconds. CPU system time: 0.42 seconds. Elapsed time: 0.58 seconds; current allocated memory: 191.437 MB.
 INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
-INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 3.23 seconds. CPU system time: 0.45 seconds. Elapsed time: 3.32 seconds; current allocated memory: 192.504 MB.
-INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0 seconds; current allocated memory: 192.505 MB.
+INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 3.07 seconds. CPU system time: 0.51 seconds. Elapsed time: 3.34 seconds; current allocated memory: 192.507 MB.
+INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0 seconds; current allocated memory: 192.508 MB.
 INFO: [HLS 200-10] Starting code transformations ...
-INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 0 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.02 seconds; current allocated memory: 193.723 MB.
+INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 0.01 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.01 seconds; current allocated memory: 193.741 MB.
 INFO: [HLS 200-10] Checking synthesizability ...
 INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 0.03 seconds. CPU system time: 0 seconds. Elapsed time: 0.03 seconds; current allocated memory: 192.950 MB.
 INFO: [XFORM 203-510] Pipelining loop 'VITIS_LOOP_23_3' (./trmm.cpp:10) in function 'kernel_trmm' automatically.
-INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 0.06 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.06 seconds; current allocated memory: 213.423 MB.
+INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 0.05 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.06 seconds; current allocated memory: 213.424 MB.
 WARNING: [HLS 200-960] Cannot flatten loop 'VITIS_LOOP_22_2' (./trmm.cpp:10:10) in function 'kernel_trmm' the outer loop is not a perfect loop because there is nontrivial logic in the loop latch.
 Resolution: For help on HLS 200-960 see www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2;t=hls+guidance;d=200-960.html
 INFO: [XFORM 203-541] Flattening a loop nest 'VITIS_LOOP_21_1' (./trmm.cpp:10:7) in function 'kernel_trmm'.
-INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 0.05 seconds. CPU system time: 0 seconds. Elapsed time: 0.04 seconds; current allocated memory: 206.059 MB.
+INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 0.04 seconds. CPU system time: 0 seconds. Elapsed time: 0.05 seconds; current allocated memory: 206.081 MB.
 INFO: [HLS 200-10] Starting hardware synthesis ...
 INFO: [HLS 200-10] Synthesizing 'kernel_trmm' ...
 INFO: [HLS 200-10] ----------------------------------------------------------------
@@ -56,13 +56,13 @@ WARNING: [HLS 200-885] Unable to schedule 'store' operation ('B_addr_write_ln24'
 Resolution: For help on HLS 200-885 see www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2;t=hls+guidance;d=200-885.html
 INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 2, Depth = 6, loop 'VITIS_LOOP_23_3'
 INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.07 seconds. CPU system time: 0 seconds. Elapsed time: 0.08 seconds; current allocated memory: 206.571 MB.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.07 seconds. CPU system time: 0 seconds. Elapsed time: 0.07 seconds; current allocated memory: 206.574 MB.
 INFO: [BIND 205-100] Starting micro-architecture generation ...
 INFO: [BIND 205-101] Performing variable lifetime analysis.
 INFO: [BIND 205-101] Exploring resource sharing.
 INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111] Finished Binding: CPU user time: 0.08 seconds. CPU system time: 0 seconds. Elapsed time: 0.09 seconds; current allocated memory: 206.931 MB.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.09 seconds. CPU system time: 0 seconds. Elapsed time: 0.09 seconds; current allocated memory: 206.951 MB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-10] -- Generating RTL for module 'kernel_trmm' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
@@ -73,13 +73,13 @@ INFO: [RTGEN 206-500] Setting interface mode on function 'kernel_trmm' to 'ap_ct
 INFO: [RTGEN 206-100] Generating core module 'mac_muladd_16s_9ns_8ns_16_4_1': 1 instance(s).
 INFO: [RTGEN 206-100] Generating core module 'mul_32s_32s_32_1_1': 2 instance(s).
 INFO: [RTGEN 206-100] Finished creating RTL model for 'kernel_trmm'.
-INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.08 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.08 seconds; current allocated memory: 207.574 MB.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.09 seconds. CPU system time: 0 seconds. Elapsed time: 0.09 seconds; current allocated memory: 207.593 MB.
 INFO: [RTMG 210-282] Generating pipelined core: 'kernel_trmm_mul_32s_32s_32_1_1_Multiplier_0'
-INFO: [HLS 200-111] Finished Generating all RTL models: CPU user time: 0.82 seconds. CPU system time: 0 seconds. Elapsed time: 0.82 seconds; current allocated memory: 215.778 MB.
+INFO: [HLS 200-111] Finished Generating all RTL models: CPU user time: 0.81 seconds. CPU system time: 0.04 seconds. Elapsed time: 0.85 seconds; current allocated memory: 215.798 MB.
 INFO: [VHDL 208-304] Generating VHDL RTL for kernel_trmm.
 INFO: [VLOG 209-307] Generating Verilog RTL for kernel_trmm.
 INFO: [HLS 200-790] **** Loop Constraint Status: All loop constraints were NOT satisfied.
 INFO: [HLS 200-789] **** Estimated Fmax: 226.35 MHz
-INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 5.11 seconds. CPU system time: 0.77 seconds. Elapsed time: 5.06 seconds; current allocated memory: 215.932 MB.
-INFO: [HLS 200-112] Total CPU user time: 6.9 seconds. Total CPU system time: 1.39 seconds. Total elapsed time: 6.55 seconds; peak allocated memory: 215.778 MB.
-INFO: [Common 17-206] Exiting vitis_hls at Wed Feb 21 15:00:22 2024...
+INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 5.06 seconds. CPU system time: 1 seconds. Elapsed time: 5.24 seconds; current allocated memory: 215.951 MB.
+INFO: [HLS 200-112] Total CPU user time: 6.87 seconds. Total CPU system time: 1.64 seconds. Total elapsed time: 6.75 seconds; peak allocated memory: 215.798 MB.
+INFO: [Common 17-206] Exiting vitis_hls at Fri Mar  8 08:36:35 2024...

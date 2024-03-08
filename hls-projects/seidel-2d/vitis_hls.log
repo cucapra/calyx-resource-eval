@@ -7,14 +7,14 @@
 source /scratch/opt/Xilinx/Vitis_HLS/2020.2/scripts/vitis_hls/hls.tcl -notrace
 INFO: Applying HLS Y2K22 patch v1.2 for IP revision
 INFO: [HLS 200-10] Running '/scratch/opt/Xilinx/Vitis_HLS/2020.2/bin/unwrapped/lnx64.o/vitis_hls'
-INFO: [HLS 200-10] For user 'cmk265' on host 'havarti.cs.cornell.edu' (Linux_x86_64 version 5.4.0-137-generic) on Wed Feb 21 14:14:31 EST 2024
+INFO: [HLS 200-10] For user 'cmk265' on host 'havarti.cs.cornell.edu' (Linux_x86_64 version 5.4.0-137-generic) on Fri Mar 08 08:58:59 EST 2024
 INFO: [HLS 200-10] On os Ubuntu 20.04.6 LTS
 INFO: [HLS 200-10] In directory '/scratch/cmk265/learning/calyx-resource-eval/hls-projects/seidel-2d'
 Sourcing Tcl script '../hls.tcl'
 INFO: [HLS 200-1510] Running: open_project benchmark.prj -reset 
 INFO: [HLS 200-10] Opening and resetting project '/scratch/cmk265/learning/calyx-resource-eval/hls-projects/seidel-2d/benchmark.prj'.
 WARNING: [HLS 200-40] No /scratch/cmk265/learning/calyx-resource-eval/hls-projects/seidel-2d/benchmark.prj/solution1/solution1.aps file found.
-INFO: [HLS 200-1510] Running: set_top kernel_seidel-2d 
+INFO: [HLS 200-1510] Running: set_top kernel_seidel_2d 
 INFO: [HLS 200-1510] Running: add_files ./seidel-2d.cpp -cflags -std=c++11 -DVHLS 
 INFO: [HLS 200-10] Adding design file './seidel-2d.cpp' to the project
 INFO: [HLS 200-1510] Running: open_solution solution1 
@@ -26,21 +26,69 @@ INFO: [HLS 200-10] Setting target device to 'xcu250-figd2104-2-e'
 INFO: [HLS 200-1510] Running: create_clock -period 7 
 INFO: [SYN 201-201] Setting up clock 'default' with a period of 7ns.
 INFO: [HLS 200-1510] Running: csynth_design 
-INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0.01 seconds. CPU system time: 0 seconds. Elapsed time: 0 seconds; current allocated memory: 189.822 MB.
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0.01 seconds. CPU system time: 0 seconds. Elapsed time: 0 seconds; current allocated memory: 189.840 MB.
 INFO: [HLS 200-10] Analyzing design file './seidel-2d.cpp' ... 
 WARNING: [HLS 207-1017] unknown pragma ignored: ./seidel-2d.cpp:10:9
 WARNING: [HLS 207-1017] unknown pragma ignored: ./seidel-2d.cpp:18:9
-WARNING: [HLS 207-5301] unused parameter 'tsteps': ./seidel-2d.cpp:7:34
-WARNING: [HLS 207-5301] unused parameter 'n': ./seidel-2d.cpp:7:46
-INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 0.64 seconds. CPU system time: 0.33 seconds. Elapsed time: 0.49 seconds; current allocated memory: 191.413 MB.
-ERROR: [HLS 214-157] Top function not found: there is no function named 'kernel_seidel-2d'
-INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 3.49 seconds. CPU system time: 0.73 seconds. Elapsed time: 3.38 seconds; current allocated memory: 191.508 MB.
-Error in opt
-    while executing
-"source ../hls.tcl"
-    ("uplevel" body line 1)
-    invoked from within
-"uplevel \#0 [list source $arg] "
-
-INFO: [HLS 200-112] Total CPU user time: 5.22 seconds. Total CPU system time: 1.4 seconds. Total elapsed time: 4.86 seconds; peak allocated memory: 191.413 MB.
-INFO: [Common 17-206] Exiting vitis_hls at Wed Feb 21 14:14:36 2024...
+WARNING: [HLS 207-5301] unused parameter 'tsteps': ./seidel-2d.cpp:7:78
+WARNING: [HLS 207-5301] unused parameter 'n': ./seidel-2d.cpp:7:90
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 0.65 seconds. CPU system time: 0.35 seconds. Elapsed time: 0.5 seconds; current allocated memory: 191.447 MB.
+INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
+INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 3.22 seconds. CPU system time: 0.45 seconds. Elapsed time: 3.36 seconds; current allocated memory: 192.674 MB.
+INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0 seconds; current allocated memory: 192.675 MB.
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 0.02 seconds. CPU system time: 0 seconds. Elapsed time: 0.02 seconds; current allocated memory: 193.863 MB.
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 0.02 seconds. CPU system time: 0 seconds. Elapsed time: 0.02 seconds; current allocated memory: 193.126 MB.
+INFO: [XFORM 203-510] Pipelining loop 'VITIS_LOOP_13_3' (./seidel-2d.cpp:8) in function 'kernel_seidel_2d' automatically.
+INFO: [XFORM 203-11] Balancing expressions in function 'kernel_seidel_2d' (./seidel-2d.cpp:7)...8 expression(s) balanced.
+INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 0.06 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.07 seconds; current allocated memory: 213.593 MB.
+WARNING: [HLS 200-960] Cannot flatten loop 'VITIS_LOOP_12_2' (./seidel-2d.cpp:8:10) in function 'kernel_seidel_2d' the outer loop is not a perfect loop.
+Resolution: For help on HLS 200-960 see www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2;t=hls+guidance;d=200-960.html
+INFO: [XFORM 203-541] Flattening a loop nest 'VITIS_LOOP_11_1' (./seidel-2d.cpp:8:7) in function 'kernel_seidel_2d'.
+INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 0.04 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.05 seconds; current allocated memory: 206.214 MB.
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'kernel_seidel_2d' ...
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'kernel_seidel_2d' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_13_3'.
+WARNING: [HLS 200-880] The II Violation in module 'kernel_seidel_2d' (loop 'VITIS_LOOP_13_3'): Unable to enforce a carried dependence constraint (II = 1, distance = 1, offset = 0) between 'select' operation ('select_ln16_1', ./seidel-2d.cpp:16) and 'add' operation ('add_ln16_5', ./seidel-2d.cpp:16).
+Resolution: For help on HLS 200-880 see www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2;t=hls+guidance;d=200-880.html
+WARNING: [HLS 200-885] Unable to schedule 'load' operation ('A_load_5', ./seidel-2d.cpp:15) on array 'A' due to limited memory ports. Please consider using a memory core with more ports or partitioning the array 'A'.
+Resolution: For help on HLS 200-885 see www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2;t=hls+guidance;d=200-885.html
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 5, Depth = 10, loop 'VITIS_LOOP_13_3'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.12 seconds. CPU system time: 0 seconds. Elapsed time: 0.12 seconds; current allocated memory: 206.732 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.13 seconds. CPU system time: 0 seconds. Elapsed time: 0.14 seconds; current allocated memory: 207.177 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'kernel_seidel_2d' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_seidel_2d/tsteps' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_seidel_2d/n' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_seidel_2d/A' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on function 'kernel_seidel_2d' to 'ap_ctrl_hs'.
+WARNING: [RTGEN 206-101] Port 'kernel_seidel_2d/tsteps' has no fanin or fanout and is left dangling.
+               Please use C simulation to confirm this function argument can be read from or written to.
+WARNING: [RTGEN 206-101] Port 'kernel_seidel_2d/n' has no fanin or fanout and is left dangling.
+               Please use C simulation to confirm this function argument can be read from or written to.
+INFO: [RTGEN 206-100] Generating core module 'mul_32s_34ns_65_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_9ns_10ns_18_1_1': 3 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'kernel_seidel_2d'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.15 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.14 seconds; current allocated memory: 207.973 MB.
+INFO: [RTMG 210-282] Generating pipelined core: 'kernel_seidel_2d_mul_9ns_10ns_18_1_1_Multiplier_0'
+INFO: [RTMG 210-282] Generating pipelined core: 'kernel_seidel_2d_mul_32s_34ns_65_1_1_Multiplier_1'
+INFO: [HLS 200-111] Finished Generating all RTL models: CPU user time: 0.92 seconds. CPU system time: 0.03 seconds. Elapsed time: 0.96 seconds; current allocated memory: 216.228 MB.
+INFO: [VHDL 208-304] Generating VHDL RTL for kernel_seidel_2d.
+INFO: [VLOG 209-307] Generating Verilog RTL for kernel_seidel_2d.
+INFO: [HLS 200-790] **** Loop Constraint Status: All loop constraints were NOT satisfied.
+INFO: [HLS 200-789] **** Estimated Fmax: 260.15 MHz
+INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 5.39 seconds. CPU system time: 0.86 seconds. Elapsed time: 5.43 seconds; current allocated memory: 216.381 MB.
+INFO: [HLS 200-112] Total CPU user time: 7.17 seconds. Total CPU system time: 1.48 seconds. Total elapsed time: 6.93 seconds; peak allocated memory: 216.228 MB.
+INFO: [Common 17-206] Exiting vitis_hls at Fri Mar  8 08:59:06 2024...

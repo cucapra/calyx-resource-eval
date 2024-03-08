@@ -1,14 +1,17 @@
 import os
 
 
-def run_vitis_hls(subdirectory_name):
+def run_vitis_hls(subdirectory_name, place_and_route: bool):
     # Change directory to the subdirectory
     os.chdir(subdirectory_name)
 
+    arg = "impl" if place_and_route else ""
+
+    # seidel-2d -> seidel_2d
+    kernel_name = subdirectory_name.replace("-", "_")
+
     # Run vitis_hls command
-    command = (
-        f"vitis_hls -f ../hls.tcl top kernel_{subdirectory_name} hls_prj benchmark.prj"
-    )
+    command = f"vitis_hls -f ../hls.tcl -tclargs {arg} top kernel_{kernel_name} hls_prj benchmark.prj"
     os.system(command)
 
     # Return to the parent directory
@@ -21,6 +24,8 @@ def main():
 
     # Iterate over each subdirectory
     for subdirectory_name in directories:
+        # if not subdirectory_name == "seidel-2d":
+        #     continue
         # Check if the subdirectory contains 'hls_prj' directory (to avoid re-running)
         # if os.path.exists(os.path.join(subdirectory_name, f"{subdirectory_name}.prj")):
         #     print(f"Skipping {subdirectory_name}: Already processed.")
@@ -28,7 +33,7 @@ def main():
 
         # Run vitis_hls for the subdirectory
         print(f"Running vitis_hls for {subdirectory_name}...")
-        run_vitis_hls(subdirectory_name)
+        run_vitis_hls(subdirectory_name, False)
         print(f"vitis_hls completed for {subdirectory_name}.")
 
 
