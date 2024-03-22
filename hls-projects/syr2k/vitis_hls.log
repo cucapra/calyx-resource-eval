@@ -7,13 +7,12 @@
 source /scratch/opt/Xilinx/Vitis_HLS/2020.2/scripts/vitis_hls/hls.tcl -notrace
 INFO: Applying HLS Y2K22 patch v1.2 for IP revision
 INFO: [HLS 200-10] Running '/scratch/opt/Xilinx/Vitis_HLS/2020.2/bin/unwrapped/lnx64.o/vitis_hls'
-INFO: [HLS 200-10] For user 'cmk265' on host 'havarti.cs.cornell.edu' (Linux_x86_64 version 5.4.0-137-generic) on Fri Mar 08 08:36:11 EST 2024
+INFO: [HLS 200-10] For user 'cmk265' on host 'havarti.cs.cornell.edu' (Linux_x86_64 version 5.4.0-137-generic) on Wed Mar 20 15:56:06 EDT 2024
 INFO: [HLS 200-10] On os Ubuntu 20.04.6 LTS
 INFO: [HLS 200-10] In directory '/scratch/cmk265/learning/calyx-resource-eval/hls-projects/syr2k'
 Sourcing Tcl script '../hls.tcl'
 INFO: [HLS 200-1510] Running: open_project benchmark.prj -reset 
-INFO: [HLS 200-10] Opening and resetting project '/scratch/cmk265/learning/calyx-resource-eval/hls-projects/syr2k/benchmark.prj'.
-WARNING: [HLS 200-40] No /scratch/cmk265/learning/calyx-resource-eval/hls-projects/syr2k/benchmark.prj/solution1/solution1.aps file found.
+INFO: [HLS 200-10] Creating and opening project '/scratch/cmk265/learning/calyx-resource-eval/hls-projects/syr2k/benchmark.prj'.
 INFO: [HLS 200-1510] Running: set_top kernel_syr2k 
 INFO: [HLS 200-1510] Running: add_files ./syr2k.cpp -cflags -std=c++11 -DVHLS 
 INFO: [HLS 200-10] Adding design file './syr2k.cpp' to the project
@@ -26,65 +25,465 @@ INFO: [HLS 200-10] Setting target device to 'xcu250-figd2104-2-e'
 INFO: [HLS 200-1510] Running: create_clock -period 7 
 INFO: [SYN 201-201] Setting up clock 'default' with a period of 7ns.
 INFO: [HLS 200-1510] Running: csynth_design 
-INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0.01 seconds. CPU system time: 0 seconds. Elapsed time: 0 seconds; current allocated memory: 189.855 MB.
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0 seconds; current allocated memory: 189.837 MB.
 INFO: [HLS 200-10] Analyzing design file './syr2k.cpp' ... 
-WARNING: [HLS 207-1017] unknown pragma ignored: ./syr2k.cpp:21:9
-WARNING: [HLS 207-1017] unknown pragma ignored: ./syr2k.cpp:30:9
-INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 0.67 seconds. CPU system time: 0.34 seconds. Elapsed time: 0.51 seconds; current allocated memory: 191.471 MB.
+WARNING: [HLS 207-4069] variable templates are a C++14 extension: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/ap_axi_sdata.h:97:40
+WARNING: [HLS 207-4069] variable templates are a C++14 extension: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/ap_axi_sdata.h:107:18
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:117:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:118:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:119:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:120:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:121:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:151:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:152:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:153:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:154:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:155:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:156:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:157:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:158:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:159:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:160:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:210:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:211:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:212:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:239:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:240:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:241:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:242:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:243:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:244:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:280:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:281:9
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 19.12 seconds. CPU system time: 1.3 seconds. Elapsed time: 19.64 seconds; current allocated memory: 192.573 MB.
 INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
-INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 3.18 seconds. CPU system time: 0.45 seconds. Elapsed time: 3.32 seconds; current allocated memory: 192.509 MB.
-INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0 seconds; current allocated memory: 192.510 MB.
+INFO: [HLS 214-248] complete partitioned array 'v47' on dimension 1 (./syr2k.cpp:128:3)
+INFO: [HLS 214-248] complete partitioned array 'v47' on dimension 1 (./syr2k.cpp:115:164)
+INFO: [HLS 214-248] complete partitioned array 'v50' on dimension 1 (./syr2k.cpp:128:3)
+INFO: [HLS 214-248] complete partitioned array 'v50' on dimension 1 (./syr2k.cpp:116:9)
+INFO: [HLS 214-248] complete partitioned array 'v51' on dimension 2 (./syr2k.cpp:127:2)
+INFO: [HLS 214-248] complete partitioned array 'v51' on dimension 2 (./syr2k.cpp:118:9)
+INFO: [HLS 214-248] complete partitioned array 'v52' on dimension 2 (./syr2k.cpp:128:3)
+INFO: [HLS 214-248] complete partitioned array 'v52' on dimension 2 (./syr2k.cpp:120:9)
+INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 6.01 seconds. CPU system time: 0.4 seconds. Elapsed time: 6.4 seconds; current allocated memory: 195.820 MB.
+INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0 seconds; current allocated memory: 195.822 MB.
 INFO: [HLS 200-10] Starting code transformations ...
-INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 0.02 seconds. CPU system time: 0 seconds. Elapsed time: 0.02 seconds; current allocated memory: 193.744 MB.
+INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 0.53 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.54 seconds; current allocated memory: 201.054 MB.
 INFO: [HLS 200-10] Checking synthesizability ...
-INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 0.02 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.03 seconds; current allocated memory: 193.003 MB.
-INFO: [XFORM 203-510] Pipelining loop 'VITIS_LOOP_23_2' (./syr2k.cpp:13) in function 'kernel_syr2k' automatically.
-INFO: [XFORM 203-510] Pipelining loop 'VITIS_LOOP_26_4' (./syr2k.cpp:13) in function 'kernel_syr2k' automatically.
-INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 0.08 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.09 seconds; current allocated memory: 213.500 MB.
-INFO: [XFORM 203-541] Flattening a loop nest 'VITIS_LOOP_25_3' (./syr2k.cpp:13:13) in function 'kernel_syr2k'.
-WARNING: [HLS 200-960] Cannot flatten loop 'VITIS_LOOP_22_1' (./syr2k.cpp:13:7) in function 'kernel_syr2k' more than one sub loop.
-Resolution: For help on HLS 200-960 see www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2;t=hls+guidance;d=200-960.html
-INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 0.06 seconds. CPU system time: 0 seconds. Elapsed time: 0.05 seconds; current allocated memory: 206.220 MB.
+INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 3.16 seconds. CPU system time: 0 seconds. Elapsed time: 3.15 seconds; current allocated memory: 201.249 MB.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'l_load_i01' (./syr2k.cpp:61) in function 'compute_sum' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'l_k1' (./syr2k.cpp:69) in function 'compute_sum' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'l_store_i2' (./syr2k.cpp:99) in function 'compute_sum' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'l_update_i0' (./syr2k.cpp:24) in function 'update_C' for pipelining.
+INFO: [HLS 200-489] Unrolling loop 'l_j01' (./syr2k.cpp:63) in function 'compute_sum' completely with a factor of 80.
+INFO: [HLS 200-489] Unrolling loop 'l_j1' (./syr2k.cpp:71) in function 'compute_sum' completely with a factor of 80.
+INFO: [HLS 200-489] Unrolling loop 'l_j2' (./syr2k.cpp:101) in function 'compute_sum' completely with a factor of 80.
+INFO: [HLS 200-489] Unrolling loop 'l_j0' (./syr2k.cpp:26) in function 'update_C' completely with a factor of 80.
+INFO: [XFORM 203-101] Partitioning array 'C' (./syr2k.cpp:124) in dimension 2 completely.
+INFO: [XFORM 203-101] Partitioning array 'buffer' (./syr2k.cpp:58) in dimension 2 completely.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (./syr2k.cpp:24:24) in function 'update_C'... converting 159 basic blocks.
+INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 14.42 seconds. CPU system time: 0.03 seconds. Elapsed time: 14.44 seconds; current allocated memory: 233.794 MB.
+INFO: [XFORM 203-541] Flattening a loop nest 'l_sum_i1' (./syr2k.cpp:68:22) in function 'compute_sum'.
+INFO: [HLS 200-472] Inferring partial write operation for 'v1' (./syr2k.cpp:33:20)
+INFO: [HLS 200-472] Inferring partial write operation for 'buffer[0]' (./syr2k.cpp:65:24)
+INFO: [HLS 200-472] Inferring partial write operation for 'buffer[1]' (./syr2k.cpp:94:26)
+INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 6.09 seconds. CPU system time: 0.03 seconds. Elapsed time: 6.13 seconds; current allocated memory: 270.229 MB.
 INFO: [HLS 200-10] Starting hardware synthesis ...
 INFO: [HLS 200-10] Synthesizing 'kernel_syr2k' ...
 INFO: [HLS 200-10] ----------------------------------------------------------------
-INFO: [HLS 200-42] -- Implementing module 'kernel_syr2k' 
+INFO: [HLS 200-42] -- Implementing module 'update_C' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [SCHED 204-11] Starting scheduling ...
-INFO: [HLS 200-486] Changing DSP48 latency (root=mul_ln27_2) to 3 in order to utilize available DSP registers.
-INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_23_2'.
-INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 3, loop 'VITIS_LOOP_23_2'
-INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_25_3_VITIS_LOOP_26_4'.
-INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 7, loop 'VITIS_LOOP_25_3_VITIS_LOOP_26_4'
+INFO: [SCHED 204-61] Pipelining loop 'l_update_i0'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'l_update_i0'
 INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.1 seconds. CPU system time: 0 seconds. Elapsed time: 0.1 seconds; current allocated memory: 206.834 MB.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.91 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.93 seconds; current allocated memory: 276.029 MB.
 INFO: [BIND 205-100] Starting micro-architecture generation ...
 INFO: [BIND 205-101] Performing variable lifetime analysis.
 INFO: [BIND 205-101] Exploring resource sharing.
 INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111] Finished Binding: CPU user time: 0.11 seconds. CPU system time: 0 seconds. Elapsed time: 0.11 seconds; current allocated memory: 207.300 MB.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.78 seconds. CPU system time: 0 seconds. Elapsed time: 0.78 seconds; current allocated memory: 279.779 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'compute_sum' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'l_load_i01'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'l_load_i01'
+INFO: [SCHED 204-61] Pipelining loop 'l_sum_i1_l_k1'.
+WARNING: [HLS 200-880] The II Violation in module 'compute_sum' (loop 'l_sum_i1_l_k1'): Unable to enforce a carried dependence constraint (II = 1, distance = 1, offset = 1) between 'store' operation ('buffer_1_addr_2_write_ln94', ./syr2k.cpp:94) of variable 'add_ln93_1', ./syr2k.cpp:93 on array 'buffer[1]', ./syr2k.cpp:58 and 'load' operation ('buffer_1_load_1', ./syr2k.cpp:91) on array 'buffer[1]', ./syr2k.cpp:58.
+Resolution: For help on HLS 200-880 see www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2;t=hls+guidance;d=200-880.html
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 2, Depth = 4, loop 'l_sum_i1_l_k1'
+INFO: [SCHED 204-61] Pipelining loop 'l_store_i2'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'l_store_i2'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 4.21 seconds. CPU system time: 0.01 seconds. Elapsed time: 4.22 seconds; current allocated memory: 287.931 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 3.33 seconds. CPU system time: 0.02 seconds. Elapsed time: 3.35 seconds; current allocated memory: 298.316 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'kernel_syr2k' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 3.76 seconds. CPU system time: 0.02 seconds. Elapsed time: 3.78 seconds; current allocated memory: 299.532 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 2.67 seconds. CPU system time: 0 seconds. Elapsed time: 2.67 seconds; current allocated memory: 302.930 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'update_C' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'update_C'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 2.84 seconds. CPU system time: 0 seconds. Elapsed time: 2.85 seconds; current allocated memory: 307.299 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'compute_sum' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'mul_32s_32s_32_1_1': 160 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'compute_sum'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 2.38 seconds. CPU system time: 0.03 seconds. Elapsed time: 2.41 seconds; current allocated memory: 332.201 MB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-10] -- Generating RTL for module 'kernel_syr2k' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
-INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/alpha' to 'ap_none'.
-INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/beta' to 'ap_none'.
-INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/A' to 'ap_memory'.
-INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/B' to 'ap_memory'.
-INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/C' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_0' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_1' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_2' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_3' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_4' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_5' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_6' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_7' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_8' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_9' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_10' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_11' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_12' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_13' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_14' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_15' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_16' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_17' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_18' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_19' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_20' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_21' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_22' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_23' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_24' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_25' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_26' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_27' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_28' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_29' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_30' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_31' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_32' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_33' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_34' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_35' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_36' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_37' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_38' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_39' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_40' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_41' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_42' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_43' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_44' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_45' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_46' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_47' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_48' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_49' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_50' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_51' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_52' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_53' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_54' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_55' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_56' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_57' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_58' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_59' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_60' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_61' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_62' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_63' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_64' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_65' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_66' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_67' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_68' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_69' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_70' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_71' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_72' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_73' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_74' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_75' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_76' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_77' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_78' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v47_79' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v48' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v49' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_0' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_1' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_2' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_3' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_4' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_5' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_6' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_7' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_8' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_9' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_10' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_11' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_12' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_13' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_14' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_15' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_16' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_17' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_18' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_19' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_20' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_21' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_22' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_23' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_24' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_25' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_26' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_27' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_28' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_29' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_30' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_31' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_32' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_33' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_34' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_35' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_36' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_37' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_38' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_39' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_40' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_41' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_42' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_43' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_44' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_45' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_46' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_47' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_48' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_49' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_50' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_51' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_52' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_53' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_54' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_55' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_56' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_57' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_58' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_59' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_60' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_61' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_62' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_63' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_64' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_65' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_66' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_67' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_68' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_69' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_70' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_71' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_72' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_73' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_74' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_75' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_76' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_77' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_78' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v50_79' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_0' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_1' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_2' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_3' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_4' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_5' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_6' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_7' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_8' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_9' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_10' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_11' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_12' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_13' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_14' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_15' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_16' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_17' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_18' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_19' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_20' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_21' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_22' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_23' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_24' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_25' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_26' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_27' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_28' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_29' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_30' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_31' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_32' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_33' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_34' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_35' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_36' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_37' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_38' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_39' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_40' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_41' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_42' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_43' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_44' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_45' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_46' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_47' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_48' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_49' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_50' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_51' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_52' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_53' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_54' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_55' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_56' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_57' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_58' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_59' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_60' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_61' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_62' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_63' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_64' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_65' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_66' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_67' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_68' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_69' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_70' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_71' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_72' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_73' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_74' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_75' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_76' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_77' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_78' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v51_79' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_0' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_1' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_2' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_3' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_4' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_5' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_6' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_7' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_8' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_9' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_10' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_11' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_12' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_13' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_14' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_15' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_16' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_17' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_18' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_19' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_20' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_21' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_22' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_23' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_24' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_25' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_26' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_27' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_28' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_29' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_30' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_31' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_32' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_33' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_34' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_35' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_36' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_37' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_38' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_39' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_40' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_41' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_42' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_43' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_44' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_45' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_46' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_47' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_48' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_49' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_50' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_51' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_52' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_53' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_54' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_55' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_56' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_57' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_58' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_59' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_60' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_61' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_62' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_63' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_64' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_65' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_66' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_67' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_68' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_69' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_70' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_71' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_72' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_73' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_74' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_75' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_76' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_77' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_78' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_syr2k/v52_79' to 'ap_memory'.
 INFO: [RTGEN 206-500] Setting interface mode on function 'kernel_syr2k' to 'ap_ctrl_hs'.
-INFO: [RTGEN 206-100] Generating core module 'mac_muladd_8ns_9ns_8ns_16_4_1': 1 instance(s).
-INFO: [RTGEN 206-100] Generating core module 'mul_32s_32s_32_1_1': 4 instance(s).
-INFO: [RTGEN 206-100] Generating core module 'mul_8ns_9ns_16_1_1': 1 instance(s).
+INFO: [RTGEN 206-104] Estimated max fanout for 'kernel_syr2k' is 5068 from HDL expression: (1'b1 == ap_CS_fsm_state4)
 INFO: [RTGEN 206-100] Finished creating RTL model for 'kernel_syr2k'.
-INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.12 seconds. CPU system time: 0 seconds. Elapsed time: 0.12 seconds; current allocated memory: 208.080 MB.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 8.76 seconds. CPU system time: 0.08 seconds. Elapsed time: 8.85 seconds; current allocated memory: 378.544 MB.
 INFO: [RTMG 210-282] Generating pipelined core: 'kernel_syr2k_mul_32s_32s_32_1_1_Multiplier_0'
-INFO: [RTMG 210-282] Generating pipelined core: 'kernel_syr2k_mul_8ns_9ns_16_1_1_Multiplier_1'
-INFO: [HLS 200-111] Finished Generating all RTL models: CPU user time: 0.98 seconds. CPU system time: 0.05 seconds. Elapsed time: 1.03 seconds; current allocated memory: 217.181 MB.
+INFO: [RTMG 210-278] Implementing memory 'kernel_syr2k_compute_sum_buffer_0_ram (RAM)' using auto RAMs.
+INFO: [RTMG 210-278] Implementing memory 'kernel_syr2k_compute_sum_buffer_1_ram (RAM)' using auto RAMs.
+INFO: [HLS 200-111] Finished Generating all RTL models: CPU user time: 41.71 seconds. CPU system time: 0.38 seconds. Elapsed time: 42.09 seconds; current allocated memory: 442.404 MB.
 INFO: [VHDL 208-304] Generating VHDL RTL for kernel_syr2k.
 INFO: [VLOG 209-307] Generating Verilog RTL for kernel_syr2k.
-INFO: [HLS 200-790] **** Loop Constraint Status: All loop constraints were satisfied.
+INFO: [HLS 200-790] **** Loop Constraint Status: All loop constraints were NOT satisfied.
 INFO: [HLS 200-789] **** Estimated Fmax: 226.35 MHz
-INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 5.45 seconds. CPU system time: 0.86 seconds. Elapsed time: 5.47 seconds; current allocated memory: 217.378 MB.
-INFO: [HLS 200-112] Total CPU user time: 7.24 seconds. Total CPU system time: 1.47 seconds. Total elapsed time: 6.97 seconds; peak allocated memory: 217.181 MB.
-INFO: [Common 17-206] Exiting vitis_hls at Fri Mar  8 08:36:18 2024...
+INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 125.97 seconds. CPU system time: 2.34 seconds. Elapsed time: 127.54 seconds; current allocated memory: 455.217 MB.
+INFO: [HLS 200-112] Total CPU user time: 127.98 seconds. Total CPU system time: 2.99 seconds. Total elapsed time: 129.2 seconds; peak allocated memory: 442.404 MB.
+INFO: [Common 17-206] Exiting vitis_hls at Wed Mar 20 15:58:15 2024...

@@ -25,15 +25,14 @@ directories = [d for d in os.listdir(".") if os.path.isdir(d)]
 
 # Iterate over each directory
 for directory in directories:
-    if directory != "seidel-2d":
-        continue
-    # seidel-2d -> seidel_2d
-    get_resource_estimates = generate_command(
-        "hls-files-routed",
-        "hls-detailed-estimate",
-        directory,
-        "resource_estimates",
-    )
+    # if directory != "seidel-2d":
+    #     continue
+    # get_resource_estimates = generate_command(
+    #     "hls-files-routed",
+    #     "hls-detailed-estimate",
+    #     directory,
+    #     "resource_estimates",
+    # )
     get_cycles_estimates = generate_command(
         "hls-files",
         "hls-cycles-estimate",

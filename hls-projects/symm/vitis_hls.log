@@ -7,13 +7,12 @@
 source /scratch/opt/Xilinx/Vitis_HLS/2020.2/scripts/vitis_hls/hls.tcl -notrace
 INFO: Applying HLS Y2K22 patch v1.2 for IP revision
 INFO: [HLS 200-10] Running '/scratch/opt/Xilinx/Vitis_HLS/2020.2/bin/unwrapped/lnx64.o/vitis_hls'
-INFO: [HLS 200-10] For user 'cmk265' on host 'havarti.cs.cornell.edu' (Linux_x86_64 version 5.4.0-137-generic) on Fri Mar 08 08:36:03 EST 2024
+INFO: [HLS 200-10] For user 'cmk265' on host 'havarti.cs.cornell.edu' (Linux_x86_64 version 5.4.0-137-generic) on Wed Mar 20 15:54:12 EDT 2024
 INFO: [HLS 200-10] On os Ubuntu 20.04.6 LTS
 INFO: [HLS 200-10] In directory '/scratch/cmk265/learning/calyx-resource-eval/hls-projects/symm'
 Sourcing Tcl script '../hls.tcl'
 INFO: [HLS 200-1510] Running: open_project benchmark.prj -reset 
-INFO: [HLS 200-10] Opening and resetting project '/scratch/cmk265/learning/calyx-resource-eval/hls-projects/symm/benchmark.prj'.
-WARNING: [HLS 200-40] No /scratch/cmk265/learning/calyx-resource-eval/hls-projects/symm/benchmark.prj/solution1/solution1.aps file found.
+INFO: [HLS 200-10] Creating and opening project '/scratch/cmk265/learning/calyx-resource-eval/hls-projects/symm/benchmark.prj'.
 INFO: [HLS 200-1510] Running: set_top kernel_symm 
 INFO: [HLS 200-1510] Running: add_files ./symm.cpp -cflags -std=c++11 -DVHLS 
 INFO: [HLS 200-10] Adding design file './symm.cpp' to the project
@@ -26,60 +25,327 @@ INFO: [HLS 200-10] Setting target device to 'xcu250-figd2104-2-e'
 INFO: [HLS 200-1510] Running: create_clock -period 7 
 INFO: [SYN 201-201] Setting up clock 'default' with a period of 7ns.
 INFO: [HLS 200-1510] Running: csynth_design 
-INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0 seconds; current allocated memory: 189.855 MB.
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0.01 seconds. CPU system time: 0 seconds. Elapsed time: 0.01 seconds; current allocated memory: 189.836 MB.
 INFO: [HLS 200-10] Analyzing design file './symm.cpp' ... 
-WARNING: [HLS 207-1017] unknown pragma ignored: ./symm.cpp:27:9
-WARNING: [HLS 207-1017] unknown pragma ignored: ./symm.cpp:37:9
-INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 0.63 seconds. CPU system time: 0.32 seconds. Elapsed time: 0.48 seconds; current allocated memory: 191.437 MB.
+WARNING: [HLS 207-4069] variable templates are a C++14 extension: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/ap_axi_sdata.h:97:40
+WARNING: [HLS 207-4069] variable templates are a C++14 extension: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/ap_axi_sdata.h:107:18
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:117:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:118:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:119:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:120:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:121:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:151:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:152:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:153:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:154:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:155:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:156:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:157:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:158:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:159:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:160:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:210:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:211:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:212:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:239:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:240:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:241:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:242:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:243:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:244:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:280:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:281:9
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 19.17 seconds. CPU system time: 1.3 seconds. Elapsed time: 19.71 seconds; current allocated memory: 192.635 MB.
 INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
-INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 3.21 seconds. CPU system time: 0.51 seconds. Elapsed time: 3.37 seconds; current allocated memory: 192.587 MB.
-INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0 seconds; current allocated memory: 192.588 MB.
+INFO: [HLS 214-178] Inlining function 'compute_sum(int (*) [60], int (*) [80], int (*) [80])' into 'kernel_symm(int (*) [60], int (*) [60], int (*) [80], int (*) [80], int (*) [80])' (./symm.cpp:120:0)
+INFO: [HLS 214-248] cyclic partitioned array 'v61' on dimension 2 with 24 (./symm.cpp:130:2)
+INFO: [HLS 214-248] cyclic partitioned array 'v61' on dimension 2 with 24 (./symm.cpp:120:132)
+INFO: [HLS 214-248] complete partitioned array 'v62' on dimension 2 (./symm.cpp:131:3)
+INFO: [HLS 214-248] complete partitioned array 'v62' on dimension 2 (./symm.cpp:121:9)
+INFO: [HLS 214-248] complete partitioned array 'v63' on dimension 2 (./symm.cpp:131:3)
+INFO: [HLS 214-248] complete partitioned array 'v63' on dimension 2 (./symm.cpp:123:9)
+INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 6.27 seconds. CPU system time: 0.34 seconds. Elapsed time: 6.6 seconds; current allocated memory: 197.881 MB.
+INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0 seconds; current allocated memory: 197.886 MB.
 INFO: [HLS 200-10] Starting code transformations ...
-INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 0.01 seconds. CPU system time: 0 seconds. Elapsed time: 0.01 seconds; current allocated memory: 193.846 MB.
+INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 28.14 seconds. CPU system time: 0 seconds. Elapsed time: 28.15 seconds; current allocated memory: 203.989 MB.
 INFO: [HLS 200-10] Checking synthesizability ...
-INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 0.03 seconds. CPU system time: 0 seconds. Elapsed time: 0.04 seconds; current allocated memory: 193.044 MB.
-INFO: [XFORM 203-510] Pipelining loop 'VITIS_LOOP_31_3' (./symm.cpp:15) in function 'kernel_symm' automatically.
-INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 0.08 seconds. CPU system time: 0 seconds. Elapsed time: 0.07 seconds; current allocated memory: 213.538 MB.
-WARNING: [HLS 200-960] Cannot flatten loop 'VITIS_LOOP_29_2' (./symm.cpp:16:7) in function 'kernel_symm' the outer loop is not a perfect loop because there is nontrivial logic in the loop latch.
+INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 1.29 seconds. CPU system time: 0 seconds. Elapsed time: 1.29 seconds; current allocated memory: 202.989 MB.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'l_S_k_0_k' (./symm.cpp:69) in function 'update_C' for pipelining.
+INFO: [XFORM 203-501] Unrolling loop 'l_j1' (./symm.cpp:34) in function 'kernel_symm' partially with a factor of 24.
+INFO: [HLS 200-489] Unrolling loop 'l_S_j_0_j' (./symm.cpp:71) in function 'update_C' completely with a factor of 80.
+INFO: [XFORM 203-101] Partitioning array 'summ'  in dimension 2 completely.
+WARNING: [HLS 200-914] Completely partitioning array 'summ'  accessed through non-constant indices on dimension 2 (./symm.cpp:102:21), which may result in long runtime and suboptimal QoR due to large multiplexers. Please consider wrapping the array access into a function or using a register file core instead.
+Resolution: For help on HLS 200-914 see www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2;t=hls+guidance;d=200-914.html
+INFO: [XFORM 203-603] Inlining function 'aesl_mux_load.80[60 x i32]P0A.i7.i64' into 'update_C' (./symm.cpp:102).
+INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 5.88 seconds. CPU system time: 0.02 seconds. Elapsed time: 5.89 seconds; current allocated memory: 228.182 MB.
+WARNING: [HLS 200-960] Cannot flatten loop 'l_S_i_0_i' (./symm.cpp:68:22) in function 'update_C' more than one sub loop.
 Resolution: For help on HLS 200-960 see www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2;t=hls+guidance;d=200-960.html
-INFO: [XFORM 203-541] Flattening a loop nest 'VITIS_LOOP_28_1' (./symm.cpp:15:7) in function 'kernel_symm'.
-INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 0.05 seconds. CPU system time: 0 seconds. Elapsed time: 0.05 seconds; current allocated memory: 206.166 MB.
+WARNING: [HLS 200-960] Cannot flatten loop 'l_k1_k1' (./symm.cpp:30:23) in function 'kernel_symm' the outer loop is not a perfect loop because there is nontrivial logic before entering the inner loop.
+Resolution: For help on HLS 200-960 see www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2;t=hls+guidance;d=200-960.html
+WARNING: [HLS 200-960] Cannot flatten loop 'l_sum_i1' (./symm.cpp:24:21) in function 'kernel_symm' more than one sub loop.
+Resolution: For help on HLS 200-960 see www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2;t=hls+guidance;d=200-960.html
+INFO: [HLS 200-472] Inferring partial write operation for 'v4' (./symm.cpp:28:14)
+INFO: [HLS 200-472] Inferring partial write operation for 'v4' (./symm.cpp:44:18)
+INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 2.48 seconds. CPU system time: 0 seconds. Elapsed time: 2.49 seconds; current allocated memory: 252.343 MB.
 INFO: [HLS 200-10] Starting hardware synthesis ...
 INFO: [HLS 200-10] Synthesizing 'kernel_symm' ...
 INFO: [HLS 200-10] ----------------------------------------------------------------
-INFO: [HLS 200-42] -- Implementing module 'kernel_symm' 
+INFO: [HLS 200-42] -- Implementing module 'update_C' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [SCHED 204-11] Starting scheduling ...
-INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_31_3'.
-INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 4, loop 'VITIS_LOOP_31_3'
+INFO: [SCHED 204-61] Pipelining loop 'l_S_k_0_k'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 3, loop 'l_S_k_0_k'
+INFO: [SCHED 204-61] Pipelining loop 'l_S_j1_2_j11'.
+WARNING: [HLS 200-880] The II Violation in module 'update_C' (loop 'l_S_j1_2_j11'): Unable to enforce a carried dependence constraint (II = 1, distance = 1, offset = 1) between 'store' operation ('v63_0_addr_1_write_ln109', ./symm.cpp:109) of variable 'v58', ./symm.cpp:108 on array 'v63_0' and 'load' operation ('v63_0_load_1', ./symm.cpp:89) on array 'v63_0'.
+Resolution: For help on HLS 200-880 see www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2;t=hls+guidance;d=200-880.html
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 2, Depth = 2, loop 'l_S_j1_2_j11'
+WARNING: [HLS 200-871] Estimated clock period (6.3425ns) exceeds the target (target clock period: 7ns, clock uncertainty: 1.89ns, effective delay budget: 5.11ns).
+Resolution: For help on HLS 200-871 see www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2;t=hls+guidance;d=200-871.html
+WARNING: [HLS 200-1016] The critical path in module 'update_C' consists of the following:	multiplexor before 'phi' operation ('v42', ./symm.cpp:92) with incoming values : ('v62_0_load_1', ./symm.cpp:92) ('v62_79_load_1', ./symm.cpp:92) ('v62_1_load_1', ./symm.cpp:92) ('v62_2_load_1', ./symm.cpp:92) ('v62_3_load_1', ./symm.cpp:92) ('v62_4_load_1', ./symm.cpp:92) ('v62_5_load_1', ./symm.cpp:92) ('v62_6_load_1', ./symm.cpp:92) ('v62_7_load_1', ./symm.cpp:92) ('v62_8_load_1', ./symm.cpp:92) ('v62_9_load_1', ./symm.cpp:92) ('v62_10_load_1', ./symm.cpp:92) ('v62_11_load_1', ./symm.cpp:92) ('v62_12_load_1', ./symm.cpp:92) ('v62_13_load_1', ./symm.cpp:92) ('v62_14_load_1', ./symm.cpp:92) ('v62_15_load_1', ./symm.cpp:92) ('v62_16_load_1', ./symm.cpp:92) ('v62_17_load_1', ./symm.cpp:92) ('v62_18_load_1', ./symm.cpp:92) ('v62_19_load_1', ./symm.cpp:92) ('v62_20_load_1', ./symm.cpp:92) ('v62_21_load_1', ./symm.cpp:92) ('v62_22_load_1', ./symm.cpp:92) ('v62_23_load_1', ./symm.cpp:92) ('v62_24_load_1', ./symm.cpp:92) ('v62_25_load_1', ./symm.cpp:92) ('v62_26_load_1', ./symm.cpp:92) ('v62_27_load_1', ./symm.cpp:92) ('v62_28_load_1', ./symm.cpp:92) ('v62_29_load_1', ./symm.cpp:92) ('v62_30_load_1', ./symm.cpp:92) ('v62_31_load_1', ./symm.cpp:92) ('v62_32_load_1', ./symm.cpp:92) ('v62_33_load_1', ./symm.cpp:92) ('v62_34_load_1', ./symm.cpp:92) ('v62_35_load_1', ./symm.cpp:92) ('v62_36_load_1', ./symm.cpp:92) ('v62_37_load_1', ./symm.cpp:92) ('v62_38_load_1', ./symm.cpp:92) ('v62_39_load_1', ./symm.cpp:92) ('v62_40_load_1', ./symm.cpp:92) ('v62_41_load_1', ./symm.cpp:92) ('v62_42_load_1', ./symm.cpp:92) ('v62_43_load_1', ./symm.cpp:92) ('v62_44_load_1', ./symm.cpp:92) ('v62_45_load_1', ./symm.cpp:92) ('v62_46_load_1', ./symm.cpp:92) ('v62_47_load_1', ./symm.cpp:92) ('v62_48_load_1', ./symm.cpp:92) ('v62_49_load_1', ./symm.cpp:92) ('v62_50_load_1', ./symm.cpp:92) ('v62_51_load_1', ./symm.cpp:92) ('v62_52_load_1', ./symm.cpp:92) ('v62_53_load_1', ./symm.cpp:92) ('v62_54_load_1', ./symm.cpp:92) ('v62_55_load_1', ./symm.cpp:92) ('v62_56_load_1', ./symm.cpp:92) ('v62_57_load_1', ./symm.cpp:92) ('v62_58_load_1', ./symm.cpp:92) ('v62_59_load_1', ./symm.cpp:92) ('v62_60_load_1', ./symm.cpp:92) ('v62_61_load_1', ./symm.cpp:92) ('v62_62_load_1', ./symm.cpp:92) ('v62_63_load_1', ./symm.cpp:92) ('v62_64_load_1', ./symm.cpp:92) ('v62_65_load_1', ./symm.cpp:92) ('v62_66_load_1', ./symm.cpp:92) ('v62_67_load_1', ./symm.cpp:92) ('v62_68_load_1', ./symm.cpp:92) ('v62_69_load_1', ./symm.cpp:92) ('v62_70_load_1', ./symm.cpp:92) ('v62_71_load_1', ./symm.cpp:92) ('v62_72_load_1', ./symm.cpp:92) ('v62_73_load_1', ./symm.cpp:92) ('v62_74_load_1', ./symm.cpp:92) ('v62_75_load_1', ./symm.cpp:92) ('v62_76_load_1', ./symm.cpp:92) ('v62_77_load_1', ./symm.cpp:92) ('v62_78_load_1', ./symm.cpp:92) [1420]  (0.863 ns)
+	'phi' operation ('v42', ./symm.cpp:92) with incoming values : ('v62_0_load_1', ./symm.cpp:92) ('v62_79_load_1', ./symm.cpp:92) ('v62_1_load_1', ./symm.cpp:92) ('v62_2_load_1', ./symm.cpp:92) ('v62_3_load_1', ./symm.cpp:92) ('v62_4_load_1', ./symm.cpp:92) ('v62_5_load_1', ./symm.cpp:92) ('v62_6_load_1', ./symm.cpp:92) ('v62_7_load_1', ./symm.cpp:92) ('v62_8_load_1', ./symm.cpp:92) ('v62_9_load_1', ./symm.cpp:92) ('v62_10_load_1', ./symm.cpp:92) ('v62_11_load_1', ./symm.cpp:92) ('v62_12_load_1', ./symm.cpp:92) ('v62_13_load_1', ./symm.cpp:92) ('v62_14_load_1', ./symm.cpp:92) ('v62_15_load_1', ./symm.cpp:92) ('v62_16_load_1', ./symm.cpp:92) ('v62_17_load_1', ./symm.cpp:92) ('v62_18_load_1', ./symm.cpp:92) ('v62_19_load_1', ./symm.cpp:92) ('v62_20_load_1', ./symm.cpp:92) ('v62_21_load_1', ./symm.cpp:92) ('v62_22_load_1', ./symm.cpp:92) ('v62_23_load_1', ./symm.cpp:92) ('v62_24_load_1', ./symm.cpp:92) ('v62_25_load_1', ./symm.cpp:92) ('v62_26_load_1', ./symm.cpp:92) ('v62_27_load_1', ./symm.cpp:92) ('v62_28_load_1', ./symm.cpp:92) ('v62_29_load_1', ./symm.cpp:92) ('v62_30_load_1', ./symm.cpp:92) ('v62_31_load_1', ./symm.cpp:92) ('v62_32_load_1', ./symm.cpp:92) ('v62_33_load_1', ./symm.cpp:92) ('v62_34_load_1', ./symm.cpp:92) ('v62_35_load_1', ./symm.cpp:92) ('v62_36_load_1', ./symm.cpp:92) ('v62_37_load_1', ./symm.cpp:92) ('v62_38_load_1', ./symm.cpp:92) ('v62_39_load_1', ./symm.cpp:92) ('v62_40_load_1', ./symm.cpp:92) ('v62_41_load_1', ./symm.cpp:92) ('v62_42_load_1', ./symm.cpp:92) ('v62_43_load_1', ./symm.cpp:92) ('v62_44_load_1', ./symm.cpp:92) ('v62_45_load_1', ./symm.cpp:92) ('v62_46_load_1', ./symm.cpp:92) ('v62_47_load_1', ./symm.cpp:92) ('v62_48_load_1', ./symm.cpp:92) ('v62_49_load_1', ./symm.cpp:92) ('v62_50_load_1', ./symm.cpp:92) ('v62_51_load_1', ./symm.cpp:92) ('v62_52_load_1', ./symm.cpp:92) ('v62_53_load_1', ./symm.cpp:92) ('v62_54_load_1', ./symm.cpp:92) ('v62_55_load_1', ./symm.cpp:92) ('v62_56_load_1', ./symm.cpp:92) ('v62_57_load_1', ./symm.cpp:92) ('v62_58_load_1', ./symm.cpp:92) ('v62_59_load_1', ./symm.cpp:92) ('v62_60_load_1', ./symm.cpp:92) ('v62_61_load_1', ./symm.cpp:92) ('v62_62_load_1', ./symm.cpp:92) ('v62_63_load_1', ./symm.cpp:92) ('v62_64_load_1', ./symm.cpp:92) ('v62_65_load_1', ./symm.cpp:92) ('v62_66_load_1', ./symm.cpp:92) ('v62_67_load_1', ./symm.cpp:92) ('v62_68_load_1', ./symm.cpp:92) ('v62_69_load_1', ./symm.cpp:92) ('v62_70_load_1', ./symm.cpp:92) ('v62_71_load_1', ./symm.cpp:92) ('v62_72_load_1', ./symm.cpp:92) ('v62_73_load_1', ./symm.cpp:92) ('v62_74_load_1', ./symm.cpp:92) ('v62_75_load_1', ./symm.cpp:92) ('v62_76_load_1', ./symm.cpp:92) ('v62_77_load_1', ./symm.cpp:92) ('v62_78_load_1', ./symm.cpp:92) [1420]  (0 ns)
+	'mul' operation ('mul_ln534') [1424]  (3.17 ns)
+	'sub' operation ('tmp1') [1426]  (0.88 ns)
+	'add' operation ('v58', ./symm.cpp:108) [1427]  (0.731 ns)
+	'store' operation ('v63_78_addr_1_write_ln109', ./symm.cpp:109) of variable 'v58', ./symm.cpp:108 on array 'v63_78' [1430]  (0.699 ns)
+
+Resolution: For help on HLS 200-1016 see www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2;t=hls+guidance;d=200-1016.html
 INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.09 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.1 seconds; current allocated memory: 206.651 MB.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 2.36 seconds. CPU system time: 0.03 seconds. Elapsed time: 2.39 seconds; current allocated memory: 258.574 MB.
 INFO: [BIND 205-100] Starting micro-architecture generation ...
 INFO: [BIND 205-101] Performing variable lifetime analysis.
 INFO: [BIND 205-101] Exploring resource sharing.
 INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111] Finished Binding: CPU user time: 0.1 seconds. CPU system time: 0 seconds. Elapsed time: 0.1 seconds; current allocated memory: 207.041 MB.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 1.91 seconds. CPU system time: 0.02 seconds. Elapsed time: 1.93 seconds; current allocated memory: 273.540 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'kernel_symm' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'l_j1_init'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 1, loop 'l_j1_init'
+INFO: [SCHED 204-61] Pipelining loop 'l_j1'.
+WARNING: [HLS 200-885] Unable to schedule 'load' operation ('v4_load_2', ./symm.cpp:41) on array 'v4', ./symm.cpp:25 due to limited memory ports. Please consider using a memory core with more ports or partitioning the array 'v4'.
+Resolution: For help on HLS 200-885 see www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2;t=hls+guidance;d=200-885.html
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 24, Depth = 24, loop 'l_j1'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 2.99 seconds. CPU system time: 0.01 seconds. Elapsed time: 3 seconds; current allocated memory: 275.588 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.94 seconds. CPU system time: 0 seconds. Elapsed time: 0.94 seconds; current allocated memory: 278.979 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'update_C' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'mul_32s_32s_32_1_1': 81 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'update_C'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 1.12 seconds. CPU system time: 0.01 seconds. Elapsed time: 1.13 seconds; current allocated memory: 285.163 MB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-10] -- Generating RTL for module 'kernel_symm' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
-INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/alpha' to 'ap_none'.
-INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/beta' to 'ap_none'.
-INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/A' to 'ap_memory'.
-INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/B' to 'ap_memory'.
-INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/C' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v59' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v60' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v61_0' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v61_1' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v61_2' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v61_3' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v61_4' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v61_5' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v61_6' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v61_7' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v61_8' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v61_9' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v61_10' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v61_11' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v61_12' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v61_13' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v61_14' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v61_15' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v61_16' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v61_17' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v61_18' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v61_19' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v61_20' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v61_21' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v61_22' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v61_23' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_0' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_1' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_2' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_3' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_4' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_5' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_6' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_7' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_8' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_9' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_10' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_11' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_12' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_13' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_14' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_15' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_16' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_17' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_18' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_19' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_20' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_21' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_22' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_23' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_24' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_25' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_26' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_27' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_28' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_29' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_30' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_31' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_32' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_33' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_34' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_35' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_36' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_37' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_38' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_39' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_40' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_41' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_42' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_43' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_44' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_45' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_46' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_47' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_48' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_49' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_50' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_51' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_52' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_53' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_54' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_55' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_56' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_57' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_58' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_59' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_60' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_61' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_62' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_63' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_64' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_65' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_66' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_67' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_68' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_69' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_70' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_71' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_72' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_73' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_74' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_75' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_76' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_77' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_78' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v62_79' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_0' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_1' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_2' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_3' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_4' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_5' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_6' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_7' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_8' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_9' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_10' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_11' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_12' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_13' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_14' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_15' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_16' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_17' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_18' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_19' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_20' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_21' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_22' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_23' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_24' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_25' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_26' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_27' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_28' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_29' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_30' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_31' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_32' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_33' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_34' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_35' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_36' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_37' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_38' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_39' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_40' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_41' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_42' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_43' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_44' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_45' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_46' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_47' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_48' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_49' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_50' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_51' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_52' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_53' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_54' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_55' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_56' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_57' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_58' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_59' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_60' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_61' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_62' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_63' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_64' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_65' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_66' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_67' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_68' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_69' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_70' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_71' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_72' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_73' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_74' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_75' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_76' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_77' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_78' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_symm/v63_79' to 'ap_memory'.
 INFO: [RTGEN 206-500] Setting interface mode on function 'kernel_symm' to 'ap_ctrl_hs'.
-INFO: [RTGEN 206-100] Generating core module 'mul_32s_32s_32_1_1': 6 instance(s).
-INFO: [RTGEN 206-100] Generating core module 'mul_8ns_9ns_16_1_1': 2 instance(s).
+INFO: [RTGEN 206-104] Estimated max fanout for 'kernel_symm' is 6973 from HDL expression: (1'b1 == ap_CS_fsm_state32)
+INFO: [RTGEN 206-100] Generating core module 'mul_32s_32s_32_1_1': 24 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_64ns_66ns_71_1_1': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_7ns_66ns_71_1_1': 22 instance(s).
 INFO: [RTGEN 206-100] Finished creating RTL model for 'kernel_symm'.
-INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.1 seconds. CPU system time: 0 seconds. Elapsed time: 0.1 seconds; current allocated memory: 207.716 MB.
-INFO: [RTMG 210-282] Generating pipelined core: 'kernel_symm_mul_8ns_9ns_16_1_1_Multiplier_0'
-INFO: [RTMG 210-282] Generating pipelined core: 'kernel_symm_mul_32s_32s_32_1_1_Multiplier_1'
-INFO: [HLS 200-111] Finished Generating all RTL models: CPU user time: 0.89 seconds. CPU system time: 0.05 seconds. Elapsed time: 0.94 seconds; current allocated memory: 216.339 MB.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 3.38 seconds. CPU system time: 0.04 seconds. Elapsed time: 3.42 seconds; current allocated memory: 313.837 MB.
+INFO: [RTMG 210-282] Generating pipelined core: 'kernel_symm_mul_32s_32s_32_1_1_Multiplier_0'
+INFO: [RTMG 210-282] Generating pipelined core: 'kernel_symm_mul_64ns_66ns_71_1_1_Multiplier_1'
+INFO: [RTMG 210-282] Generating pipelined core: 'kernel_symm_mul_7ns_66ns_71_1_1_Multiplier_2'
+INFO: [RTMG 210-278] Implementing memory 'kernel_symm_v4_ram (RAM)' using auto RAMs.
+INFO: [HLS 200-111] Finished Generating all RTL models: CPU user time: 27.65 seconds. CPU system time: 0.21 seconds. Elapsed time: 27.87 seconds; current allocated memory: 371.612 MB.
 INFO: [VHDL 208-304] Generating VHDL RTL for kernel_symm.
 INFO: [VLOG 209-307] Generating Verilog RTL for kernel_symm.
-INFO: [HLS 200-790] **** Loop Constraint Status: All loop constraints were satisfied.
-INFO: [HLS 200-789] **** Estimated Fmax: 226.35 MHz
-INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 5.26 seconds. CPU system time: 0.9 seconds. Elapsed time: 5.34 seconds; current allocated memory: 216.561 MB.
-INFO: [HLS 200-112] Total CPU user time: 7.04 seconds. Total CPU system time: 1.51 seconds. Total elapsed time: 6.82 seconds; peak allocated memory: 216.339 MB.
-INFO: [Common 17-206] Exiting vitis_hls at Fri Mar  8 08:36:09 2024...
+INFO: [HLS 200-790] **** Loop Constraint Status: All loop constraints were NOT satisfied.
+INFO: [HLS 200-789] **** Estimated Fmax: 157.67 MHz
+INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 108.89 seconds. CPU system time: 2 seconds. Elapsed time: 110.14 seconds; current allocated memory: 384.127 MB.
+INFO: [HLS 200-112] Total CPU user time: 110.87 seconds. Total CPU system time: 2.68 seconds. Total elapsed time: 111.77 seconds; peak allocated memory: 371.612 MB.
+INFO: [Common 17-206] Exiting vitis_hls at Wed Mar 20 15:56:04 2024...

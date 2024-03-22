@@ -7,13 +7,12 @@
 source /scratch/opt/Xilinx/Vitis_HLS/2020.2/scripts/vitis_hls/hls.tcl -notrace
 INFO: Applying HLS Y2K22 patch v1.2 for IP revision
 INFO: [HLS 200-10] Running '/scratch/opt/Xilinx/Vitis_HLS/2020.2/bin/unwrapped/lnx64.o/vitis_hls'
-INFO: [HLS 200-10] For user 'cmk265' on host 'havarti.cs.cornell.edu' (Linux_x86_64 version 5.4.0-137-generic) on Fri Mar 08 08:37:12 EST 2024
+INFO: [HLS 200-10] For user 'cmk265' on host 'havarti.cs.cornell.edu' (Linux_x86_64 version 5.4.0-137-generic) on Wed Mar 20 15:41:51 EDT 2024
 INFO: [HLS 200-10] On os Ubuntu 20.04.6 LTS
 INFO: [HLS 200-10] In directory '/scratch/cmk265/learning/calyx-resource-eval/hls-projects/bicg'
 Sourcing Tcl script '../hls.tcl'
 INFO: [HLS 200-1510] Running: open_project benchmark.prj -reset 
-INFO: [HLS 200-10] Opening and resetting project '/scratch/cmk265/learning/calyx-resource-eval/hls-projects/bicg/benchmark.prj'.
-WARNING: [HLS 200-40] No /scratch/cmk265/learning/calyx-resource-eval/hls-projects/bicg/benchmark.prj/solution1/solution1.aps file found.
+INFO: [HLS 200-10] Creating and opening project '/scratch/cmk265/learning/calyx-resource-eval/hls-projects/bicg/benchmark.prj'.
 INFO: [HLS 200-1510] Running: set_top kernel_bicg 
 INFO: [HLS 200-1510] Running: add_files ./bicg.cpp -cflags -std=c++11 -DVHLS 
 INFO: [HLS 200-10] Adding design file './bicg.cpp' to the project
@@ -26,61 +25,607 @@ INFO: [HLS 200-10] Setting target device to 'xcu250-figd2104-2-e'
 INFO: [HLS 200-1510] Running: create_clock -period 7 
 INFO: [SYN 201-201] Setting up clock 'default' with a period of 7ns.
 INFO: [HLS 200-1510] Running: csynth_design 
-INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0 seconds; current allocated memory: 189.855 MB.
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0.01 seconds. CPU system time: 0 seconds. Elapsed time: 0 seconds; current allocated memory: 189.836 MB.
 INFO: [HLS 200-10] Analyzing design file './bicg.cpp' ... 
-WARNING: [HLS 207-1017] unknown pragma ignored: ./bicg.cpp:14:9
-WARNING: [HLS 207-1017] unknown pragma ignored: ./bicg.cpp:24:9
-INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 0.67 seconds. CPU system time: 0.36 seconds. Elapsed time: 0.51 seconds; current allocated memory: 191.421 MB.
+WARNING: [HLS 207-4069] variable templates are a C++14 extension: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/ap_axi_sdata.h:97:40
+WARNING: [HLS 207-4069] variable templates are a C++14 extension: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/ap_axi_sdata.h:107:18
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:117:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:118:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:119:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:120:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:121:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:151:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:152:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:153:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:154:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:155:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:156:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:157:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:158:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:159:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:160:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:210:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:211:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:212:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:239:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:240:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:241:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:242:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:243:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:244:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:280:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:281:9
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 19.43 seconds. CPU system time: 1.26 seconds. Elapsed time: 19.85 seconds; current allocated memory: 192.634 MB.
 INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
-INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 3.14 seconds. CPU system time: 0.45 seconds. Elapsed time: 3.34 seconds; current allocated memory: 192.555 MB.
-INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0 seconds; current allocated memory: 192.556 MB.
+INFO: [HLS 214-248] complete partitioned array 'v28' on dimension 2 (./bicg.cpp:84:2)
+INFO: [HLS 214-248] complete partitioned array 'v28' on dimension 2 (./bicg.cpp:75:169)
+INFO: [HLS 214-248] complete partitioned array 'v29' on dimension 1 (./bicg.cpp:85:3)
+INFO: [HLS 214-248] complete partitioned array 'v29' on dimension 1 (./bicg.cpp:76:9)
+INFO: [HLS 214-248] complete partitioned array 'v32' on dimension 1 (./bicg.cpp:85:3)
+INFO: [HLS 214-248] complete partitioned array 'v32' on dimension 1 (./bicg.cpp:78:9)
+INFO: [HLS 214-248] complete partitioned array 'v33' on dimension 1 (./bicg.cpp:84:2)
+INFO: [HLS 214-248] complete partitioned array 'v33' on dimension 1 (./bicg.cpp:80:9)
+INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 8.75 seconds. CPU system time: 0.4 seconds. Elapsed time: 9.17 seconds; current allocated memory: 199.550 MB.
+INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0 seconds; current allocated memory: 199.551 MB.
 INFO: [HLS 200-10] Starting code transformations ...
-INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 0.02 seconds. CPU system time: 0 seconds. Elapsed time: 0.02 seconds; current allocated memory: 193.776 MB.
+INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 1.23 seconds. CPU system time: 0 seconds. Elapsed time: 1.23 seconds; current allocated memory: 205.226 MB.
 INFO: [HLS 200-10] Checking synthesizability ...
-INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 0.03 seconds. CPU system time: 0 seconds. Elapsed time: 0.03 seconds; current allocated memory: 192.984 MB.
-INFO: [XFORM 203-510] Pipelining loop 'VITIS_LOOP_15_1' (./bicg.cpp:13) in function 'kernel_bicg' automatically.
-INFO: [XFORM 203-510] Pipelining loop 'VITIS_LOOP_19_3' (./bicg.cpp:13) in function 'kernel_bicg' automatically.
-INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 0.07 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.07 seconds; current allocated memory: 213.416 MB.
-INFO: [XFORM 203-541] Flattening a loop nest 'VITIS_LOOP_17_2' (./bicg.cpp:13:7) in function 'kernel_bicg'.
-INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 0.04 seconds. CPU system time: 0 seconds. Elapsed time: 0.05 seconds; current allocated memory: 205.889 MB.
+INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 8.19 seconds. CPU system time: 0 seconds. Elapsed time: 8.18 seconds; current allocated memory: 207.585 MB.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'l_S_i0_0_i0' (./bicg.cpp:24) in function 'stageS' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'l_S_i1_0_j1' (./bicg.cpp:52) in function 'stageQ' for pipelining.
+INFO: [HLS 200-489] Unrolling loop 'l_S_j0_0_j0' (./bicg.cpp:29) in function 'stageS' completely with a factor of 116.
+INFO: [HLS 200-489] Unrolling loop 'l_i1' (./bicg.cpp:54) in function 'stageQ' completely with a factor of 124.
+INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 25.61 seconds. CPU system time: 0.06 seconds. Elapsed time: 25.69 seconds; current allocated memory: 237.732 MB.
+INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 7.22 seconds. CPU system time: 0.01 seconds. Elapsed time: 7.22 seconds; current allocated memory: 278.273 MB.
 INFO: [HLS 200-10] Starting hardware synthesis ...
 INFO: [HLS 200-10] Synthesizing 'kernel_bicg' ...
 INFO: [HLS 200-10] ----------------------------------------------------------------
-INFO: [HLS 200-42] -- Implementing module 'kernel_bicg' 
+INFO: [HLS 200-42] -- Implementing module 'stageS' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [SCHED 204-11] Starting scheduling ...
-INFO: [HLS 200-486] Changing DSP48 latency (root=mul_ln20_1) to 3 in order to utilize available DSP registers.
-INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_15_1'.
-INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 1, loop 'VITIS_LOOP_15_1'
-INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_17_2_VITIS_LOOP_19_3'.
-INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 6, loop 'VITIS_LOOP_17_2_VITIS_LOOP_19_3'
+INFO: [SCHED 204-61] Pipelining loop 'l_S_i0_0_i0'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'l_S_i0_0_i0'
 INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.07 seconds. CPU system time: 0 seconds. Elapsed time: 0.07 seconds; current allocated memory: 206.385 MB.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 1.76 seconds. CPU system time: 0.03 seconds. Elapsed time: 1.79 seconds; current allocated memory: 283.762 MB.
 INFO: [BIND 205-100] Starting micro-architecture generation ...
 INFO: [BIND 205-101] Performing variable lifetime analysis.
 INFO: [BIND 205-101] Exploring resource sharing.
 INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111] Finished Binding: CPU user time: 0.08 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.08 seconds; current allocated memory: 206.717 MB.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.8 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.81 seconds; current allocated memory: 288.254 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'stageQ' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'l_S_i1_0_j1'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'l_S_i1_0_j1'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 2.15 seconds. CPU system time: 0.02 seconds. Elapsed time: 2.17 seconds; current allocated memory: 291.141 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.86 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.86 seconds; current allocated memory: 295.920 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'kernel_bicg' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 1.29 seconds. CPU system time: 0.01 seconds. Elapsed time: 1.3 seconds; current allocated memory: 298.958 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 1.13 seconds. CPU system time: 0 seconds. Elapsed time: 1.13 seconds; current allocated memory: 306.132 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'stageS' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'mul_32s_32s_32_1_1': 116 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'stageS'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 1.67 seconds. CPU system time: 0.02 seconds. Elapsed time: 1.69 seconds; current allocated memory: 341.725 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'stageQ' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'mul_32s_32s_32_1_1': 124 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'stageQ'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 2.7 seconds. CPU system time: 0.06 seconds. Elapsed time: 2.77 seconds; current allocated memory: 395.720 MB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-10] -- Generating RTL for module 'kernel_bicg' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
-INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/A' to 'ap_memory'.
-INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/s' to 'ap_memory'.
-INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/q' to 'ap_memory'.
-INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/p' to 'ap_memory'.
-INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/r' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_0' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_1' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_2' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_3' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_4' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_5' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_6' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_7' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_8' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_9' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_10' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_11' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_12' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_13' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_14' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_15' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_16' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_17' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_18' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_19' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_20' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_21' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_22' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_23' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_24' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_25' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_26' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_27' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_28' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_29' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_30' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_31' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_32' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_33' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_34' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_35' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_36' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_37' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_38' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_39' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_40' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_41' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_42' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_43' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_44' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_45' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_46' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_47' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_48' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_49' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_50' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_51' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_52' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_53' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_54' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_55' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_56' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_57' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_58' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_59' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_60' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_61' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_62' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_63' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_64' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_65' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_66' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_67' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_68' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_69' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_70' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_71' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_72' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_73' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_74' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_75' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_76' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_77' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_78' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_79' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_80' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_81' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_82' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_83' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_84' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_85' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_86' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_87' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_88' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_89' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_90' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_91' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_92' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_93' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_94' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_95' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_96' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_97' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_98' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_99' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_100' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_101' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_102' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_103' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_104' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_105' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_106' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_107' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_108' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_109' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_110' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_111' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_112' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_113' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_114' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v28_115' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_0' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_1' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_2' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_3' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_4' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_5' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_6' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_7' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_8' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_9' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_10' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_11' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_12' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_13' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_14' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_15' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_16' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_17' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_18' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_19' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_20' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_21' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_22' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_23' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_24' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_25' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_26' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_27' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_28' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_29' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_30' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_31' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_32' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_33' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_34' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_35' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_36' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_37' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_38' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_39' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_40' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_41' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_42' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_43' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_44' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_45' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_46' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_47' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_48' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_49' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_50' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_51' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_52' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_53' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_54' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_55' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_56' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_57' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_58' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_59' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_60' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_61' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_62' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_63' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_64' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_65' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_66' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_67' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_68' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_69' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_70' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_71' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_72' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_73' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_74' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_75' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_76' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_77' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_78' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_79' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_80' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_81' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_82' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_83' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_84' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_85' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_86' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_87' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_88' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_89' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_90' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_91' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_92' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_93' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_94' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_95' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_96' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_97' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_98' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_99' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_100' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_101' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_102' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_103' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_104' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_105' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_106' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_107' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_108' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_109' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_110' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_111' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_112' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_113' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_114' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_115' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_116' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_117' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_118' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_119' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_120' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_121' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_122' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v29_123' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v30' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v31' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_0' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_1' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_2' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_3' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_4' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_5' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_6' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_7' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_8' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_9' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_10' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_11' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_12' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_13' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_14' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_15' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_16' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_17' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_18' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_19' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_20' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_21' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_22' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_23' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_24' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_25' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_26' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_27' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_28' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_29' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_30' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_31' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_32' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_33' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_34' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_35' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_36' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_37' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_38' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_39' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_40' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_41' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_42' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_43' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_44' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_45' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_46' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_47' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_48' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_49' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_50' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_51' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_52' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_53' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_54' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_55' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_56' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_57' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_58' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_59' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_60' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_61' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_62' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_63' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_64' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_65' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_66' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_67' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_68' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_69' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_70' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_71' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_72' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_73' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_74' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_75' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_76' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_77' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_78' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_79' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_80' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_81' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_82' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_83' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_84' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_85' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_86' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_87' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_88' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_89' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_90' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_91' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_92' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_93' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_94' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_95' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_96' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_97' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_98' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_99' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_100' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_101' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_102' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_103' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_104' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_105' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_106' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_107' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_108' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_109' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_110' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_111' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_112' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_113' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_114' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_115' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_116' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_117' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_118' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_119' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_120' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_121' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_122' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v32_123' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_0' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_1' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_2' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_3' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_4' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_5' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_6' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_7' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_8' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_9' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_10' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_11' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_12' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_13' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_14' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_15' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_16' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_17' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_18' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_19' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_20' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_21' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_22' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_23' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_24' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_25' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_26' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_27' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_28' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_29' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_30' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_31' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_32' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_33' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_34' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_35' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_36' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_37' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_38' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_39' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_40' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_41' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_42' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_43' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_44' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_45' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_46' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_47' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_48' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_49' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_50' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_51' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_52' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_53' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_54' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_55' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_56' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_57' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_58' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_59' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_60' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_61' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_62' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_63' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_64' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_65' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_66' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_67' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_68' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_69' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_70' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_71' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_72' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_73' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_74' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_75' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_76' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_77' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_78' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_79' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_80' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_81' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_82' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_83' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_84' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_85' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_86' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_87' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_88' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_89' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_90' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_91' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_92' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_93' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_94' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_95' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_96' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_97' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_98' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_99' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_100' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_101' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_102' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_103' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_104' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_105' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_106' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_107' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_108' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_109' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_110' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_111' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_112' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_113' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_114' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_bicg/v33_115' to 'ap_ovld'.
 INFO: [RTGEN 206-500] Setting interface mode on function 'kernel_bicg' to 'ap_ctrl_hs'.
-INFO: [RTGEN 206-100] Generating core module 'mac_muladd_9ns_10ns_9ns_18_4_1': 1 instance(s).
-INFO: [RTGEN 206-100] Generating core module 'mul_32s_32s_32_1_1': 2 instance(s).
+INFO: [RTGEN 206-104] Estimated max fanout for 'kernel_bicg' is 7922 from HDL expression: ((1'b0 == ap_block_state2_on_subcall_done) & (1'b1 == ap_CS_fsm_state2))
 INFO: [RTGEN 206-100] Finished creating RTL model for 'kernel_bicg'.
-INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.08 seconds. CPU system time: 0 seconds. Elapsed time: 0.08 seconds; current allocated memory: 207.284 MB.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 4.77 seconds. CPU system time: 0.1 seconds. Elapsed time: 4.87 seconds; current allocated memory: 453.448 MB.
 INFO: [RTMG 210-282] Generating pipelined core: 'kernel_bicg_mul_32s_32s_32_1_1_Multiplier_0'
-INFO: [HLS 200-111] Finished Generating all RTL models: CPU user time: 0.83 seconds. CPU system time: 0.03 seconds. Elapsed time: 0.86 seconds; current allocated memory: 215.675 MB.
+INFO: [HLS 200-111] Finished Generating all RTL models: CPU user time: 50.83 seconds. CPU system time: 0.31 seconds. Elapsed time: 51.14 seconds; current allocated memory: 535.384 MB.
 INFO: [VHDL 208-304] Generating VHDL RTL for kernel_bicg.
 INFO: [VLOG 209-307] Generating Verilog RTL for kernel_bicg.
 INFO: [HLS 200-790] **** Loop Constraint Status: All loop constraints were satisfied.
-INFO: [HLS 200-789] **** Estimated Fmax: 226.35 MHz
-INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 5.12 seconds. CPU system time: 0.86 seconds. Elapsed time: 5.2 seconds; current allocated memory: 215.897 MB.
-INFO: [HLS 200-112] Total CPU user time: 6.99 seconds. Total CPU system time: 1.49 seconds. Total elapsed time: 6.74 seconds; peak allocated memory: 215.675 MB.
-INFO: [Common 17-206] Exiting vitis_hls at Fri Mar  8 08:37:19 2024...
+INFO: [HLS 200-789] **** Estimated Fmax: 215.05 MHz
+INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 147.61 seconds. CPU system time: 2.32 seconds. Elapsed time: 149.12 seconds; current allocated memory: 551.124 MB.
+INFO: [HLS 200-112] Total CPU user time: 149.6 seconds. Total CPU system time: 2.95 seconds. Total elapsed time: 150.79 seconds; peak allocated memory: 535.384 MB.
+INFO: [Common 17-206] Exiting vitis_hls at Wed Mar 20 15:44:21 2024...

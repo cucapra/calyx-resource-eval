@@ -7,13 +7,12 @@
 source /scratch/opt/Xilinx/Vitis_HLS/2020.2/scripts/vitis_hls/hls.tcl -notrace
 INFO: Applying HLS Y2K22 patch v1.2 for IP revision
 INFO: [HLS 200-10] Running '/scratch/opt/Xilinx/Vitis_HLS/2020.2/bin/unwrapped/lnx64.o/vitis_hls'
-INFO: [HLS 200-10] For user 'cmk265' on host 'havarti.cs.cornell.edu' (Linux_x86_64 version 5.4.0-137-generic) on Fri Mar 08 08:35:54 EST 2024
+INFO: [HLS 200-10] For user 'cmk265' on host 'havarti.cs.cornell.edu' (Linux_x86_64 version 5.4.0-137-generic) on Wed Mar 20 15:46:40 EDT 2024
 INFO: [HLS 200-10] On os Ubuntu 20.04.6 LTS
 INFO: [HLS 200-10] In directory '/scratch/cmk265/learning/calyx-resource-eval/hls-projects/gesummv'
 Sourcing Tcl script '../hls.tcl'
 INFO: [HLS 200-1510] Running: open_project benchmark.prj -reset 
-INFO: [HLS 200-10] Opening and resetting project '/scratch/cmk265/learning/calyx-resource-eval/hls-projects/gesummv/benchmark.prj'.
-WARNING: [HLS 200-40] No /scratch/cmk265/learning/calyx-resource-eval/hls-projects/gesummv/benchmark.prj/solution1/solution1.aps file found.
+INFO: [HLS 200-10] Creating and opening project '/scratch/cmk265/learning/calyx-resource-eval/hls-projects/gesummv/benchmark.prj'.
 INFO: [HLS 200-1510] Running: set_top kernel_gesummv 
 INFO: [HLS 200-1510] Running: add_files ./gesummv.cpp -cflags -std=c++11 -DVHLS 
 INFO: [HLS 200-10] Adding design file './gesummv.cpp' to the project
@@ -26,60 +25,104 @@ INFO: [HLS 200-10] Setting target device to 'xcu250-figd2104-2-e'
 INFO: [HLS 200-1510] Running: create_clock -period 7 
 INFO: [SYN 201-201] Setting up clock 'default' with a period of 7ns.
 INFO: [HLS 200-1510] Running: csynth_design 
-INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0.01 seconds. CPU system time: 0 seconds. Elapsed time: 0 seconds; current allocated memory: 189.854 MB.
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0 seconds; current allocated memory: 189.805 MB.
 INFO: [HLS 200-10] Analyzing design file './gesummv.cpp' ... 
-WARNING: [HLS 207-1017] unknown pragma ignored: ./gesummv.cpp:18:9
-WARNING: [HLS 207-1017] unknown pragma ignored: ./gesummv.cpp:28:9
-INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 0.69 seconds. CPU system time: 0.34 seconds. Elapsed time: 0.51 seconds; current allocated memory: 191.453 MB.
+WARNING: [HLS 207-4069] variable templates are a C++14 extension: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/ap_axi_sdata.h:97:40
+WARNING: [HLS 207-4069] variable templates are a C++14 extension: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/ap_axi_sdata.h:107:18
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:117:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:118:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:119:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:120:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:121:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:151:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:152:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:153:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:154:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:155:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:156:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:157:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:158:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:159:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:160:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:210:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:211:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:212:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:239:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:240:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:241:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:242:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:243:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:244:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:280:9
+WARNING: [HLS 207-5510] 'Resource pragma' is deprecated, and it will be removed in future release. It is suggested to replace it with 'bind_op/bind_storage pragma'.: /scratch/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_hotbm_apfixed.h:281:9
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 19.03 seconds. CPU system time: 1.33 seconds. Elapsed time: 19.56 seconds; current allocated memory: 192.747 MB.
 INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
-INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 3.15 seconds. CPU system time: 0.45 seconds. Elapsed time: 3.29 seconds; current allocated memory: 192.554 MB.
-INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0.01 seconds. CPU system time: 0 seconds. Elapsed time: 0 seconds; current allocated memory: 192.555 MB.
+INFO: [HLS 214-178] Inlining function 'compute_tmp(int*, int*, int (*) [90], int (*) [90], int*, int*)' into 'kernel_gesummv(int (*) [90], int (*) [90], int*, int*)' (./gesummv.cpp:88:0)
+INFO: [HLS 214-178] Inlining function 'compute_y(int*, int*, int*)' into 'kernel_gesummv(int (*) [90], int (*) [90], int*, int*)' (./gesummv.cpp:88:0)
+INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 3.17 seconds. CPU system time: 0.35 seconds. Elapsed time: 3.52 seconds; current allocated memory: 193.548 MB.
+INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0 seconds; current allocated memory: 193.549 MB.
 INFO: [HLS 200-10] Starting code transformations ...
-INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 0.01 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.02 seconds; current allocated memory: 193.773 MB.
+INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 0.2 seconds. CPU system time: 0 seconds. Elapsed time: 0.2 seconds; current allocated memory: 195.600 MB.
 INFO: [HLS 200-10] Checking synthesizability ...
-INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 0.03 seconds. CPU system time: 0 seconds. Elapsed time: 0.04 seconds; current allocated memory: 192.991 MB.
-INFO: [XFORM 203-510] Pipelining loop 'VITIS_LOOP_22_2' (./gesummv.cpp:16) in function 'kernel_gesummv' automatically.
-INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 0.07 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.08 seconds; current allocated memory: 213.411 MB.
-INFO: [XFORM 203-541] Flattening a loop nest 'VITIS_LOOP_19_1' (./gesummv.cpp:16:7) in function 'kernel_gesummv'.
-INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 0.05 seconds. CPU system time: 0 seconds. Elapsed time: 0.04 seconds; current allocated memory: 205.885 MB.
+INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 0.2 seconds. CPU system time: 0 seconds. Elapsed time: 0.2 seconds; current allocated memory: 195.919 MB.
+INFO: [XFORM 203-510] Pipelining loop 'VITIS_LOOP_24_1' (./gesummv.cpp:24) in function 'kernel_gesummv' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'l_load_i0' (./gesummv.cpp:28) in function 'kernel_gesummv' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'l_i' (./gesummv.cpp:33) in function 'kernel_gesummv' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'l_store_i1' (./gesummv.cpp:54) in function 'kernel_gesummv' automatically.
+INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 0.27 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.29 seconds; current allocated memory: 217.570 MB.
+INFO: [XFORM 203-541] Flattening a loop nest 'l_tmp_j' (./gesummv.cpp:32:21) in function 'kernel_gesummv'.
+INFO: [HLS 200-472] Inferring partial write operation for 'tt' (./gesummv.cpp:25:12)
+INFO: [HLS 200-472] Inferring partial write operation for 'yy' (./gesummv.cpp:30:12)
+INFO: [HLS 200-472] Inferring partial write operation for 'tt' (./gesummv.cpp:42:13)
+INFO: [HLS 200-472] Inferring partial write operation for 'yy' (./gesummv.cpp:51:13)
+INFO: [HLS 200-472] Inferring partial write operation for 'tmp' (./gesummv.cpp:56:12)
+INFO: [HLS 200-472] Inferring partial write operation for 'y_fifo' (./gesummv.cpp:58:12)
+INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 0.53 seconds. CPU system time: 0 seconds. Elapsed time: 0.54 seconds; current allocated memory: 212.121 MB.
 INFO: [HLS 200-10] Starting hardware synthesis ...
 INFO: [HLS 200-10] Synthesizing 'kernel_gesummv' ...
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-42] -- Implementing module 'kernel_gesummv' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [SCHED 204-11] Starting scheduling ...
-INFO: [HLS 200-486] Changing DSP48 latency (root=mul_ln23_1) to 3 in order to utilize available DSP registers.
-INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_19_1_VITIS_LOOP_22_2'.
-INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 7, loop 'VITIS_LOOP_19_1_VITIS_LOOP_22_2'
+INFO: [HLS 200-486] Changing DSP48 latency (root=mul_ln34) to 3 in order to utilize available DSP registers.
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_24_1'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 1, loop 'VITIS_LOOP_24_1'
+INFO: [SCHED 204-61] Pipelining loop 'l_load_i0'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 1, loop 'l_load_i0'
+INFO: [SCHED 204-61] Pipelining loop 'l_tmp_j_l_i'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 6, loop 'l_tmp_j_l_i'
+INFO: [SCHED 204-61] Pipelining loop 'l_store_i1'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'l_store_i1'
+INFO: [SCHED 204-61] Pipelining loop 'l_load_i01'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'l_load_i01'
 INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.07 seconds. CPU system time: 0 seconds. Elapsed time: 0.08 seconds; current allocated memory: 206.356 MB.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.12 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.13 seconds; current allocated memory: 212.698 MB.
 INFO: [BIND 205-100] Starting micro-architecture generation ...
 INFO: [BIND 205-101] Performing variable lifetime analysis.
 INFO: [BIND 205-101] Exploring resource sharing.
 INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111] Finished Binding: CPU user time: 0.07 seconds. CPU system time: 0 seconds. Elapsed time: 0.07 seconds; current allocated memory: 206.696 MB.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.16 seconds. CPU system time: 0 seconds. Elapsed time: 0.16 seconds; current allocated memory: 213.187 MB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-10] -- Generating RTL for module 'kernel_gesummv' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
-INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_gesummv/alpha' to 'ap_none'.
-INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_gesummv/beta' to 'ap_none'.
-INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_gesummv/A' to 'ap_memory'.
-INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_gesummv/B' to 'ap_memory'.
-INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_gesummv/tmp' to 'ap_memory'.
-INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_gesummv/x' to 'ap_memory'.
-INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_gesummv/y' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_gesummv/v46' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_gesummv/v47' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_gesummv/v48' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel_gesummv/v49' to 'ap_memory'.
 INFO: [RTGEN 206-500] Setting interface mode on function 'kernel_gesummv' to 'ap_ctrl_hs'.
-INFO: [RTGEN 206-100] Generating core module 'mac_muladd_8ns_9ns_8ns_16_4_1': 1 instance(s).
-INFO: [RTGEN 206-100] Generating core module 'mul_32s_32s_32_1_1': 4 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mac_muladd_7ns_8ns_7ns_13_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_32s_32s_32_1_1': 2 instance(s).
 INFO: [RTGEN 206-100] Finished creating RTL model for 'kernel_gesummv'.
-INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.08 seconds. CPU system time: 0 seconds. Elapsed time: 0.08 seconds; current allocated memory: 207.287 MB.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.15 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.16 seconds; current allocated memory: 214.053 MB.
 INFO: [RTMG 210-282] Generating pipelined core: 'kernel_gesummv_mul_32s_32s_32_1_1_Multiplier_0'
-INFO: [HLS 200-111] Finished Generating all RTL models: CPU user time: 0.89 seconds. CPU system time: 0.03 seconds. Elapsed time: 0.92 seconds; current allocated memory: 215.728 MB.
+INFO: [RTMG 210-278] Implementing memory 'kernel_gesummv_tt_ram (RAM)' using auto RAMs.
+INFO: [RTMG 210-278] Implementing memory 'kernel_gesummv_y_fifo_ram (RAM)' using auto RAMs.
+INFO: [HLS 200-111] Finished Generating all RTL models: CPU user time: 1.12 seconds. CPU system time: 0.08 seconds. Elapsed time: 1.2 seconds; current allocated memory: 222.533 MB.
 INFO: [VHDL 208-304] Generating VHDL RTL for kernel_gesummv.
 INFO: [VLOG 209-307] Generating Verilog RTL for kernel_gesummv.
 INFO: [HLS 200-790] **** Loop Constraint Status: All loop constraints were satisfied.
-INFO: [HLS 200-789] **** Estimated Fmax: 202.84 MHz
-INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 5.22 seconds. CPU system time: 0.84 seconds. Elapsed time: 5.23 seconds; current allocated memory: 215.921 MB.
-INFO: [HLS 200-112] Total CPU user time: 6.96 seconds. Total CPU system time: 1.5 seconds. Total elapsed time: 6.71 seconds; peak allocated memory: 215.728 MB.
-INFO: [Common 17-206] Exiting vitis_hls at Fri Mar  8 08:36:01 2024...
+INFO: [HLS 200-789] **** Estimated Fmax: 226.35 MHz
+INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 25.03 seconds. CPU system time: 1.8 seconds. Elapsed time: 26.02 seconds; current allocated memory: 222.726 MB.
+INFO: [HLS 200-112] Total CPU user time: 26.87 seconds. Total CPU system time: 2.47 seconds. Total elapsed time: 27.56 seconds; peak allocated memory: 222.533 MB.
+INFO: [Common 17-206] Exiting vitis_hls at Wed Mar 20 15:47:07 2024...

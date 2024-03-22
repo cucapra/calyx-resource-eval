@@ -1,5 +1,5 @@
 {
-  "avg_latency": 0,
-  "best_latency": 50881,
-  "worst_latency": 11628481
+  "avg_latency": 9852,
+  "best_latency": 9852,
+  "worst_latency": 9852
 }
