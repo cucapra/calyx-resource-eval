@@ -7,12 +7,12 @@ else
 fi
 
 # # make results directory and run hls-estimate for all polybench benchmarks
-# mkdir -p results/standard/hls
-# ls benchmarks/hls/*/*.cpp | parallel --bar $parallelism "fud e -q {} --from vivado-hls --to hls-detailed-estimate > results/standard/hls/{/.}.json"
+mkdir -p results/standard/hls
+ls benchmarks/hls/*/*.cpp | parallel --bar $parallelism "fud e -q {} --from vivado-hls --to hls-detailed-estimate > results/standard/hls/{/.}.json"
 
 # make results directory and run hls-estimate for all polybench benchmarks
-mkdir -p results/standard/hls-latency
-ls benchmarks/hls/*/*.cpp | parallel --bar $parallelism "fud e -q {} --from vivado-hls --to hls-cycles-estimate > results/standard/hls-latency/{/.}.json"
+# mkdir -p results/standard/hls-latency
+# ls benchmarks/hls/*/*.cpp | parallel --bar $parallelism "fud e -q {} --from vivado-hls --to hls-cycles-estimate > results/standard/hls-latency/{/.}.json"
 
 # make results directory and run hls-estimate on unrolled polybench benchmarks
 # mkdir -p results/unrolled/hls
