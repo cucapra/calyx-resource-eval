@@ -100,7 +100,6 @@ def apply_legend(df, name, legend):
 
 def polybench_cycles_graph(polybench, fig_fontsize, legend_fontsize):
   # figure 6 font settings
-
   legend = {
     'norm-futil': 'Calyx',
     'norm-piezo': 'Piezo'
@@ -140,16 +139,16 @@ def polybench_cycles_graph(polybench, fig_fontsize, legend_fontsize):
   g.axes[0,0].axhline(gmean_futil, color="black", linestyle="dashed", label="Geo Mean")
   g.axes[0,0].axhline(gmean_piezo, color="black", linestyle="dashed", label="Geo Mean")
   plt.text(12, gmean_futil-0.055, "Geo Mean Futil", fontsize=20)
-  plt.text(12, gmean_futil+0.075, "Geo Mean Piezo", fontsize=20)
+  plt.text(12, gmean_piezo+0.025, "Geo Mean Piezo", fontsize=20)
   plt.show()
 
 def polybench_resources_graph(polybench, fig_fontsize):
   sns.set_theme(style="whitegrid")
   legend = {
-      'norm': 'Not Unrolled',
-      'norm-unrolled': 'Unrolled'
+      'norm-futil': 'Calyx',
+      'norm-piezo': 'Piezo'
   }
-  df = polybench[polybench['type'].isin(['norm', 'norm-unrolled'])]
+  df = polybench[polybench['type'].isin(['norm-futil', 'norm-piezo'])]
   df['lut-1'] = df['lut'] - 1
   g = sns.catplot(
       x="benchmark",
@@ -175,10 +174,15 @@ def polybench_resources_graph(polybench, fig_fontsize):
   plt.ylim([1/8, 4])
 
   from scipy import stats
-  gmean = stats.gmean(df['lut'])
+  df_futil = df[df['type'].str.contains('norm-futil')]
+  df_piezo = df[df['type'].str.contains('norm-piezo')]
+  gmean_futil = stats.gmean(df_futil['lut'])
+  gmean_piezo = stats.gmean(df_piezo['lut'])
   # print("Gmean: ", gmean)
-  g.axes[0,0].axhline(gmean, color="black", linestyle="dashed", label="Geo Mean")
-  plt.text(12, gmean-0.12, "Geo Mean", fontsize=20)
+  g.axes[0,0].axhline(gmean_futil, color="black", linestyle="dashed", label="Geo Mean")
+  g.axes[0,0].axhline(gmean_piezo, color="black", linestyle="dashed", label="Geo Mean")
+  plt.text(12, gmean_futil-0.15, "Geo Mean Futil", fontsize=20)
+  plt.text(7.5, gmean_piezo+0.075, "Geo Mean Piezo", fontsize=20)
   plt.show()
 
 
