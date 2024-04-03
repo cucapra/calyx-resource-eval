@@ -140,7 +140,9 @@ def polybench_cycles_graph(polybench, fig_fontsize, legend_fontsize):
   g.axes[0,0].axhline(gmean_piezo, color="black", linestyle="dashed", label="Geo Mean")
   plt.text(12, gmean_futil-0.055, "Geo Mean Futil", fontsize=20)
   plt.text(12, gmean_piezo+0.025, "Geo Mean Piezo", fontsize=20)
-  plt.show()
+  # plt.show()
+  g.savefig('polybench_cycles.pdf')
+
 
 def polybench_resources_graph(polybench, fig_fontsize):
   sns.set_theme(style="whitegrid")
@@ -183,7 +185,8 @@ def polybench_resources_graph(polybench, fig_fontsize):
   g.axes[0,0].axhline(gmean_piezo, color="black", linestyle="dashed", label="Geo Mean")
   plt.text(12, gmean_futil-0.15, "Geo Mean Futil", fontsize=20)
   plt.text(7.5, gmean_piezo+0.075, "Geo Mean Piezo", fontsize=20)
-  plt.show()
+  # plt.show()
+  g.savefig('polybench_lut.pdf')
 
 
 if __name__ == "__main__":
@@ -207,7 +210,7 @@ if __name__ == "__main__":
   pd.set_option('display.max_rows', None)
   pd.set_option('display.max_columns', None)
   polybench = pivot_and_order(polybench, polybench_order)
-  polybench_cycles_graph(polybench=polybench, fig_fontsize=27, legend_fontsize=24)
-  # polybench_resources_graph(polybench=polybench, fig_fontsize=27)
+  # polybench_cycles_graph(polybench=polybench, fig_fontsize=27, legend_fontsize=24)
+  polybench_resources_graph(polybench=polybench, fig_fontsize=27)
 
 
