@@ -223,7 +223,7 @@ def polybench_resources_graph(polybench, fig_fontsize, resource):
     )
     plt.text(12, gmean_futil - 0.15, "Geo Mean Calyx", fontsize=20)
     plt.text(7.5, gmean_piezo + 0.075, "Geo Mean Piezo", fontsize=20)
-    # plt.show()
+    plt.show()
     # g.savefig(f"polybench_{resource}.pdf")
 
 
@@ -416,18 +416,18 @@ if __name__ == "__main__":
     futil_phases = norm(futil_phases, "futil-sc-sh", "futil-sh-sc", "norm-sh-sc")
     futil_phases = pivot_and_order(futil_phases, polybench_order)
 
-    polybench_cycles_graph(polybench=polybench, fig_fontsize=27, legend_fontsize=24)
+    # polybench_cycles_graph(polybench=polybench, fig_fontsize=27, legend_fontsize=24)
     polybench_resources_graph(polybench=polybench, fig_fontsize=27, resource="lut")
 
-    futil_phases_cycles_graph(
-        polybench=futil_phases, fig_fontsize=27, legend_fontsize=24
-    )
-    futil_phases_resources_graph(
-        polybench=futil_phases, fig_fontsize=27, legend_fontsize=24, resource="lut"
-    )
-    futil_phases_resources_graph(
-        polybench=futil_phases,
-        fig_fontsize=27,
-        legend_fontsize=24,
-        resource="registers",
-    )
+    # futil_phases_cycles_graph(
+    #     polybench=futil_phases, fig_fontsize=27, legend_fontsize=24
+    # )
+    # futil_phases_resources_graph(
+    #     polybench=futil_phases, fig_fontsize=27, legend_fontsize=24, resource="lut"
+    # )
+    # futil_phases_resources_graph(
+    #     polybench=futil_phases,
+    #     fig_fontsize=27,
+    #     legend_fontsize=24,
+    #     resource="registers",
+    # )
