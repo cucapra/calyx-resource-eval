@@ -173,8 +173,8 @@ def polybench_cycles_graph(polybench, fig_fontsize, legend_fontsize):
     )
     plt.text(12, gmean_futil - 0.055, "Geo Mean Calyx", fontsize=20)
     plt.text(12, gmean_piezo + 0.025, "Geo Mean Piezo", fontsize=20)
-    # plt.show()
-    # g.savefig("polybench_cycles.pdf")
+    plt.show()
+    # g.savefig("graphs/dahlia_polybench_cycles.pdf")
 
 
 def polybench_resources_graph(polybench, fig_fontsize, resource):
@@ -224,7 +224,7 @@ def polybench_resources_graph(polybench, fig_fontsize, resource):
     plt.text(12, gmean_futil - 0.15, "Geo Mean Calyx", fontsize=20)
     plt.text(7.5, gmean_piezo + 0.075, "Geo Mean Piezo", fontsize=20)
     plt.show()
-    # g.savefig(f"polybench_{resource}.pdf")
+    # g.savefig(f"graphs/dahlia_polybench_{resource}.pdf")
 
 
 def futil_phases_cycles_graph(polybench, fig_fontsize, legend_fontsize):
@@ -278,7 +278,7 @@ def futil_phases_cycles_graph(polybench, fig_fontsize, legend_fontsize):
     plt.text(12, gmean_sh - 0.055, "Geo Mean SH", fontsize=20)
     plt.text(11, gmean_sh_sc + 0.015, "Geo Mean SH→SC", fontsize=20)
     # plt.show()
-    # g.savefig("futil_ordering_cycles.pdf")
+    # g.savefig("graphs/futil_ordering_cycles.pdf")
 
 
 def futil_phases_resources_graph(polybench, fig_fontsize, legend_fontsize, resource):
@@ -338,47 +338,57 @@ def futil_phases_resources_graph(polybench, fig_fontsize, legend_fontsize, resou
         plt.text(7.9, gmean_sh_sc + 0.015, "Geo Mean SH→SC and SH", fontsize=20)
         plt.text(4, gmean_sc - 0.04, "Geo Mean SC", fontsize=20)
     elif resource == "registers":
-        plt.text(9.45, gmean_sh_sc+0.015, "Geo Mean SH→SC and SH", fontsize=20)
-        plt.text(0.7, gmean_sc-0.075, "Geo Mean SC", fontsize=20)
+        plt.text(9.45, gmean_sh_sc + 0.015, "Geo Mean SH→SC and SH", fontsize=20)
+        plt.text(0.7, gmean_sc - 0.075, "Geo Mean SC", fontsize=20)
 
     # plt.show()
-    # g.savefig(f"futil_ordering_{resource}.pdf")
+    # g.savefig(f"graphs/futil_ordering_{resource}.pdf")
 
 
 if __name__ == "__main__":
-    gather_json(Path("results_asplos21/standard/hls/"), "hls")
+    gather_json(Path("results/results-asplos21/standard/hls/"), "hls")
 
-    gather_json(Path("results_asplos21/standard/futil/"), "futil")
-    gather_json(Path("results_asplos21/standard/futil-latency/"), "futil")
+    gather_json(Path("results/results-asplos21/standard/futil/"), "futil")
+    gather_json(Path("results/results-asplos21/standard/futil-latency/"), "futil")
 
-    gather_json(Path("results/standard/futil-sc-sh/"), "futil-sc-sh")
-    gather_json(Path("results/standard/futil-sc-sh-latency/"), "futil-sc-sh")
+    gather_json(Path("results/results-static-calyx/futil-sc-sh/"), "futil-sc-sh")
+    gather_json(
+        Path("results/results-static-calyx/futil-sc-sh-latency/"), "futil-sc-sh"
+    )
 
-    gather_json(Path("results/standard/futil-sc/"), "futil-sc")
-    gather_json(Path("results/standard/futil-sc-latency/"), "futil-sc")
+    gather_json(Path("results/results-static-calyx/futil-sc/"), "futil-sc")
+    gather_json(Path("results/results-static-calyx/futil-sc-latency/"), "futil-sc")
 
-    gather_json(Path("results/standard/futil-sh/"), "futil-sh")
-    gather_json(Path("results/standard/futil-sh-latency/"), "futil-sh")
+    gather_json(Path("results/results-static-calyx/futil-sh/"), "futil-sh")
+    gather_json(Path("results/results-static-calyx/futil-sh-latency/"), "futil-sh")
 
-    gather_json(Path("results/standard/futil-sh-sc/"), "futil-sh-sc")
-    gather_json(Path("results/standard/futil-sh-sc-latency/"), "futil-sh-sc")
+    gather_json(Path("results/results-static-calyx/futil-sh-sc/"), "futil-sh-sc")
+    gather_json(
+        Path("results/results-static-calyx/futil-sh-sc-latency/"), "futil-sh-sc"
+    )
 
-    standard_hls = pd.read_csv("results_asplos21/standard/hls/data.csv")
+    standard_hls = pd.read_csv("results/results-asplos21//standard/hls/data.csv")
 
-    standard_futil = pd.read_csv("results_asplos21/standard/futil/data.csv")
-    standard_futil_lat = pd.read_csv("results_asplos21/standard/futil-latency/data.csv")
+    standard_futil = pd.read_csv("results/results-asplos21//standard/futil/data.csv")
+    standard_futil_lat = pd.read_csv(
+        "results/results-asplos21//standard/futil-latency/data.csv"
+    )
 
-    sc_sh_futil = pd.read_csv("results/standard/futil-sc-sh/data.csv")
-    sc_sh_futil_lat = pd.read_csv("results/standard/futil-sc-sh-latency/data.csv")
+    sc_sh_futil = pd.read_csv("results/results-static-calyx/futil-sc-sh/data.csv")
+    sc_sh_futil_lat = pd.read_csv(
+        "results/results-static-calyx/futil-sc-sh-latency/data.csv"
+    )
 
-    sc_futil = pd.read_csv("results/standard/futil-sc/data.csv")
-    sc_futil_lat = pd.read_csv("results/standard/futil-sc-latency/data.csv")
+    sc_futil = pd.read_csv("results/results-static-calyx/futil-sc/data.csv")
+    sc_futil_lat = pd.read_csv("results/results-static-calyx/futil-sc-latency/data.csv")
 
-    sh_futil = pd.read_csv("results/standard/futil-sh/data.csv")
-    sh_futil_lat = pd.read_csv("results/standard/futil-sh-latency/data.csv")
+    sh_futil = pd.read_csv("results/results-static-calyx/futil-sh/data.csv")
+    sh_futil_lat = pd.read_csv("results/results-static-calyx/futil-sh-latency/data.csv")
 
-    sh_sc_futil = pd.read_csv("results/standard/futil-sh-sc/data.csv")
-    sh_sc_futil_lat = pd.read_csv("results/standard/futil-sh-sc-latency/data.csv")
+    sh_sc_futil = pd.read_csv("results/results-static-calyx/futil-sh-sc/data.csv")
+    sh_sc_futil_lat = pd.read_csv(
+        "results/results-static-calyx/futil-sh-sc-latency/data.csv"
+    )
 
     polybench_raw = pd.concat(
         [standard_hls, standard_futil, standard_futil_lat, sc_sh_futil, sc_sh_futil_lat]
@@ -419,15 +429,15 @@ if __name__ == "__main__":
     # polybench_cycles_graph(polybench=polybench, fig_fontsize=27, legend_fontsize=24)
     polybench_resources_graph(polybench=polybench, fig_fontsize=27, resource="lut")
 
-    # futil_phases_cycles_graph(
-    #     polybench=futil_phases, fig_fontsize=27, legend_fontsize=24
-    # )
-    # futil_phases_resources_graph(
-    #     polybench=futil_phases, fig_fontsize=27, legend_fontsize=24, resource="lut"
-    # )
-    # futil_phases_resources_graph(
-    #     polybench=futil_phases,
-    #     fig_fontsize=27,
-    #     legend_fontsize=24,
-    #     resource="registers",
-    # )
+    futil_phases_cycles_graph(
+        polybench=futil_phases, fig_fontsize=27, legend_fontsize=24
+    )
+    futil_phases_resources_graph(
+        polybench=futil_phases, fig_fontsize=27, legend_fontsize=24, resource="lut"
+    )
+    futil_phases_resources_graph(
+        polybench=futil_phases,
+        fig_fontsize=27,
+        legend_fontsize=24,
+        resource="registers",
+    )
