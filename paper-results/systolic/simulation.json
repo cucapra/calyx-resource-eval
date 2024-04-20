@@ -19,7 +19,7 @@
     ],
     [
       "relu-inputs/dynamic",
-      "simulation/mmult-dynamic"
+      "simulation/dynamic-mmult"
     ]
   ],
   "fud_flags": [

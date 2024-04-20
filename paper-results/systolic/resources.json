@@ -15,10 +15,10 @@
     ],
     [
       "mmult-inputs/static",
-      "results/static-mmult"
+      "resources/static-mmult"
     ],
     [
-      "relu-inputs/dunamic",
+      "relu-inputs/dynamic",
       "resources/dynamic-mmult"
     ]
   ],

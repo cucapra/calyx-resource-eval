@@ -47,6 +47,16 @@ if __name__ == "__main__":
             if fud_target == "dat":
                 size = source_file.split(".")[0]
                 fud_command += ["-s", "verilog.data", f"input-data/{size}.json"]
-
             print(f"Running fud command: {fud_command}")
+            if fud_target == "dat":
+                # Check that the result is correct
+                size = source_file.split(".")[0]
+                op = source_file.split("-")[-1]
+                golden_output = f"golden_outputs/{size}-{op}.json"
+                with open(golden_output, "r") as file:
+                    golden_data = json.load(file)
+                with open(results_path, "r") as file:
+                    results_data = json.load(file)
+                for k, v in golden_data["memories"].items():
+                    assert results_data[k] == v, f"Mismatch Results for {k}"
             # subprocess.run(fud_command)
