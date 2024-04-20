@@ -1,6 +1,8 @@
 # calyx-resource-eval
 Resource Usage Evaluation for Calyx (&amp; its Frontends)
 
+(This is all very outdated; ignore it).
+
 ## Generating Polybench.
 ```
 cd polybench_c
