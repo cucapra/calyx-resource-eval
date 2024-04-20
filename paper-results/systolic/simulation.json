@@ -1,0 +1,32 @@
+{
+  "target": "dat",
+  "dirs": [
+    [
+      "relu-inputs/leaky",
+      "simulation/leaky-relu"
+    ],
+    [
+      "relu-inputs/dynamic",
+      "simulation/dynamic-relu"
+    ],
+    [
+      "relu-inputs/static",
+      "simulation/static-relu"
+    ],
+    [
+      "mmult-inputs/static",
+      "simulation/static-mmult"
+    ],
+    [
+      "relu-inputs/dynamic",
+      "simulation/mmult-dynamic"
+    ]
+  ],
+  "fud_flags": [
+    [
+      "-s",
+      "calyx.flags",
+      "-d well-formed"
+    ]
+  ]
+}

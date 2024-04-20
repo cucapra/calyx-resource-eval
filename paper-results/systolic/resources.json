@@ -1,0 +1,35 @@
+{
+  "target": "resource-estimate",
+  "dirs": [
+    [
+      "relu-inputs/leaky",
+      "resources/leaky-relu"
+    ],
+    [
+      "relu-inputs/dynamic",
+      "resources/dynamic-relu"
+    ],
+    [
+      "relu-inputs/static",
+      "resources/static-relu"
+    ],
+    [
+      "mmult-inputs/static",
+      "results/static-mmult"
+    ],
+    [
+      "relu-inputs/dunamic",
+      "resources/dynamic-mmult"
+    ]
+  ],
+  "fud_flags": [
+    [
+      "-s",
+      "calyx.flags",
+      "-d well-formed",
+      "-s",
+      "synth-verilog.tcl",
+      "../synth-files/synth.tcl"
+    ]
+  ]
+}
