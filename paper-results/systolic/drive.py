@@ -2,6 +2,44 @@ import json
 import argparse
 import subprocess
 import os
+import numpy as np
+
+
+def check_output(tl, td, ll, ld, post_op, json_file):
+    left = np.zeros((ll, ld), "f")
+    top = np.zeros((td, tl), "f")
+    json_data = json.load(open(json_file))["memories"]
+
+    for r in range(ll):
+        for c in range(ld):
+            left[r][c] = json_data[f"l{r}"][c]
+
+    for r in range(td):
+        for c in range(tl):
+            top[r][c] = json_data[f"t{c}"][r]
+
+    matmul_result = np.matmul(left, top)
+    if post_op == "leaky-relu":
+        matmul_result = np.where(matmul_result > 0, matmul_result, matmul_result * 0.01)
+    # We have two different ReLU implementations
+    elif post_op == "relu" or post_op == "relu-dynamic":
+        matmul_result = np.where(matmul_result > 0, matmul_result, 0)
+
+    res = []
+    for r in range(ll):
+        res.append(list(map(float, json_data[f"out_mem_{r}"])))
+
+    json_result = np.array(res)
+
+    # We only check close since we are using fixedpoint (whereas this is float)
+    if np.isclose(matmul_result, json_result, atol=1e-3).all():
+        print("Correct")
+    else:
+        print("Incorrect\n. Should have been:\n")
+        print(matmul_result)
+        print("\nBut got:\n")
+        print(json_result)
+
 
 if __name__ == "__main__":
     """
@@ -48,15 +86,18 @@ if __name__ == "__main__":
                 size = source_file.split(".")[0]
                 fud_command += ["-s", "verilog.data", f"input-data/{size}.json"]
             print(f"Running fud command: {fud_command}")
+            subprocess.run(fud_command)
             if fud_target == "dat":
                 # Check that the result is correct
-                size = source_file.split(".")[0]
-                op = source_file.split("-")[-1]
-                golden_output = f"golden_outputs/{size}-{op}.json"
-                with open(golden_output, "r") as file:
-                    golden_data = json.load(file)
-                with open(results_path, "r") as file:
-                    results_data = json.load(file)
-                for k, v in golden_data["memories"].items():
-                    assert results_data[k] == v, f"Mismatch Results for {k}"
-            # subprocess.run(fud_command)
+                size = int(source_file.split(".")[0])
+                with open(source_path, "r") as file:
+                    json_data = json.load(file)
+                    post_op = json_data.get("post_op", "")
+                check_output(
+                    tl=size,
+                    td=size,
+                    ll=size,
+                    ld=size,
+                    post_op=post_op,
+                    json_file=results_path,
+                )

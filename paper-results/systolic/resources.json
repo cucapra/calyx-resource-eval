@@ -29,7 +29,7 @@
       "-d well-formed",
       "-s",
       "synth-verilog.tcl",
-      "../synth-files/synth.tcl"
+      "synth-files/synth.tcl"
     ]
   ]
 }
