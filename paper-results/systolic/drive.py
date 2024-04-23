@@ -62,7 +62,7 @@ if __name__ == "__main__":
 
     for dir_tuple in dirs:
         source_dir = dir_tuple[0]
-        assert os.path.exists(source_dir), f"Invliad Source Directory: {source_dir}"
+        assert os.path.exists(source_dir), f"Invalid Source Directory: {source_dir}"
         results_dir = dir_tuple[1]
         # Make the results directory if it doesn't exist
         if not os.path.exists(results_dir):
