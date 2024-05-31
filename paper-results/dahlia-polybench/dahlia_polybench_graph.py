@@ -9,9 +9,9 @@ from scipy import stats
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-matplotlib.rcParams["pdf.fonttype"] = 42
-matplotlib.rcParams["ps.fonttype"] = 42
-matplotlib.rcParams["text.usetex"] = True
+# matplotlib.rcParams["pdf.fonttype"] = 42
+# matplotlib.rcParams["ps.fonttype"] = 42
+# matplotlib.rcParams["text.usetex"] = True
 
 # For debugging purposes
 pd.set_option("display.max_rows", None)
@@ -131,6 +131,7 @@ def polybench_cycles_graph(polybench, fig_fontsize, legend_fontsize):
     legend = {"norm-futil": "Calyx", "norm-piezo": "Piezo"}
 
     df = polybench[polybench["type"].isin(["norm-futil", "norm-piezo"])]
+    df = df.copy()
     df["latency-1"] = df["latency"] - 1
     g = sns.catplot(
         x="benchmark",
@@ -174,7 +175,7 @@ def polybench_cycles_graph(polybench, fig_fontsize, legend_fontsize):
     plt.text(12, gmean_futil - 0.055, "Geo Mean Calyx", fontsize=20)
     plt.text(12, gmean_piezo + 0.025, "Geo Mean Piezo", fontsize=20)
     plt.show()
-    # g.savefig("graphs/dahlia_polybench_cycles.pdf")
+    g.savefig("graphs/xxx.pdf")
 
 
 def polybench_resources_graph(polybench, fig_fontsize, resource):
@@ -426,7 +427,7 @@ if __name__ == "__main__":
     futil_phases = norm(futil_phases, "futil-sc-sh", "futil-sh-sc", "norm-sh-sc")
     futil_phases = pivot_and_order(futil_phases, polybench_order)
 
-    # polybench_cycles_graph(polybench=polybench, fig_fontsize=27, legend_fontsize=24)
+    polybench_cycles_graph(polybench=polybench, fig_fontsize=27, legend_fontsize=24)
     polybench_resources_graph(polybench=polybench, fig_fontsize=27, resource="lut")
 
     futil_phases_cycles_graph(
