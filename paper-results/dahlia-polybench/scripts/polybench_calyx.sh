@@ -30,12 +30,10 @@ ls benchmarks/polybench/*.fuse | parallel --bar $parallelism "fud e -q {} --to r
 mkdir -p results/results-static-calyx/futil-sh-latency
 ls benchmarks/polybench/*.fuse | parallel --bar $parallelism "fud e -q {} --to dat --through verilog -s verilog.data '{}.data' -s calyx.flags '-x static-promotion:compaction=false' | jq '{ "latency": .cycles }' > results/results-static-calyx/futil-sh-latency/{/.}.json"
 
-# NOW YOU HAVE TO CHECK OUT A NEW BRANCH THAT HAS REORDERED THE PASSES
-
 # SC->SH (25 minutes)
-# mkdir -p results/results-static-calyx/futil-sc-sh
-# ls benchmarks/polybench/*.fuse | parallel --bar $parallelism "fud e -q {} --to resource-estimate > results/results-static-calyx/futil-sc-sh/{/.}.json"
+mkdir -p results/results-static-calyx/futil-sc-sh
+ls benchmarks/polybench/*.fuse | parallel --bar $parallelism "fud e -q {} --to resource-estimate -s calyx.flags '-r static-promotion -r cell-share' > results/results-static-calyx/futil-sc-sh/{/.}.json"
 
-# # SC->SH latency (7 minutes)
-# mkdir -p results/results-static-calyx/futil-sc-sh-latency
-# ls benchmarks/polybench/*.fuse | parallel --bar $parallelism "fud e -q {} --to dat --through verilog -s verilog.data '{}.data' | jq '{ "latency": .cycles }' > results/results-static-calyx/futil-sc-sh-latency/{/.}.json"
+# SC->SH latency (7 minutes)
+mkdir -p results/results-static-calyx/futil-sc-sh-latency
+ls benchmarks/polybench/*.fuse | parallel --bar $parallelism "fud e -q {} --to dat --through verilog -s verilog.data '{}.data' -s calyx.flags '-r static-promotion -r cell-share' | jq '{ "latency": .cycles }' > results/results-static-calyx/futil-sc-sh-latency/{/.}.json"
