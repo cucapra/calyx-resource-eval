@@ -278,7 +278,7 @@ def futil_phases_cycles_graph(polybench, fig_fontsize, legend_fontsize):
     )
     plt.text(12, gmean_sh - 0.055, "Geo Mean SH", fontsize=20)
     plt.text(11, gmean_sh_sc + 0.015, "Geo Mean SH→SC", fontsize=20)
-    # plt.show()
+    plt.show()
     # g.savefig("graphs/futil_ordering_cycles.pdf")
 
 
@@ -342,7 +342,7 @@ def futil_phases_resources_graph(polybench, fig_fontsize, legend_fontsize, resou
         plt.text(9.45, gmean_sh_sc + 0.015, "Geo Mean SH→SC and SH", fontsize=20)
         plt.text(0.7, gmean_sc - 0.075, "Geo Mean SC", fontsize=20)
 
-    # plt.show()
+    plt.show()
     # g.savefig(f"graphs/futil_ordering_{resource}.pdf")
 
 

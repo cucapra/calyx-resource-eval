@@ -18,7 +18,7 @@
       "resources/static-mmult"
     ],
     [
-      "relu-inputs/dynamic",
+      "mmult-inputs/dynamic",
       "resources/dynamic-mmult"
     ]
   ],

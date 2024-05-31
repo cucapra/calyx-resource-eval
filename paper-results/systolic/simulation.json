@@ -18,7 +18,7 @@
       "simulation/static-mmult"
     ],
     [
-      "relu-inputs/dynamic",
+      "mmult-inputs/dynamic",
       "simulation/dynamic-mmult"
     ]
   ],

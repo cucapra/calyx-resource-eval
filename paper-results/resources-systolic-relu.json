@@ -1,0 +1,53 @@
+{
+  "jsons": [
+    [
+      "systolic-resources/static-relu.json",
+      "ReLU (static implementation)"
+    ],
+    [
+      "systolic-resources/dynamic-relu.json",
+      "ReLU (dynamic implementation)"
+    ]
+  ],
+  "x": "",
+  "x_ticks": [
+    0,
+    36
+  ],
+  "legend": "Design Type",
+  "benchmarks": [
+    [
+      "4.systolic.json",
+      "4x4"
+    ],
+    [
+      "8.systolic.json",
+      "8x8"
+    ],
+    [
+      "16.systolic.json",
+      "16x16"
+    ]
+  ],
+  "resources": [
+    [
+      "lut",
+      "LUT"
+    ],
+    [
+      "registers",
+      "Register"
+    ]
+  ],
+  "sort": true,
+  "legend_pos": [
+    0.65,
+    1.0
+  ],
+  "legend_font_size": [
+    38,
+    28
+  ],
+  "hide_legend": true,
+  "k_y_axis": true
+}

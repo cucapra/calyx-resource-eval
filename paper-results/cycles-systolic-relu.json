@@ -1,0 +1,37 @@
+{
+  "cycle_jsons": [
+    [
+      "systolic-simulation/static-relu.json",
+      "ReLU (static implementation)"
+    ],
+    [
+      "systolic-simulation/dynamic-relu.json",
+      "ReLU (dynamic implementation)"
+    ]
+  ],
+  "x": "",
+  "x_ticks": [
+    0,
+    36
+  ],
+  "y": "Cycle Count",
+  "legend": "Design Type",
+  "benchmarks": [
+    [
+      "4.systolic.json",
+      "4x4"
+    ],
+    [
+      "8.systolic.json",
+      "8x8"
+    ],
+    [
+      "16.systolic.json",
+      "16x16"
+    ]
+  ],
+  "legend_pos": [
+    0.70,
+    1.0
+  ]
+}
