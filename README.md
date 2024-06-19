@@ -11,7 +11,7 @@ pip3 install -r requirements.txt
 ## Dahlia Polybench Evaluation
 ```
 cd paper-results/dahlia-polybench
-
+source scripts/polybench_calyx.sh
 ```
 
 ## Dahlia Polybench Graphs
@@ -22,8 +22,9 @@ python3 dahlia_polybench_graph.py
 
 ## Systolic Evaluation
 ```
-cd paper-results/dahlia-polybench
-
+cd paper-results/systolic
+python3 drive.py -j simulation.json
+python3 drive.py -j resources.json
 ```
 
 ## Systolic Graphs
