@@ -1,0 +1,90 @@
+
+****** Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2020.2 (64-bit)
+  **** SW Build 3064766 on Wed Nov 18 09:12:47 MST 2020
+  **** IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+    ** Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+
+source /scratch/opt/Xilinx/Vitis_HLS/2020.2/scripts/vitis_hls/hls.tcl -notrace
+INFO: Applying HLS Y2K22 patch v1.2 for IP revision
+INFO: [HLS 200-10] Running '/scratch/opt/Xilinx/Vitis_HLS/2020.2/bin/unwrapped/lnx64.o/vitis_hls'
+INFO: [HLS 200-10] For user 'cmk265' on host 'en-cs-havarti.coecis.cornell.edu' (Linux_x86_64 version 5.15.0-105-generic) on Wed Jun 05 18:41:16 EDT 2024
+INFO: [HLS 200-10] On os Ubuntu 22.04.4 LTS
+INFO: [HLS 200-10] In directory '/scratch/cmk265/learning/calyx-resource-eval/paper-results/doitgen-impl'
+Sourcing Tcl script 'hls.tcl'
+INFO: [HLS 200-1510] Running: open_project benchmark.prj -reset 
+INFO: [HLS 200-10] Creating and opening project '/scratch/cmk265/learning/calyx-resource-eval/paper-results/doitgen-impl/benchmark.prj'.
+INFO: [HLS 200-1510] Running: set_top kernel 
+INFO: [HLS 200-1510] Running: add_files ./dahlia-doitgen.cpp -cflags -std=c++11 -DVHLS 
+INFO: [HLS 200-10] Adding design file './dahlia-doitgen.cpp' to the project
+INFO: [HLS 200-1510] Running: open_solution solution1 
+INFO: [HLS 200-10] Creating and opening solution '/scratch/cmk265/learning/calyx-resource-eval/paper-results/doitgen-impl/benchmark.prj/solution1'.
+INFO: [HLS 200-1505] Using default flow_target 'vivado'
+Resolution: For help on HLS 200-1505 see www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2;t=hls+guidance;d=200-1505.html
+INFO: [HLS 200-1510] Running: set_part xczu3eg-sbva484-1-e 
+INFO: [HLS 200-10] Setting target device to 'xczu3eg-sbva484-1-e'
+INFO: [HLS 200-1510] Running: create_clock -period 7 
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 7ns.
+INFO: [HLS 200-1510] Running: csynth_design 
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0 seconds; current allocated memory: 189.800 MB.
+INFO: [HLS 200-10] Analyzing design file './dahlia-doitgen.cpp' ... 
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 3.25 seconds. CPU system time: 0.56 seconds. Elapsed time: 3.01 seconds; current allocated memory: 191.402 MB.
+INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
+INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 2.91 seconds. CPU system time: 0.34 seconds. Elapsed time: 3.27 seconds; current allocated memory: 192.544 MB.
+INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0 seconds; current allocated memory: 192.545 MB.
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 0.02 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.02 seconds; current allocated memory: 195.558 MB.
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 0.03 seconds. CPU system time: 0 seconds. Elapsed time: 0.03 seconds; current allocated memory: 197.655 MB.
+INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 0.09 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.1 seconds; current allocated memory: 221.161 MB.
+INFO: [XFORM 203-541] Flattening a loop nest 'loop2' (./dahlia-doitgen.cpp:12:24) in function 'kernel'.
+WARNING: [HLS 200-960] Cannot flatten loop 'loop1' (./dahlia-doitgen.cpp:10:22) in function 'kernel' more than one sub loop.
+Resolution: For help on HLS 200-960 see www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2;t=hls+guidance;d=200-960.html
+INFO: [XFORM 203-541] Flattening a loop nest 'loop0' (./dahlia-doitgen.cpp:8:17) in function 'kernel'.
+INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 0.1 seconds. CPU system time: 0 seconds. Elapsed time: 0.1 seconds; current allocated memory: 215.569 MB.
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'kernel' ...
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'kernel' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-486] Changing DSP48 latency (root=mul_ln8) to 3 in order to utilize available DSP registers.
+INFO: [SCHED 204-61] Pipelining loop 'loop2_loop3'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 70, loop 'loop2_loop3'
+INFO: [SCHED 204-61] Pipelining loop 'loop4'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'loop4'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.17 seconds. CPU system time: 0 seconds. Elapsed time: 0.18 seconds; current allocated memory: 216.424 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.33 seconds. CPU system time: 0 seconds. Elapsed time: 0.33 seconds; current allocated memory: 217.297 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'kernel' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+WARNING: [RTGEN 206-101] Design contains AXI ports. Reset is fixed to synchronous and active low.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel/A_int' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel/C4_int' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kernel/sum_int' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on function 'kernel' to 's_axilite & ap_ctrl_hs'.
+INFO: [RTGEN 206-100] Bundling port 'return' to AXI-Lite port control.
+INFO: [RTGEN 206-100] Generating core module 'mul_32s_32s_32_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_64ns_66ns_129_2_1': 3 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_mul_5ns_13ns_16_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'urem_58ns_6ns_58_62_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'urem_62s_6ns_5_66_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'kernel'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.24 seconds. CPU system time: 0 seconds. Elapsed time: 0.24 seconds; current allocated memory: 219.610 MB.
+INFO: [RTMG 210-282] Generating pipelined core: 'kernel_urem_62s_6ns_5_66_1_div'
+INFO: [RTMG 210-282] Generating pipelined core: 'kernel_mul_64ns_66ns_129_2_1_Multiplier_0'
+INFO: [RTMG 210-282] Generating pipelined core: 'kernel_urem_58ns_6ns_58_62_1_div'
+INFO: [RTMG 210-282] Generating pipelined core: 'kernel_mul_32s_32s_32_1_1_Multiplier_1'
+INFO: [HLS 200-111] Finished Generating all RTL models: CPU user time: 1.24 seconds. CPU system time: 0.03 seconds. Elapsed time: 1.28 seconds; current allocated memory: 229.602 MB.
+INFO: [VHDL 208-304] Generating VHDL RTL for kernel.
+INFO: [VLOG 209-307] Generating Verilog RTL for kernel.
+INFO: [HLS 200-790] **** Loop Constraint Status: All loop constraints were satisfied.
+INFO: [HLS 200-789] **** Estimated Fmax: 196.73 MHz
+INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 8.48 seconds. CPU system time: 0.96 seconds. Elapsed time: 8.65 seconds; current allocated memory: 229.870 MB.
+INFO: [HLS 200-112] Total CPU user time: 10.27 seconds. Total CPU system time: 1.61 seconds. Total elapsed time: 10.16 seconds; peak allocated memory: 229.602 MB.
+INFO: [Common 17-206] Exiting vitis_hls at Wed Jun  5 18:41:26 2024...
