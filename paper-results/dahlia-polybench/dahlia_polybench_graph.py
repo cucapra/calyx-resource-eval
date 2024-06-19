@@ -175,7 +175,7 @@ def polybench_cycles_graph(polybench, fig_fontsize, legend_fontsize):
     plt.text(12, gmean_futil - 0.055, "Geo Mean Calyx", fontsize=20)
     plt.text(12, gmean_piezo + 0.025, "Geo Mean Piezo", fontsize=20)
     plt.show()
-    g.savefig("graphs/xxx.pdf")
+    g.savefig("graphs/dahlia_polybench_cycles.pdf")
 
 
 def polybench_resources_graph(polybench, fig_fontsize, resource):
@@ -225,7 +225,7 @@ def polybench_resources_graph(polybench, fig_fontsize, resource):
     plt.text(12, gmean_futil - 0.15, "Geo Mean Calyx", fontsize=20)
     plt.text(7.5, gmean_piezo + 0.075, "Geo Mean Piezo", fontsize=20)
     plt.show()
-    # g.savefig(f"graphs/dahlia_polybench_{resource}.pdf")
+    g.savefig(f"graphs/dahlia_polybench_{resource}.pdf")
 
 
 def futil_phases_cycles_graph(polybench, fig_fontsize, legend_fontsize):
@@ -279,7 +279,7 @@ def futil_phases_cycles_graph(polybench, fig_fontsize, legend_fontsize):
     plt.text(12, gmean_sh - 0.055, "Geo Mean SH", fontsize=20)
     plt.text(11, gmean_sh_sc + 0.015, "Geo Mean SH→SC", fontsize=20)
     plt.show()
-    # g.savefig("graphs/futil_ordering_cycles.pdf")
+    g.savefig("graphs/futil_ordering_cycles.pdf")
 
 
 def futil_phases_resources_graph(polybench, fig_fontsize, legend_fontsize, resource):
@@ -343,7 +343,7 @@ def futil_phases_resources_graph(polybench, fig_fontsize, legend_fontsize, resou
         plt.text(0.7, gmean_sc - 0.075, "Geo Mean SC", fontsize=20)
 
     plt.show()
-    # g.savefig(f"graphs/futil_ordering_{resource}.pdf")
+    g.savefig(f"graphs/futil_ordering_{resource}.pdf")
 
 
 if __name__ == "__main__":

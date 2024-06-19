@@ -1,0 +1,9 @@
+# .gitignore
+
+# Ignore the virtual environment directory
+/venv/
+
+# Other files to ignore
+__pycache__/
+*.py[cod]
+.DS_Store
