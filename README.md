@@ -1,12 +1,15 @@
 # calyx-resource-eval
 Evaluation for Calyx/Piezo
 
+You first have to install and build Calyx and fud (including the Xilinx tools).
+
 ## Creating a virtual environment
 ```
 python -m venv piezo
 source piezo/bin/activate
 pip3 install -r requirements.txt
 ```
+note: weirdly `calyx-py` wasn't working until I did only `flit install` (no symlink).
 
 ## Dahlia Polybench Evaluation
 ```
