@@ -1,5 +1,4 @@
 benchmark,type,key,value
-2mm,futil-sh,latency,15812
 3mm,futil-sh,latency,17523
 atax,futil-sh,latency,1971
 bicg,futil-sh,latency,1002
@@ -18,3 +17,4 @@ syr2k,futil-sh,latency,17911
 syrk,futil-sh,latency,12691
 trisolv,futil-sh,latency,493
 trmm,futil-sh,latency,5828
+2mm,futil-sh,latency,15812

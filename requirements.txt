@@ -1,4 +1,3 @@
-calyx-ast @ file:///scratch/cmk265/learning/calyx/calyx-py
 certifi==2024.6.2
 charset-normalizer==3.3.2
 contourpy==1.2.1
