@@ -13,6 +13,10 @@ pip3 install -r requirements.txt
 note: weirdly `calyx-py` wasn't working until I did only `flit install` (no symlink).
 
 ## Dahlia Polybench Evaluation
+To remove existing results:
+```
+rm -rf dahlia-polybench/results/results-static-calyx
+```
 ```
 cd dahlia-polybench
 source scripts/polybench_calyx.sh
