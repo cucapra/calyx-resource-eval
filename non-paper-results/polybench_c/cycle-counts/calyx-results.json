@@ -1,1 +1,0 @@
-{"2mm": 162114, "3mm": 230847, "atax": 33753, "bicg": 27335, "covariance": 202679, "doitgen": 132741, "durbin": 30076, "gemm": 142661, "gemver": 69283, "gesummv": 16681, "lu": 292870, "ludcmp": 322218, "mvt": 35362, "seidel-2d": 1408351, "symm": 133984, "syr2k": 242419, "syrk": 113419, "trisolv": 11411, "trmm": 78164}
