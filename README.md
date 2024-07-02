@@ -43,3 +43,9 @@ python3 pretty-graph-cycles.py -j cycles-systolic-relu.json  -s cycles-systolic-
 python3 pretty-graph-resources.py -j resources-systolic-mmult.json -s resources-systolic-mmult
 python3 pretty-graph-resources.py -j resources-systolic-relu.json -s resources-systolic-relu
 ```
+
+## Packet Scheduler Evaluation
+```
+cd sdn
+./scripts/sdn_four_ways.sh
+```
