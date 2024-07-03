@@ -164,8 +164,8 @@ def polybench_cycles_graph(polybench, fig_fontsize, legend_fontsize):
     df_piezo = df[df["type"].str.contains("norm-piezo")]
     gmean_futil = stats.gmean(df_futil["latency"])
     gmean_piezo = stats.gmean(df_piezo["latency"])
-    print(f"Gmean Cycles Calyx: {gmean_futil}")
-    print(f"Gmean Cycles Piezo: {gmean_piezo}")
+    print(f"Gmean Cycles Calyx: {1/gmean_futil}")
+    print(f"Gmean Cycles Piezo: {1/gmean_piezo}")
     g.axes[0, 0].axhline(
         gmean_futil, color="black", linestyle="dashed", label="Geo Mean"
     )
@@ -214,8 +214,8 @@ def polybench_resources_graph(polybench, fig_fontsize, resource):
     df_piezo = df[df["type"].str.contains("norm-piezo")]
     gmean_futil = stats.gmean(df_futil[resource])
     gmean_piezo = stats.gmean(df_piezo[resource])
-    print("Gmean LUT Calyx: ", gmean_futil)
-    print("Gmean LUT Piezo: ", gmean_piezo)
+    print(f"Gmean {resource} Calyx: {1/gmean_futil}")
+    print(f"Gmean {resource} Piezo: {1/gmean_piezo}")
     g.axes[0, 0].axhline(
         gmean_futil, color="black", linestyle="dashed", label="Geo Mean"
     )
@@ -273,9 +273,9 @@ def futil_phases_cycles_graph(polybench, fig_fontsize, legend_fontsize):
     gmean_sh_sc = stats.gmean(df_sh_sc["latency"])
     gmean_sc = stats.gmean(df_sc["latency"])
 
-    print("Gmean Cycles SH: ", gmean_sh)
-    print("Gmean Cycles SH->SC: ", gmean_sh_sc)
-    print("Gmean Cycles SC: ", gmean_sc)
+    print("Gmean Cycles SH: ", 1 / gmean_sh)
+    print("Gmean Cycles SH->SC: ", 1 / gmean_sh_sc)
+    print("Gmean Cycles SC: ", 1 / gmean_sc)
     g.axes[0, 0].axhline(gmean_sh, color="black", linestyle="dashed", label="Geo Mean")
     g.axes[0, 0].axhline(
         gmean_sh_sc, color="black", linestyle="dashed", label="Geo Mean"
@@ -328,9 +328,9 @@ def futil_phases_resources_graph(polybench, fig_fontsize, legend_fontsize, resou
     gmean_sh_sc = stats.gmean(df_sh_sc[resource])
     gmean_sc = stats.gmean(df_sc[resource])
 
-    print(f"Gmean SH {resource}: {gmean_sh}")
-    print(f"Gmean SH->SC {resource}: {gmean_sh_sc}")
-    print(f"Gmean SC {resource}: {gmean_sc}")
+    print(f"Gmean SH {resource}: {1/gmean_sh}")
+    print(f"Gmean SH->SC {resource}: {1/gmean_sh_sc}")
+    print(f"Gmean SC {resource}: {1/gmean_sc}")
     g.axes[0, 0].axhline(gmean_sh, color="black", linestyle="dashed", label="Geo Mean")
     g.axes[0, 0].axhline(
         gmean_sh_sc, color="black", linestyle="dashed", label="Geo Mean"
@@ -341,7 +341,7 @@ def futil_phases_resources_graph(polybench, fig_fontsize, legend_fontsize, resou
     # Text Placement for LUT
     if resource == "lut":
         plt.text(7.9, gmean_sh_sc + 0.015, "Geo Mean SH→SC and SH", fontsize=20)
-        plt.text(4, gmean_sc - 0.04, "Geo Mean SC", fontsize=20)
+        plt.text(4, gmean_sc - 0.05, "Geo Mean SC", fontsize=20)
     elif resource == "registers":
         plt.text(9.45, gmean_sh_sc + 0.015, "Geo Mean SH→SC and SH", fontsize=20)
         plt.text(0.7, gmean_sc - 0.075, "Geo Mean SC", fontsize=20)
