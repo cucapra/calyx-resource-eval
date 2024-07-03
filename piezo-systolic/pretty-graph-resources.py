@@ -118,6 +118,21 @@ if __name__ == "__main__":
             columns=["legend", "x", "y"],
         )
 
+        print(f"{resource} usage.")
+
+        for size in df["x"].unique():
+            print(f"For size {size}:")
+            res_list = []
+            for legend_entry in df["legend"].unique():
+                result = df[(df["legend"] == legend_entry) & (df["x"] == size)]["y"]
+                res_list.append([legend_entry, result.iloc[0]])
+            sorted_list = sorted(res_list, key=lambda x: -x[1])
+            print(f"{sorted_list[0][0]} uses {sorted_list[0][1]} {resource}s.")
+            print(f"{sorted_list[1][0]} uses {sorted_list[1][1]} {resource}s.")
+            print(
+                f"This represents an increase by a factor of {sorted_list[0][1]/sorted_list[1][1]}"
+            )
+
         if graph_info["standard_version"] is not None:
             bottom = 1
         else:

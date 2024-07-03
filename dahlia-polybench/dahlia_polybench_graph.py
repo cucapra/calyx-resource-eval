@@ -266,12 +266,16 @@ def futil_phases_cycles_graph(polybench, fig_fontsize, legend_fontsize):
     # from scipy import stats
     df_sh = df[df["type"].str.contains("norm-sh")]
     df_sh_sc = df[df["type"].str.contains("norm-sh-sc")]
+    # Shoudl be identical to sc_sh
+    df_sc = df[df["type"].str.contains("norm-sc")]
 
     gmean_sh = stats.gmean(df_sh["latency"])
     gmean_sh_sc = stats.gmean(df_sh_sc["latency"])
+    gmean_sc = stats.gmean(df_sc["latency"])
 
     print("Gmean Cycles SH: ", gmean_sh)
     print("Gmean Cycles SH->SC: ", gmean_sh_sc)
+    print("Gmean Cycles SC: ", gmean_sc)
     g.axes[0, 0].axhline(gmean_sh, color="black", linestyle="dashed", label="Geo Mean")
     g.axes[0, 0].axhline(
         gmean_sh_sc, color="black", linestyle="dashed", label="Geo Mean"
@@ -427,9 +431,11 @@ if __name__ == "__main__":
     futil_phases = norm(futil_phases, "futil-sc-sh", "futil-sh-sc", "norm-sh-sc")
     futil_phases = pivot_and_order(futil_phases, polybench_order)
 
+    print("Comparison relative to Vitis HLS")
     polybench_cycles_graph(polybench=polybench, fig_fontsize=27, legend_fontsize=24)
     polybench_resources_graph(polybench=polybench, fig_fontsize=27, resource="lut")
 
+    print("\nComparison relative to SC->SH ordering")
     futil_phases_cycles_graph(
         polybench=futil_phases, fig_fontsize=27, legend_fontsize=24
     )
