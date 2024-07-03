@@ -15,25 +15,21 @@ if __name__ == "__main__":
     with open(args.json) as f:
         json_dict = json.load(f)
 
-    output_dir = json_dict["output_dir"]
-    output_path = f"systolic-results/{output_dir}"
+    output_path = json_dict["output_dir"]
     if not os.path.exists(output_path):
         os.makedirs(output_path)
 
-    # Cloning calyx twice & setting up fud is too much work
-    # subprocess.run(
-    #     ["sh", "configure-fud.sh", calyx_stage_name, json_dict["commit_hash"]]
-    # )
     for [input_path, size] in json_dict["input_paths"]:
         target = json_dict["target"]
-        data_suffix = "banked" if json_dict["banked"] else "unbanked"
-        data_path = f"systolic-data/{size}-{data_suffix}.json"
-        output_path = f"systolic-results/{output_dir}/{size}.json"
+        data_suffix = "unbanked" if target == "resource-estimate" else "compute"
+        data_path = f"input-data/calyx-data/{size}-{data_suffix}.json"
+        source = "synth-verilog" if target == "resource-estimate" else "verilog"
+        out = f"{output_path}/{size}.json"
         fud_command = [
             "fud",
             "e",
             "--from",
-            "synth-verilog",
+            source,
             "-q",
             input_path,
             "--to",
@@ -42,7 +38,7 @@ if __name__ == "__main__":
             "verilog.data",
             data_path,
             "-o",
-            output_path,
+            out,
         ]
         for fud_flag in json_dict["fud_flags"]:
             fud_command += fud_flag

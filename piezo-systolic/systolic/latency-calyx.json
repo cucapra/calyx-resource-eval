@@ -15,6 +15,7 @@
       "synth-files/device4.xdc"
     ]
   ],
-  "output_dir": "resources/max-freq-calyx",
-  "target": "resource-estimate"
+  "output_dir": "simulation/latency-calyx",
+  "target": "dat",
+  "banked": false
 }
