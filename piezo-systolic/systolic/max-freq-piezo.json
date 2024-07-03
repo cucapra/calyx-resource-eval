@@ -1,0 +1,22 @@
+{
+  "target": "resource-estimate",
+  "dirs": [
+    [
+      "max-freq-tests/piezo",
+      "resources/max-freq-piezo"
+    ]
+  ],
+  "fud_flags": [
+    [
+      "-s",
+      "calyx.flags",
+      "-d well-formed",
+      "-s",
+      "synth-verilog.tcl",
+      "synth-files/synth.tcl",
+      "-s",
+      "synth-verilog.constraints",
+      "synth-files/device3.5.xdc"
+    ]
+  ]
+}

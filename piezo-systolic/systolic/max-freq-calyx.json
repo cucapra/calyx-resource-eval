@@ -1,0 +1,21 @@
+{
+  "input_paths": [
+    [
+      "max-freq-tests/calyx/16-synth-verilog.sv",
+      16
+    ]
+  ],
+  "fud_flags": [
+    [
+      "-s",
+      "synth-verilog.tcl",
+      "synth-files/synth.tcl",
+      "-s",
+      "synth-verilog.constraints",
+      "synth-files/device4.xdc"
+    ]
+  ],
+  "output_dir": "resources/max-freq-calyx",
+  "target": "resource-estimate",
+  "banked": false
+}
