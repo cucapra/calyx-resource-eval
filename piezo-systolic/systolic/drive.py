@@ -5,7 +5,7 @@ import os
 import numpy as np
 
 
-def check_output(tl, td, ll, ld, post_op, json_file):
+def check_output(tl, td, ll, ld, post_op, json_file, flat=False):
     left = np.zeros((ll, ld), "f")
     top = np.zeros((td, tl), "f")
     json_data = json.load(open(json_file))["memories"]
@@ -25,11 +25,17 @@ def check_output(tl, td, ll, ld, post_op, json_file):
     elif post_op == "relu" or post_op == "relu-dynamic":
         matmul_result = np.where(matmul_result > 0, matmul_result, 0)
 
-    res = []
-    for r in range(ll):
-        res.append(list(map(float, json_data[f"out_mem_{r}"])))
+    if not flat:
+        res = []
+        for r in range(ll):
+            res.append(list(map(float, json_data[f"out_mem_{r}"])))
+    else:
+        res = list(json_data["out_mem"])
 
     json_result = np.array(res)
+
+    if flat:
+        matmul_result = matmul_result.flatten()
 
     # We only check close since we are using fixedpoint (whereas this is float)
     if np.isclose(matmul_result, json_result, atol=1e-3).all():

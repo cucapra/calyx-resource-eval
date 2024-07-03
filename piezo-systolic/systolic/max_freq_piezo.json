@@ -2,7 +2,7 @@
   "target": "resource-estimate",
   "dirs": [
     [
-      "max-freq-tests/piezo",
+      "max-freq-inputs/piezo",
       "resources/max-freq-piezo"
     ]
   ],
