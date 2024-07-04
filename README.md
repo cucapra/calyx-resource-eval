@@ -13,9 +13,8 @@ We make the following claims, all of which our artifact can help reproduce:
 - We comapre Piezo's systolic array generator's performance using fixed contraction dimension vs. a flexible contraction dimension in terms of latency (cycle counts), LUTs, and register usage. See paragraph "Configurable Matrix Dimensions" in section 7.2.  
 - We compare  Piezo's systolic array generator's performance on differently implemented post operations. See Figure 10 in the paper. 
 
-briefly explain the purpose of the artifact and how it supports the paper. We recommend listing all claims in the paper and stating whether or not each is supported. For supported claims, say how the artifact provides support. For unsupported claims, explain why they are omitted.
-
 # Hardware Dependencies 
+- No specific hardware dependencies, although our evaluation uses Xilinx's Vivado tools to generate area and resource estimates. Unfortunately due to licensing restrictions, we can't distribute the VM with these tools installed. However, the tools are freely available and we provide instructions on how to install them (see "Getting Started" section). 
 
 # Getting Started 
 
