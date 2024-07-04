@@ -16,7 +16,7 @@
       "synth-files/synth.tcl",
       "-s",
       "synth-verilog.constraints",
-      "synth-files/device3.5.xdc"
+      "synth-files/device3.7.xdc"
     ]
   ]
 }

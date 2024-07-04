@@ -68,6 +68,7 @@ check
 python3 check_mmult_output.py -j simulation/calyx-mmult/16.json
 ```
 
+calyx max freq
 ```
 fud e -q max-freq-inputs/calyx/16-calyx.sv --to resource-estimate -o resources/max-freq-calyx/16.systolic.json -s synth-verilog.tcl synth-files/synth.tcl -s synth-verilog.constraints synth-files/device4.xdc --from synth-verilog
 ```
