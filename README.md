@@ -60,7 +60,7 @@ fud e --to dat --from futil -s verilog.data input-data/calyx-data/16-compute.jso
 
 compute and write
 ```
- fud e --to dat --from futil -s verilog.data input-data/calyx-data/16-unbanked.json -q max-freq-inputs/calyx/16.futil -s futil.flags "-d minimize-regs" -o simulation/calyx-mmult/16.json
+fud e --to dat --from futil -s verilog.data input-data/calyx-data/16-unbanked.json -q max-freq-inputs/calyx/16.futil -s futil.flags "-d minimize-regs" -o simulation/calyx-mmult/16.json
 ```
 
 check
@@ -68,4 +68,6 @@ check
 python3 check_mmult_output.py -j simulation/calyx-mmult/16.json
 ```
 
-fud e -q max-freq-inputs/calyx/16.futil --to resource-estimate -o resources/max-freq-calyx/16.systolic.json -s futil.flags "-d minimize-regs" -s synth-verilog.tcl synth-files/synth.tcl -s synth-verilog.constraints synth-files/device4.xdc
+```
+fud e -q max-freq-inputs/calyx/16-calyx.sv --to resource-estimate -o resources/max-freq-calyx/16.systolic.json -s synth-verilog.tcl synth-files/synth.tcl -s synth-verilog.constraints synth-files/device4.xdc --from synth-verilog
+```
