@@ -1,16 +1,27 @@
-# calyx-resource-eval
-Evaluation for Calyx/Piezo
+# Static Calyx Eval
+Evaluation for Static Calyx (aka Piezo). 
 
-You first have to install and build Calyx and fud (including the Xilinx tools).
-You also need Python (I used 3.10.12 but I think other versions should work).
+# Introduction 
 
-## Creating a virtual environment
-```
-python3 -m venv piezo
-source piezo/bin/activate
-pip3 install -r requirements.txt
-```
-note: weirdly `calyx-py` wasn't working until I did only `flit install` (no symlink).
+The purpose of the artifact is to support the main claims made in our paper, in particular sections 6 and 7 (the evaluation sections). 
+
+We make the following claims, all of which our artifact can help reproduce: 
+- We compare Piezo (our new system) against Calyx (the original system we built off) and Vitis HLS on Polybench benchmarks in terms of latency (cycle counts) and LUTs. See Figure 6. 
+- We examine effects of the ordering of different optimization passes on Piezo's performance on Polybench benchmarks in terms of latency (cycle counts), LUTs, and register usage. See Figure 7. 
+- We examine of certain optimizations on Piezo's performance on a PIFO tree packet scheduler. See table of section 6.2. 
+- We compare Piezo's systolic array generator with Calyx's systolic array generator in terms of latency (cycle counts) and max frequency. See paragraph "Effect of Pipelining" in section 7.2.
+- We comapre Piezo's systolic array generator's performance using fixed contraction dimension vs. a flexible contraction dimension in terms of latency (cycle counts), LUTs, and register usage. See paragraph "Configurable Matrix Dimensions" in section 7.2.  
+- We compare  Piezo's systolic array generator's performance on differently implemented post operations. See Figure 10 in the paper. 
+
+briefly explain the purpose of the artifact and how it supports the paper. We recommend listing all claims in the paper and stating whether or not each is supported. For supported claims, say how the artifact provides support. For unsupported claims, explain why they are omitted.
+
+# Hardware Dependencies 
+
+# Getting Started 
+
+# Step-by-Step Instructions
+
+# Reusability Guide
 
 ## Dahlia Polybench Evaluation
 To remove existing results:
