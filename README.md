@@ -122,50 +122,97 @@ Graphs should be found in `piezo-systolic/graphs`. `cycles-systolic-relu.pdf` = 
 (The graphs should also align with the printed information when you run the scripts). 
 
 ## Data Collection 
-
-
-# Reusability Guide
-
-## Dahlia Polybench Evaluation
-To remove existing results:
+Start by navigating back to the root of `calyx-resource-eval`. 
 ```
-rm -rf dahlia-polybench/results/results-static-calyx
+cd .. 
 ```
+
+### Polybench (Section 6.1) 
+Navigte to the `dahlia-polybench` directory. 
 ```
 cd dahlia-polybench
-source scripts/polybench_calyx.sh
+```
+For the *latency* data, run (there will be some warnings which you can ignore): 
+```
+source scripts/polybench_calyx_latency.sh
+```
+For the *resourcce* data, run: 
+```
+source scripts/polybench_calyx_resources.sh
 ```
 
-## Dahlia Polybench Graphs
+### SDN (Section 6.2) 
+Navigte to the `sdn` subdirectory. 
 ```
-cd dahlia-polybench
-python3 dahlia_polybench_graph.py
+cd ../sdn
+```
+For the *latency* data, run (there will be some warnings which you can ignore): 
+```
+source scripts/sdn_four_ways_latency.sh 
+```
+For the *resourcce* data, run: 
+```
+source scripts/sdn_four_ways_resources.sh 
 ```
 
-## Systolic Evaluation
+### Systolic (Section 7) 
+Navigte to the `piezo-systolic` subdirectory. 
 ```
-cd piezo-systolic/systolic
+cd ../piezo-systolic/systolic
+```
+
+For the *latency* data, run (there will be some warnings which you can ignore): 
+```
 python3 drive.py -j simulation.json
+```
+For the *resourcce* data, run: 
+```
 python3 drive.py -j resources.json
 ```
 
-## Systolic Graphs
+For the *comparison against Calyx's systolic arrays*:
+For Calyx's max frequency: 
 ```
-cd piezo-systolic
+fud e -q max-freq-inputs/calyx/16-calyx.sv --to resource-estimate -o resources/max-freq-calyx/16.systolic.json -s synth-verilog.tcl synth-files/synth.tcl -s synth-verilog.constraints synth-files/device4.xdc --from synth-verilog
 ```
 
-## Packet Scheduler Evaluation
+For Piezo's max frequency: 
 ```
-cd sdn
-./scripts/sdn_four_ways.sh
+python3 drive.py -j max_freq_piezo.json 
 ```
+
+To do this, we need to check out of the current Calyx branch (i.e., the "Piezo" branch") and go back to an earlier version of the Calyx repo, and rebuild the Calyx compiler and `fud`. 
+```
+cd ../../../calyx && git checkout 9e15fe00 && cargo build && cd fud && FLIT_ROOT_INSTALL=1 flit install --symlink --deps production
+```
+Navigate back: 
+```
+cd ../../calyx-resource-eval/piezo-systolic/systolic
+```
+Get cycle counts: 
+```
+fud e --to dat --from futil -s verilog.data input-data/calyx-data/16-unbanked.json -q max-freq-inputs/calyx/16.futil -s futil.flags "-d minimize-regs" -o simulation/calyx-mmult/16.json
+```
+
+Note that if you want to go back and run any of the Piezo, commands, you must check out the main version of Calyx and rebuild Calyx compiler and `fud`. 
+```
+cd ../../../calyx && git checkout 9e15fe00 && cargo build && cd fud && FLIT_ROOT_INSTALL=1 flit install --symlink --deps production
+```
+
+
+# Reusability Guide
+What should I put here? 
+
+
 
 ## Running Old Calyx Systolic Arrays
 (assumes you have checked out to 9e15fe00)
 
+
+## Random stuff that I still need to incorporate. 
 Just compute
 ```
-fud e --to dat --from futil -s verilog.data input-data/calyx-data/16-compute.json -q max-freq-inputs/calyx/16-comp.futil -s futil.flags "-d minimize-regs" -o simulation/calyx-mmult/16-compute.json
+fud e --to dat --from futil -s verilog.data input-data/calyx-data/16-unbanked.json -q max-freq-inputs/calyx/16.futil -s futil.flags "-d minimize-regs" -o simulation/calyx-mmult/16.json
 ```
 
 compute and write
@@ -178,7 +225,4 @@ check
 python3 check_mmult_output.py -j simulation/calyx-mmult/16.json
 ```
 
-calyx max freq
-```
-fud e -q max-freq-inputs/calyx/16-calyx.sv --to resource-estimate -o resources/max-freq-calyx/16.systolic.json -s synth-verilog.tcl synth-files/synth.tcl -s synth-verilog.constraints synth-files/device4.xdc --from synth-verilog
-```
+
