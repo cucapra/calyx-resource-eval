@@ -2,6 +2,7 @@ from pathlib import Path
 import json
 import csv
 import pandas as pd
+import os
 
 # import numpy as np
 import matplotlib
@@ -351,6 +352,9 @@ def futil_phases_resources_graph(polybench, fig_fontsize, legend_fontsize, resou
 
 
 if __name__ == "__main__":
+    if not os.path.exists("graphs"):
+        os.makedirs("graphs")
+
     gather_json(Path("results/results-asplos21/standard/hls/"), "hls")
 
     gather_json(Path("results/results-asplos21/standard/futil/"), "futil")
