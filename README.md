@@ -86,13 +86,14 @@ cd ../sdn && python3 make_table.py
 ```
 The table should be seen in `table.csv`.  To look at the table you can just do `vi table.csv`. 
 
+### Systolic Arrays (Section 7) 
+There are 3 main claims we make in section 7.2: one per paragraph ("Effect of pipelining", "Configurable matrix dimensions", "Overhead of dynamic post operations").
+
 To generate the **Systolic Array Results** (from section 7.2): 
 ```
 cd ../piezo-systolic/systolic
 ```
 
-### Systolic Arrays (Section 7) 
-There are 3 main claims we make in section 7.2: one per paragraph ("Effect of pipelining", "Configurable matrix dimensions", "Overhead of dynamic post operations").
 For **"Effect of pipelining"**: run `python3 compare_vs_calyx.py`: you should see the claims made in the paper. 
 This script simply looks through the following files: `resources/max-freq-calyx/16.systolic.json`, `resources/max-freq-piezo/16.systolic.json`, `simulation/calyx-mmult/16-compute.json`, and `simulation/static-mmult/16.systolic.json`. You can look through these files yourself to validate them.
 
