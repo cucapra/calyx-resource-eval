@@ -63,6 +63,7 @@ if __name__ == "__main__":
     # dirs lets us know which directory to look for the benchmarks, and
     # which directory we should put the results in.
     dirs = json_dict["dirs"]
+    files_to_skip = json_dict.get("skip", [])
 
     input_data_files = os.listdir("input-data")
 
@@ -74,6 +75,8 @@ if __name__ == "__main__":
         if not os.path.exists(results_dir):
             os.makedirs(results_dir)
         for source_file in os.listdir(source_dir):
+            if source_file in files_to_skip:
+                continue
             source_path = os.path.join(source_dir, source_file)
             results_path = os.path.join(results_dir, source_file + ".json")
             fud_command = [

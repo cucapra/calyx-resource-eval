@@ -237,3 +237,22 @@ mv results results_given
   rm -rf systolic-simulation
 ```
 
+```
+cd /home/vboxuser
+sudo ./Xilinx_Unified_2022.2_1014_8888_Lin64.bin
+```
+1. Ignore the message about a newer version. Press "next".
+2. Log in w/ email and password. Keep "Download and Install now" box checked.
+3. Click "Vivado" for "Select Product to Install". Click next.
+4. "Vivado ML Standard". Click next.
+5. Uncheck "7 Series, UltraScale, UltraScale+" under production devices. (So what should be checked:
+Under Design Tools: Vivado, Vitis HLS, Vitis Model Composer (Xilinx Toolbox ...), DocNav)
+Under Devices: Install Devices for Kria SOMs and Starter Kits. "Select Production Devices SOCs Zynq UltraScale+ MPSoC
+6. Agree to licenses
+7. Change directory to "home/vboxuser/Xilinx", say "yes" when it asks if you want to create the directory.
+8. Click "install"
+
+fud config stages.synth-verilog.exec /home/vboxuser/Xilinx/Vivado/2022.2/bin/vivado
+
+source /home/vboxuser/Xilinx/Vitis_HLS/2022.2/settings64.sh
+

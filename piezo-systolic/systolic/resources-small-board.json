@@ -1,0 +1,35 @@
+{
+  "target": "resource-estimate",
+  "dirs": [
+    [
+      "relu-inputs/leaky",
+      "resources/leaky-relu"
+    ],
+    [
+      "relu-inputs/dynamic",
+      "resources/dynamic-relu"
+    ],
+    [
+      "relu-inputs/static",
+      "resources/static-relu"
+    ],
+    [
+      "mmult-inputs/static",
+      "resources/static-mmult"
+    ],
+    [
+      "mmult-inputs/dynamic",
+      "resources/dynamic-mmult"
+    ]
+  ],
+  "skip": [
+    "16.systolic"
+  ],
+  "fud_flags": [
+    [
+      "-s",
+      "calyx.flags",
+      "-d well-formed"
+    ]
+  ]
+}
