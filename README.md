@@ -71,7 +71,7 @@ A window should pop up for the Xilinx Tools Installation.
 9. Click "install". Installation can take in the ballpark from 2-4 hours. It tends to go quicker if you do not let the machine sleep.
 
 ## After Installation
-Run the following command: 
+Run the following command (**importantly, you must run this command every time you log in**): 
 ```
 source /home/vboxuser/Xilinx/Vitis_HLS/2022.2/settings64.sh
 ```
