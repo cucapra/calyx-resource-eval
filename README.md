@@ -6,7 +6,7 @@ Evaluation for Static-Calyx (aka Piezo).
 The purpose of the artifact is to support the main claims made in our paper, in particular sections 6 and 7 (the evaluation sections).
 We assume you are using VirtualBox and will provide a .ova file. 
 
-Our evaluation has 3 main parts: 1) Polybench Kernels, 2) PIFO Tree Packet Scheduling, and 3) Systolic Arrays.
+Our evaluation has 3 main parts: Polybench Kernels (section 6.1), PIFO Tree Packet Scheduler (section 6.2), and Systolic Arrays (section 7).
 
 **Important Note**: 
 The resource numbers (LUTs and register usage) in our evaluation require Vivado synthesis tools. 
@@ -76,69 +76,93 @@ Run the following command:
 source /home/vboxuser/Xilinx/Vitis_HLS/2022.2/settings64.sh
 ```
 
+## Checking that you've installed things correctly 
+
 # Step-by-Step Instructions
-Our evaluation is broadly split into 3 parts: Polybench Kernels (section 6.1), PIFO Tree Packet Scheduler (section 6.2), and Systolic Arrays (section 7).
+As previously stated, our evaluation has 3 main parts: Polybench Kernels (section 6.1), PIFO Tree Packet Scheduler (section 6.2), and Systolic Arrays (section 7).
 
 The step-by-step guide is organized as follows:
-- Experimental data and graph generation: generate the graphs found in the paper using pre-supplied data.
+- Experimental data and graph generation: generate the graphs found in the paper **using pre-supplied data**.
   - Polybench graphs: comparison to Calyx/Vitis HLS (Figure 6) and comparison of different optimization pass orderings (Figure 7)
   - PIFO tree table (look at "Results" paragraph in section 6.2 for table)
   - Systolic array results (section 7.2, Figure 10).
-- Data collection
+- Data collection 
   - Effects of different optimization pass orderings (6.1.2)
   - PIFO tree packet scheduler (6.2)
   - Systolic array results (7.2)
+- Optional Things
+  - TK  
 
 ## Experimental Data and Graph Generation
 Since the process to collecting data takes several hours, we will first regenerate the graphs presented in the paper from data already committed to the repository. The next section will demonstrate how to collect this data.
 
-Open the File Explorer, go to `piezo-eval` directory and then `calyx-resource-eval` direcotry. Then select `Open in Terminal`.
-
-XXX(Caleb): things only work if I type this first:
+### Setting things up
+Give yourself priveleges
 ```
 su -
 ```
-I have tried other solutions ([example](https://stackoverflow.com/questions/26740113/virtualbox-shared-folder-permissions)) but they haven't worked.
+Password is "piezo" as stated before. 
 
 Activate the Python virtual environment by running:
 ```
 source /opt/venv/bin/activate
 ```
-Navigate to directory by:
+
+Navigate to the directory of the evaluation by typing: 
 ```
 cd /home/vboxuser/piezo-eval/calyx-resource-eval
 ```
+
+Re-run the Vivado set-up script if you logged out since the last time you've run it: 
+```
+source /home/vboxuser/Xilinx/Vitis_HLS/2022.2/settings64.sh
+```
+
+<details>
+<summary><b>Double check you're on the right track</b> [click to expand]</summary>
+type `fud check`. 
+You should see 
+```
+interpreter, vivado-hls, mrxl were not installed correctly.
+```
+This is fine. 
+However, if it says any other tools are not installed correctly, then there is probably a problem. 
+
+Make sure you are in the python virtual environment (`source /opt/venv/bin/activate`) and that you have run `source /home/vboxuser/Xilinx/Vitis_HLS/2022.2/settings64.sh`. 
+</details>
 
 ### Polybench (Section 6.1)
 To generate the **Polybench Graphs** (Figures 6 and 7), run this (there will be some warnings which you can ignore):
 ```
 cd dahlia-polybench && python3 dahlia_polybench_graph.py > gmeans.txt
 ```
-Graphs should appear in `calyx-resource-eval/dahlia-polybench/graphs`.
+If you go to the file explorer, graphs should appear in `/home/piezo-eval/calyx-resource-eval/dahlia-polybench/graphs`.
 `dahlia_polybench_cycles.pdf` = Figure 6a, `dahlia_polybench_lut.pdf` = Figure 6b, `futil_ordering_cycles.pdf` = Figure 7a, `futil_ordering_lut.pdf` = Figure 7b, `futil_ordering_registers` = Figure 7c.
-`gemans.txt` should contain information about the geometric means: these numbers, in addition to being displayed visually on Figures 6 and 7, are referenceed throughout section 6.1 of our paper.
+`gemans.txt` should contain information about the geometric means: these numbers, in addition to being displayed visually in Figures 6 and 7, are referenceed throughout section 6.1 of our paper.
 
 ### PIFO Trees (Section 6.2)
 To generate the **PIFO Tree Table** (from "Results" paragraph of Section 6.2):
 ```
 cd ../sdn && python3 make_table.py
 ```
-The table should be seen in `table.csv`.  To look at the table you can just do `vi table.csv`.
+The table should be seen in `table.csv`.  
+To look at the table you can just do `vi table.csv`.
 
-### Systolic Arrays (Section 7)
+### Systolic Arrays (Section 7.2)
 There are 3 main claims we make in section 7.2: one per paragraph ("Effect of pipelining", "Configurable matrix dimensions", "Overhead of dynamic post operations").
 
 To generate the **Systolic Array Results** (from section 7.2):
+First navigate to the correct directory: 
 ```
 cd ../piezo-systolic/systolic
 ```
 
 For **"Effect of pipelining"**: run `python3 compare_vs_calyx.py`: you should see the claims made in the paper.
-This script simply looks through the following files: `resources/max-freq-calyx/16.systolic.json`, `resources/max-freq-piezo/16.systolic.json`, `simulation/calyx-mmult/16-compute.json`, and `simulation/static-mmult/16.systolic.json`. You can look through these files yourself to validate them.
+This script simply looks through the following files: `resources/max-freq-calyx/16.systolic.json`, `resources/max-freq-piezo/16.systolic.json`, `simulation/calyx-mmult/16-compute.json`, and `simulation/static-mmult/16.systolic.json`. You can look through these files yourself to validate them. **Note that because the installation does not have the Alveo Board, we will not be able to reproduce the frequency claims made (we will reproduce the cycle count claims).**
 
-Then navigate back to `piezo-systolic` and organize the data.
+Then navigate back to `piezo-systolic` and organize the data so that our scripts can easily digest it.
 ```
-cd..
+cd ..
 python3 merge_data.py systolic/resources systolic-resources
 python3 merge_data.py systolic/simulation systolic-simulation
 ```
@@ -146,19 +170,23 @@ python3 merge_data.py systolic/simulation systolic-simulation
 For **"Configurable matrix dimensions"**
 ```
 python3 pretty-graph-cycles.py -j cycles-systolic-mmult.json
+```
+You can see that the flxible contraction dimension takes an extra cycle across all designs.
+```
 python3 pretty-graph-resources.py -j resources-systolic-mmult.json
 ```
-This will generate graphs (which you can ignore, since we did not include graphs in our paper).
-Instead pay attention to the printed output of these commands.
-This will match up with the claims made in  the "Configurable matrix dimensions" section.
+You can see that, apart from the 2x2 design (which we decided to ignore in the paper) the flexible contraction dimension takes at most 8% more LUTs. 
+Also, the flexible contraction dimension uses 2 more registers (the paper claims they use the same amount: this discrepency is likely due to using a new compiler version). Either way, the difference in register usage is pretty negligble. 
+
+These claims match up with the claims made in  the "Configurable Matrix Dimensions" section.
 
 For **"Overhead of dynamic post operations"**
 ```
 python3 pretty-graph-cycles.py -j cycles-systolic-relu.json  -s cycles-systolic-relu
 python3 pretty-graph-resources.py -j resources-systolic-relu.json -s resources-systolic-relu
 ```
+We provide a printed output, but you should look at the graphs.  
 Graphs should be found in `piezo-systolic/graphs`. `cycles-systolic-relu.pdf` = Figure 10a, `resources-systolic-relu-LUT` = Figure 10b, `resources-systolic-relu-Registers` = Figure 10c.
-(The graphs should also align with the printed information when you run the scripts).
 
 ## Data Collection
 Start by navigating back to the root of `calyx-resource-eval`.
