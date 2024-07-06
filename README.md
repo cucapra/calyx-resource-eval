@@ -181,22 +181,26 @@ For **"Configurable matrix dimensions"**
 ```
 python3 pretty-graph-cycles.py -j cycles-systolic-mmult.json
 ```
-You can see that the flxible contraction dimension takes an extra cycle across all designs.
+Looking at the terminal output, you can see that the flxible contraction dimension takes an extra cycle across all designs.
+
 ```
 python3 pretty-graph-resources.py -j resources-systolic-mmult.json
 ```
-You can see that, apart from the 2x2 design (which we decided to ignore in the paper) the flexible contraction dimension takes at most 8% more LUTs. 
-Also, the flexible contraction dimension uses 2 more registers (the paper claims they use the same amount: this discrepency is likely due to using a new compiler version). Either way, the difference in register usage is pretty negligble. 
+Looking at the terminal output, you can see that, apart from the 2x2 design (which we decided to ignore in the paper), the flexible contraction dimension takes at most 8% more LUTs. 
+Also, the flexible contraction dimension uses 2 more registers (the paper claims they use the same amount: this discrepency is likely due to using a newer compiler commit hash).
 
 For **"Overhead of dynamic post operations"**
 ```
 python3 pretty-graph-cycles.py -j cycles-systolic-relu.json  -s cycles-systolic-relu
 python3 pretty-graph-resources.py -j resources-systolic-relu.json -s resources-systolic-relu
 ```
-We provide a printed output, but you should look at the graphs.  
-Graphs should be found in `piezo-systolic/graphs`. `cycles-systolic-relu.pdf` = Figure 10a, `resources-systolic-relu-LUT` = Figure 10b, `resources-systolic-relu-Registers` = Figure 10c.
+You can ignore the terminal output, instead looking at the graphs.  
+Graphs should be found in `piezo-systolic/graphs`. `cycles-systolic-relu.pdf` = Figure 10a, `resources-systolic-relu-LUT` = Figure 10b, `resources-systolic-relu-Registers` = Figure 10c. (Again you go to the file explorer to see this.)
 
-## Data Collection
+## Data Collection (Takes a long time)
+
+Now we will collect the data ourselves. 
+
 Start by navigating back to the root of `calyx-resource-eval`.
 ```
 cd ..
@@ -236,6 +240,7 @@ For the *latency* data, run (there will be some warnings which you can ignore):
 ```
 source scripts/sdn_four_ways_latency.sh
 ```
+
 **Resource Results (Estimated Time <30 min)**
 For the *resourcce* data, run:
 ```
@@ -248,7 +253,7 @@ Navigte to the `piezo-systolic` subdirectory.
 cd ../piezo-systolic
 ```
 
-Then remove the results
+Then move the existing results:
 ```
 rm -rf systolic-resources
 rm -rf systolic-simulation
@@ -292,8 +297,22 @@ cd ../../../calyx && git checkout 9e15fe00 && cargo build && cd fud && FLIT_ROOT
 ```
 
 <details>
-<summary><b>If you had access to the larger board</b> [click to expand]</summary>
+<summary><b>Debugging Help</b> [click to expand]</summary>
+  
+If your `fud` commands aren't working, it could be becuase you need to reconfigure `fud` (i.e., tell `fud` which directories it needs to point to). 
 
+```
+fud config global.root /home/vsboxuser/piezo-eval/calyx 
+fud config stages.calyx.exec /home/vsboxuser/piezo-eval/calyx/target/debug 
+fud config stages.futil.exec /home/vsboxuser/piezo-eval/calyx/target/futil 
+fud config stages.dahlia.exec /home/vsboxuser/piezo-eval/dahlia/fuse 
+```
+
+</details>
+
+<details>
+<summary><b>If you had access to the larger board</b> [click to expand]</summary>
+  
 For Calyx's max frequency:
 ```
 fud e -q max-freq-inputs/calyx/16-calyx.sv --to resource-estimate -o resources/max-freq-calyx/16.systolic.json -s synth-verilog.tcl synth-files/synth.tcl -s synth-verilog.constraints synth-files/device4.xdc --from synth-verilog
@@ -307,18 +326,12 @@ python3 drive.py -j max_freq_piezo.json
 </details>
 
 
-
-
-
-
-
 # Reusability Guide
 What should I put here?
 
 
 
-## Running Old Calyx Systolic Arrays
-(assumes you have checked out to 9e15fe00)
+
 
 
 ## Random stuff that I still need to incorporate.
