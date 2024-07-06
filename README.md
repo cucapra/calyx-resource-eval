@@ -1,41 +1,80 @@
-# Static Calyx Eval
-Evaluation for Static Calyx (aka Piezo).
+# Static-Calyx (Piezo) Evaluation
+Evaluation for Static-Calyx (aka Piezo).
 
 # Introduction
 
 The purpose of the artifact is to support the main claims made in our paper, in particular sections 6 and 7 (the evaluation sections).
+We assume you are using VirtualBox and will provide a .ova file. 
 
-We make the following claims, all of which our artifact can help reproduce:
-- We compare Piezo (our new system) against Calyx (the original system we built off) and Vitis HLS on Polybench benchmarks in terms of latency (cycle counts) and LUTs. See Figure 6.
-- We examine effects of the ordering of different optimization passes on Piezo's performance on Polybench benchmarks in terms of latency (cycle counts), LUTs, and register usage. See Figure 7.
-- We examine of certain optimizations on Piezo's performance on a PIFO tree packet scheduler. See table of section 6.2.
-- We compare Piezo's systolic array generator with Calyx's systolic array generator in terms of latency (cycle counts) and max frequency. See paragraph "Effect of Pipelining" in section 7.2.
-- We comapre Piezo's systolic array generator's performance using fixed contraction dimension vs. a flexible contraction dimension in terms of latency (cycle counts), LUTs, and register usage. See paragraph "Configurable Matrix Dimensions" in section 7.2.
-- We compare  Piezo's systolic array generator's performance on differently implemented post operations. See Figure 10 in the paper.
+Our evaluation has 3 main parts: 1) Polybench Kernels, 2) PIFO Tree Packet Scheduling, and 3) Systolic Arrays.
 
-# Hardware Dependencies
-No specific hardware dependencies, although our evaluation uses Xilinx's Vivado tools to generate area and resource estimates. Unfortunately due to licensing restrictions, we can't distribute the VM with these tools installed. However, the tools are freely available and we provide instructions on how to install them (see "Getting Started" section).
+**Important Note**: 
+The resource numbers (LUTs and register usage) in our evaluation require Vivado synthesis tools. 
+Due to licensing restrictions, we can't distribute the VM with these tools installed. 
+However, our VM has the installer and detailed instructions on how to install (see "Getting Started" section).
+This is the one dependency that requires manual effort to install (i.e., not already installed on the VM). 
+The simulation numbers (i.e., cycle counts) can be obtained without any manual installation of dependencies. 
+
+We make the following claims regarding our *Polybench Kernel* evaluation, all of which are supported by the artifact: 
+- We compare Piezo (our new system) against Calyx (the original system we built off) and Vitis HLS on Polybench benchmarks in terms of latency (cycle counts) and LUTs. See Figure 6 from the paper.
+- We examine effects of the ordering of different optimization passes on Piezo's performance on Polybench benchmarks in terms of latency (cycle counts), LUTs, and register usage. See Figure 7 from the paper.
+
+We make the following claims regarding our *PIFO Tree Packet Scheduling* evaluation, all of which are supported by the artifact:  
+- We examine of certain optimizations on Piezo's performance on a PIFO tree packet scheduler in terms of latency, LUTs, and register usage. See table from Section 6.2 from the paper.
+
+For the *Systolic Array* evaluation:
+- The latency numbers can be supported for our evaluation. 
+However, we performed our resource numbers for the systolic arrays targeting the larger Alveo U250 board, since our 16x16 systolic arrays do not fit on the default Zynq UltraScale+ XCZU3EG board we targeted for the rest of the evaluation. 
+The Xilinx installation we describe in the "Getting Started" section **does not contain the board to fit the 16x16 systolic arrays, as that installation would require over 100 GB.**
+If you do have the space you are welcome to try (we will provide more direction in the "Optional" section of the step-by-step guide) but we have not validated this in our own VM since we do not have the space (we only have validated the results on our own lab server, in which we get the Alveo U250 board). 
+We have provided a script to validate the claims made about the smaller systolic arrays (4x4 and 8x8) but the Xilinx installation will not have a board large enough to fit the 16x16 systolic arrays. 
+We make the following claims: 
+- We compare Piezo's systolic array generator with Calyx's systolic array generator in terms of latency (cycle counts) and max frequency (MHz). See paragraph "Effect of Pipelining" in section 7.2. Since getting max frequency numbers requires targeting the larger board on a 16x16 systolic array our artifact will not support it. You can reproduce the latency numbers. 
+- We comapre Piezo's systolic array generator's performance using fixed contraction dimension vs. a flexible contraction dimension in terms of latency (cycle counts), LUTs, and register usage. See paragraph "Configurable Matrix Dimensions" in section 7.2. We support all the claims except for the resource usage claims for the largest (16x16) systolic array.
+- We compare  Piezo's systolic array generator's performance on differently implemented post operations. See Figure 10 in the paper. We support all the claims except for the resource usage claims for the largest (16x16) systolic array.
+
+**Very Important Note!** There will be some slight discrepencies between our numbers and those from our submission. None of them should change any of the qualitative claims we make in the paper. 
+This discrepency can be explained by 2 reasons:
+1. Because Static-Calyx/Piezo is ongoing research, we are using a slightly more recent version of the compiler than what was included in the paper.
+2. The web installer for Vivado 2020.2 (which we used in the paper) is no longer supported, so we provide the installer for Vivado 2022.2. The resource numbers will therefore vary slightly.
+
+The camera-ready version of the paper will incude the updated numbers. 
+
+# Hardware Dependencies 
+No specific known hardware dependencies, although our evaluation uses Xilinx's Vivado tools to generate area and resource estimates. 
+As previously stated, due to licensing restrictions, we can't distribute the VM with these tools installed. 
+However, the tools are freely available and we provide instructions on how to install them (see "Getting Started" section).
 
 # Getting Started
-Our virtual machine has all dependencies apart from Xilinx's Vivado tools (see next paragraph).
-You can download our .ova file. (Link TK), and use import our VM on VirtualBox.
-username is "vboxuser", pw is "piezo".
+You can download our .ova file, and import our VM on VirtualBox.
 
-XXX(Caleb): copied these instructions over from Calyx repository.
+**username is "vboxuser", pw is "piezo"**
 
-1. The desktop should have a file named: Xilinx Installer. Double click on this to launch the installer.
-2. Ignore the warning and press Ok.
-3. When the box pops up asking you for a new version, click Continue.
-4. Enter your Xilinx credentials. If you don't have them, create a Xilinx account.
-5. Note When you create an account, you need to fill out all the required information on your profile. Otherwise the Xilinx installer will reject your login.
-6. The "User ID" is the email address of the Xilinx account you created.
-7. Agree to the contract and press Next.
-8. Choose Vivado and click Next.
-9. Choose Vivado HL WebPACK and click Next.
-10. Leave the defaults for selecting devices and click Next.
-11. Important! Change the install path from /tools/Xilinx to /home/vboxuser/Xilinx.
-12. Confirm that you want to create the directory.
-13. Install. Depending on the speed of your connection, the whole process should take about 2 - 4 hrs.
+## Installing Vivado Tools 
+Once on the VM, nagivate to `home/vboxuser` by typing:
+```
+cd /home/vboxuser
+```
+
+Then run the following command: 
+```
+sudo ./Xilinx_Unified_2022.2_1014_8888_Lin64.bin
+```
+A window should pop up for the Xilinx Tools Installation. 
+1. Ignore the message about a newer version being available (you can X it out). Press "next".
+2. Log in with your Xilinx/AMD credentials, using your email and AMD account password. If you don't have one, create an Xilinx/AMD [account](https://www.amd.com/en/registration/create-account.html). Keep the "Download and Install now" box checked.
+4. Click "Vivado" when it asks you to "Select Product to Install". Click next.
+5. Click "Vivado ML Standard". Click next. 
+6. In order to minimize the disk space necessary (and to minimize the chance of something going wrong during the installation), uncheck all unnecessary devices/features, only checking what is necessary for our evaluation. In particular, under "Production Devices": uncheck "7 Series", "UltraScale", and "UltraScale+". You should keep "SOCs" checked: but if you click on the small, blue key-looking directly to the left of the "SOC" box, you can uncheck "Zync-7000". **However you should keep Zync UltraScale+ MPSoC** checked. Under "Design Tools": you should uncheck "Vitis Model Composer (Xilinx Toolbox ...)..." and "DocNav". **However, "Vivado and Vitis HLS should remain checked** (in fact, I believe it will force you to keep these options checked).
+7. Agree to the licenses. 
+8. **Important!** Change install to "home/vboxuser/Xilinx", and say "yes" when it asks if you want to create this directory.
+9. Click "install". Installation can take in the ballpark from 2-4 hours. It tends to go quicker if you do not let the machine sleep.
+
+## After Installation
+Run the following command: 
+```
+source /home/vboxuser/Xilinx/Vitis_HLS/2022.2/settings64.sh
+```
 
 # Step-by-Step Instructions
 Our evaluation is broadly split into 3 parts: Polybench Kernels (section 6.1), PIFO Tree Packet Scheduler (section 6.2), and Systolic Arrays (section 7).
@@ -237,22 +276,5 @@ mv results results_given
   rm -rf systolic-simulation
 ```
 
-```
-cd /home/vboxuser
-sudo ./Xilinx_Unified_2022.2_1014_8888_Lin64.bin
-```
-1. Ignore the message about a newer version. Press "next".
-2. Log in w/ email and password. Keep "Download and Install now" box checked.
-3. Click "Vivado" for "Select Product to Install". Click next.
-4. "Vivado ML Standard". Click next.
-5. Uncheck "7 Series, UltraScale, UltraScale+" under production devices. (So what should be checked:
-Under Design Tools: Vivado, Vitis HLS, Vitis Model Composer (Xilinx Toolbox ...), DocNav)
-Under Devices: Install Devices for Kria SOMs and Starter Kits. "Select Production Devices SOCs Zynq UltraScale+ MPSoC
-6. Agree to licenses
-7. Change directory to "home/vboxuser/Xilinx", say "yes" when it asks if you want to create the directory.
-8. Click "install"
 
-fud config stages.synth-verilog.exec /home/vboxuser/Xilinx/Vivado/2022.2/bin/vivado
-
-source /home/vboxuser/Xilinx/Vitis_HLS/2022.2/settings64.sh
 
