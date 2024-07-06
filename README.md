@@ -51,7 +51,7 @@ You can download our .ova file, and import our VM on VirtualBox.
 
 **username is "vboxuser", pw is "piezo"**
 
-## Installing Vivado Tools 
+## Installing Vivado Tools (Requires 58 GB)
 Once on the VM, navigate to `/home/vboxuser` by typing:
 ```
 cd /home/vboxuser
