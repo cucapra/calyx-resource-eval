@@ -25,7 +25,7 @@ We make the following claims regarding our *PIFO Tree Packet Scheduling* evaluat
 For the *Systolic Array* evaluation:
 - The latency numbers can be supported for our evaluation. 
 However, we performed our resource numbers for the systolic arrays targeting the larger Alveo U250 board, since our 16x16 systolic arrays do not fit on the default Zynq UltraScale+ XCZU3EG board we targeted for the rest of the evaluation. 
-The Xilinx installation we describe in the "Getting Started" section **does not contain the board to fit the 16x16 systolic arrays, as that installation would require over 100 GB.**
+The Xilinx installation we describe in the "Getting Started" section **does not contain the board to fit the 16x16 systolic arrays, as that installation would require over 200 GB.**
 If you do have the space you are welcome to try (we will provide more direction in the "Optional" section of the step-by-step guide) but we have not validated this in our own VM since we do not have the space (we only have validated the results on our own lab server, in which we get the Alveo U250 board). 
 We have provided a script to validate the claims made about the smaller systolic arrays (4x4 and 8x8) but the Xilinx installation will not have a board large enough to fit the 16x16 systolic arrays.
 
@@ -341,12 +341,11 @@ sudo ./Xilinx_Unified_2022.2_1014_8888_Lin64.bin
 A window should pop up for the Xilinx Tools Installation. 
 1. Ignore the message about a newer version being available (you can X it out). Press "next".
 2. Log in with your Xilinx/AMD credentials, using your email and AMD account password. If you don't have one, create an Xilinx/AMD [account](https://www.amd.com/en/registration/create-account.html). Keep the "Download and Install now" box checked.
-4. Click **"Vitis HLS"** when it asks you to "Select Product to Install". Click next.
-5. Click "Vivado ML Standard". Click next. 
-6. In order to minimize the disk space necessary (and to minimize the chance of something going wrong during the installation), uncheck all unnecessary devices/features, only checking what is necessary for our evaluation. In particular, under "Production Devices": uncheck "7 Series", "UltraScale", and "UltraScale+". You should keep "SOCs" checked: but if you click on the small, blue key icon directly to the left of the "SOC" box, you can uncheck "Zync-7000". **However you should keep Zync UltraScale+ MPSoC** checked. **You should also check TK** Under "Design Tools": you should uncheck "Vitis Model Composer (Xilinx Toolbox ...) ..." and "DocNav". **However, "Vivado and Vitis HLS should remain checked** (in fact, I believe the installer will force you to keep these options checked).
-7. Agree to the licenses. 
-8. **Important!** Change install directory location to "home/vboxuser/Xilinx", and say "yes" when it asks if you want to create this directory.
-9. Click "install". Installation can take in the ballpark from 2-4 hours. It tends to go quicker if you do not let the machine sleep.
+4. Click **"Vitis"** when it asks you to "Select Product to Install". Click next.
+5. In order to minimize the disk space necessary (and to minimize the chance of something going wrong during the installation), uncheck all unnecessary devices/features, only checking what is necessary for our evaluation. In particular, under "Production Devices": uncheck "7 Series", "UltraScale", and "UltraScale+". You should keep "SOCs" checked: but if you click on the small, blue key icon directly to the left of the "SOC" box, you can uncheck "Zync-7000". **However you should keep Zync UltraScale+ MPSoC** checked. **You should also check "Install devices for Alveo and Xilinx edge acceleration platforms"** Under "Design Tools": you should uncheck "Vitis Model Composer (Xilinx Toolbox ...) ..." and "DocNav". **However, "Vivado and Vitis HLS should remain checked** (in fact, I believe the installer will force you to keep these options checked).
+6. Agree to the licenses. 
+7. **Important!** Change install directory location to "home/vboxuser/Xilinx", and say "yes" when it asks if you want to create this directory.
+8. Click "install". Installation can take in the ballpark from 2-4 hours. It tends to go quicker if you do not let the machine sleep.
 
 ## One note on the comparison to Calyx 
 
