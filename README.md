@@ -91,7 +91,6 @@ The step-by-step guide is organized as follows:
   - Systolic array results (7.2)
 - Optional Things
   - Installing the larger board
-  - Checking for correctness 
 
 ## Experimental Data and Graph Generation
 Since the process to collecting data takes several hours, we will first regenerate the graphs presented in the paper from data already committed to the repository. The next section will demonstrate how to collect this data.
@@ -168,7 +167,8 @@ This script simply looks through the following files: `resources/max-freq-calyx/
 
 **Important Notes**
 - Because the Vivado installation does not have the Alveo Board, you will not be able to reproduce the frequency claims made (you will reproduce the cycle count claims)
-- The paper claims Calyx takes 248 cycles: this is a typo. It should say 284 and will be corrected in the camera-ready version. 
+- The paper claims Calyx takes 248 cycles: this is a typo. It should say 284 and will be corrected in the camera-ready version.
+- The paper claims Piezo takes 54 cycles: this is for the flexible contraction dimension. It should say 53, since that is for the fixed contraction dimension, which is what Calyx implemented. 
 
 Then navigate back to `piezo-systolic` and organize the data so that our scripts can easily digest it.
 ```
@@ -325,6 +325,53 @@ python3 drive.py -j max_freq_piezo.json
 
 </details>
 
+# Optional Things 
+
+<details> 
+<summary><b>Some optional notes/b> [click to expand]</summary>
+
+## How to install if you want Alveo U250 access. 
+(Differences from original instructions are bolded). 
+Then run the following command: 
+```
+sudo ./Xilinx_Unified_2022.2_1014_8888_Lin64.bin
+```
+A window should pop up for the Xilinx Tools Installation. 
+1. Ignore the message about a newer version being available (you can X it out). Press "next".
+2. Log in with your Xilinx/AMD credentials, using your email and AMD account password. If you don't have one, create an Xilinx/AMD [account](https://www.amd.com/en/registration/create-account.html). Keep the "Download and Install now" box checked.
+4. Click **"Vitis HLS"** when it asks you to "Select Product to Install". Click next.
+5. Click "Vivado ML Standard". Click next. 
+6. In order to minimize the disk space necessary (and to minimize the chance of something going wrong during the installation), uncheck all unnecessary devices/features, only checking what is necessary for our evaluation. In particular, under "Production Devices": uncheck "7 Series", "UltraScale", and "UltraScale+". You should keep "SOCs" checked: but if you click on the small, blue key icon directly to the left of the "SOC" box, you can uncheck "Zync-7000". **However you should keep Zync UltraScale+ MPSoC** checked. **You should also check TK** Under "Design Tools": you should uncheck "Vitis Model Composer (Xilinx Toolbox ...) ..." and "DocNav". **However, "Vivado and Vitis HLS should remain checked** (in fact, I believe the installer will force you to keep these options checked).
+7. Agree to the licenses. 
+8. **Important!** Change install directory location to "home/vboxuser/Xilinx", and say "yes" when it asks if you want to create this directory.
+9. Click "install". Installation can take in the ballpark from 2-4 hours. It tends to go quicker if you do not let the machine sleep.
+
+## One note on the comparison to Calyx 
+
+The output memory of Piezo's systolic arrays are banked, while Calyx's are unbanked. 
+To prevent an unfair comparison, we therefore only included the compute cycles of Calyx's systolic array. 
+To do this, we manually edited a Calyx file and removed the write to memory (this is very easy to do). 
+However, we still verified correctness of Calyx's design by running the full design (which takes 540 cycles) and checking the output. 
+
+You first must navigate to the correct directory (`/home/vboxuser/piezo-eval/calyx-resource-eval/piezo-systolic/systolic`) and then check out the older Calyx commit (see instructions from previous section). 
+
+Simulating just the compute (284 cycles). 
+```
+fud e --to dat --from futil -s verilog.data input-data/calyx-data/16-compute.json -q max-freq-inputs/calyx/16-comp.futil -s futil.flags "-d minimize-regs" -o simulation/calyx-mmult/16.json
+```
+
+Simulating the full design (compute and write) (540 cycles)
+```
+fud e --to dat --from futil -s verilog.data input-data/calyx-data/16-unbanked.json -q max-freq-inputs/calyx/16.futil -s futil.flags "-d minimize-regs" -o simulation/calyx-mmult/16.json
+```
+
+Check output of the full design. 
+```
+python3 check_mmult_output.py -j simulation/calyx-mmult/16.json
+```
+
+</details>
+
 
 # Reusability Guide
 What should I put here?
@@ -334,21 +381,6 @@ What should I put here?
 
 
 
-## Random stuff that I still need to incorporate.
-Just compute
-```
-fud e --to dat --from futil -s verilog.data input-data/calyx-data/16-unbanked.json -q max-freq-inputs/calyx/16.futil -s futil.flags "-d minimize-regs" -o simulation/calyx-mmult/16.json
-```
-
-compute and write
-```
-fud e --to dat --from futil -s verilog.data input-data/calyx-data/16-unbanked.json -q max-freq-inputs/calyx/16.futil -s futil.flags "-d minimize-regs" -o simulation/calyx-mmult/16.json
-```
-
-check
-```
-python3 check_mmult_output.py -j simulation/calyx-mmult/16.json
-```
 
 
 
