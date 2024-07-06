@@ -119,7 +119,9 @@ source /home/vboxuser/Xilinx/Vitis_HLS/2022.2/settings64.sh
 
 <details>
 <summary><b>Double check you're on the right track</b> [click to expand]</summary>
+
 type `fud check`. 
+
 You should see 
 ```
 interpreter, vivado-hls, mrxl were not installed correctly.
