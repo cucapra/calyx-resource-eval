@@ -97,11 +97,10 @@ The step-by-step guide is organized as follows:
 Since the process to collecting data takes several hours, we will first regenerate the graphs presented in the paper from data already committed to the repository. The next section will demonstrate how to collect this data.
 
 ### Setting things up
-Give yourself priveleges
+Give yourself priveleges (password is "piezo" as stated before)
 ```
 su -
 ```
-Password is "piezo" as stated before. 
 
 Activate the Python virtual environment by running:
 ```
