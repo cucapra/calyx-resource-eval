@@ -268,7 +268,8 @@ python3 drive.py -j simulation.json
 ```
 
 **Resource Results (Estimated Time 1-2 hours)**
-For the *resourcce* data, run:
+
+For the *resource* data, run:
 ```
 python3 drive.py -j resources-small-board.json
 ```
