@@ -275,6 +275,7 @@ python3 drive.py -j resources-small-board.json
 ```
 (you would run `python3 drive.py -j resources.json` if you had access to the Alveo U250 board). 
 
+**Comparison to Calyx**
 For the *comparison against Calyx's systolic arrays*:
 
 To do this, we need to check out of the current Calyx branch (i.e., the "Piezo" branch") and go back to an earlier version of the Calyx repo, and rebuild the Calyx compiler and `fud`.
