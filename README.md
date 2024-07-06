@@ -109,14 +109,14 @@ Activate the Python virtual environment by running:
 source /opt/venv/bin/activate
 ```
 
-Navigate to the directory of the evaluation by typing: 
-```
-cd /home/vboxuser/piezo-eval/calyx-resource-eval
-```
-
 Re-run the Vivado set-up script if you logged out since the last time you've run it: 
 ```
 source /home/vboxuser/Xilinx/Vitis_HLS/2022.2/settings64.sh
+```
+
+Navigate to the directory of the evaluation by typing: 
+```
+cd /home/vboxuser/piezo-eval/calyx-resource-eval
 ```
 
 <details>
