@@ -374,13 +374,10 @@ python3 check_mmult_output.py -j simulation/calyx-mmult/16.json
 
 
 # Reusability Guide
-What should I put here?
+The main Calyx driver is called `fud`. 
+It's documentation is here: https://docs.calyxir.org/running-calyx/fud/index.html. 
+This is the tool that orchestrates the commands and compiles designs to and from Calyx, moves data, runs the correct tools, etc.
+Most of our scripts are short scripts that simply execute `fud` commands. 
 
-
-
-
-
-
-
-
+Therefore, if you wanted to extend the evaluation, you could probably get `fud` to do most of the work. 
 
