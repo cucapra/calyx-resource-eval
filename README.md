@@ -27,7 +27,8 @@ For the *Systolic Array* evaluation:
 However, we performed our resource numbers for the systolic arrays targeting the larger Alveo U250 board, since our 16x16 systolic arrays do not fit on the default Zynq UltraScale+ XCZU3EG board we targeted for the rest of the evaluation. 
 The Xilinx installation we describe in the "Getting Started" section **does not contain the board to fit the 16x16 systolic arrays, as that installation would require over 100 GB.**
 If you do have the space you are welcome to try (we will provide more direction in the "Optional" section of the step-by-step guide) but we have not validated this in our own VM since we do not have the space (we only have validated the results on our own lab server, in which we get the Alveo U250 board). 
-We have provided a script to validate the claims made about the smaller systolic arrays (4x4 and 8x8) but the Xilinx installation will not have a board large enough to fit the 16x16 systolic arrays. 
+We have provided a script to validate the claims made about the smaller systolic arrays (4x4 and 8x8) but the Xilinx installation will not have a board large enough to fit the 16x16 systolic arrays.
+
 We make the following claims: 
 - We compare Piezo's systolic array generator with Calyx's systolic array generator in terms of latency (cycle counts) and max frequency (MHz). See paragraph "Effect of Pipelining" in section 7.2. Since getting max frequency numbers requires targeting the larger board on a 16x16 systolic array our artifact will not support it. You can reproduce the latency numbers. 
 - We comapre Piezo's systolic array generator's performance using fixed contraction dimension vs. a flexible contraction dimension in terms of latency (cycle counts), LUTs, and register usage. See paragraph "Configurable Matrix Dimensions" in section 7.2. We support all the claims except for the resource usage claims for the largest (16x16) systolic array.
