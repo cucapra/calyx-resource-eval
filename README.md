@@ -68,7 +68,7 @@ A window should pop up for the Xilinx Tools Installation.
 5. Click "Vivado ML Standard". Click next. 
 6. In order to minimize the disk space necessary (and to minimize the chance of something going wrong during the installation), uncheck all unnecessary devices/features, only checking what is necessary for our evaluation. In particular, under "Production Devices": uncheck "7 Series", "UltraScale", and "UltraScale+". You should keep "SOCs" checked: but if you click on the small, blue key icon directly to the left of the "SOC" box, you can uncheck "Zync-7000". **However you should keep Zync UltraScale+ MPSoC** checked. Under "Design Tools": you should uncheck "Vitis Model Composer (Xilinx Toolbox ...) ..." and "DocNav". **However, "Vivado and Vitis HLS should remain checked** (in fact, I believe the installer will force you to keep these options checked).
 7. Agree to the licenses. 
-8. **Important!** Change install to "home/vboxuser/Xilinx", and say "yes" when it asks if you want to create this directory.
+8. **Important!** Change install directory location to "home/vboxuser/Xilinx", and say "yes" when it asks if you want to create this directory.
 9. Click "install". Installation can take in the ballpark from 2-4 hours. It tends to go quicker if you do not let the machine sleep.
 
 ## After Installation
