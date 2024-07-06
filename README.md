@@ -328,7 +328,7 @@ python3 drive.py -j max_freq_piezo.json
 # Optional Things 
 
 <details> 
-<summary><b>Some optional notes/b> [click to expand]</summary>
+<summary><b>Some optional notes </b> [click to expand]</summary>
 
 ## How to install if you want Alveo U250 access. 
 (Differences from original instructions are bolded). 
