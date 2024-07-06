@@ -164,7 +164,11 @@ cd ../piezo-systolic/systolic
 ```
 
 For **"Effect of pipelining"**: run `python3 compare_vs_calyx.py`: you should see the claims made in the paper.
-This script simply looks through the following files: `resources/max-freq-calyx/16.systolic.json`, `resources/max-freq-piezo/16.systolic.json`, `simulation/calyx-mmult/16-compute.json`, and `simulation/static-mmult/16.systolic.json`. You can look through these files yourself to validate them. **Note that because the installation does not have the Alveo Board, you will not be able to reproduce the frequency claims made (you will reproduce the cycle count claims).**
+This script simply looks through the following files: `resources/max-freq-calyx/16.systolic.json`, `resources/max-freq-piezo/16.systolic.json`, `simulation/calyx-mmult/16-compute.json`, and `simulation/static-mmult/16.systolic.json`. You can look through these files yourself to validate them.
+
+**Important Notes**
+- Because the Vivado installation does not have the Alveo Board, you will not be able to reproduce the frequency claims made (you will reproduce the cycle count claims)
+- The paper claims Calyx takes 248 cycles: this is a typo. It should say 284 and will be corrected in the camera-ready version. 
 
 Then navigate back to `piezo-systolic` and organize the data so that our scripts can easily digest it.
 ```
