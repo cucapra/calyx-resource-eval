@@ -77,8 +77,6 @@ Run the following command (**importantly, you must run this command every time y
 source /home/vboxuser/Xilinx/Vitis_HLS/2022.2/settings64.sh
 ```
 
-## Checking that you've installed things correctly 
-
 # Step-by-Step Instructions
 As previously stated, our evaluation has 3 main parts: Polybench Kernels (section 6.1), PIFO Tree Packet Scheduler (section 6.2), and Systolic Arrays (section 7).
 
@@ -92,7 +90,8 @@ The step-by-step guide is organized as follows:
   - PIFO tree packet scheduler (6.2)
   - Systolic array results (7.2)
 - Optional Things
-  - TK  
+  - Installing the larger board
+  - Checking for correctness 
 
 ## Experimental Data and Graph Generation
 Since the process to collecting data takes several hours, we will first regenerate the graphs presented in the paper from data already committed to the repository. The next section will demonstrate how to collect this data.
