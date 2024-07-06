@@ -96,7 +96,8 @@ The step-by-step guide is organized as follows:
 ## Experimental Data and Graph Generation
 Since the process to collecting data takes several hours, we will first regenerate the graphs presented in the paper from data already committed to the repository. The next section will demonstrate how to collect this data.
 
-### Setting things up
+### Setting Things Up
+**Important**: You should do all of these things every time you start up the virtual machine again. 
 Give yourself priveleges (password is "piezo" as stated before)
 ```
 su -
