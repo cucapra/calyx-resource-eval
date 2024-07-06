@@ -304,8 +304,8 @@ If your `fud` commands aren't working, it could be becuase you need to reconfigu
 
 ```
 fud config global.root /home/vboxuser/piezo-eval/calyx 
-fud config stages.calyx.exec /home/vboxuser/piezo-eval/calyx/target/debug 
-fud config stages.futil.exec /home/vboxuser/piezo-eval/calyx/target/futil 
+fud config stages.calyx.exec /home/vboxuser/piezo-eval/calyx/target/debug/calyx
+fud config stages.futil.exec /home/vboxuser/piezo-eval/calyx/target/debug/futil 
 fud config stages.dahlia.exec /home/vboxuser/piezo-eval/dahlia/fuse 
 ```
 
