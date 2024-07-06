@@ -183,8 +183,6 @@ python3 pretty-graph-resources.py -j resources-systolic-mmult.json
 You can see that, apart from the 2x2 design (which we decided to ignore in the paper) the flexible contraction dimension takes at most 8% more LUTs. 
 Also, the flexible contraction dimension uses 2 more registers (the paper claims they use the same amount: this discrepency is likely due to using a new compiler version). Either way, the difference in register usage is pretty negligble. 
 
-These claims match up with the claims made in  the "Configurable Matrix Dimensions" section.
-
 For **"Overhead of dynamic post operations"**
 ```
 python3 pretty-graph-cycles.py -j cycles-systolic-relu.json  -s cycles-systolic-relu
@@ -204,10 +202,14 @@ Navigte to the `dahlia-polybench` directory.
 ```
 cd dahlia-polybench
 ```
+
+**Latency Results (Estimated Time ~30 min)**
 For the *latency* data, run (there will be some warnings which you can ignore):
 ```
 source scripts/polybench_calyx_latency.sh
 ```
+
+**Resource Results (Estimated Time ~4 hrs but can vary depending on how fast your machine is)**
 For the *resourcce* data, run:
 ```
 source scripts/polybench_calyx_resources.sh
@@ -218,10 +220,18 @@ Navigte to the `sdn` subdirectory.
 ```
 cd ../sdn
 ```
+
+Then move the results to a separate directory. 
+```
+mv results results_given
+```
+
+**Latency Results (Estimated Time <10 min)**
 For the *latency* data, run (there will be some warnings which you can ignore):
 ```
 source scripts/sdn_four_ways_latency.sh
 ```
+**Resource Results (Estimated Time <30 min)**
 For the *resourcce* data, run:
 ```
 source scripts/sdn_four_ways_resources.sh
@@ -230,19 +240,55 @@ source scripts/sdn_four_ways_resources.sh
 ### Systolic (Section 7)
 Navigte to the `piezo-systolic` subdirectory.
 ```
-cd ../piezo-systolic/systolic
+cd ../piezo-systolic
 ```
 
+Then remove the results
+```
+rm -rf systolic-resources
+rm -rf systolic-simulation
+mv systolic/simulation systolic/simulation-given
+mv systolic/resources systolic/resources-given
+```
+
+**Latency Results (Estimated Time <10 min)**
 For the *latency* data, run (there will be some warnings which you can ignore):
 ```
 python3 drive.py -j simulation.json
 ```
+
+**Resource Results (Estimated Time 1-2 hours)**
 For the *resourcce* data, run:
 ```
-python3 drive.py -j resources.json
+python3 drive.py -j resources-small-board.json
 ```
+(you would run `python3 drive.py -j resources.json` if you had access to the Alveo U250 board). 
 
 For the *comparison against Calyx's systolic arrays*:
+
+To do this, we need to check out of the current Calyx branch (i.e., the "Piezo" branch") and go back to an earlier version of the Calyx repo, and rebuild the Calyx compiler and `fud`.
+```
+cd ../../../calyx && git checkout 9e15fe00 && cargo build && cd fud && FLIT_ROOT_INSTALL=1 flit install --symlink --deps production
+```
+
+Then navigate back:
+```
+cd ../../calyx-resource-eval/piezo-systolic/systolic
+```
+
+Get cycle counts:
+```
+fud e --to dat --from futil -s verilog.data input-data/calyx-data/16-compute.json -q max-freq-inputs/calyx/16-comp.futil -s futil.flags "-d minimize-regs" -o simulation/calyx-mmult/16.json
+```
+
+Note that if you want to go back and run any of the Piezo, commands, you must check out the main version of Calyx and rebuild Calyx compiler and `fud`.
+```
+cd ../../../calyx && git checkout 9e15fe00 && cargo build && cd fud && FLIT_ROOT_INSTALL=1 flit install --symlink --deps production
+```
+
+<details>
+<summary><b>If you had access to the larger board</b> [click to expand]</summary>
+
 For Calyx's max frequency:
 ```
 fud e -q max-freq-inputs/calyx/16-calyx.sv --to resource-estimate -o resources/max-freq-calyx/16.systolic.json -s synth-verilog.tcl synth-files/synth.tcl -s synth-verilog.constraints synth-files/device4.xdc --from synth-verilog
@@ -253,23 +299,12 @@ For Piezo's max frequency:
 python3 drive.py -j max_freq_piezo.json
 ```
 
-To do this, we need to check out of the current Calyx branch (i.e., the "Piezo" branch") and go back to an earlier version of the Calyx repo, and rebuild the Calyx compiler and `fud`.
-```
-cd ../../../calyx && git checkout 9e15fe00 && cargo build && cd fud && FLIT_ROOT_INSTALL=1 flit install --symlink --deps production
-```
-Navigate back:
-```
-cd ../../calyx-resource-eval/piezo-systolic/systolic
-```
-Get cycle counts:
-```
-fud e --to dat --from futil -s verilog.data input-data/calyx-data/16-unbanked.json -q max-freq-inputs/calyx/16.futil -s futil.flags "-d minimize-regs" -o simulation/calyx-mmult/16.json
-```
+</details>
 
-Note that if you want to go back and run any of the Piezo, commands, you must check out the main version of Calyx and rebuild Calyx compiler and `fud`.
-```
-cd ../../../calyx && git checkout 9e15fe00 && cargo build && cd fud && FLIT_ROOT_INSTALL=1 flit install --symlink --deps production
-```
+
+
+
+
 
 
 # Reusability Guide
@@ -295,18 +330,6 @@ fud e --to dat --from futil -s verilog.data input-data/calyx-data/16-unbanked.js
 check
 ```
 python3 check_mmult_output.py -j simulation/calyx-mmult/16.json
-```
-
-```
-mv results/results-static-calyx results/results-static-calyx-given
-
-mv results results_given
-
- mv simulation simulation-given
-  mv simulation simulation-given
-
-  rm -rf systolic-resources
-  rm -rf systolic-simulation
 ```
 
 
