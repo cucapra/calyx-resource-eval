@@ -295,7 +295,7 @@ fud e --to dat --from futil -s verilog.data input-data/calyx-data/16-compute.jso
 
 Note that if you want to go back and run any of the Piezo, commands, you must check out the main version of Calyx and rebuild Calyx compiler and `fud`.
 ```
-cd ../../../calyx && git checkout 9e15fe00 && cargo build && cd fud && FLIT_ROOT_INSTALL=1 flit install --symlink --deps production
+cd ../../../calyx && git checkout main && cargo build && cd fud && FLIT_ROOT_INSTALL=1 flit install --symlink --deps production
 ```
 
 <details>
