@@ -4,7 +4,7 @@ Evaluation for Static-Calyx (aka Piezo).
 # Introduction
 
 The purpose of the artifact is to support the main claims made in our paper, in particular sections 6 and 7 (the evaluation sections).
-We assume you are using VirtualBox and will provide a .ova file. 
+We assume you are using VirtualBox and have provided .ova file to import using VirtualBox. 
 
 Our evaluation has 3 main parts: Polybench Kernels (section 6.1), PIFO Tree Packet Scheduler (section 6.2), and Systolic Arrays (section 7).
 
