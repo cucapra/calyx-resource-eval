@@ -134,8 +134,7 @@ interpreter, vivado-hls, mrxl were not installed correctly.
 *This is fine*. 
 However, if it says any other tools are not installed correctly (or the command fails for some reason), then there is probably a problem. 
 
-Make sure you are in the python virtual environment (`source /opt/venv/bin/activate`) and that you have run `source /home/vboxuser/Xilinx/Vitis_HLS/2022.2/settings64.sh`.
-
+Double check you've done everything in the above section, and that you've correctly installed the Vivado tools. 
 </details>
 
 ### Polybench (Section 6.1)
