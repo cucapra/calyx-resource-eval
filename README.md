@@ -1,7 +1,8 @@
 # Static-Calyx (Piezo) Evaluation
 Evaluation for Static-Calyx (aka Piezo).
 
-If you are reading this as a pdf, please `git-pull` from the `calyx-resource-eval` repo and then read as a markdown.
+If you are reading this as a pdf, it will probably be easier to `git-pull` from the `calyx-resource-eval` repo (which can be found at https://github.com/cucapra/calyx-resource-eval) and then read as a markdown.
+
 
 # Introduction
 
