@@ -303,10 +303,10 @@ cd ../../../calyx && git checkout 9e15fe00 && cargo build && cd fud && FLIT_ROOT
 If your `fud` commands aren't working, it could be becuase you need to reconfigure `fud` (i.e., tell `fud` which directories it needs to point to). 
 
 ```
-fud config global.root /home/vsboxuser/piezo-eval/calyx 
-fud config stages.calyx.exec /home/vsboxuser/piezo-eval/calyx/target/debug 
-fud config stages.futil.exec /home/vsboxuser/piezo-eval/calyx/target/futil 
-fud config stages.dahlia.exec /home/vsboxuser/piezo-eval/dahlia/fuse 
+fud config global.root /home/vboxuser/piezo-eval/calyx 
+fud config stages.calyx.exec /home/vboxuser/piezo-eval/calyx/target/debug 
+fud config stages.futil.exec /home/vboxuser/piezo-eval/calyx/target/futil 
+fud config stages.dahlia.exec /home/vboxuser/piezo-eval/dahlia/fuse 
 ```
 
 </details>
