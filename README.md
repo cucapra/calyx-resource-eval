@@ -9,6 +9,8 @@ If you are reading this as a pdf, it will probably be easier to `git-pull` from 
 The purpose of the artifact is to support the main claims made in our paper, in particular sections 6 and 7 (the evaluation sections).
 We assume you are using VirtualBox and have provided .ova file to import using VirtualBox.
 
+The Virtual Machine uses [Ubuntu 22.04.4](https://releases.ubuntu.com/22.04/?_gl=1*7cdg4v*_gcl_au*MzQyMzUxNjUwLjE3MTk5NTE0MzQ.&_ga=2.264619983.1704083987.1720401194-2094654659.1720401194) operating system. 
+
 Our evaluation has 3 main parts: Polybench Kernels (section 6.1), PIFO Tree Packet Scheduler (section 6.2), and Systolic Arrays (section 7).
 
 **Important Note**:
