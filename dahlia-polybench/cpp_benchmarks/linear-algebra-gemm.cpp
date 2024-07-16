@@ -1,66 +1,59 @@
 // git.status = clean, build.date = Tue Jul 09 21:49:52 EDT 2024, git.hash = 9ec9a58
-#include <ap_int.h>
-extern "C" {
-  void kernel(ap_uint<32> alpha_int[1], ap_uint<32> beta_int[1], ap_uint<32> C_int[8][8], ap_uint<32> A_int[8][8], ap_uint<32> B_int[8][8]) {
-    #pragma HLS INTERFACE ap_memory port=alpha_int
-    #pragma HLS INTERFACE ap_memory port=beta_int
-    #pragma HLS INTERFACE ap_memory port=C_int
-    #pragma HLS INTERFACE ap_memory port=A_int
-    #pragma HLS INTERFACE ap_memory port=B_int
-    #pragma HLS INTERFACE s_axilite port=return bundle=control
-    ap_uint<32> C[8][8];
-    #pragma HLS resource variable=C core=RAM_1P_BRAM
-    ap_uint<32> A[8][8];
-    #pragma HLS resource variable=A core=RAM_1P_BRAM
-    ap_uint<32> B[8][8];
-    #pragma HLS resource variable=B core=RAM_1P_BRAM
-    ap_uint<32> alpha_ = alpha_int[0];
-    ap_uint<32> beta_ = beta_int[0];
-    for(int i = 0; i < 8; i++) {
-      #pragma HLS UNROLL factor=1 skip_exit_check
-      #pragma HLS LOOP_FLATTEN off
-      for(int j = 0; j < 8; j++) {
-        #pragma HLS UNROLL factor=1 skip_exit_check
-        #pragma HLS LOOP_FLATTEN off
-        A[i][j] = A_int[i][j];
-        B[i][j] = B_int[i][j];
-        C[i][j] = C_int[i][j];
-      }
+#include "parser.cpp"
+/***************** Parse helpers  ******************/
+/***************************************************/
+void kernel(vector<unsigned int> &alpha_int, vector<unsigned int> &beta_int, vector<vector<unsigned int>> &C_int, vector<vector<unsigned int>> &A_int, vector<vector<unsigned int>> &B_int) {
+  
+  vector<vector<unsigned int>> C(8, vector<unsigned int>(8, 0));
+  vector<vector<unsigned int>> A(8, vector<unsigned int>(8, 0));
+  vector<vector<unsigned int>> B(8, vector<unsigned int>(8, 0));
+  unsigned int alpha_ = alpha_int[0];
+  unsigned int beta_ = beta_int[0];
+  for(int i = 0; i < 8; i++) {
+    for(int j = 0; j < 8; j++) {
+      A[i][j] = A_int[i][j];
+      B[i][j] = B_int[i][j];
+      C[i][j] = C_int[i][j];
     }
-    //---
-    for(int i = 0; i < 8; i++) {
-      #pragma HLS UNROLL factor=1 skip_exit_check
-      #pragma HLS LOOP_FLATTEN off
-      for(int j = 0; j < 8; j++) {
-        #pragma HLS UNROLL factor=1 skip_exit_check
-        #pragma HLS LOOP_FLATTEN off
-        ap_uint<32> C_i_j = C[i][j];
-        //---
-        C[i][j] = (C_i_j * beta_);
-      }
+  }
+  //---
+  for(int i = 0; i < 8; i++) {
+    for(int j = 0; j < 8; j++) {
+      unsigned int C_i_j = C[i][j];
       //---
-      for(int j = 0; j < 8; j++) {
-        #pragma HLS UNROLL factor=1 skip_exit_check
-        #pragma HLS LOOP_FLATTEN off
-        for(int k = 0; k < 8; k++) {
-          #pragma HLS UNROLL factor=1 skip_exit_check
-          #pragma HLS LOOP_FLATTEN off
-          ap_uint<32> v = ((alpha_ * A[i][k]) * B[k][j]);
-          // combiner:
-          C[i][j] += v;
-        }
-      }
+      C[i][j] = (C_i_j * beta_);
     }
     //---
-    for(int i = 0; i < 8; i++) {
-      #pragma HLS UNROLL factor=1 skip_exit_check
-      #pragma HLS LOOP_FLATTEN off
-      for(int j = 0; j < 8; j++) {
-        #pragma HLS UNROLL factor=1 skip_exit_check
-        #pragma HLS LOOP_FLATTEN off
-        C_int[i][j] = C[i][j];
+    for(int j = 0; j < 8; j++) {
+      for(int k = 0; k < 8; k++) {
+        unsigned int v = ((alpha_ * A[i][k]) * B[k][j]);
+        // combiner:
+        C[i][j] += v;
       }
     }
   }
+  //---
+  for(int i = 0; i < 8; i++) {
+    for(int j = 0; j < 8; j++) {
+      C_int[i][j] = C[i][j];
+    }
+  }
+  json_t __;
+  __["alpha_int"] = alpha_int;
+  __["beta_int"] = beta_int;
+  __["C_int"] = C_int;
+  __["A_int"] = A_int;
+  __["B_int"] = B_int;
+  std::cout << __.dump(2) << std::endl;
 }
-
+int main(int argc, char** argv) {
+  using namespace flattening;
+  auto v = parse_data(argc, argv);;
+  auto alpha_int = get_arg<n_dim_vec_t<unsigned int, 1>>("alpha_int", "ubit<32>[]", v);
+  auto beta_int = get_arg<n_dim_vec_t<unsigned int, 1>>("beta_int", "ubit<32>[]", v);
+  auto C_int = get_arg<n_dim_vec_t<unsigned int, 2>>("C_int", "ubit<32>[][]", v);
+  auto A_int = get_arg<n_dim_vec_t<unsigned int, 2>>("A_int", "ubit<32>[][]", v);
+  auto B_int = get_arg<n_dim_vec_t<unsigned int, 2>>("B_int", "ubit<32>[][]", v);
+  kernel(alpha_int, beta_int, C_int, A_int, B_int);
+  return 0;
+}

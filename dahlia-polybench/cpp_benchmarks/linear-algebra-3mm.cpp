@@ -1,67 +1,63 @@
 // git.status = clean, build.date = Tue Jul 09 21:49:52 EDT 2024, git.hash = 9ec9a58
-#include <ap_int.h>
-extern "C" {
-  void kernel(ap_uint<32> E_int[8][8], ap_uint<32> A_int[8][8], ap_uint<32> B_int[8][8], ap_uint<32> F_int[8][8], ap_uint<32> C_int[8][8], ap_uint<32> D_int[8][8], ap_uint<32> G_int[8][8]) {
-    #pragma HLS INTERFACE ap_memory port=E_int
-    #pragma HLS INTERFACE ap_memory port=A_int
-    #pragma HLS INTERFACE ap_memory port=B_int
-    #pragma HLS INTERFACE ap_memory port=F_int
-    #pragma HLS INTERFACE ap_memory port=C_int
-    #pragma HLS INTERFACE ap_memory port=D_int
-    #pragma HLS INTERFACE ap_memory port=G_int
-    #pragma HLS INTERFACE s_axilite port=return bundle=control
-    for(int i = 0; i < 8; i++) {
-      #pragma HLS UNROLL factor=1 skip_exit_check
-      #pragma HLS LOOP_FLATTEN off
-      for(int j = 0; j < 8; j++) {
-        #pragma HLS UNROLL factor=1 skip_exit_check
-        #pragma HLS LOOP_FLATTEN off
-        E_int[i][j] = (ap_uint<32>)0;
-        //---
-        for(int k = 0; k < 8; k++) {
-          #pragma HLS UNROLL factor=1 skip_exit_check
-          #pragma HLS LOOP_FLATTEN off
-          ap_uint<32> v = (A_int[i][k] * B_int[k][j]);
-          // combiner:
-          E_int[i][j] += v;
-        }
-      }
-    }
-    for(int i = 0; i < 8; i++) {
-      #pragma HLS UNROLL factor=1 skip_exit_check
-      #pragma HLS LOOP_FLATTEN off
-      for(int j = 0; j < 8; j++) {
-        #pragma HLS UNROLL factor=1 skip_exit_check
-        #pragma HLS LOOP_FLATTEN off
-        F_int[i][j] = (ap_uint<32>)0;
-        //---
-        for(int k = 0; k < 8; k++) {
-          #pragma HLS UNROLL factor=1 skip_exit_check
-          #pragma HLS LOOP_FLATTEN off
-          ap_uint<32> v = (C_int[i][k] * D_int[k][j]);
-          // combiner:
-          F_int[i][j] += v;
-        }
-      }
-    }
-    //---
-    for(int i = 0; i < 8; i++) {
-      #pragma HLS UNROLL factor=1 skip_exit_check
-      #pragma HLS LOOP_FLATTEN off
-      for(int j = 0; j < 8; j++) {
-        #pragma HLS UNROLL factor=1 skip_exit_check
-        #pragma HLS LOOP_FLATTEN off
-        G_int[i][j] = (ap_uint<32>)0;
-        //---
-        for(int k = 0; k < 8; k++) {
-          #pragma HLS UNROLL factor=1 skip_exit_check
-          #pragma HLS LOOP_FLATTEN off
-          ap_uint<32> v = (E_int[i][k] * F_int[k][j]);
-          // combiner:
-          G_int[i][j] += v;
-        }
+#include "parser.cpp"
+/***************** Parse helpers  ******************/
+/***************************************************/
+void kernel(vector<vector<unsigned int>> &E_int, vector<vector<unsigned int>> &A_int, vector<vector<unsigned int>> &B_int, vector<vector<unsigned int>> &F_int, vector<vector<unsigned int>> &C_int, vector<vector<unsigned int>> &D_int, vector<vector<unsigned int>> &G_int) {
+  
+  for(int i = 0; i < 8; i++) {
+    for(int j = 0; j < 8; j++) {
+      E_int[i][j] = (unsigned int)0;
+      //---
+      for(int k = 0; k < 8; k++) {
+        unsigned int v = (A_int[i][k] * B_int[k][j]);
+        // combiner:
+        E_int[i][j] += v;
       }
     }
   }
+  for(int i = 0; i < 8; i++) {
+    for(int j = 0; j < 8; j++) {
+      F_int[i][j] = (unsigned int)0;
+      //---
+      for(int k = 0; k < 8; k++) {
+        unsigned int v = (C_int[i][k] * D_int[k][j]);
+        // combiner:
+        F_int[i][j] += v;
+      }
+    }
+  }
+  //---
+  for(int i = 0; i < 8; i++) {
+    for(int j = 0; j < 8; j++) {
+      G_int[i][j] = (unsigned int)0;
+      //---
+      for(int k = 0; k < 8; k++) {
+        unsigned int v = (E_int[i][k] * F_int[k][j]);
+        // combiner:
+        G_int[i][j] += v;
+      }
+    }
+  }
+  json_t __;
+  __["E_int"] = E_int;
+  __["A_int"] = A_int;
+  __["B_int"] = B_int;
+  __["F_int"] = F_int;
+  __["C_int"] = C_int;
+  __["D_int"] = D_int;
+  __["G_int"] = G_int;
+  std::cout << __.dump(2) << std::endl;
 }
-
+int main(int argc, char** argv) {
+  using namespace flattening;
+  auto v = parse_data(argc, argv);;
+  auto E_int = get_arg<n_dim_vec_t<unsigned int, 2>>("E_int", "ubit<32>[][]", v);
+  auto A_int = get_arg<n_dim_vec_t<unsigned int, 2>>("A_int", "ubit<32>[][]", v);
+  auto B_int = get_arg<n_dim_vec_t<unsigned int, 2>>("B_int", "ubit<32>[][]", v);
+  auto F_int = get_arg<n_dim_vec_t<unsigned int, 2>>("F_int", "ubit<32>[][]", v);
+  auto C_int = get_arg<n_dim_vec_t<unsigned int, 2>>("C_int", "ubit<32>[][]", v);
+  auto D_int = get_arg<n_dim_vec_t<unsigned int, 2>>("D_int", "ubit<32>[][]", v);
+  auto G_int = get_arg<n_dim_vec_t<unsigned int, 2>>("G_int", "ubit<32>[][]", v);
+  kernel(E_int, A_int, B_int, F_int, C_int, D_int, G_int);
+  return 0;
+}

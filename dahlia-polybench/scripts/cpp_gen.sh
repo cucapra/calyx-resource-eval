@@ -8,4 +8,4 @@ fi
 
 # SH->SC (25 minutes)
 mkdir -p cpp_benchmarks/
-ls benchmarks/polybench/*.fuse | parallel --bar $parallelism "fud e --from dahlia --to vivado-hls {} > cpp_benchmarks/{/.}.cpp"
+ls benchmarks/polybench/*.fuse | parallel --bar $parallelism "/scratch/cmk265/learning/dahlia/fuse run {} -o cpp_benchmarks/{/.}.cpp"
