@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 from scipy.stats import gmean
 
 # Define the directory containing the CSV files
-CPU_DIRECTORY = "cpp_benchmarks_default"
+CPU_DIRECTORY = "cpp_benchmarks_O3"
 
 
 def extend_csv_with_benchmarks(latency_csv, resource_csv, target_csv):
