@@ -146,7 +146,7 @@ To generate the **Polybench Graphs** (Figures 6 and 7), run this (there will be 
 ```
 cd dahlia-polybench && python3 dahlia_polybench_graph.py > gmeans.txt
 ```
-If you go to the file explorer, graphs should appear in `/home/piezo-eval/calyx-resource-eval/dahlia-polybench/graphs`.
+If you go to the file explorer, graphs should appear in `/home/vboxuser/piezo-eval/calyx-resource-eval/dahlia-polybench/graphs`.
 `dahlia_polybench_cycles.pdf` = Figure 6a, `dahlia_polybench_lut.pdf` = Figure 6b, `futil_ordering_cycles.pdf` = Figure 7a, `futil_ordering_lut.pdf` = Figure 7b, `futil_ordering_registers` = Figure 7c.
 `gemans.txt` should contain information about the geometric means: these numbers, in addition to being displayed visually in Figures 6 and 7, are referenceed throughout section 6.1 of our paper.
 
