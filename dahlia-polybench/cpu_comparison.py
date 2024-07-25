@@ -41,6 +41,13 @@ def extend_csv_with_benchmarks(latency_csv, resource_csv, target_csv):
         ns = (benchmark_to_period[benchmark] - benchmark_to_ws[benchmark]) * latency
         benchmark_to_ns[benchmark].append(ns)
 
+    max_freq_list = []
+    for benchmark, latency in benchmark_to_latency.items():
+        min_period = benchmark_to_period[benchmark] - benchmark_to_ws[benchmark]
+        max_freq_list.append(1000 / min_period)
+    gmean_max_freq = gmean(max_freq_list)
+    print(f"Geo Mean Max Freq: {gmean_max_freq}")
+
     # Read the target CSV into a list of rows
     with open(target_csv, newline="") as tgt_file:
         target_rows = list(csv.reader(tgt_file))
@@ -96,7 +103,7 @@ def plot_graphs(csv_file):
     # Show the plot
     plt.tight_layout()
 
-    plt.savefig(f"fpga_cpu_performance_{CPU_DIRECTORY}.pdf", format="pdf")
+    # plt.savefig(f"fpga_cpu_performance_{CPU_DIRECTORY}.pdf", format="pdf")
 
     plt.show()
 
@@ -139,4 +146,4 @@ if __name__ == "__main__":
         f"cpu_averages_{CPU_DIRECTORY}.csv",
     )
 
-    plot_graphs(f"cpu_averages_{CPU_DIRECTORY}.csv")
+    # plot_graphs(f"cpu_averages_{CPU_DIRECTORY}.csv")
