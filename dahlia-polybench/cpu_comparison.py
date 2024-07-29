@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 from scipy.stats import gmean
 
 # Define the directory containing the CSV files
-CPU_DIRECTORY = "cpp_benchmarks_O3"
+CPU_DIRECTORY = "cpp_benchmarks"
 FPGA_POWER = 36
 
 
