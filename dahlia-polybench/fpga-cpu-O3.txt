@@ -1,1 +1,0 @@
-Geometric Mean of FPGA:CPU ratios of cpp_benchmarks_O3: 7.437614916008663

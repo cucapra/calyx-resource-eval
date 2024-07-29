@@ -1,1 +1,0 @@
-Geometric Mean of FPGA:CPU ratios of cpp_benchmarks_default: 0.5703458665702649
