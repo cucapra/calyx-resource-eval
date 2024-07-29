@@ -7,7 +7,8 @@ import matplotlib.pyplot as plt
 from scipy.stats import gmean
 
 # Define the directory containing the CSV files
-CPU_DIRECTORY = "cpp_benchmarks"
+CPU_DIRECTORY = "cpp_benchmarks_O3"
+NUM_RUNS = 10
 FPGA_POWER = 36
 
 
@@ -79,7 +80,7 @@ def extend_csv_with_cpp_energy(pkg_csv, ram_csv, target_csv):
         for row in reader:
             # Assuming the first column is at index 0 and the second column is at index 1
             key = row[0]
-            value = float(row[1]) / float(10)
+            value = float(row[1]) / float(NUM_RUNS)
             pkg_dict[key] = value
 
     ram_dict = {}
@@ -94,7 +95,7 @@ def extend_csv_with_cpp_energy(pkg_csv, ram_csv, target_csv):
         for row in reader:
             # Assuming the first column is at index 0 and the second column is at index 1
             key = row[0]
-            value = float(row[1]) / float(10)
+            value = float(row[1]) / float(NUM_RUNS)
             ram_dict[key] = value
 
     energy_dict = {}
