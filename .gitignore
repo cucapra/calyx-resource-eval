@@ -3,10 +3,10 @@
 # Ignore the virtual environment directory
 /venv/
 /piezo/
+.DS_Store
 
 # Other files to ignore
 __pycache__/
 piezo-systolic/__pycache__/
 
 *.py[cod]
-.DS_Store
