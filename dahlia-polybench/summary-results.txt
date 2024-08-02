@@ -1,2 +1,2 @@
-Geometric Mean of FPGA:CPU ratios of cpp_benchmarks_O3: 7.449741779545293
-Geometric Mean of CPU:FPGA ratios energy for: cpp_benchmarks_O3: 719.9324335058037
+Geo Mean Max Freq: 291.3441622416013
+Geometric Mean of FPGA:CPU execution time ratios for cpp_benchmarks_250: 4.485870079918999
