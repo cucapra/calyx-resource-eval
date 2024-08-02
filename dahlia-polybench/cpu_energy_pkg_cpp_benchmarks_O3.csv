@@ -13,6 +13,7 @@ gramschmidt,0.60
 trisolv,0.76
 mvt,0.56
 gemver,0.54
+ludcmp,0.44
 syrk,0.51
 bicg,0.53
 durbin,0.51

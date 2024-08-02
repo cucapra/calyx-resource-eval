@@ -9,7 +9,7 @@ from scipy.stats import gmean
 # Define the directory containing the CSV files
 CPU_DIRECTORY = "cpp_benchmarks_O3"
 NUM_RUNS = 10
-FPGA_POWER = 36
+FPGA_POWER = 5.5
 
 
 def extend_csv_with_benchmarks(latency_csv, resource_csv, target_csv):
@@ -67,7 +67,7 @@ def extend_csv_with_benchmarks(latency_csv, resource_csv, target_csv):
         writer.writerows(target_rows)
 
 
-def extend_csv_with_cpp_energy(pkg_csv, ram_csv, target_csv):
+def extend_csv_with_cpp_energy(pkg_csv, target_csv):
     pkg_dict = {}
     with open(pkg_csv, mode="r") as file:
         # Create a CSV reader object
@@ -82,27 +82,6 @@ def extend_csv_with_cpp_energy(pkg_csv, ram_csv, target_csv):
             key = row[0]
             value = float(row[1]) / float(NUM_RUNS)
             pkg_dict[key] = value
-
-    # ram_dict = {}
-    # with open(ram_csv, mode="r") as file:
-    #     # Create a CSV reader object
-    #     reader = csv.reader(file)
-
-    #     # Skip the first row (header)
-    #     next(reader)
-
-    #     # Iterate over each row in the CSV
-    #     for row in reader:
-    #         # Assuming the first column is at index 0 and the second column is at index 1
-    #         key = row[0]
-    #         value = float(row[1]) / float(NUM_RUNS)
-    #         ram_dict[key] = value
-
-    # energy_dict = {}
-    # # Iterate over the keys (assuming both dicts have the same keys)
-    # for key in pkg_dict:
-    #     # Calculate the difference and store it in the result dictionary
-    #     energy_dict[key] = pkg_dict[key] - ram_dict[key]
 
     # Read the target CSV into a list of rows
     with open(target_csv, newline="") as tgt_file:
@@ -184,7 +163,7 @@ if __name__ == "__main__":
         ]
     ]
     energy_pkg = [["benchmark", "joules"]]
-    energy_ram = [["benchmark", "joules"]]
+    # energy_ram = [["benchmark", "joules"]]
 
     # Iterate through all the files in the directory
     for filename in os.listdir(CPU_DIRECTORY):
@@ -200,7 +179,8 @@ if __name__ == "__main__":
                 if "energy_pkg" in filepath:
                     energy_pkg.append([benchname] + rows[0])
                 elif "energy_ram" in filepath:
-                    energy_ram.append([benchname] + rows[0])
+                    continue
+                    # energy_ram.append([benchname] + rows[0])
                 else:
                     if len(rows) >= 2:  # Ensure there are at least two rows
                         first_rows.append([benchname] + rows[0])
@@ -222,10 +202,6 @@ if __name__ == "__main__":
         writer = csv.writer(csvfile)
         writer.writerows(energy_pkg)
 
-    with open(f"cpu_energy_ram_{CPU_DIRECTORY}.csv", "w", newline="") as csvfile:
-        writer = csv.writer(csvfile)
-        writer.writerows(energy_ram)
-
     extend_csv_with_benchmarks(
         "results/results-static-calyx/futil-sc-sh-latency/data.csv",
         "results/results-static-calyx/futil-sc-sh/data.csv",
@@ -234,7 +210,6 @@ if __name__ == "__main__":
 
     extend_csv_with_cpp_energy(
         f"cpu_energy_pkg_{CPU_DIRECTORY}.csv",
-        f"cpu_energy_ram_{CPU_DIRECTORY}.csv",
         f"cpu_averages_{CPU_DIRECTORY}.csv",
     )
 
