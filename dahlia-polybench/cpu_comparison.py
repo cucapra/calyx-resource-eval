@@ -83,26 +83,26 @@ def extend_csv_with_cpp_energy(pkg_csv, ram_csv, target_csv):
             value = float(row[1]) / float(NUM_RUNS)
             pkg_dict[key] = value
 
-    ram_dict = {}
-    with open(ram_csv, mode="r") as file:
-        # Create a CSV reader object
-        reader = csv.reader(file)
+    # ram_dict = {}
+    # with open(ram_csv, mode="r") as file:
+    #     # Create a CSV reader object
+    #     reader = csv.reader(file)
 
-        # Skip the first row (header)
-        next(reader)
+    #     # Skip the first row (header)
+    #     next(reader)
 
-        # Iterate over each row in the CSV
-        for row in reader:
-            # Assuming the first column is at index 0 and the second column is at index 1
-            key = row[0]
-            value = float(row[1]) / float(NUM_RUNS)
-            ram_dict[key] = value
+    #     # Iterate over each row in the CSV
+    #     for row in reader:
+    #         # Assuming the first column is at index 0 and the second column is at index 1
+    #         key = row[0]
+    #         value = float(row[1]) / float(NUM_RUNS)
+    #         ram_dict[key] = value
 
-    energy_dict = {}
-    # Iterate over the keys (assuming both dicts have the same keys)
-    for key in pkg_dict:
-        # Calculate the difference and store it in the result dictionary
-        energy_dict[key] = pkg_dict[key] - ram_dict[key]
+    # energy_dict = {}
+    # # Iterate over the keys (assuming both dicts have the same keys)
+    # for key in pkg_dict:
+    #     # Calculate the difference and store it in the result dictionary
+    #     energy_dict[key] = pkg_dict[key] - ram_dict[key]
 
     # Read the target CSV into a list of rows
     with open(target_csv, newline="") as tgt_file:
@@ -110,8 +110,8 @@ def extend_csv_with_cpp_energy(pkg_csv, ram_csv, target_csv):
 
     # Update the target rows with the new values from the source CSV
     for row in target_rows:
-        if row and row[0] in energy_dict:
-            row.append(energy_dict[row[0]])
+        if row and row[0] in pkg_dict:
+            row.append(pkg_dict[row[0]])
 
     # Write the updated rows back to the target CSV
     with open(target_csv, "w", newline="") as tgt_file:
