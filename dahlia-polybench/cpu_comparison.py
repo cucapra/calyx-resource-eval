@@ -24,6 +24,8 @@ def extend_csv_with_benchmarks(latency_csv, resource_csv, target_csv):
 
     benchmark_to_period = {}
     benchmark_to_ws = {}
+    benchmark_to_lut = {}
+    benchmark_to_dsp = {}
     with open(resource_csv, newline="") as src_file:
         reader = csv.DictReader(src_file)
 
@@ -35,6 +37,12 @@ def extend_csv_with_benchmarks(latency_csv, resource_csv, target_csv):
             if row["key"] == "worst_slack":
                 value = row["value"]
                 benchmark_to_ws[benchmark] = float(value)
+            if row["key"] == "lut":
+                value = row["value"]
+                benchmark_to_lut[benchmark] = float(value)
+            if row["key"] == "dsp":
+                value = row["value"]
+                benchmark_to_dsp[benchmark] = float(value)
 
     benchmark_to_ns = defaultdict(list)
     for benchmark, latency in benchmark_to_latency.items():
@@ -47,6 +55,12 @@ def extend_csv_with_benchmarks(latency_csv, resource_csv, target_csv):
         max_freq_list.append(1000 / min_period)
     gmean_max_freq = gmean(max_freq_list)
     print(f"Geo Mean Max Freq: {gmean_max_freq}")
+
+    max_lut_usage = max(benchmark_to_lut.values())
+    print(f"Max LUT Usage: {max_lut_usage}")
+
+    max_dsp_usage = max(benchmark_to_dsp.values())
+    print(f"Max DSP Usage: {max_dsp_usage}")
 
     # Read the target CSV into a list of rows
     with open(target_csv, newline="") as tgt_file:

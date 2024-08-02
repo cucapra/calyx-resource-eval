@@ -1,2 +1,4 @@
 Geo Mean Max Freq: 291.3441622416013
+Max LUT Usage: 1276.0
+Max DSP Usage: 9.0
 Geometric Mean of FPGA:CPU execution time ratios for cpp_benchmarks_250: 4.485870079918999
