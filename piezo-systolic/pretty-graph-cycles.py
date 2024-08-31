@@ -14,7 +14,7 @@ import argparse
 import warnings
 from pretty_graph_utils import standardize_results, get_geo_means
 
-sns.set_theme()
+sns.set_theme(style="whitegrid")
 
 
 if __name__ == "__main__":

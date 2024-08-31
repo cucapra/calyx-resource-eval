@@ -315,7 +315,7 @@ def futil_phases_resources_graph(polybench, fig_fontsize, legend_fontsize, resou
     g.axes[0, 0].axhline(1, color="gray", linewidth=0.5)
     g.figure.set_size_inches(10, 5)
 
-    plt.yticks([0.5, 0.75, 1, 1.25], fontsize=fig_fontsize)
+    plt.yticks([0.5, 0.75, 1, 1.25, 1.5], fontsize=fig_fontsize)
     g.axes[0, 0].get_yaxis().set_major_formatter(
         matplotlib.ticker.FuncFormatter(lambda x, pos: f"{1/x:.3g}")
     )
@@ -341,11 +341,12 @@ def futil_phases_resources_graph(polybench, fig_fontsize, legend_fontsize, resou
 
     # Text Placement for LUT
     if resource == "lut":
-        plt.text(7.9, gmean_sh_sc + 0.015, "Geo Mean SH→SC and SH", fontsize=20)
-        plt.text(4, gmean_sc - 0.05, "Geo Mean SC", fontsize=20)
+        plt.text(11.2, gmean_sh + 0.015, "Geo Mean SH", fontsize=20)
+        plt.text(12.9, gmean_sh - 0.070, "Geo Mean SH→SC", fontsize=20)
+        plt.text(3.2, gmean_sc - 0.070, "Geo Mean SC", fontsize=20)
     elif resource == "registers":
         plt.text(9.45, gmean_sh_sc + 0.015, "Geo Mean SH→SC and SH", fontsize=20)
-        plt.text(0.7, gmean_sc - 0.075, "Geo Mean SC", fontsize=20)
+        plt.text(0.34, gmean_sc - 0.075, "Geo Mean SC", fontsize=20)
 
     plt.show()
     g.savefig(f"graphs/futil_ordering_{resource}.pdf")

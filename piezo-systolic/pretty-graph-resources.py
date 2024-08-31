@@ -13,7 +13,7 @@ import pandas as pd
 import argparse
 from pretty_graph_utils import standardize_results, get_geo_means
 
-sns.set_theme()
+sns.set_theme(style="whitegrid")
 
 
 def hard_coded_sort(input):

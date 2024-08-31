@@ -1,0 +1,26 @@
+{
+    "16.systolic.json": {
+        "lut": 32899,
+        "dsp": 1024,
+        "registers": 2830,
+        "muxes": 677,
+        "clb_registers": 47255,
+        "carry8": 2052,
+        "f7_muxes": 0,
+        "f8_muxes": 0,
+        "f9_muxes": 0,
+        "clb": 82206,
+        "meet_timing": 1,
+        "worst_slack": 0.035,
+        "period": 3.7,
+        "frequency": 270.27,
+        "uram": -1,
+        "cell_lut1": -1,
+        "cell_lut2": 29496,
+        "cell_lut3": 123,
+        "cell_lut4": 1354,
+        "cell_lut5": 1295,
+        "cell_lut6": 6320,
+        "cell_fdre": 45683
+    }
+}
