@@ -12,10 +12,12 @@ import seaborn as sns
 import pandas as pd
 import argparse
 import warnings
+import matplotlib
 from pretty_graph_utils import standardize_results, get_geo_means
 
 sns.set_theme(style="whitegrid")
-
+matplotlib.rcParams["pdf.fonttype"] = 42
+matplotlib.rcParams["ps.fonttype"] = 42
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Process args for resource estimates")
