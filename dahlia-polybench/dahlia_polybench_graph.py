@@ -128,8 +128,12 @@ def apply_legend(df, name, legend):
 
 
 def polybench_cycles_graph(polybench, fig_fontsize, legend_fontsize):
+    from scipy import stats
+
     # figure 6 font settings
     legend = {"norm-futil": "Calyx", "norm-piezo": "Piezo"}
+    df_piezo_futil = polybench[polybench["type"].isin(["norm-piezo-futil"])]
+    gmean_piezo_futil = stats.gmean(df_piezo_futil["latency"])
 
     df = polybench[polybench["type"].isin(["norm-futil", "norm-piezo"])]
     df = df.copy()
@@ -159,14 +163,13 @@ def polybench_cycles_graph(polybench, fig_fontsize, legend_fontsize):
         matplotlib.ticker.FuncFormatter(lambda x, pos: f"{1/x:.9g}")
     )
 
-    from scipy import stats
-
     df_futil = df[df["type"].str.contains("norm-futil")]
     df_piezo = df[df["type"].str.contains("norm-piezo")]
     gmean_futil = stats.gmean(df_futil["latency"])
     gmean_piezo = stats.gmean(df_piezo["latency"])
     print(f"Gmean Cycles Calyx: {1/gmean_futil}")
     print(f"Gmean Cycles Piezo: {1/gmean_piezo}")
+    print(f"Gmean Cycles Piezo/Calyx: {1/gmean_piezo_futil}")
     g.axes[0, 0].axhline(
         gmean_futil, color="black", linestyle="dashed", label="Geo Mean"
     )
@@ -180,7 +183,13 @@ def polybench_cycles_graph(polybench, fig_fontsize, legend_fontsize):
 
 
 def polybench_resources_graph(polybench, fig_fontsize, resource):
+    from scipy import stats
+
     sns.set_theme(style="whitegrid")
+
+    df_piezo_futil = polybench[polybench["type"].isin(["norm-piezo-futil"])]
+    gmean_piezo_futil = stats.gmean(df_piezo_futil[resource])
+
     legend = {"norm-futil": "Calyx", "norm-piezo": "Piezo"}
     df = polybench[polybench["type"].isin(["norm-futil", "norm-piezo"])]
     df[f"{resource}-1"] = df[resource] - 1
@@ -207,9 +216,7 @@ def polybench_resources_graph(polybench, fig_fontsize, resource):
     g.axes[0, 0].get_yaxis().set_major_formatter(
         matplotlib.ticker.FuncFormatter(lambda x, pos: f"{1/x:.3g}")
     )
-    plt.ylim([1 / 8, 4])
-
-    from scipy import stats
+    plt.ylim([1 / 8, 8])
 
     df_futil = df[df["type"].str.contains("norm-futil")]
     df_piezo = df[df["type"].str.contains("norm-piezo")]
@@ -217,6 +224,7 @@ def polybench_resources_graph(polybench, fig_fontsize, resource):
     gmean_piezo = stats.gmean(df_piezo[resource])
     print(f"Gmean {resource} Calyx: {1/gmean_futil}")
     print(f"Gmean {resource} Piezo: {1/gmean_piezo}")
+    print(f"Gmean {resource} Piezo/Calyx: {1/gmean_piezo_futil}")
     g.axes[0, 0].axhline(
         gmean_futil, color="black", linestyle="dashed", label="Geo Mean"
     )
@@ -424,6 +432,7 @@ if __name__ == "__main__":
     )
     polybench = norm(polybench, "hls", "futil-sc-sh", "norm-piezo")
     polybench = norm(polybench, "hls", "futil", "norm-futil")
+    polybench = norm(polybench, "futil", "futil-sc-sh", "norm-piezo-futil")
     polybench = pivot_and_order(polybench, polybench_order)
 
     futil_phases = cleanup(

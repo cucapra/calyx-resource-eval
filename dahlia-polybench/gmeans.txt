@@ -1,8 +1,10 @@
 Comparison relative to Vitis HLS
 Gmean Cycles Calyx: 3.093164569856314
 Gmean Cycles Piezo: 2.544773201125223
+Gmean Cycles Piezo/Calyx: 0.8227086350091726
 Gmean lut Calyx: 1.246138617337231
 Gmean lut Piezo: 0.6536174982826629
+Gmean lut Piezo/Calyx: 0.5245142789004672
 
 Comparison relative to SC->SH ordering
 Gmean Cycles SH:  1.1744854160990998
@@ -11,6 +13,6 @@ Gmean Cycles SC:  1.0
 Gmean SH lut: 0.9870441253308126
 Gmean SH->SC lut: 0.9936543553214083
 Gmean SC lut: 1.0879553533575366
-Gmean SH registers: 0.8979619141239342
-Gmean SH->SC registers: 0.8979619141239342
+Gmean SH registers: 0.8979619141239344
+Gmean SH->SC registers: 0.8979619141239344
 Gmean SC registers: 1.6796068106881095
